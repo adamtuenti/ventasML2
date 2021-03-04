@@ -29,10 +29,8 @@ export class LoginPage implements OnInit {
     }
  
   async loginUser(form):Promise<void>{
-   if(form.value.email != "hwong@espol.edu.ec"){
-    this.failedAlert("Correo electronico invalido");
-   }
-   else{ 
+ 
+   
    this.authService.loginUser(form.value.email, form.value.password).
     then(
       (res)=>{
@@ -52,7 +50,7 @@ export class LoginPage implements OnInit {
        
       }
     )
-   }
+   
   }
 
   redireccionar(email){

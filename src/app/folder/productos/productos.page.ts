@@ -16,6 +16,7 @@ export class ProductosPage implements OnInit {
   categoria;
 
   constructor(private productosService: ProductosService,
+              private router: Router,
               private activateRoute: ActivatedRoute,) { }
 
   ngOnInit() {
@@ -23,7 +24,7 @@ export class ProductosPage implements OnInit {
     this.activateRoute.paramMap.subscribe(paramMap => {
       this.categoria = paramMap.get('categoria');
 
-      this.productosService.getProductos().subscribe(res=> {this.productos = res;console.log(res);});
+      this.productosService.getProductos().subscribe(res=> {this.productos = res});
     });
     
   }
@@ -32,5 +33,22 @@ export class ProductosPage implements OnInit {
     const texto = event.target.value
     this.textoBuscar=texto;
   }
+
+  getDatos(){
+    for(let i= 0; i<this.productos.length; i++){
+      if(this.productos[i].Categoria == this.categoria){     
+            return false;      
+      }
+    }
+    return true;
+  }
+
+  aumentarVisita(id:string,productos:Productos){
+    productos.Visitas= productos.Visitas + 1
+    this.productosService.updateProducto(id,productos)
+      this.router.navigate(['/producto-detalle',productos.id,productos.Vendedor]); 
+  }
+
+  
 
 }

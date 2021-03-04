@@ -39,8 +39,21 @@ export class ProductosService {
 
   }
 
-  getProducto(){
 
+  getProducto(id:string){
+    return this.productosCollection.doc<Productos>(id).valueChanges();
   }
+
+  addAdopcion(productos:Productos){
+    return this.productosCollection.add({...productos});
+  } 
+
+  updateProducto(id:string, productos:Productos){
+    return this.productosCollection.doc(id).update({...productos});
+  }
+
+  removeproducto(id:string){
+    return this.productosCollection.doc(id).delete();
+ }
 
 }

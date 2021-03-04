@@ -55,23 +55,20 @@ const routes: Routes = [
     loadChildren: () => import('./folder/productos/productos.module').then( m => m.ProductosPageModule)
   },
   {
-    path: 'producto-detalle',
-    loadChildren: () => import('./folder/producto-detalle/producto-detalle.module').then( m => m.ProductoDetallePageModule)
-  },
-  {
     path: 'publicaciones',
     loadChildren: () => import('./folder/publicaciones/publicaciones.module').then( m => m.PublicacionesPageModule)
-  },  {
+  },
+  {
     path: 'categorias-locales',
     loadChildren: () => import('./folder/categorias-locales/categorias-locales.module').then( m => m.CategoriasLocalesPageModule)
+  }, 
+  {
+    path: 'producto-detalle/:id/:vendedor',
+    loadChildren: () => import('./folder/producto-detalle/producto-detalle.module').then( m => m.ProductoDetallePageModule)
   },
   {
     path: 'header',
     loadChildren: () => import('./folder/header/header.module').then( m => m.HeaderPageModule)
-  },
-  {
-    path: 'detalle-producto',
-    loadChildren: () => import('./folder/detalle-producto/detalle-producto.module').then( m => m.DetalleProductoPageModule)
   }
 
 
