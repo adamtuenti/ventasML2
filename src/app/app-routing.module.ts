@@ -49,8 +49,9 @@ const routes: Routes = [
   {
     path: 'perfil',
     loadChildren: () => import('./folder/perfil/perfil.module').then( m => m.PerfilPageModule)
-  },  {
-    path: 'productos',
+  },
+  {
+    path: 'productos/:categoria',
     loadChildren: () => import('./folder/productos/productos.module').then( m => m.ProductosPageModule)
   },
   {
@@ -60,7 +61,15 @@ const routes: Routes = [
   {
     path: 'publicaciones',
     loadChildren: () => import('./folder/publicaciones/publicaciones.module').then( m => m.PublicacionesPageModule)
+  },  {
+    path: 'categorias-locales',
+    loadChildren: () => import('./folder/categorias-locales/categorias-locales.module').then( m => m.CategoriasLocalesPageModule)
+  },
+  {
+    path: 'header',
+    loadChildren: () => import('./folder/header/header.module').then( m => m.HeaderPageModule)
   }
+
 
 
 

@@ -9,13 +9,15 @@ import { CategoriasPageRoutingModule } from './categorias-routing.module';
 import { CategoriasPage } from './categorias.page';
 import { PipesModule } from 'src/app/pipes/pipes.module';
 
+
+
 @NgModule({
   imports: [
     CommonModule,
     PipesModule,
     FormsModule,
     IonicModule,
-    CategoriasPageRoutingModule
+    CategoriasPageRoutingModule,
   ],
   declarations: [CategoriasPage]
 })

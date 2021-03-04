@@ -1,9 +1,58 @@
-<ion-header>
+<ion-header >
   <ion-toolbar>
-    <ion-title>productos</ion-title>
+    <ion-segment color="tertiary" value="productos" >
+      <ion-segment-button value="publicaciones" [routerLink]="['/publicaciones']" routerDirection="root">
+        <ion-icon name="megaphone-outline" size="large"></ion-icon>
+        <ion-label>Anuncios</ion-label>
+      </ion-segment-button>
+
+      <ion-segment-button value="productos" [routerLink]="['/categorias']" routerDirection="root">
+        <ion-icon name="storefront-outline" size="large"></ion-icon>
+        <ion-label>Productos</ion-label>
+      </ion-segment-button>
+    
+
+      <ion-segment-button value="perfil" [routerLink]="['/perfil']" routerDirection="root">
+        <ion-icon name="person-circle-outline" size="large"></ion-icon>
+        <ion-label>Perfil</ion-label>
+      </ion-segment-button>
+
+  
+
+  
+
+    </ion-segment>
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <ion-searchbar
+    color="light" 
+    placeholder = "Buscar producto..."
+    animated
+    (ionChange)="buscar($event)">
+  </ion-searchbar>
+
+  <ion-list *ngFor="let producto of productos">
+    <ion-item *ngIf="producto.Categoria == categoria" (click)='aumentarVisita(producto.id,producto)'>
+
+      <ion-avatar slot="start" style="height: 50px;width: 50px;margin-right: 7.5px;">
+        <img src="{{producto.Foto1}}">
+      </ion-avatar>
+
+      <ion-label style="font-size: 17.2px; margin-left: 7.5px;">{{producto.Titulo}}</ion-label>
+
+      
+        <ion-button fill="outline" slot='end' color="success"><ion-icon name="cash-outline" color="success"></ion-icon><label style="font-size: 14;margin-left: 7.5px;" >${{producto.Precio}}</label></ion-button>
+        <ion-button fill="outline" slot='end'><ion-icon name="eye-outline"></ion-icon><label style="font-size: 12;margin-left: 7.5px;" >{{producto.Visitas}}</label></ion-button>
+
+      
+     
+    </ion-item>
+
+  </ion-list>
+
 
 </ion-content>

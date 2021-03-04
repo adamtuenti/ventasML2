@@ -1,15 +1,13 @@
 <ion-header >
-
   <ion-toolbar>
-    <ion-segment color="tertiary" value="cursos" >
+    <ion-segment color="tertiary" value="locales" >
       <ion-segment-button value="publicaciones" [routerLink]="['/publicaciones']" routerDirection="root">
         <ion-icon name="megaphone-outline" size="large"></ion-icon>
         <ion-label>Anuncios</ion-label>
       </ion-segment-button>
 
-      
       <ion-segment-button value="cursos" [routerLink]="['/categorias']" routerDirection="root">
-        <ion-icon name="bookmarks-outline" size="large"></ion-icon>
+        <ion-icon name="storefront-outline" size="large"></ion-icon>
         <ion-label>Productos</ion-label>
       </ion-segment-button>
 
@@ -42,7 +40,7 @@
     (ionChange)="buscar($event)">
   </ion-searchbar>
 
-  <ion-list *ngFor="let categoria of categorias | filtroCategoria: textoBuscar">
+  <ion-list *ngFor="let categoria of categorias">
     <ion-item [routerLink]="['/productos',categoria.id]">
       <ion-icon name="{{categoria.Icono}}" slot="start" size='large'></ion-icon>
       <ion-label style="font-size: 17.2px;">{{categoria.Nombre}}</ion-label>
