@@ -68,6 +68,10 @@ const routes: Routes = [
   {
     path: 'header',
     loadChildren: () => import('./folder/header/header.module').then( m => m.HeaderPageModule)
+  },
+  {
+    path: 'detalle-producto',
+    loadChildren: () => import('./folder/detalle-producto/detalle-producto.module').then( m => m.DetalleProductoPageModule)
   }
 
 
