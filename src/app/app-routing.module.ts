@@ -9,46 +9,13 @@ const routes: Routes = [
     redirectTo: 'login',
     pathMatch: 'full'
   },
-  {
-    path: 'usuarios-pendientes',
-    loadChildren: () => import('./folder/usuarios-pendientes/usuarios-pendientes.module').then( m => m.UsuariosPendientesPageModule),
-    canActivate:[AuthGuard]
-  },
-  {
-    path: 'ayudantes-pendientes',
-    loadChildren: () => import('./folder/ayudantes-pendientes/ayudantes-pendientes.module').then( m => m.AyudantesPendientesPageModule),
-    canActivate:[AuthGuard]
-  },
-  {
-    path: 'materias-pendientes',
-    loadChildren: () => import('./folder/materias-pendientes/materias-pendientes.module').then( m => m.MateriasPendientesPageModule),
-    canActivate:[AuthGuard]
-  },
-  {
-    path: 'usuario-pendiente-detalle/:id',
-    loadChildren: () => import('./folder/usuario-pendiente-detalle/usuario-pendiente-detalle.module').then( m => m.UsuarioPendienteDetallePageModule),
-    canActivate:[AuthGuard]
-  },
-  {
-    path: 'ayudante-pendiente-detalle/:id',
-    loadChildren: () => import('./folder/ayudante-pendiente-detalle/ayudante-pendiente-detalle.module').then( m => m.AyudantePendienteDetallePageModule),
-    canActivate:[AuthGuard]
-  },
-  {
-    path: 'materias-pendientes-detalle/:id/:usuarioId',
-    loadChildren: () => import('./folder/materias-pendientes-detalle/materias-pendientes-detalle.module').then( m => m.MateriasPendientesDetallePageModule),
-    canActivate:[AuthGuard]
-  },
+  
   {
     path: 'comentarios',
     loadChildren: () => import('./folder/comentarios/comentarios.module').then( m => m.ComentariosPageModule),
     canActivate:[AuthGuard]
   },
-  {
-    path: 'pago',
-    loadChildren: () => import('./folder/pago/pago.module').then( m => m.PagoPageModule),
-    canActivate:[AuthGuard]
-  },
+  
   {
     path: 'comentario-detalle/:id',
     loadChildren: () => import('./folder/comentario-detalle/comentario-detalle.module').then( m => m.ComentarioDetallePageModule),
@@ -69,25 +36,32 @@ const routes: Routes = [
     loadChildren: () => import('./folder/login/login.module').then( m => m.LoginPageModule),
     canActivate:[NoLoginGuard]
   },
-  {
-    path: 'usuarios',
-    loadChildren: () => import('./folder/usuarios/usuarios.module').then( m => m.UsuariosPageModule)
-  },
+
   {
     path: 'usuarios-detalle/:id',
     loadChildren: () => import('./folder/usuarios-detalle/usuarios-detalle.module').then( m => m.UsuariosDetallePageModule)
-  },  {
-    path: 'ayudantes',
-    loadChildren: () => import('./folder/ayudantes/ayudantes.module').then( m => m.AyudantesPageModule)
   },
-  {
-    path: 'materias',
-    loadChildren: () => import('./folder/materias/materias.module').then( m => m.MateriasPageModule)
-  },
+  
   {
     path: 'categorias',
     loadChildren: () => import('./folder/categorias/categorias.module').then( m => m.CategoriasPageModule)
+  },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./folder/perfil/perfil.module').then( m => m.PerfilPageModule)
+  },  {
+    path: 'productos',
+    loadChildren: () => import('./folder/productos/productos.module').then( m => m.ProductosPageModule)
+  },
+  {
+    path: 'producto-detalle',
+    loadChildren: () => import('./folder/producto-detalle/producto-detalle.module').then( m => m.ProductoDetallePageModule)
+  },
+  {
+    path: 'publicaciones',
+    loadChildren: () => import('./folder/publicaciones/publicaciones.module').then( m => m.PublicacionesPageModule)
   }
+
 
 
 

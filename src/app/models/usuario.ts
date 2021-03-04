@@ -1,21 +1,16 @@
 export class Usuarios {
     id?: string;
+    Nombre: string;
     Apellido: string;
     Correo: string;
+    Ciudadela: string;
     Foto: string;
-    FotoPerfil: string;
-    Matricula: string;
-    Nombre: string;
+    Manzana: string;
     Premium: boolean;
     Publicaciones: number;
     Rol: string;
     Telefono: string;
-    Universidad: string;
+    Villa: string;
     Verificacion: boolean;
-    Estado: string;
-    EsperaAyudantia: boolean;
-    Anuncio: boolean;
-    EsperaPremium:boolean;
-    Cursos:number;
-    AyudantiaAceptada:boolean;
+    EsperaPremium: boolean;
 }
