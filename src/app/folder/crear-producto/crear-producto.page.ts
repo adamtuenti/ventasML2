@@ -16,6 +16,12 @@ export class CrearProductoPage implements OnInit {
   public producto: Productos = new Productos();
   idCategoria;
   miId: '7G091ZlAzKhS9TrNFqAX';
+  loading: HTMLIonLoadingElement;
+  image: string | ArrayBuffer;
+  image1: string | ArrayBuffer;
+
+  file: File;
+  file1: File;
 
   constructor(private angularFireStorage: AngularFireStorage,
     private router: Router,
@@ -39,22 +45,13 @@ export class CrearProductoPage implements OnInit {
     this.producto.Categoria = this.idCategoria;
     this.producto.Visitas = 0;
     this.producto.Precio = form.value.precio;
-    this.producto.Foto1 = '';
-    this.producto.Foto2 = '';
     this.producto.Visibilidad = true;
+    console.log('llegamos aca');
+
+    this.guardarProducto();
  
    
-    this.productosService.addProducto(this.producto).then(
-      auth=>{
-        this.loading.dismiss();
-
-        this.router.navigate(["/productos",this.idCategoria])
-      }       
-    ).catch(async error => {
-      this.loading.dismiss();
-      console.log(error)
-      this.failedAlert("Algo salió mal, inténtelo de nuevo");
-    })
+    
 
     
     
@@ -81,6 +78,79 @@ export class CrearProductoPage implements OnInit {
     }]   
     });
     await alert.present();
+  }
+
+  readURL(event): void {
+    if (event.target.files && event.target.files[0]) {
+        this.file = event.target.files[0];
+
+        const reader = new FileReader();
+        reader.onload = e => this.image = reader.result;
+
+        reader.readAsDataURL(this.file);
+    }
+  }
+
+  readURL1(event): void {
+    if (event.target.files && event.target.files[0]) {
+        this.file1 = event.target.files[0];
+
+        const reader = new FileReader();
+        reader.onload = e => this.image1 = reader.result;
+
+        reader.readAsDataURL(this.file1);
+    }
+  }
+
+  guardarProducto(){
+    
+    var storageRef = this.angularFireStorage.storage.ref()
+
+    var storageRef1 = this.angularFireStorage.storage.ref()
+
+    console.log("hola");
+    
+    storageRef.child(this.file.name).put(this.file)
+    .then(
+            data=>{
+                    data.ref.getDownloadURL().then(
+                        downloadURL => {
+                          
+                            storageRef1.child(this.file1.name).put(this.file1)
+                            .then(
+                              data=>{data.ref.getDownloadURL().then(
+                                downloadURL1 =>this.guardarCompleto(downloadURL, downloadURL1)  
+                                )}
+                            ).catch(err=>{this.loading.dismiss(), this.failedAlert("Error al cargar la foto 1")});
+                            
+                          
+                      
+                        }
+                    ).catch(err=>{this.loading.dismiss(), this.failedAlert("Error al cargar la foto 2")});
+                    
+
+            }
+    )     
+
+
+  }
+
+  guardarCompleto(downloadURL: string, downloadURL1: string){
+    console.log('error aqui')
+    this.producto.Foto1 = downloadURL;
+    this.producto.Foto2 = downloadURL1;
+    this.productosService.addProducto(this.producto).then(
+      auth=>{
+        
+        this.loading.dismiss();
+
+
+        this.router.navigate(["/productos",this.idCategoria])
+      }       
+    ).catch(async error => {
+      this.loading.dismiss();
+      this.failedAlert("Algo salió mal, inténtelo de nuevo");
+    })
   }
 
 }
