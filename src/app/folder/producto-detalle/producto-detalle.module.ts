@@ -8,11 +8,14 @@ import { ProductoDetallePageRoutingModule } from './producto-detalle-routing.mod
 
 import { ProductoDetallePage } from './producto-detalle.page';
 
+import {ComponentsModule} from 'src/app/folder/components/components.module';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    ComponentsModule,
     ProductoDetallePageRoutingModule
   ],
   declarations: [ProductoDetallePage]
