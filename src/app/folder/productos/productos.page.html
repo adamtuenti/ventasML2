@@ -1,30 +1,4 @@
-<ion-header >
-  <ion-toolbar>
-    <ion-segment color="tertiary" value="productos" >
-      <ion-segment-button value="publicaciones" [routerLink]="['/publicaciones']" routerDirection="root">
-        <ion-icon name="megaphone-outline" size="large"></ion-icon>
-        <ion-label>Anuncios</ion-label>
-      </ion-segment-button>
-
-      <ion-segment-button value="productos" [routerLink]="['/categorias']" routerDirection="root">
-        <ion-icon name="storefront-outline" size="large"></ion-icon>
-        <ion-label>Productos</ion-label>
-      </ion-segment-button>
-    
-
-      <ion-segment-button value="perfil" [routerLink]="['/perfil']" routerDirection="root">
-        <ion-icon name="person-circle-outline" size="large"></ion-icon>
-        <ion-label>Perfil</ion-label>
-      </ion-segment-button>
-
-  
-
-  
-
-    </ion-segment>
-
-  </ion-toolbar>
-</ion-header>
+<app-header nombre="categorias"></app-header>
 
 <ion-content>
 

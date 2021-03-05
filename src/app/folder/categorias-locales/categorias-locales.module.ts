@@ -8,11 +8,16 @@ import { CategoriasLocalesPageRoutingModule } from './categorias-locales-routing
 
 import { CategoriasLocalesPage } from './categorias-locales.page';
 
+import {ComponentsModule} from 'src/app/folder/components/components.module';
+
+
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    ComponentsModule,
     CategoriasLocalesPageRoutingModule
   ],
   declarations: [CategoriasLocalesPage]

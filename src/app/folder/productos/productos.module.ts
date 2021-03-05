@@ -8,6 +8,7 @@ import { ProductosPageRoutingModule } from './productos-routing.module';
 
 import { ProductosPage } from './productos.page';
 import { PipesModule } from 'src/app/pipes/pipes.module';
+import {ComponentsModule} from 'src/app/folder/components/components.module';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { PipesModule } from 'src/app/pipes/pipes.module';
     CommonModule,
     FormsModule,
     IonicModule,
+    ComponentsModule,
     ProductosPageRoutingModule
   ],
   declarations: [ProductosPage]

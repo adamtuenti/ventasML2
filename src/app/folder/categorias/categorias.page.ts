@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Categorias } from 'src/app/models/categorias';
 import { CategoriasService } from 'src/app/services/categorias.service';
-// import {HeaderPage} from 'src/app/folder/header';
 
 @Component({
   selector: 'app-categorias',

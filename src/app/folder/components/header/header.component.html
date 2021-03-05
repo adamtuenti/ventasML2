@@ -1,12 +1,12 @@
-<ion-content>
+<ion-header>  
   <ion-toolbar>
-    <ion-segment color="tertiary" value="locales" >
+    <ion-segment color="tertiary" value="{{text}}" >
       <ion-segment-button value="publicaciones" [routerLink]="['/publicaciones']" routerDirection="root">
         <ion-icon name="megaphone-outline" size="large"></ion-icon>
         <ion-label>Anuncios</ion-label>
       </ion-segment-button>
 
-      <ion-segment-button value="cursos" [routerLink]="['/categorias']" routerDirection="root">
+      <ion-segment-button value="categorias" [routerLink]="['/categorias']" routerDirection="root">
         <ion-icon name="storefront-outline" size="large"></ion-icon>
         <ion-label>Productos</ion-label>
       </ion-segment-button>
@@ -16,18 +16,12 @@
         <ion-label>Locales</ion-label>
       </ion-segment-button>
     
-
       <ion-segment-button value="perfil" [routerLink]="['/perfil']" routerDirection="root">
         <ion-icon name="person-circle-outline" size="large"></ion-icon>
         <ion-label>Perfil</ion-label>
       </ion-segment-button>
 
-  
-
-  
-
     </ion-segment>
 
   </ion-toolbar>
-
-</ion-content>
+</ion-header>

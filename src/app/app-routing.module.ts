@@ -65,17 +65,7 @@ const routes: Routes = [
   {
     path: 'producto-detalle/:id/:vendedor',
     loadChildren: () => import('./folder/producto-detalle/producto-detalle.module').then( m => m.ProductoDetallePageModule)
-  },
-  {
-    path: 'header',
-    loadChildren: () => import('./folder/header/header.module').then( m => m.HeaderPageModule)
   }
-
-
-
-
-
-
 
 ];
 

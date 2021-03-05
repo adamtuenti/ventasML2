@@ -10,6 +10,9 @@ import { CategoriasPage } from './categorias.page';
 import { PipesModule } from 'src/app/pipes/pipes.module';
 
 
+import {ComponentsModule} from 'src/app/folder/components/components.module';
+
+
 
 @NgModule({
   imports: [
@@ -17,6 +20,7 @@ import { PipesModule } from 'src/app/pipes/pipes.module';
     PipesModule,
     FormsModule,
     IonicModule,
+    ComponentsModule,
     CategoriasPageRoutingModule,
   ],
   declarations: [CategoriasPage]
