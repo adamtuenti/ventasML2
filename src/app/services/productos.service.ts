@@ -44,7 +44,7 @@ export class ProductosService {
     return this.productosCollection.doc<Productos>(id).valueChanges();
   }
 
-  addAdopcion(productos:Productos){
+  addProducto(productos:Productos){
     return this.productosCollection.add({...productos});
   } 
 

@@ -65,7 +65,24 @@ const routes: Routes = [
   {
     path: 'producto-detalle/:id/:vendedor',
     loadChildren: () => import('./folder/producto-detalle/producto-detalle.module').then( m => m.ProductoDetallePageModule)
+  },
+  {
+    path: 'registrar',
+    loadChildren: () => import('./folder/registrar/registrar.module').then( m => m.RegistrarPageModule)
+  },
+  {
+    path: 'crear-producto/:idCategoria',
+    loadChildren: () => import('./folder/crear-producto/crear-producto.module').then( m => m.CrearProductoPageModule)
+  },  {
+    path: 'locales',
+    loadChildren: () => import('./folder/locales/locales.module').then( m => m.LocalesPageModule)
+  },
+  {
+    path: 'crear-local',
+    loadChildren: () => import('./folder/crear-local/crear-local.module').then( m => m.CrearLocalPageModule)
   }
+
+
 
 ];
 

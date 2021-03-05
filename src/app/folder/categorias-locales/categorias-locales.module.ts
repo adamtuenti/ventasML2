@@ -9,6 +9,7 @@ import { CategoriasLocalesPageRoutingModule } from './categorias-locales-routing
 import { CategoriasLocalesPage } from './categorias-locales.page';
 
 import {ComponentsModule} from 'src/app/folder/components/components.module';
+import { PipesModule } from 'src/app/pipes/pipes.module';
 
 
 
@@ -16,6 +17,7 @@ import {ComponentsModule} from 'src/app/folder/components/components.module';
   imports: [
     CommonModule,
     FormsModule,
+    PipesModule,
     IonicModule,
     ComponentsModule,
     CategoriasLocalesPageRoutingModule

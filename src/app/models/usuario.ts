@@ -8,7 +8,7 @@ export class Usuarios {
     Manzana: string;
     Premium: boolean;
     Publicaciones: number;
-    Rol: string;
+    Vendedor: boolean;
     Telefono: string;
     Villa: string;
     Verificacion: boolean;

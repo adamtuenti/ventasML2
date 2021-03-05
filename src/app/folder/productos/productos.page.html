@@ -21,7 +21,7 @@
 
       
         <ion-button fill="outline" slot='end' color="success"><ion-icon name="cash-outline" color="success"></ion-icon><label style="font-size: 14;margin-left: 7.5px;" >${{producto.Precio}}</label></ion-button>
-        <ion-button fill="outline" slot='end'><ion-icon name="eye-outline"></ion-icon><label style="font-size: 12;margin-left: 7.5px;" >{{producto.Visitas}}</label></ion-button>
+        <!-- <ion-button fill="outline" slot='end'><ion-icon name="eye-outline"></ion-icon><label style="font-size: 12;margin-left: 7.5px;" >{{producto.Visitas}}</label></ion-button> -->
 
       
      
@@ -41,5 +41,12 @@
     </ion-text>  
   </div>
 </ng-container>
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button [routerLink]="['/crear-producto',categoria]">
+   <ion-icon name="add-outline"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
 
 </ion-content>
