@@ -10,12 +10,14 @@
   </ion-searchbar>
 
   <ion-list *ngFor="let categoria of categorias | filtroCategoriaLocal: textoBuscar">
-    <ion-item [routerLink]="['/productos-locales',categoria.id]">
+
+    <ion-item [routerLink]="['/locales',categoria.id]">
+
       <ion-icon name="{{categoria.Icono}}" slot="start" size='large'></ion-icon>
       <ion-label style="font-size: 17.2px;">{{categoria.Nombre}}</ion-label>
     </ion-item>
 
   </ion-list>
 
-
+ 
 </ion-content>

@@ -30,7 +30,7 @@ export class ComentarioDetallePage implements OnInit {
   }
 
   invisible(){
-     this.comentarioService.updatetComentario(this.id,this.comentario).then(
+     this.comentarioService.updateComentario(this.id,this.comentario).then(
        res => {this.router.navigate(['/comentarios'])}
      )
   }

@@ -10,7 +10,7 @@ export class FiltroProductoLocalPipe implements PipeTransform {
     if(texto.length === 0){return productos}
       texto=texto.toLocaleLowerCase()
       return productos.filter(producto => {
-        return producto.Nombre.toLocaleLowerCase().includes(texto)
+        return producto.Titulo.toLocaleLowerCase().includes(texto)
       });
   }
 
