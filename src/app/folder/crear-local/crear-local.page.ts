@@ -17,7 +17,7 @@ export class CrearLocalPage implements OnInit {
 
   constructor(private router: Router,
     private alertCtrt: AlertController,
-    public loadingController: LoadingController
+    public loadingController: LoadingController,
     private localesService: LocalesService,
     private activateRoute: ActivatedRoute) { }
 
