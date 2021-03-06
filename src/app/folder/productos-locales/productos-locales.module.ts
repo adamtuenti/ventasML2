@@ -4,10 +4,12 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ComentariosPageRoutingModule } from './comentarios-routing.module';
+import { ProductosLocalesPageRoutingModule } from './productos-locales-routing.module';
 
-import { ComentariosPage } from './comentarios.page';
+import { ProductosLocalesPage } from './productos-locales.page';
+import { PipesModule } from 'src/app/pipes/pipes.module';
 import {ComponentsModule} from 'src/app/folder/components/components.module';
+
 
 @NgModule({
   imports: [
@@ -15,8 +17,9 @@ import {ComponentsModule} from 'src/app/folder/components/components.module';
     FormsModule,
     IonicModule,
     ComponentsModule,
-    ComentariosPageRoutingModule
+    PipesModule,
+    ProductosLocalesPageRoutingModule
   ],
-  declarations: [ComentariosPage]
+  declarations: [ProductosLocalesPage]
 })
-export class ComentariosPageModule {}
+export class ProductosLocalesPageModule {}

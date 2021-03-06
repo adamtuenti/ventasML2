@@ -4,19 +4,19 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ComentariosPageRoutingModule } from './comentarios-routing.module';
+import { CrearProductoLocalPageRoutingModule } from './crear-producto-local-routing.module';
 
-import { ComentariosPage } from './comentarios.page';
+import { CrearProductoLocalPage } from './crear-producto-local.page';
 import {ComponentsModule} from 'src/app/folder/components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule,
     ComponentsModule,
-    ComentariosPageRoutingModule
+    IonicModule,
+    CrearProductoLocalPageRoutingModule
   ],
-  declarations: [ComentariosPage]
+  declarations: [CrearProductoLocalPage]
 })
-export class ComentariosPageModule {}
+export class CrearProductoLocalPageModule {}

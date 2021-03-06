@@ -2,5 +2,6 @@ export class Comentarios {
     id?: string;
     Descripcion: string;
     Usuario: string;
-    Vendedor: string;
+    Empresa: string;
+    Fecha: string;
 }

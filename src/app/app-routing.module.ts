@@ -11,7 +11,7 @@ const routes: Routes = [
   },
   
   {
-    path: 'comentarios',
+    path: 'comentarios/:idLocal',
     loadChildren: () => import('./folder/comentarios/comentarios.module').then( m => m.ComentariosPageModule),
     canActivate:[AuthGuard]
   },
@@ -73,14 +73,29 @@ const routes: Routes = [
   {
     path: 'crear-producto/:idCategoria',
     loadChildren: () => import('./folder/crear-producto/crear-producto.module').then( m => m.CrearProductoPageModule)
-  },  {
+  },
+  {
     path: 'locales',
     loadChildren: () => import('./folder/locales/locales.module').then( m => m.LocalesPageModule)
   },
   {
     path: 'crear-local',
     loadChildren: () => import('./folder/crear-local/crear-local.module').then( m => m.CrearLocalPageModule)
+  },
+  {
+    path: 'crear-producto-local/:idLocal',
+    loadChildren: () => import('./folder/crear-producto-local/crear-producto-local.module').then( m => m.CrearProductoLocalPageModule)
+  },
+  {
+    path: 'productos-locales/:idLocal',
+    loadChildren: () => import('./folder/productos-locales/productos-locales.module').then( m => m.ProductosLocalesPageModule)
+  },
+  {
+    path: 'comentarios-local/:idLocal',
+    loadChildren: () => import('./folder/comentarios-local/comentarios-local.module').then( m => m.ComentariosLocalPageModule)
   }
+
+
 
 
 

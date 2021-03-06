@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ComentariosPageRoutingModule } from './comentarios-routing.module';
+import { ComentariosLocalPageRoutingModule } from './comentarios-local-routing.module';
 
-import { ComentariosPage } from './comentarios.page';
+import { ComentariosLocalPage } from './comentarios-local.page';
 import {ComponentsModule} from 'src/app/folder/components/components.module';
 
 @NgModule({
@@ -15,8 +15,8 @@ import {ComponentsModule} from 'src/app/folder/components/components.module';
     FormsModule,
     IonicModule,
     ComponentsModule,
-    ComentariosPageRoutingModule
+    ComentariosLocalPageRoutingModule
   ],
-  declarations: [ComentariosPage]
+  declarations: [ComentariosLocalPage]
 })
-export class ComentariosPageModule {}
+export class ComentariosLocalPageModule {}

@@ -12,29 +12,24 @@
 
   <ion-list>
     <ng-container *ngFor="let comentario of comentarios">
-      <ion-card [routerLink]="['/comentario-detalle', comentario.id]" *ngIf="comentario.Visibilidad == true">
+      <ion-item>
 
-        <ion-card-header>
+    
 
-          <ion-card-title>
+        
             <label style="font-size: 18.2px;font-weight: bold;color:black; align-items: center;text-align: center;">{{comentario.Titulo}}</label>
-          </ion-card-title>
+         
 
-        </ion-card-header>
+      
 
-        <!-- <ion-item>
-          
-        </ion-item> -->
+      
 
-        <ion-card-content>
-          <label style="font-size: 15.5px;color:black; align-items: center;text-align: center;">{{comentario.Detalle}}</label>
-          
-        </ion-card-content>
+       
           
     
   
         
-      </ion-card>
+      </ion-item>
   
   
     </ng-container>

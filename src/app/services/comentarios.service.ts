@@ -12,7 +12,7 @@ export class ComentariosService {
   private Comentarios: Observable<Comentarios[]>;
 
   constructor(firestore: AngularFirestore) {
-    this.ComentariosCollection = firestore.collection('Sugerencias');
+    this.ComentariosCollection = firestore.collection('Comentarios');
     this.Comentarios = this.ComentariosCollection.snapshotChanges().pipe(map(
       actions =>{
         return actions.map( a=>{
@@ -22,7 +22,9 @@ export class ComentariosService {
         })
       }
     ))
-   }
+  }
+
+
   getComentarios(){
     return this.Comentarios;
   }
@@ -30,12 +32,20 @@ export class ComentariosService {
   getComentario(id:string){
     return this.ComentariosCollection.doc<Comentarios>(id).valueChanges();
   }
-  updatetComentario(id:string, Comentarios:Comentarios){
+
+
+  updateComentario(id:string, Comentarios:Comentarios){
     return this.ComentariosCollection.doc(id).update({...Comentarios});
   }
 
-  removetComentario(id:string){
+  removeComentario(id:string){
     return this.ComentariosCollection.doc(id).delete();
- }
+  }
+
+  addComentario(Comentarios:Comentarios){
+    return this.ComentariosCollection.add({...Comentarios});
+  }
+
+  
   
 }
