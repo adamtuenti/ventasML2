@@ -6,7 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./publicaciones.page.scss'],
 })
 export class PublicacionesPage implements OnInit {
-
+  slideOpts = {
+    initialSlide: 1,
+    speed: 400
+  };
   constructor() { }
 
   ngOnInit() {

@@ -8,8 +8,11 @@ import { CrearLocalPageRoutingModule } from './crear-local-routing.module';
 
 import { CrearLocalPage } from './crear-local.page';
 
+import { ComponentsModule } from '../components/components.module';
+
 @NgModule({
   imports: [
+    ComponentsModule,
     CommonModule,
     FormsModule,
     IonicModule,

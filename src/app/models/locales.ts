@@ -11,5 +11,5 @@ export class Locales {
     Referencia: string;
     CategoriaLocal: string;
     Vendedor: string;
-    Visibilidad: string;
+    Visibilidad: boolean;
 }

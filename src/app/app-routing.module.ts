@@ -73,12 +73,13 @@ const routes: Routes = [
   {
     path: 'crear-producto/:idCategoria',
     loadChildren: () => import('./folder/crear-producto/crear-producto.module').then( m => m.CrearProductoPageModule)
-  },  {
-    path: 'locales',
+  },
+  {
+    path: 'locales/:id',
     loadChildren: () => import('./folder/locales/locales.module').then( m => m.LocalesPageModule)
   },
   {
-    path: 'crear-local',
+    path: 'crear-local/:id',
     loadChildren: () => import('./folder/crear-local/crear-local.module').then( m => m.CrearLocalPageModule)
   }
 

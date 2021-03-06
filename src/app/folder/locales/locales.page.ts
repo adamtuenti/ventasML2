@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+import { Locales } from 'src/app/models/locales';
+import { LocalesService } from 'src/app/services/locales.service';
 
 @Component({
   selector: 'app-locales',
@@ -6,10 +10,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./locales.page.scss'],
 })
 export class LocalesPage implements OnInit {
-
-  constructor() { }
+  locales : Locales[] = [];
+  categoria: string;
+  constructor(private router: Router,
+              private localesService: LocalesService,
+              private activateRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.activateRoute.paramMap.subscribe(paramMap => {
+      this.categoria = paramMap.get('id');
+      this.localesService.getLocales().subscribe(res=> {this.locales = res});
+    });   
+  }
+
+  getDatos(){
+    for(let i= 0; i < this.locales.length; i++){
+      if(this.locales[i].CategoriaLocal == this.categoria){     
+            return false;      
+      }
+    }
+    return true;
   }
 
 }
+// babaco
