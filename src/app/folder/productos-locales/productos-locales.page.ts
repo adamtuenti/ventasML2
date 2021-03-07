@@ -23,9 +23,7 @@ export class ProductosLocalesPage implements OnInit {
 
     this.activateRoute.paramMap.subscribe(paramMap => {
       this.idLocal = paramMap.get('idLocal');
-      console.log(this.idLocal);
-
-      this.productosService.getProductos().subscribe(res=> {this.productos = res;console.log(this.productos)});
+      this.productosService.getProductos().subscribe(res=> {this.productos = res;});
     });
     
   }

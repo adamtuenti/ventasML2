@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Categorias } from '../models/categorias';
+import { sugerenciaCategoriaLocal } from '../models/sugerenciaCategoriaLocal';
 // import firebase from 'firebase/app';
 // import 'firebase/firestore';
 
@@ -11,14 +11,14 @@ import { Categorias } from '../models/categorias';
 @Injectable({
   providedIn: 'root'
 })
-export class CategoriasService {
+export class SugerenciaLocalesService {
 
-  private categoriasCollection: AngularFirestoreCollection <Categorias>;
-  private categorias: Observable<Categorias[]>;
+  private sugerenciasCollection: AngularFirestoreCollection <sugerenciaCategoriaLocal>;
+  private sugerencias: Observable<sugerenciaCategoriaLocal[]>;
 
   constructor(private firestore: AngularFirestore) {
-    this.categoriasCollection = firestore.collection('Categorias', ref => ref.orderBy("Nombre", "asc"));
-    this.categorias = this.categoriasCollection.snapshotChanges().pipe(map(
+    this.sugerenciasCollection = firestore.collection('SugerenciasCategoriasLocales');
+    this.sugerencias = this.sugerenciasCollection.snapshotChanges().pipe(map(
       actions =>{
         return actions.map( a=>{
           const data = a.payload.doc.data();
@@ -27,9 +27,10 @@ export class CategoriasService {
         })
       }
     ))
-   }
-  getCategorias(){
-    return this.categorias;
+  }
+
+  addSugerencia(sugerencia:sugerenciaCategoriaLocal){
+    return this.sugerenciasCollection.add({...sugerencia});
   }
 
 }

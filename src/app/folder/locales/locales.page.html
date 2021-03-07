@@ -10,8 +10,12 @@
 
   <ng-container *ngIf="!getDatos()">
   <ion-list *ngFor="let local of locales | filtroLocal: textoBuscar">
-    <ion-item [routerLink]="['/productos-locales',local.id]"> 
-      <ion-label style="font-size: 17.2px; margin-left: 7.5px;">{{local.Nombre}}</ion-label>   
+    <ion-item [routerLink]="['/productos-locales',local.id]" *ngIf = 'local.CategoriaLocal == categoria'>
+      <ion-avatar slot="start" style="height: 50px;width: 50px;margin-right: 7.5px;">
+        <img src="{{local.Foto}}">
+      </ion-avatar> 
+      <ion-label style="font-size: 18.2px; margin-left: 8.5px;">{{local.Nombre}}</ion-label>
+      <ion-icon name="bicycle-outline" color = 'success' slot = 'end' size = 'large' *ngIf = 'local.Domicilio == "Si"'></ion-icon>   
     </ion-item>
 
   </ion-list>

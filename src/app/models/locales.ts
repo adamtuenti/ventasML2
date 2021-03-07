@@ -10,6 +10,8 @@ export class Locales {
     HorarioAtencion: string;
     Referencia: string;
     CategoriaLocal: string;
-    Vendedor: string;
+    Usuario: string;
     Visibilidad: boolean;
+    Foto:string;
+    Domicilio:string;
 }

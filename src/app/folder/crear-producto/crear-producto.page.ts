@@ -46,7 +46,6 @@ export class CrearProductoPage implements OnInit {
     this.producto.Visitas = 0;
     this.producto.Precio = form.value.precio;
     this.producto.Visibilidad = true;
-    console.log('llegamos aca');
 
     this.guardarProducto();
  
@@ -108,7 +107,6 @@ export class CrearProductoPage implements OnInit {
 
     var storageRef1 = this.angularFireStorage.storage.ref()
 
-    console.log("hola");
     
     storageRef.child(this.file.name).put(this.file)
     .then(
@@ -136,7 +134,6 @@ export class CrearProductoPage implements OnInit {
   }
 
   guardarCompleto(downloadURL: string, downloadURL1: string){
-    console.log('error aqui')
     this.producto.Foto1 = downloadURL;
     this.producto.Foto2 = downloadURL1;
     this.productosService.addProducto(this.producto).then(

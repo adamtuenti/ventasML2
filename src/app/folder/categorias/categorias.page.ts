@@ -15,7 +15,7 @@ export class CategoriasPage implements OnInit {
   constructor(private categoriasService: CategoriasService) { }
 
   ngOnInit() {
-    this.categoriasService.getCategorias().subscribe(res=> {this.categorias = res;console.log(res);});
+    this.categoriasService.getCategorias().subscribe(res=> {this.categorias = res;});
   }
 
   buscar(event){

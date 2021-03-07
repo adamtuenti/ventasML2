@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Locales } from 'src/app/models/locales';
 import { LocalesService } from 'src/app/services/locales.service';
 import { AlertController, LoadingController } from '@ionic/angular';
+import { AngularFireStorage } from 'angularfire2/storage';
 
 @Component({
   selector: 'app-crear-local',
@@ -15,11 +16,16 @@ export class CrearLocalPage implements OnInit {
   public local: Locales= new Locales();
   loading: HTMLIonLoadingElement;
 
+  image: string | ArrayBuffer;
+  file: File;
+
+
   constructor(private router: Router,
-    private alertCtrt: AlertController,
-    public loadingController: LoadingController,
-    private localesService: LocalesService,
-    private activateRoute: ActivatedRoute) { }
+              private angularFireStorage: AngularFireStorage,
+              private alertCtrt: AlertController,
+              public loadingController: LoadingController,
+              private localesService: LocalesService,
+              private activateRoute: ActivatedRoute) { }
 
   
   ngOnInit() {
@@ -27,6 +33,18 @@ export class CrearLocalPage implements OnInit {
       this.categoria = paramMap.get('id');
     });   
   }
+
+  readURL(event): void {
+    if (event.target.files && event.target.files[0]) {
+        this.file = event.target.files[0];
+
+        const reader = new FileReader();
+        reader.onload = e => this.image = reader.result;
+
+        reader.readAsDataURL(this.file);
+    }
+  }
+
 
   crearLocal(form){
     this.presentLoading("Espere por favor...");
@@ -39,9 +57,36 @@ export class CrearLocalPage implements OnInit {
     this.local.RedSocial = form.value.redSocial;
     this.local.HorarioAtencion = form.value.horarioAtencion;
     this.local.Referencia = form.value.referencia;
-    this.local.Vendedor = localStorage.getItem('userId');
+    this.local.Usuario = 'vendedor';
     this.local.CategoriaLocal = this.categoria;
     this.local.Visibilidad = true;
+    this.local.Domicilio = form.value.domicilio;
+    this.guardarLocal();
+  }
+
+  guardarLocal(){
+
+    var storageRef = this.angularFireStorage.storage.ref()
+
+    
+    storageRef.child(this.file.name).put(this.file)
+    .then(
+            data=>{
+                    data.ref.getDownloadURL().then(
+                        downloadURL => {      
+                               this.crearLocalFinal(downloadURL)  
+                        }
+                    ).catch(err=>{this.loading.dismiss(), this.failedAlert("Error al cargar la foto")});
+                    
+
+            }
+    )     
+
+    
+  }
+
+  crearLocalFinal(downloadURL: string){
+    this.local.Foto = downloadURL;
     this.localesService.addLocal(this.local).then(
       auth=>{
         
@@ -54,6 +99,7 @@ export class CrearLocalPage implements OnInit {
       this.loading.dismiss();
       this.failedAlert("Algo salió mal, inténtelo de nuevo");
     })
+
   }
 
   async presentLoading(mensaje: string) {
@@ -63,6 +109,7 @@ export class CrearLocalPage implements OnInit {
       //duration: 2000
     });
     return this.loading.present();
+
   }
 
   async failedAlert(text: string) {

@@ -25,8 +25,6 @@ export class LocalesService {
     ))
    }
   getLocales(){
-    console.log("locales")
-    console.log(this.locales)
     return this.locales;
   }
 
