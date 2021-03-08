@@ -15,6 +15,7 @@ export class CrearProductoLocalPage implements OnInit {
 
   public producto: ProductosLocales = new ProductosLocales();
   idLocal;
+  idPropietario;
   miId: '7G091ZlAzKhS9TrNFqAX';
   loading: HTMLIonLoadingElement;
   image: string | ArrayBuffer;
@@ -30,6 +31,7 @@ export class CrearProductoLocalPage implements OnInit {
   ngOnInit() {
     this.activateRoute.paramMap.subscribe(paramMap => {
       this.idLocal = paramMap.get('idLocal');
+      this.idPropietario = localStorage.getItem('userId');
     });
   }
 
@@ -50,7 +52,7 @@ export class CrearProductoLocalPage implements OnInit {
         this.loading.dismiss();
 
 
-        this.router.navigate(["/productos-locales",this.idLocal])
+        this.router.navigate(["/productos-locales",this.idLocal, this.idPropietario])
       }       
     ).catch(async error => {
       this.loading.dismiss();

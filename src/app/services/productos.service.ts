@@ -29,7 +29,6 @@ export class ProductosService {
     ))
    }
   getProductos(){
-    console.log('hola')
     return this.productos;
   }
 

@@ -1,17 +1,17 @@
 <app-header nombre="locales"></app-header>
 <ion-content>
 
-  <ion-segment color="tertiary" value="ayudantes">
+  <ion-segment color="tertiary" value="cartilla">
 
-    <ion-segment-button value="anuncios" [routerLink]="['/curso-detalle',id, nombreCurso]" routerDirection="root">
+    <ion-segment-button value="anuncios" [routerLink]="['/detalle-local',idLocal,idPropietario]" routerDirection="root">
       <ion-icon name="information-circle-outline" size="large"></ion-icon> <ion-label style="font-size: 11px;">Datos</ion-label>
     </ion-segment-button>
     
-    <ion-segment-button value="ayudantes" [routerLink]="['/curso-ayudantes',id, nombreCurso]" routerDirection="root">
+    <ion-segment-button value="cartilla" [routerLink]="['/productos-locales',idLocal,idPropietario]" routerDirection="root">
       <ion-icon name="book-outline" size="large"></ion-icon> <ion-label style="font-size: 11px;">Cartilla</ion-label>
     </ion-segment-button>
 
-    <ion-segment-button value="grupos" [routerLink]="['/grupos',id, nombreCurso]" routerDirection="root">
+    <ion-segment-button value="grupos" [routerLink]="['/comentarios-local',idLocal,idPropietario]" routerDirection="root">
       <ion-icon name="chatbubbles-outline" size="large"></ion-icon> <ion-label style="font-size: 11px;">Comentarios</ion-label>
     </ion-segment-button>
 

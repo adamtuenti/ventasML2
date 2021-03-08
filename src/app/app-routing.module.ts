@@ -83,7 +83,7 @@ const routes: Routes = [
     loadChildren: () => import('./folder/crear-local/crear-local.module').then( m => m.CrearLocalPageModule)
   },
   {
-    path: 'crear-producto-local/:idLocal',
+    path: 'crear-producto-local/:idLocal/:idPropietario',
     loadChildren: () => import('./folder/crear-producto-local/crear-producto-local.module').then( m => m.CrearProductoLocalPageModule)
   },
   {
@@ -97,7 +97,12 @@ const routes: Routes = [
   {
     path: 'detalle-local/:idLocal/:idPropietario',
     loadChildren: () => import('./folder/detalle-local/detalle-local.module').then( m => m.DetalleLocalPageModule)
+  },
+  {
+    path: 'crear-publicaciones-generales',
+    loadChildren: () => import('./folder/crear-publicaciones-generales/crear-publicaciones-generales.module').then( m => m.CrearPublicacionesGeneralesPageModule)
   }
+
 
 
 
