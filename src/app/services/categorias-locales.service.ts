@@ -29,9 +29,6 @@ export class CategoriasLocalesService {
     ))
    }
   getCategorias(){
-    console.log('hola')
-    console.log(this.categorias);
-    console.log('hola')
     return this.categorias;
   }
 

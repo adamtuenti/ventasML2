@@ -14,6 +14,7 @@ export class ProductosPage implements OnInit {
   productos: Productos[] = [];
   textoBuscar = '';
   categoria;
+  condicion: boolean;
 
   constructor(private productosService: ProductosService,
               private router: Router,
@@ -24,7 +25,7 @@ export class ProductosPage implements OnInit {
     this.activateRoute.paramMap.subscribe(paramMap => {
       this.categoria = paramMap.get('categoria');
 
-      this.productosService.getProductos().subscribe(res=> {this.productos = res});
+      this.productosService.getProductos().subscribe(res=> {this.productos = res;this.condicion = this.getDatos()});
     });
     
   }

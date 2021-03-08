@@ -9,7 +9,7 @@
     (ionChange)="buscar($event)">
   </ion-searchbar>
 
-  <ng-container *ngIf="!getDatos()">
+  <ng-container *ngIf="!condicion">
   <ion-list>
     <ng-container *ngFor="let producto of productos | filtroProductos: textoBuscar">
 
@@ -33,7 +33,7 @@
   </ion-list>
   </ng-container>
 
-  <ng-container *ngIf="getDatos()">
+  <ng-container *ngIf="condicion">
 
   <div style="margin-top: 50px;" align='center'> 
     <ion-text color="medium">

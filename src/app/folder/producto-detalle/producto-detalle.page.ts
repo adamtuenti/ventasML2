@@ -16,6 +16,13 @@ export class ProductoDetallePage implements OnInit {
   public producto: Productos=new Productos();
   idProducto: string;
   idVendedor: string;
+
+  slideOpts = {
+    initialSlide: 0,
+    speed: 400
+  };
+
+
   constructor(private productosService: ProductosService,
     private router: Router,
     private usuarioService: UsuarioService,

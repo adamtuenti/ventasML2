@@ -10,12 +10,22 @@
     </ion-card-header> -->
 
     
-      <ion-item>
-        <ion-button  expand="full" href="{{producto.Foto1}}" color="light" style="height: 290px;width: 50%;margin: auto" fill="clear"><ion-img src="{{producto.Foto1}}" style="height: 275px;width: 100%;"></ion-img></ion-button>
+      <!-- <ion-item> -->
+
+        <ion-slides pager="true" [options]="slideOpts">
+          <ion-slide style="height: 325px;width: 85%;margin: auto">
+            <ion-button  expand="full" href="{{producto.Foto1}}" color="light" style="height: 100%;width: 100%;" fill="clear"><ion-img src="{{producto.Foto1}}" style="height: 275px;width: 100%;"></ion-img></ion-button>
+          </ion-slide>
+          <ion-slide *ngIf='producto.Foto2!=""' style="height: 325px;width: 85%;margin: auto">
+            <ion-button expand="full" href="{{producto.Foto2}}" color="light" style="height: 100%;width: 100%;" fill="clear"><ion-img src="{{producto.Foto2}}" style="height: 275px;width: 100%;"></ion-img></ion-button>
+          </ion-slide>
+          
+        </ion-slides>
         
-        <ion-button  *ngIf='producto.Foto2!=""' expand="full" href="{{producto.Foto2}}" color="light" style="height: 290px;width: 50%;margin: auto" fill="clear"><ion-img src="{{producto.Foto2}}" style="height: 275px;width: 100%;"></ion-img></ion-button>
+        
+        
   
-      </ion-item>
+      <!-- </ion-item> -->
 
     
 

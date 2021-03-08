@@ -3,6 +3,8 @@ import { Comentarios } from 'src/app/models/comentarios';
 import { ComentariosService } from 'src/app/services/comentarios.service';
 import { ActivatedRoute } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { Usuarios } from 'src/app/models/usuario';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-comentarios-local',
@@ -14,16 +16,35 @@ export class ComentariosLocalPage implements OnInit {
   comentarios:Comentarios[] = [];
   idLocal;
   public comentario: Comentarios=new Comentarios();
+  public user: Usuarios=new Usuarios();
+  idUser;
+  idPropietario;
+  condicion: boolean;
+
+
   constructor(private comentariosService: ComentariosService,
               private activateRoute: ActivatedRoute,
+              private usuarioService: UsuarioService,
               private alertCtrt: AlertController) { }
 
   ngOnInit() {
     this.activateRoute.paramMap.subscribe(paramMap => {
       this.idLocal = paramMap.get('idLocal');
-      this.comentariosService.getComentarios().subscribe(res => {this.comentarios = res;});
+      this.idPropietario = paramMap.get('idPropietario');
+      this.comentariosService.getComentarios().subscribe(res => {this.comentarios = res;this.condicion = this.getDatos()});
+      this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => {this.user =res;});
+      this.idUser = localStorage.getItem('userId');
     });
     
+  }
+
+  getDatos(){
+    for(let i= 0; i<this.comentarios.length; i++){
+      if(this.comentarios[i].Empresa == this.idLocal){     
+            return false;      
+      }
+    }
+    return true;
   }
 
   async alert(id) {
@@ -97,7 +118,7 @@ export class ComentariosLocalPage implements OnInit {
   agregarComentario(comentario:string){
     var fechaActual = new Date();
     this.comentario.Empresa = this.idLocal;
-    this.comentario.Usuario = 'usuario';
+    this.comentario.Usuario = this.idUser;
     this.comentario.Descripcion = comentario;
     this.comentario.Fecha = fechaActual.toString();
     this.comentariosService.addComentario(this.comentario);

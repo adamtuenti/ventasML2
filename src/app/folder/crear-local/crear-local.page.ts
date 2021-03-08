@@ -47,17 +47,29 @@ export class CrearLocalPage implements OnInit {
 
 
   crearLocal(form){
+
+    var telefono = form.value.telefono;
+    var primeros = telefono.slice(0,3);
+    if(telefono.slice(0,2)=='09'){
+      telefono = '+593' + telefono.slice(1,telefono.length);
+    }
+    else if(primeros == '+593'){
+      telefono = telefono
+    }else{
+      telefono = telefono;
+    }
+
     this.presentLoading("Espere por favor...");
     this.local.Nombre = form.value.nombre;
     this.local.Descripcion = form.value.descripcion;
     this.local.Ciudadela = form.value.ciudadela;
     this.local.Manzana = form.value.manzana;
     this.local.Villa = form.value.villa;
-    this.local.Telefono = form.value.telefono;
+    this.local.Telefono = telefono;
     this.local.RedSocial = form.value.redSocial;
     this.local.HorarioAtencion = form.value.horarioAtencion;
     this.local.Referencia = form.value.referencia;
-    this.local.Usuario = 'vendedor';
+    this.local.Usuario = localStorage.getItem('userId');
     this.local.CategoriaLocal = this.categoria;
     this.local.Visibilidad = true;
     this.local.Domicilio = form.value.domicilio;

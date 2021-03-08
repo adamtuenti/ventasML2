@@ -73,7 +73,7 @@ export class CategoriasLocalesPage implements OnInit {
     var fechaActual = new Date();
     this.sugerenciaLocal.Titulo = local;
     this.sugerenciaLocal.Visibilidad = true;
-    this.sugerenciaLocal.Usuario = 'usuario';
+    this.sugerenciaLocal.Usuario = localStorage.getItem('userId');
     this.sugerenciaLocal.Tipo = 'categoriaLocal';
     this.sugerenciaLocal.Fecha = fechaActual.toString();;
     this.sugerenciaService.addSugerencia(this.sugerenciaLocal);

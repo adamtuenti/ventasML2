@@ -4,4 +4,5 @@ export class ProductosLocales {
     Precio: number;
     Foto: string;
     Local: string;
+    Usuario: string;
 }

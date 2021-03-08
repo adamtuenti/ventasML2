@@ -8,9 +8,9 @@
     (ionChange)="buscar($event)">
   </ion-searchbar>
 
-  <ng-container *ngIf="!getDatos()">
+  <ng-container *ngIf="!condicion">
   <ion-list *ngFor="let local of locales | filtroLocal: textoBuscar">
-    <ion-item [routerLink]="['/productos-locales',local.id]" *ngIf = 'local.CategoriaLocal == categoria'>
+    <ion-item [routerLink]="['/productos-locales',local.id, local.Usuario]" *ngIf = 'local.CategoriaLocal == categoria'>
       <ion-avatar slot="start" style="height: 50px;width: 50px;margin-right: 7.5px;">
         <img src="{{local.Foto}}">
       </ion-avatar> 
@@ -21,7 +21,7 @@
   </ion-list>
   </ng-container>
 
-   <ng-container *ngIf="getDatos()">
+   <ng-container *ngIf="condicion">
 
   <div style="margin-top: 50px;" align='center'> 
     <ion-text color="medium">

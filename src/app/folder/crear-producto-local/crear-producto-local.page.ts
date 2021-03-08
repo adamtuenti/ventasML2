@@ -38,6 +38,7 @@ export class CrearProductoLocalPage implements OnInit {
     this.producto.Titulo = form.value.titulo;
     this.producto.Precio = form.value.precio;
     this.producto.Local = this.idLocal;
+    this.producto.Usuario = localStorage.getItem('idUser');
     if(this.image!=null){
       this.guardarProducto();
     }

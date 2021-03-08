@@ -4,15 +4,15 @@
 
   <ion-segment color="tertiary" value="cartilla">
 
-    <ion-segment-button value="anuncios" [routerLink]="['/curso-detalle',id, nombreCurso]" routerDirection="root">
+    <ion-segment-button value="anuncios" [routerLink]="['/detalle-local',idLocal,idPropietario]" routerDirection="root">
       <ion-icon name="information-circle-outline" size="large"></ion-icon> <ion-label style="font-size: 11px;">Datos</ion-label>
     </ion-segment-button>
     
-    <ion-segment-button value="cartilla" [routerLink]="['/productos-locales',idLocal]" routerDirection="root">
+    <ion-segment-button value="cartilla" [routerLink]="['/productos-locales',idLocal,idPropietario]" routerDirection="root">
       <ion-icon name="book-outline" size="large"></ion-icon> <ion-label style="font-size: 11px;">Cartilla</ion-label>
     </ion-segment-button>
 
-    <ion-segment-button value="grupos" [routerLink]="['/comentarios-local',idLocal]" routerDirection="root">
+    <ion-segment-button value="grupos" [routerLink]="['/comentarios-local',idLocal,idPropietario]" routerDirection="root">
       <ion-icon name="chatbubbles-outline" size="large"></ion-icon> <ion-label style="font-size: 11px;">Comentarios</ion-label>
     </ion-segment-button>
 
@@ -25,7 +25,7 @@
     (ionChange)="buscar($event)">
   </ion-searchbar>
 
-  <ng-container *ngIf="!getDatos()">
+  <ng-container *ngIf="!condicion">
   <ion-list>
     <ng-container *ngFor="let producto of productos">
 
@@ -57,7 +57,7 @@
   </ion-list>
   </ng-container>
 
-  <ng-container *ngIf="getDatos()">
+  <ng-container *ngIf="condicion">
 
   <div style="margin-top: 50px;" align='center'> 
     <ion-text color="medium">
@@ -69,7 +69,7 @@
   </div>
 </ng-container>
 
-<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+<ion-fab *ngIf = 'idPropietario == idUser' vertical="bottom" horizontal="end" slot="fixed">
   <ion-fab-button [routerLink]="['/crear-producto-local',idLocal]">
    <ion-icon name="add-outline"></ion-icon>
   </ion-fab-button>

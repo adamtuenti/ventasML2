@@ -41,7 +41,7 @@ export class CrearProductoPage implements OnInit {
     this.presentLoading("Espere por favor...");
     this.producto.Titulo = form.value.titulo;
     this.producto.Descripcion = form.value.descripcion;
-    this.producto.Vendedor = '7G091ZlAzKhS9TrNFqAX';
+    this.producto.Vendedor = localStorage.getItem('userId');
     this.producto.Categoria = this.idCategoria;
     this.producto.Visitas = 0;
     this.producto.Precio = form.value.precio;

@@ -36,7 +36,7 @@ export class LoginPage implements OnInit {
       (res)=>{
         localStorage.setItem('userId', res.user.uid);
         localStorage.setItem('Fondo','#FBC8B5');                   
-            this.router.navigateByUrl('/usuarios-pendientes');
+        this.router.navigateByUrl('/categorias');
     },
       
       async error => {

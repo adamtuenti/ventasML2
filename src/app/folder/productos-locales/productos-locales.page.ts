@@ -14,6 +14,9 @@ export class ProductosLocalesPage implements OnInit {
   productos: ProductosLocales[] = [];
   textoBuscar = '';
   idLocal;
+  idPropietario;
+  idUser;
+  condicion: boolean;
 
   constructor(private productosService: ProductosLocalesService,
               private router: Router,
@@ -23,7 +26,9 @@ export class ProductosLocalesPage implements OnInit {
 
     this.activateRoute.paramMap.subscribe(paramMap => {
       this.idLocal = paramMap.get('idLocal');
-      this.productosService.getProductos().subscribe(res=> {this.productos = res;});
+      this.idPropietario = paramMap.get('idPropietario');
+      this.productosService.getProductos().subscribe(res=> {this.productos = res;this.condicion = this.getDatos()});
+      this.idUser = localStorage.getItem('userId');
     });
     
   }

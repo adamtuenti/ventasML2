@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { sugerenciaCategoriaLocal } from 'src/app/models/sugerenciaCategoriaLocal';
 import { SugerenciaLocalesService } from 'src/app/services/sugerencia-locales.service';
 import { AlertController } from '@ionic/angular';
+import { AuthService } from 'src/app/services/auth.service';
+import { Usuarios } from 'src/app/models/usuario';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-perfil',
@@ -11,11 +14,15 @@ import { AlertController } from '@ionic/angular';
 export class PerfilPage implements OnInit {
 
   sugerencia: sugerenciaCategoriaLocal = new sugerenciaCategoriaLocal();
+  public user: Usuarios=new Usuarios();
 
   constructor(private sugerenciaService: SugerenciaLocalesService,
-              private alertCtrt: AlertController) { }
+              private usuarioService: UsuarioService,
+              private alertCtrt: AlertController,
+              private authService:AuthService) { }
 
   ngOnInit() {
+    this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => {this.user =res;});
   }
 
   async crearSugerencia() {
@@ -62,11 +69,15 @@ export class PerfilPage implements OnInit {
     var fechaActual = new Date();
     this.sugerencia.Titulo = sugerencia;
     this.sugerencia.Visibilidad = true;
-    this.sugerencia.Usuario = 'usuario';
+    this.sugerencia.Usuario = localStorage.getItem('userId');
     this.sugerencia.Tipo = 'sugerencia';
     this.sugerencia.Fecha = fechaActual.toString();;
     this.sugerenciaService.addSugerencia(this.sugerencia);
 
+  }
+
+  logOutUser(){
+    this.authService.logOutUser();
   }
 
 }
