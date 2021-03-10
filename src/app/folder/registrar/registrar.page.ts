@@ -32,7 +32,9 @@ export class RegistrarPage implements OnInit {
 
   ngOnInit() {
     
-  } 
+  }
+
+  
 
   async presentLoading(mensaje: string) {
     this.loading = await this.loadingController.create({
@@ -57,6 +59,25 @@ export class RegistrarPage implements OnInit {
 
 
   async RegistrarUser(form):Promise<void>{
+    if (this.ValidateEmail(form.value.email)==false){
+      const alert = await this.alertCtrt.create({
+        message: 'Ingrese un correo valido.',
+        buttons: ['OK']
+      });
+
+      await alert.present();
+      return;
+    }
+    if ((String(form.value.email)).length<6){
+      const alert = await this.alertCtrt.create({
+        message: 'Contraseña demasiado corta, ingrese almenos 6 caracteres.',
+        buttons: ['OK']
+      });
+
+      await alert.present();
+      return;
+    }
+    
     this.presentLoading("Espere por favor...");
     var telefono = form.value.telefono;
     var primeros = telefono.slice(0,3);
@@ -66,9 +87,10 @@ export class RegistrarPage implements OnInit {
     else if(primeros == '+593'){
       telefono = telefono
     }
-    
-    
+
+      
     this.guardarArchivo(form.value.nombre, form.value.apellido,form.value.email, form.value.password, form.value.ciudadela, form.value.manzana, form.value.villa, telefono);
+    
   }
 
   guardarArchivo(nombre:string, apellido: string, email:string, password:string, ciudadela:string ,manzana:string, villa: string, telefono: string){
@@ -154,5 +176,16 @@ export class RegistrarPage implements OnInit {
     });
     await alert.present();
   }
+
+  ValidateEmail(mail:string){
+    if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(mail))
+      {
+        return (true)
+      }
+        alert("You have entered an invalid email address!")
+        return (false)
+    }
+
+  
 
 }
