@@ -1,4 +1,4 @@
-export class Locales {
+export class Publicidad {
     id?: string;
     Telefono: string;
     Imagen: string;

@@ -103,8 +103,31 @@ export class RegistrarPage implements OnInit {
     then(
       auth=>{
         this.loading.dismiss();
+
+        this.authService.loginUser(email, password).
+        then(
+          (res)=>{
+            localStorage.setItem('userId', res.user.uid);
+            localStorage.setItem('Fondo','#FBC8B5');                   
+            this.router.navigateByUrl('/categorias');
+        },
+          
+          async error => {
+            var mensaje=error.code.split('/')[1]
+            const presentarMensaje = this.mensajeErrorService.AuthErrorCodeSpanish(mensaje);
+            const alert = await this.alertCtrt.create({
+              message: presentarMensaje,
+              buttons:[{text: 'ok', role: 'cancel'}],      
+            });
+            await alert.present();
+          
+          }
+        )
+
+
+
         
-          this.router.navigateByUrl("/categorias")
+          ///this.router.navigateByUrl("/categorias")
        
        
       }  

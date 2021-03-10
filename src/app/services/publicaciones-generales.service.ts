@@ -3,6 +3,7 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { PublicacionesGenerales } from '../models/publicacionesGenerales';
+import { Productos } from '../models/productos';
 // import firebase from 'firebase/app';
 // import 'firebase/firestore';
 
