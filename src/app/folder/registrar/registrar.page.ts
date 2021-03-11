@@ -182,7 +182,6 @@ export class RegistrarPage implements OnInit {
       {
         return (true)
       }
-        alert("You have entered an invalid email address!")
         return (false)
     }
 
