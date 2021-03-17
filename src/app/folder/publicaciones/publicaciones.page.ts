@@ -37,4 +37,30 @@ export class PublicacionesPage implements OnInit {
     this.idUser = localStorage.getItem('userId');
   }
 
+  async alert(id) {
+    const alert = await this.alertCtrt.create({
+      cssClass: 'my-custom-class',
+      header: "¿Desea eliminar esta publicación?",
+      buttons: [
+          {
+            text: 'Cancelar',
+            role: 'cancel',
+            cssClass: 'secondary',
+            handler: (blah) => {
+              //console.log('Confirm Cancel: blah');
+            }
+          }, {
+            text: 'Elminar',
+            handler: (data) => {
+              this.remove(id)                  
+            }
+          }
+        ]
+    });
+    await alert.present();
+  }
+  remove(id){
+     this.publicacionesService.removePublicacion(id)
+  }
+
 }

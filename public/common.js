@@ -1221,15 +1221,9 @@ let PublicacionesGeneralesService = class PublicacionesGeneralesService {
     addPublicacion(publicacion) {
         return this.publicacionesCollection.add(Object.assign({}, publicacion));
     }
-<<<<<<< HEAD
     // updateProducto(id:string, productos:Productos){
     //   return this.publicacionesCollection.doc(id).update({...productos});
     // }
-=======
-    updateProducto(id, productos) {
-        return this.publicacionesCollection.doc(id).update(Object.assign({}, productos));
-    }
->>>>>>> 398e5f51e243cfa522b4f196db0068e4701083b7
     removePublicacion(id) {
         return this.publicacionesCollection.doc(id).delete();
     }

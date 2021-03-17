@@ -32,9 +32,13 @@
     <ion-card *ngIf="producto.Local == idLocal">
       
         <ion-item>
-          <ion-avatar slot='start' style="height: 50px;width: 50px;margin-right: 7.5px;">
-            <img src="{{producto.Foto}}">
-          </ion-avatar>
+
+          <ion-button  style="height: 55px;width: 75px;margin-right: 5.5px;" expand="full" slot='start' href="{{producto.Foto}}" color="light" fill="clear">
+            <ion-avatar style="height: 100%;width: 100%;">
+              <img src="{{producto.Foto}}">
+            </ion-avatar>
+          </ion-button>
+          
   
           <ion-label style="font-size: 15.5px;">{{producto.Titulo}}</ion-label>
 
@@ -46,7 +50,9 @@
 
         
 
-        
+        <ion-icon *ngIf="idPropietario == idUser" name="create-outline" slot='end'  [routerLink]="['/producto-local-editar',producto.id,idLocal,idPropietario]"></ion-icon>
+        <ion-icon *ngIf="idPropietario == idUser" name="trash-outline" slot='end' color='danger'(click)="alert(producto.id)"></ion-icon>
+
         <ion-button fill="outline" slot='end' color="success"><ion-icon name="cash-outline" color="success"></ion-icon><label style="font-size: 14;margin-left: 7.5px;" >${{producto.Precio}}</label></ion-button>
     
       </ion-item>

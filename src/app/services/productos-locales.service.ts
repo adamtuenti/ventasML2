@@ -38,7 +38,7 @@ export class ProductosLocalesService {
   } 
 
 
-  updatetProducto(id:string, ProductosLocales:ProductosLocales){
+  updateProducto(id:string, ProductosLocales:ProductosLocales){
     return this.ComentariosCollection.doc(id).update({...ProductosLocales});
   }
 

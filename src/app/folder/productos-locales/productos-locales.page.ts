@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { ProductosLocales } from 'src/app/models/productosLocales';
 import { ProductosLocalesService } from 'src/app/services/productos-locales.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-productos-locales',
@@ -20,7 +21,8 @@ export class ProductosLocalesPage implements OnInit {
 
   constructor(private productosService: ProductosLocalesService,
               private router: Router,
-              private activateRoute: ActivatedRoute,) { }
+              private activateRoute: ActivatedRoute,
+              private alertCtrt: AlertController) { }
 
   ngOnInit() {
 
@@ -38,6 +40,7 @@ export class ProductosLocalesPage implements OnInit {
     this.textoBuscar=texto;
   }
 
+
   getDatos(){
     for(let i= 0; i<this.productos.length; i++){
       if(this.productos[i].Local == this.idLocal){     
@@ -45,6 +48,32 @@ export class ProductosLocalesPage implements OnInit {
       }
     }
     return true;
+  }
+
+  async alert(id) {
+    const alert = await this.alertCtrt.create({
+     cssClass: 'my-custom-class',
+     header: "¿Desea eliminar este producto?",
+    buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            //console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Elminar',
+          handler: (data) => {
+            this.remove(id)                  
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+  remove(id){
+     this.productosService.removerProducto(id)
   }
 
 

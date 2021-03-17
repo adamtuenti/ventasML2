@@ -28,20 +28,22 @@
 
 
   <ion-list *ngFor="let publicacion of publicaciones">
-    <ion-card [routerLink]="['/categorias']" *ngIf = 'publicacion.Usuario == idUser' style="background-color: #ACC8FC">
+    <ion-card style="background-color: #ACC8FC">
 
-        <ion-card-header>
+        <ion-card-header [routerLink]="['/publicacion-detalle',publicacion.id,publicacion.Usuario]" >
           <ion-item>
             <ion-card-title >{{publicacion.Titulo}}</ion-card-title>  
           </ion-item> 
 
         </ion-card-header>
 
-        <ion-card-content>
+        <ion-card-content [routerLink]="['/publicacion-detalle',publicacion.id,publicacion.Usuario]" >
           {{publicacion.Descripcion}}
         </ion-card-content>
 
         <ion-item>
+
+          <ion-icon *ngIf="publicacion.Usuario == idUser" name="trash-outline" slot='start' color='danger'(click)="alert(publicacion.id)"></ion-icon>
           <ion-item slot='end'>
             
             {{publicacion.Fecha | date:'yyyy/MM/dd'}}

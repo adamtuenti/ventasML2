@@ -101,7 +101,22 @@ const routes: Routes = [
   {
     path: 'crear-publicaciones-generales',
     loadChildren: () => import('./folder/crear-publicaciones-generales/crear-publicaciones-generales.module').then( m => m.CrearPublicacionesGeneralesPageModule)
+  },
+  {
+    path: 'perfil-update',
+    loadChildren: () => import('./folder/perfil-update/perfil-update.module').then( m => m.PerfilUpdatePageModule)
+  },
+  {
+    path: 'producto-local-editar/:idProducto/:idLocal/:idPropietario',
+    loadChildren: () => import('./folder/producto-local-editar/producto-local-editar.module').then( m => m.ProductoLocalEditarPageModule)
+  },
+  {
+    path: 'publicacion-detalle/:idPublicacion/:idUser',
+    loadChildren: () => import('./folder/publicacion-detalle/publicacion-detalle.module').then( m => m.PublicacionDetallePageModule)
   }
+
+
+
 
 
 
