@@ -27,14 +27,14 @@
 
   <ng-container *ngIf="!condicion">
   <ion-list>
-    <ng-container *ngFor="let producto of productos">
+    <ng-container *ngFor="let producto of productos | filtroProductoLocal: textoBuscar">
 
     <ion-card *ngIf="producto.Local == idLocal">
       
         <ion-item>
-          <!-- <ion-avatar slot='start' style="height: 50px;width: 50px;margin-right: 7.5px;">
+          <ion-avatar slot='start' style="height: 50px;width: 50px;margin-right: 7.5px;">
             <img src="{{producto.Foto}}">
-          </ion-avatar> -->
+          </ion-avatar>
   
           <ion-label style="font-size: 15.5px;">{{producto.Titulo}}</ion-label>
 

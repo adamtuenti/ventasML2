@@ -43,9 +43,9 @@ export class PublicacionesGeneralesService {
     return this.publicacionesCollection.add({...publicacion});
   } 
 
-  updateProducto(id:string, productos:Productos){
-    return this.publicacionesCollection.doc(id).update({...productos});
-  }
+  // updateProducto(id:string, productos:Productos){
+  //   return this.publicacionesCollection.doc(id).update({...productos});
+  // }
 
   removePublicacion(id:string){
     return this.publicacionesCollection.doc(id).delete();

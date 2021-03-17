@@ -2,19 +2,22 @@
 
 <ion-content>
 
-  <ion-slides pager="true" [options]="slideOpts">
+  <ion-slides pager="true" [options]="slideOpts" style="margin-top: 8.5px;">
     <ion-slide style="height: 350px;width: 95%;margin: auto" *ngFor="let publicidadDetalle of publicidad">
-      <ion-item>
+      
+      <ion-content>
         <ion-item>
-          <ion-img src="{{publicidadDetalle.Imagen}}" style="height: 275px;width: 100%;"></ion-img>
+
+          <ion-button  expand="full" href="{{publicidadDetalle.Imagen}}" color="light" style="height: 100%;width: 100%;" fill="clear"><ion-img src="{{publicidadDetalle.Imagen}}" style="height: 275px;width: 100%;"></ion-img></ion-button>
+          <!-- <ion-img src="{{publicidadDetalle.Imagen}}" style="height: 275px;width: 100%;"></ion-img> -->
 
         </ion-item>
-        <ion-item>
-          <ion-button  expand="full"  expand="full" href="{{publicidadDetalle.Imagen}}" style="width: 50px;height: 50px;" color="light"><ion-icon name="expand-outline" size="large" ></ion-icon> </ion-button>
+        <div style="margin:auto;">
+          <!-- <ion-button  expand="full"  expand="full" href="{{publicidadDetalle.Imagen}}" style="width: 50px;height: 50px;" color="light"><ion-icon name="expand-outline" size="large" ></ion-icon> </ion-button> -->
           <a href= 'https://api.whatsapp.com/send?phone={{publicidadDetalle.Telefono}}'><ion-icon name="logo-whatsapp" size="large" color="success" style="margin-right: 8px;"></ion-icon></a>
-        </ion-item>
+        </div>
 
-      </ion-item>
+      </ion-content>
       
     </ion-slide>
     <!-- <ion-slide *ngIf='publicidad.Imagen!=""' style="height: 325px;width: 85%;margin: auto">
@@ -25,7 +28,7 @@
 
 
   <ion-list *ngFor="let publicacion of publicaciones">
-    <ion-card [routerLink]="['/categorias']" *ngIf = 'publicacion.Usuario == idUser'>
+    <ion-card [routerLink]="['/categorias']" *ngIf = 'publicacion.Usuario == idUser' style="background-color: #ACC8FC">
 
         <ion-card-header>
           <ion-item>

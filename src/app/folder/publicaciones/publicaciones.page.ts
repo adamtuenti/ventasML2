@@ -33,7 +33,7 @@ export class PublicacionesPage implements OnInit {
 
   ngOnInit() {
     this.publicacionesService.getPublicaciones().subscribe(res=> {this.publicaciones = res;});
-    this.publicidadService.getPublicidad().subscribe(res => {this.publicidad = res;console.log(this.publicidad)});
+    this.publicidadService.getPublicidad().subscribe(res => {this.publicidad = res;});
     this.idUser = localStorage.getItem('userId');
   }
 
