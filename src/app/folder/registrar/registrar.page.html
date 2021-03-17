@@ -13,7 +13,7 @@
       <label style="font-size: 31px;">Registro</label>
     </div>
 
-    <form #form="ngForm" (ngSubmit)="RegistrarUser(form)">
+    <form #form="ngForm" (ngSubmit)="RegistrarUser(form)" >
       <ion-list>   
           
         <ion-item>
@@ -33,8 +33,13 @@
 
         <ion-item>
           <ion-icon color="black" name="key-outline"></ion-icon>
-          <ion-input style = "margin-left: 6.5px;" placeholder="Contraseña" name="password" type='password' ngModel required></ion-input>
+          <ion-input style = "margin-left: 6.5px;" placeholder="Contraseña" name="password" type='password' ngModel minlength="6" required></ion-input>
         </ion-item>
+        <div *ngIf="form.hasError('minlength', 'password')">
+          <span>La contraseña debe tener 6 al menos caracteres</span>
+        </div>
+        
+
 
         <ion-item>
           <ion-icon color="black" name="call-outline"></ion-icon>
@@ -100,6 +105,7 @@
 
 
       </ion-list> 
+      
 
       <div class="ion-padding" align="center">
         <ion-button type="submit"  style="width: 150px;" [disabled]="form.invalid" expand="block">
