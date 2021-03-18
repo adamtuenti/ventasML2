@@ -9,8 +9,8 @@
   </ion-searchbar>
 
   <ng-container *ngIf="!condicion">
-  <ion-list *ngFor="let local of locales | filtroLocal: textoBuscar">
-    <ion-item [routerLink]="['/productos-locales',local.id, local.Usuario]" *ngIf = 'local.CategoriaLocal == categoria'>
+  <ng-container *ngFor="let local of locales | filtroLocal: textoBuscar">
+    <ion-item *ngIf = 'local.CategoriaLocal == categoria' [routerLink]="['/productos-locales',local.id, local.Usuario]" >
       <ion-avatar slot="start" style="height: 50px;width: 50px;margin-right: 7.5px;">
         <img src="{{local.Foto}}">
       </ion-avatar> 
@@ -18,7 +18,7 @@
       <ion-icon name="bicycle-outline" color = 'success' slot = 'end' size = 'large' *ngIf = 'local.Domicilio == "Si"'></ion-icon>   
     </ion-item>
 
-  </ion-list>
+  </ng-container>
 
   
   </ng-container>

@@ -578,6 +578,38 @@ class Productos {
 
 /***/ }),
 
+/***/ "./src/app/models/productosLocales.ts":
+/*!********************************************!*\
+  !*** ./src/app/models/productosLocales.ts ***!
+  \********************************************/
+/*! exports provided: ProductosLocales */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProductosLocales", function() { return ProductosLocales; });
+class ProductosLocales {
+}
+
+
+/***/ }),
+
+/***/ "./src/app/models/publicacionesGenerales.ts":
+/*!**************************************************!*\
+  !*** ./src/app/models/publicacionesGenerales.ts ***!
+  \**************************************************/
+/*! exports provided: PublicacionesGenerales */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PublicacionesGenerales", function() { return PublicacionesGenerales; });
+class PublicacionesGenerales {
+}
+
+
+/***/ }),
+
 /***/ "./src/app/models/sugerenciaCategoriaLocal.ts":
 /*!****************************************************!*\
   !*** ./src/app/models/sugerenciaCategoriaLocal.ts ***!
@@ -1094,7 +1126,7 @@ let ProductosLocalesService = class ProductosLocalesService {
     addProducto(productosLocales) {
         return this.ComentariosCollection.add(Object.assign({}, productosLocales));
     }
-    updatetProducto(id, ProductosLocales) {
+    updateProducto(id, ProductosLocales) {
         return this.ComentariosCollection.doc(id).update(Object.assign({}, ProductosLocales));
     }
     removerProducto(id) {

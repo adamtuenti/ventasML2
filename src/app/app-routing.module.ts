@@ -113,7 +113,20 @@ const routes: Routes = [
   {
     path: 'publicacion-detalle/:idPublicacion/:idUser',
     loadChildren: () => import('./folder/publicacion-detalle/publicacion-detalle.module').then( m => m.PublicacionDetallePageModule)
+  },
+  {
+    path: 'servicios',
+    loadChildren: () => import('./folder/servicios/servicios.module').then( m => m.ServiciosPageModule)
+  },
+  {
+    path: 'servicio-detalle/:idServicio',
+    loadChildren: () => import('./folder/servicio-detalle/servicio-detalle.module').then( m => m.ServicioDetallePageModule)
+  },
+  {
+    path: 'crear-servicio',
+    loadChildren: () => import('./folder/crear-servicio/crear-servicio.module').then( m => m.CrearServicioPageModule)
   }
+
 
 
 

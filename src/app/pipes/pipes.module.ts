@@ -6,13 +6,14 @@ import { FiltroProductosPipe } from './filtro-productos.pipe';
 import { FiltroCategoriaLocalPipe } from './filtro-categoria-local.pipe';
 import { FiltroProductoLocalPipe } from './filtro-producto-local.pipe';
 import { FiltroLocalPipe } from './filtro-local.pipe';
+import { FiltroServiciosPipe } from './filtro-servicios.pipe';
 
 
 
 @NgModule({
 
-  declarations: [FiltroUsuarioPipe, FiltroCategoriaPipe, FiltroProductosPipe, FiltroCategoriaLocalPipe, FiltroProductoLocalPipe, FiltroLocalPipe],
-  exports:[FiltroUsuarioPipe, FiltroCategoriaPipe, FiltroProductosPipe, FiltroCategoriaLocalPipe, FiltroProductoLocalPipe, FiltroLocalPipe],
+  declarations: [FiltroUsuarioPipe, FiltroCategoriaPipe, FiltroProductosPipe, FiltroCategoriaLocalPipe, FiltroProductoLocalPipe, FiltroLocalPipe, FiltroServiciosPipe],
+  exports:[FiltroUsuarioPipe, FiltroCategoriaPipe, FiltroProductosPipe, FiltroCategoriaLocalPipe, FiltroProductoLocalPipe, FiltroLocalPipe, FiltroServiciosPipe],
 
   imports: [
     CommonModule

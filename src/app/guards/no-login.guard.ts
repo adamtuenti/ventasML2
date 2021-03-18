@@ -16,14 +16,13 @@ export class NoLoginGuard implements CanActivate {
       
 
     return this.AFauth.authState.pipe(map( auth =>{
-      console.log("estado", localStorage.getItem('Estado'))
       if(isNullOrUndefined(auth)){
         return true;
         //redirigir al login
       }
       else{
        
-        this.router.navigateByUrl('/usuarios-pendientes');
+        this.router.navigateByUrl('/categorias');
         return false;
       //redirigir al home profesor
       }

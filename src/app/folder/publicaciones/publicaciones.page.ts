@@ -33,7 +33,7 @@ export class PublicacionesPage implements OnInit {
 
   ngOnInit() {
     this.publicacionesService.getPublicaciones().subscribe(res=> {this.publicaciones = res;});
-    this.publicidadService.getPublicidad().subscribe(res => {this.publicidad = res;});
+    this.publicidadService.getPublicidad().subscribe(res => {this.publicidad = res;this.shuffle(this.publicidad)});
     this.idUser = localStorage.getItem('userId');
   }
 
@@ -61,6 +61,24 @@ export class PublicacionesPage implements OnInit {
   }
   remove(id){
      this.publicacionesService.removePublicacion(id)
+  }
+
+  shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+    return array;
   }
 
 }

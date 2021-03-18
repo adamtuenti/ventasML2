@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-header nombre=\"publicaciones\"></app-header>\r\n\r\n<ion-content>\r\n\r\n  <ion-slides pager=\"true\" [options]=\"slideOpts\" style=\"margin-top: 8.5px;\">\r\n    <ion-slide style=\"height: 350px;width: 95%;margin: auto\" *ngFor=\"let publicidadDetalle of publicidad\">\r\n      \r\n      <ion-content>\r\n        <ion-item>\r\n\r\n          <ion-button  expand=\"full\" href=\"{{publicidadDetalle.Imagen}}\" color=\"light\" style=\"height: 100%;width: 100%;\" fill=\"clear\"><ion-img src=\"{{publicidadDetalle.Imagen}}\" style=\"height: 275px;width: 100%;\"></ion-img></ion-button>\r\n          <!-- <ion-img src=\"{{publicidadDetalle.Imagen}}\" style=\"height: 275px;width: 100%;\"></ion-img> -->\r\n\r\n        </ion-item>\r\n        <div style=\"margin:auto;\">\r\n          <!-- <ion-button  expand=\"full\"  expand=\"full\" href=\"{{publicidadDetalle.Imagen}}\" style=\"width: 50px;height: 50px;\" color=\"light\"><ion-icon name=\"expand-outline\" size=\"large\" ></ion-icon> </ion-button> -->\r\n          <a href= 'https://api.whatsapp.com/send?phone={{publicidadDetalle.Telefono}}'><ion-icon name=\"logo-whatsapp\" size=\"large\" color=\"success\" style=\"margin-right: 8px;\"></ion-icon></a>\r\n        </div>\r\n\r\n      </ion-content>\r\n      \r\n    </ion-slide>\r\n    <!-- <ion-slide *ngIf='publicidad.Imagen!=\"\"' style=\"height: 325px;width: 85%;margin: auto\">\r\n      <ion-button expand=\"full\" href=\"{{publicidad.Imagen}}\" color=\"light\" style=\"height: 100%;width: 100%;\" fill=\"clear\"><ion-img src=\"{{publicidad.Imagen}}\" style=\"height: 275px;width: 100%;\"></ion-img></ion-button>\r\n    </ion-slide> -->\r\n    \r\n  </ion-slides>\r\n\r\n\r\n  <ion-list *ngFor=\"let publicacion of publicaciones\">\r\n    <ion-card [routerLink]=\"['/categorias']\" *ngIf = 'publicacion.Usuario == idUser' style=\"background-color: #ACC8FC\">\r\n\r\n        <ion-card-header>\r\n          <ion-item>\r\n            <ion-card-title >{{publicacion.Titulo}}</ion-card-title>  \r\n          </ion-item> \r\n\r\n        </ion-card-header>\r\n\r\n        <ion-card-content>\r\n          {{publicacion.Descripcion}}\r\n        </ion-card-content>\r\n\r\n        <ion-item>\r\n          <ion-item slot='end'>\r\n            \r\n            {{publicacion.Fecha | date:'yyyy/MM/dd'}}\r\n          </ion-item>\r\n\r\n        </ion-item>\r\n        \r\n        \r\n\r\n      \r\n    </ion-card>\r\n\r\n  </ion-list>\r\n\r\n\r\n  <ion-fab vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\">\r\n    <ion-fab-button [routerLink]=\"['/crear-publicaciones-generales']\">\r\n    <ion-icon name=\"add-outline\"></ion-icon>\r\n    </ion-fab-button>\r\n  </ion-fab>\r\n</ion-content>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-header nombre=\"publicaciones\"></app-header>\r\n\r\n<ion-content>\r\n\r\n  <ion-slides pager=\"true\" [options]=\"slideOpts\" style=\"margin-top: 8.5px;\">\r\n    <ion-slide style=\"height: 350px;width: 95%;margin: auto\" *ngFor=\"let publicidadDetalle of publicidad\">\r\n      \r\n      <ion-content>\r\n        <ion-item>\r\n\r\n          <ion-button  expand=\"full\" href=\"{{publicidadDetalle.Imagen}}\" color=\"light\" style=\"height: 100%;width: 100%;\" fill=\"clear\"><ion-img src=\"{{publicidadDetalle.Imagen}}\" style=\"height: 275px;width: 100%;\"></ion-img></ion-button>\r\n          <!-- <ion-img src=\"{{publicidadDetalle.Imagen}}\" style=\"height: 275px;width: 100%;\"></ion-img> -->\r\n\r\n        </ion-item>\r\n        <div style=\"margin:auto;\">\r\n          <!-- <ion-button  expand=\"full\"  expand=\"full\" href=\"{{publicidadDetalle.Imagen}}\" style=\"width: 50px;height: 50px;\" color=\"light\"><ion-icon name=\"expand-outline\" size=\"large\" ></ion-icon> </ion-button> -->\r\n          <a href= 'https://api.whatsapp.com/send?phone={{publicidadDetalle.Telefono}}'><ion-icon name=\"logo-whatsapp\" size=\"large\" color=\"success\" style=\"margin-right: 8px;\"></ion-icon></a>\r\n        </div>\r\n\r\n      </ion-content>\r\n      \r\n    </ion-slide>\r\n    <!-- <ion-slide *ngIf='publicidad.Imagen!=\"\"' style=\"height: 325px;width: 85%;margin: auto\">\r\n      <ion-button expand=\"full\" href=\"{{publicidad.Imagen}}\" color=\"light\" style=\"height: 100%;width: 100%;\" fill=\"clear\"><ion-img src=\"{{publicidad.Imagen}}\" style=\"height: 275px;width: 100%;\"></ion-img></ion-button>\r\n    </ion-slide> -->\r\n    \r\n  </ion-slides>\r\n\r\n\r\n  <ion-list *ngFor=\"let publicacion of publicaciones\">\r\n    <ion-card style=\"background-color: #ACC8FC\">\r\n\r\n        <ion-card-header [routerLink]=\"['/publicacion-detalle',publicacion.id,publicacion.Usuario]\" >\r\n          <ion-item>\r\n            <ion-card-title >{{publicacion.Titulo}}</ion-card-title>  \r\n          </ion-item> \r\n\r\n        </ion-card-header>\r\n\r\n        <ion-card-content [routerLink]=\"['/publicacion-detalle',publicacion.id,publicacion.Usuario]\" >\r\n          {{publicacion.Descripcion}}\r\n        </ion-card-content>\r\n\r\n        <ion-item>\r\n\r\n          <ion-icon *ngIf=\"publicacion.Usuario == idUser\" name=\"trash-outline\" slot='start' color='danger'(click)=\"alert(publicacion.id)\"></ion-icon>\r\n          <ion-item slot='end'>\r\n            \r\n            {{publicacion.Fecha | date:'yyyy/MM/dd'}}\r\n          </ion-item>\r\n\r\n        </ion-item>\r\n        \r\n        \r\n\r\n      \r\n    </ion-card>\r\n\r\n  </ion-list>\r\n\r\n\r\n  <ion-fab vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\">\r\n    <ion-fab-button [routerLink]=\"['/crear-publicaciones-generales']\">\r\n    <ion-icon name=\"add-outline\"></ion-icon>\r\n    </ion-fab-button>\r\n  </ion-fab>\r\n</ion-content>\r\n");
 
 /***/ }),
 
@@ -153,6 +153,33 @@ let PublicacionesPage = class PublicacionesPage {
         this.publicacionesService.getPublicaciones().subscribe(res => { this.publicaciones = res; });
         this.publicidadService.getPublicidad().subscribe(res => { this.publicidad = res; });
         this.idUser = localStorage.getItem('userId');
+    }
+    alert(id) {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            const alert = yield this.alertCtrt.create({
+                cssClass: 'my-custom-class',
+                header: "¿Desea eliminar esta publicación?",
+                buttons: [
+                    {
+                        text: 'Cancelar',
+                        role: 'cancel',
+                        cssClass: 'secondary',
+                        handler: (blah) => {
+                            //console.log('Confirm Cancel: blah');
+                        }
+                    }, {
+                        text: 'Elminar',
+                        handler: (data) => {
+                            this.remove(id);
+                        }
+                    }
+                ]
+            });
+            yield alert.present();
+        });
+    }
+    remove(id) {
+        this.publicacionesService.removePublicacion(id);
     }
 };
 PublicacionesPage.ctorParameters = () => [

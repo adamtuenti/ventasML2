@@ -243,22 +243,6 @@ CrearPublicacionesGeneralesPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__d
 
 
 
-/***/ }),
-
-/***/ "./src/app/models/publicacionesGenerales.ts":
-/*!**************************************************!*\
-  !*** ./src/app/models/publicacionesGenerales.ts ***!
-  \**************************************************/
-/*! exports provided: PublicacionesGenerales */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PublicacionesGenerales", function() { return PublicacionesGenerales; });
-class PublicacionesGenerales {
-}
-
-
 /***/ })
 
 }]);

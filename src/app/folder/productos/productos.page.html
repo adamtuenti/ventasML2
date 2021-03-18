@@ -10,7 +10,6 @@
   </ion-searchbar>
 
   <ng-container *ngIf="!condicion">
-  <ion-list>
     <ng-container *ngFor="let producto of productos | filtroProductos: textoBuscar">
 
       <ion-item *ngIf="producto.Categoria == categoria" (click)='aumentarVisita(producto.id,producto)'>
@@ -30,7 +29,6 @@
       </ion-item>
     </ng-container>
 
-  </ion-list>
   </ng-container>
 
   <ng-container *ngIf="condicion">

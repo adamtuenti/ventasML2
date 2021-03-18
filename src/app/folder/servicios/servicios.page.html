@@ -1,0 +1,60 @@
+
+<app-header nombre="categorias"></app-header>
+
+<ion-content>
+
+  <ion-segment color="tertiary" value="categorias">
+
+    <ion-segment-button value="categorias" [routerLink]="['/categorias']" routerDirection="root">
+      <ion-icon name="gift-outline" size="large"></ion-icon> <ion-label style="font-size: 11px;">Categorias</ion-label>
+    </ion-segment-button>
+
+    <ion-segment-button value="grupos" [routerLink]="['/servicios']" routerDirection="root">
+      <ion-icon name="rocket-outline" size="large"></ion-icon> <ion-label style="font-size: 11px;">Servicios</ion-label>
+    </ion-segment-button>
+
+  </ion-segment>
+
+  <ion-searchbar
+    color="light" 
+    placeholder = "Buscar servicio..."
+    animated
+    (ionChange)="buscar($event)">
+  </ion-searchbar>
+
+  <ion-list *ngFor="let servicio of servicios | filtroServicios: textoBuscar">
+    
+      <ion-item  *ngIf = 'servicio.Visibilidad'>
+        <ion-avatar slot="start" style="height: 50px;width: 50px;margin-right: 8.5px;" [routerLink]="['/servicio-detalle',servicio.id]">
+          <img src="{{servicio.Foto}}">
+        </ion-avatar> 
+        <ion-label style="font-size: 17.2px;" [routerLink]="['/servicio-detalle',servicio.id]">{{servicio.Titulo}}</ion-label>
+
+        <ion-icon  *ngIf="servicio.Usuario == idUser" name="trash-outline" slot='end' color='danger'(click)="alert(servicio.id)"></ion-icon>
+  
+          
+  
+      </ion-item>
+      
+        
+
+      
+
+    
+    
+
+  </ion-list>
+
+
+
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button [routerLink]="['/crear-servicio']">
+    <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  
+
+
+</ion-content>

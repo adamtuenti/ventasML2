@@ -238,22 +238,6 @@ CrearProductoLocalPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]
 
 
 
-/***/ }),
-
-/***/ "./src/app/models/productosLocales.ts":
-/*!********************************************!*\
-  !*** ./src/app/models/productosLocales.ts ***!
-  \********************************************/
-/*! exports provided: ProductosLocales */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProductosLocales", function() { return ProductosLocales; });
-class ProductosLocales {
-}
-
-
 /***/ })
 
 }]);

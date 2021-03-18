@@ -388,6 +388,18 @@ const routes = [
     {
         path: 'crear-publicaciones-generales',
         loadChildren: () => Promise.all(/*! import() | folder-crear-publicaciones-generales-crear-publicaciones-generales-module */[__webpack_require__.e("common"), __webpack_require__.e("folder-crear-publicaciones-generales-crear-publicaciones-generales-module")]).then(__webpack_require__.bind(null, /*! ./folder/crear-publicaciones-generales/crear-publicaciones-generales.module */ "./src/app/folder/crear-publicaciones-generales/crear-publicaciones-generales.module.ts")).then(m => m.CrearPublicacionesGeneralesPageModule)
+    },
+    {
+        path: 'perfil-update',
+        loadChildren: () => Promise.all(/*! import() | folder-perfil-update-perfil-update-module */[__webpack_require__.e("common"), __webpack_require__.e("folder-perfil-update-perfil-update-module")]).then(__webpack_require__.bind(null, /*! ./folder/perfil-update/perfil-update.module */ "./src/app/folder/perfil-update/perfil-update.module.ts")).then(m => m.PerfilUpdatePageModule)
+    },
+    {
+        path: 'producto-local-editar/:idProducto/:idLocal/:idPropietario',
+        loadChildren: () => Promise.all(/*! import() | folder-producto-local-editar-producto-local-editar-module */[__webpack_require__.e("common"), __webpack_require__.e("folder-producto-local-editar-producto-local-editar-module")]).then(__webpack_require__.bind(null, /*! ./folder/producto-local-editar/producto-local-editar.module */ "./src/app/folder/producto-local-editar/producto-local-editar.module.ts")).then(m => m.ProductoLocalEditarPageModule)
+    },
+    {
+        path: 'publicacion-detalle/:idPublicacion/:idUser',
+        loadChildren: () => Promise.all(/*! import() | folder-publicacion-detalle-publicacion-detalle-module */[__webpack_require__.e("common"), __webpack_require__.e("folder-publicacion-detalle-publicacion-detalle-module")]).then(__webpack_require__.bind(null, /*! ./folder/publicacion-detalle/publicacion-detalle.module */ "./src/app/folder/publicacion-detalle/publicacion-detalle.module.ts")).then(m => m.PublicacionDetallePageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {
