@@ -119,13 +119,31 @@ const routes: Routes = [
     loadChildren: () => import('./folder/servicios/servicios.module').then( m => m.ServiciosPageModule)
   },
   {
-    path: 'servicio-detalle/:idServicio',
+    path: 'servicio-detalle/:idServicio/:idUser',
     loadChildren: () => import('./folder/servicio-detalle/servicio-detalle.module').then( m => m.ServicioDetallePageModule)
   },
   {
     path: 'crear-servicio',
     loadChildren: () => import('./folder/crear-servicio/crear-servicio.module').then( m => m.CrearServicioPageModule)
+  },
+  {
+    path: 'mis-productos',
+    loadChildren: () => import('./folder/mis-productos/mis-productos.module').then( m => m.MisProductosPageModule)
+  },
+  {
+    path: 'mis-publicaciones',
+    loadChildren: () => import('./folder/mis-publicaciones/mis-publicaciones.module').then( m => m.MisPublicacionesPageModule)
+  },
+  {
+    path: 'editar-producto/:idProducto',
+    loadChildren: () => import('./folder/editar-producto/editar-producto.module').then( m => m.EditarProductoPageModule)
+  },
+  {
+    path: 'editar-local/:idLocal/:idPropietario',
+    loadChildren: () => import('./folder/editar-local/editar-local.module').then( m => m.EditarLocalPageModule)
   }
+
+
 
 
 

@@ -8,6 +8,7 @@ export class Usuarios {
     Manzana: string;
     Premium: boolean;
     Publicaciones: number;
+    Productos: number;
     Vendedor: boolean;
     Telefono: string;
     Villa: string;

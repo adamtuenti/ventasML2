@@ -8,7 +8,9 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { MensajeErrorService } from 'src/app/services/mensaje-error.service'
+import { MensajeErrorService } from 'src/app/services/mensaje-error.service';
+import { Usuarios } from 'src/app/models/usuario';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 
 @Component({
@@ -18,15 +20,18 @@ import { MensajeErrorService } from 'src/app/services/mensaje-error.service'
 })
 export class LoginPage implements OnInit {
   users: Observable<any[]>;
+  public user: Usuarios=new Usuarios();
+
   constructor(private authService:AuthService,
               private router: Router,
               private alertCtrt: AlertController,
               private firestore: AngularFirestore,
+              private usuarioService: UsuarioService,
               private mensajeErrorService: MensajeErrorService,) { 
   }
 
   ngOnInit() {
-    }
+  }
  
   async loginUser(form):Promise<void>{
  
@@ -35,8 +40,13 @@ export class LoginPage implements OnInit {
     then(
       (res)=>{
         localStorage.setItem('userId', res.user.uid);
-        localStorage.setItem('Fondo','#FBC8B5');                   
-        this.router.navigateByUrl('/categorias');
+        localStorage.setItem('Fondo','#FBC8B5');
+        this.usuarioService.getUsuario(res.user.uid).subscribe(res1 => {localStorage.setItem('FotoPerfil',res1.Foto); this.router.navigateByUrl('/categorias');});
+
+
+            
+              
+        
     },
       
       async error => {

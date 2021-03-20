@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\r\n<app-header nombre=\"categorias\"></app-header>\r\n\r\n<ion-content>\r\n\r\n  <ion-searchbar\r\n    color=\"light\" \r\n    placeholder = \"Buscar categoría...\"\r\n    animated\r\n    (ionChange)=\"buscar($event)\">\r\n  </ion-searchbar>\r\n\r\n  <ion-list *ngFor=\"let categoria of categorias | filtroCategoria: textoBuscar\">\r\n    <ion-item [routerLink]=\"['/productos',categoria.id]\">\r\n      <ion-icon name=\"{{categoria.Icono}}\" slot=\"start\" size='large'></ion-icon>\r\n      <ion-label style=\"font-size: 17.2px;\">{{categoria.Nombre}}</ion-label>\r\n    </ion-item>\r\n\r\n  </ion-list>\r\n\r\n  \r\n\r\n\r\n</ion-content>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("\r\n<app-header nombre=\"categorias\"></app-header>\r\n\r\n<ion-content>\r\n\r\n  <ion-segment color=\"tertiary\" value=\"categorias\">\r\n\r\n    <ion-segment-button value=\"categorias\" [routerLink]=\"['/categorias']\" routerDirection=\"root\">\r\n      <ion-icon name=\"gift-outline\" size=\"large\"></ion-icon> <ion-label style=\"font-size: 11px;\">Categorias</ion-label>\r\n    </ion-segment-button>\r\n\r\n    <ion-segment-button value=\"grupos\" [routerLink]=\"['/servicios']\" routerDirection=\"root\">\r\n      <ion-icon name=\"rocket-outline\" size=\"large\"></ion-icon> <ion-label style=\"font-size: 11px;\">Servicios</ion-label>\r\n    </ion-segment-button>\r\n\r\n  </ion-segment>\r\n\r\n  <ion-searchbar\r\n    color=\"light\" \r\n    placeholder = \"Buscar categoría...\"\r\n    animated\r\n    (ionChange)=\"buscar($event)\">\r\n  </ion-searchbar>\r\n\r\n  <ion-list *ngFor=\"let categoria of categorias | filtroCategoria: textoBuscar\">\r\n    <ion-item [routerLink]=\"['/productos',categoria.id]\">\r\n      <ion-icon name=\"{{categoria.Icono}}\" slot=\"start\" size='large'></ion-icon>\r\n      <ion-label style=\"font-size: 17.2px;\">{{categoria.Nombre}}</ion-label>\r\n    </ion-item>\r\n\r\n  </ion-list>\r\n\r\n  \r\n\r\n\r\n</ion-content>\r\n");
 
 /***/ }),
 
@@ -107,7 +107,7 @@ CategoriasPageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])(
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2ZvbGRlci9jYXRlZ29yaWFzL2NhdGVnb3JpYXMucGFnZS5zY3NzIn0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("ion-content {\n  --ion-background-color:#ffffff;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZm9sZGVyL2NhdGVnb3JpYXMvY2F0ZWdvcmlhcy5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFFSSw4QkFBQTtBQUFKIiwiZmlsZSI6InNyYy9hcHAvZm9sZGVyL2NhdGVnb3JpYXMvY2F0ZWdvcmlhcy5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tY29udGVudHtcclxuXHJcbiAgICAtLWlvbi1iYWNrZ3JvdW5kLWNvbG9yOiNmZmZmZmY7XHJcbn0iXX0= */");
 
 /***/ }),
 

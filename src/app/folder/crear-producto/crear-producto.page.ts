@@ -4,6 +4,8 @@ import { Productos } from 'src/app/models/productos';
 import { ProductosService } from 'src/app/services/productos.service';
 import { AngularFireStorage } from 'angularfire2/storage';
 import { AlertController, LoadingController } from '@ionic/angular';
+import { Usuarios } from 'src/app/models/usuario';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 
 @Component({
@@ -14,26 +16,30 @@ import { AlertController, LoadingController } from '@ionic/angular';
 export class CrearProductoPage implements OnInit {
 
   public producto: Productos = new Productos();
+  public user: Usuarios=new Usuarios();
   idCategoria;
   miId: '7G091ZlAzKhS9TrNFqAX';
   loading: HTMLIonLoadingElement;
   image: string | ArrayBuffer;
   image1: string | ArrayBuffer;
+  idUser;
 
   file: File;
   file1: File;
 
   constructor(private angularFireStorage: AngularFireStorage,
-    private router: Router,
-    private alertCtrt: AlertController,
-    private productosService: ProductosService,
-    private activateRoute: ActivatedRoute,
-    public loadingController: LoadingController,) { }
+              private usuarioService: UsuarioService,
+              private router: Router,
+              private alertCtrt: AlertController,
+              private productosService: ProductosService,
+              private activateRoute: ActivatedRoute,
+              public loadingController: LoadingController,) { }
 
   ngOnInit() {
     this.activateRoute.paramMap.subscribe(paramMap => {
       this.idCategoria = paramMap.get('idCategoria');
     });
+    this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => {this.user =res; this.idUser = localStorage.getItem('userId');});
   }
 
   crearProducto(form){
@@ -112,18 +118,26 @@ export class CrearProductoPage implements OnInit {
             data=>{
                     data.ref.getDownloadURL().then(
                         downloadURL => {
-                          
+
+                          if(this.file1!=null){
                             storageRef1.child(this.file1.name).put(this.file1)
                             .then(
                               data=>{data.ref.getDownloadURL().then(
                                 downloadURL1 =>this.guardarCompleto(downloadURL, downloadURL1)  
                                 )}
-                            ).catch(err=>{this.loading.dismiss(), this.failedAlert("Error al cargar la foto 1")});
+                            ).catch(err=>{this.loading.dismiss(), this.failedAlert("Error al cargar la foto 2")});
+
+                          }
+                          else{
+                            this.guardarCompleto(downloadURL, '')
+                          }
+                          
+                            
                             
                           
                       
                         }
-                    ).catch(err=>{this.loading.dismiss(), this.failedAlert("Error al cargar la foto 2")});
+                    ).catch(err=>{this.loading.dismiss(), this.failedAlert("Error al cargar la foto 1")});
                     
 
             }
@@ -135,6 +149,8 @@ export class CrearProductoPage implements OnInit {
   guardarCompleto(downloadURL: string, downloadURL1: string){
     this.producto.Foto1 = downloadURL;
     this.producto.Foto2 = downloadURL1;
+    this.user.Productos = this.user.Productos + 1;
+    this.usuarioService.updateUsuario(this.idUser,this.user)
     this.productosService.addProducto(this.producto).then(
       auth=>{
         

@@ -63,6 +63,12 @@ export class PublicacionesPage implements OnInit {
      this.publicacionesService.removePublicacion(id)
   }
 
+  aumentarVisitaPublicacion(id:string,usuario:string,publicacion:PublicacionesGenerales){
+    publicacion.Visitas= publicacion.Visitas + 1
+    this.publicacionesService.updatePublicacion(id,publicacion)
+    this.router.navigate(['/publicacion-detalle',id,usuario]); 
+  }
+
   shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 

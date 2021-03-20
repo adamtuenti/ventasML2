@@ -4,6 +4,9 @@ import { PublicacionesGenerales } from 'src/app/models/publicacionesGenerales';
 import { PublicacionesGeneralesService } from 'src/app/services/publicaciones-generales.service';
 import { AngularFireStorage } from 'angularfire2/storage';
 import { AlertController, LoadingController } from '@ionic/angular';
+import { Usuarios } from 'src/app/models/usuario';
+import { UsuarioService } from 'src/app/services/usuario.service';
+
 
 @Component({
   selector: 'app-crear-publicaciones-generales',
@@ -16,18 +19,23 @@ export class CrearPublicacionesGeneralesPage implements OnInit {
   loading: HTMLIonLoadingElement;
   image: string | ArrayBuffer;
   image1: string | ArrayBuffer;
+  public user: Usuarios=new Usuarios();
+  idUser;
 
   file: File;
   file1: File;
 
   constructor(private angularFireStorage: AngularFireStorage,
               private router: Router,
+              private usuarioService: UsuarioService,
               private alertCtrt: AlertController,
               private publicacionesService: PublicacionesGeneralesService,
               private activateRoute: ActivatedRoute,
               public loadingController: LoadingController) { }
 
   ngOnInit() {
+    this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => {this.user =res;});
+    this.idUser = localStorage.getItem('userId');
   }
 
   crearPublicacion(form){
@@ -137,18 +145,20 @@ export class CrearPublicacionesGeneralesPage implements OnInit {
   guardarCompleto(downloadURL: string, downloadURL1: string){
     this.publicacion.Foto = downloadURL;
     this.publicacion.Foto1 = downloadURL1;
+    this.user.Publicaciones = this.user.Publicaciones + 1;
+    this.usuarioService.updateUsuario(this.idUser,this.user);
     this.publicacionesService.addPublicacion(this.publicacion).then(
       auth=>{
         
         this.loading.dismiss();
 
 
-        this.router.navigate(["/categorias"])
+        this.router.navigate(["/publicaciones"])
       }       
     ).catch(async error => {
       this.loading.dismiss();
       this.failedAlert("Algo salió mal, inténtelo de nuevo");
     })
   }
-
+  
 }

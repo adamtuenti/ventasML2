@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-header nombre=\"perfil\"></app-header>\n\n<ion-content>\n\n  <form #form=\"ngForm\" (ngSubmit)=\"UpdateUser(form)\">\n    <ion-list>   \n        \n  \n\n \n      \n\n\n\n      <ion-item>\n        <ion-icon name=\"logo-whatsapp\" size='large' color='success' style='margin-right: 7.5px;'></ion-icon>\n        <ion-input value=\"{{user.Telefono}}\" name=\"telefono\" required type='text' ngModel></ion-input>\n      </ion-item>\n\n      \n      \n      <ion-item>\n\n                  <ion-img id=\"blah\" [src]=\"image\" alt=\"your image\" style=\"margin-top:7.5px;margin-bottom: 7.5px;height: 350px;width: 350px;\"></ion-img>\n         \n        </ion-item>\n\n\n      <!-- <ion-item>\n        <ion-label><ion-icon name=\"image-outline\"></ion-icon><ion-text style='margin-left: 7.5px;'>Cambiar foto</ion-text></ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-input type='file' accept=\"image/*\" id=\"perfilFoto\" name=\"foto\" (change)=\"readURL($event);\" class=\"fileInput\" ngModel></ion-input>\n      </ion-item> -->\n\n      <ion-item>\n        <ion-label><ion-icon name=\"cloud-upload-outline\"></ion-icon>  <ion-text style='margin-left:7.5px'>Cambiar foto</ion-text></ion-label>\n        <ion-input id=\"myFileInput\" (change)=\"readURL($event);\" accept=\"image/*\" placeholder=\"archivo\" name=\"archivo\" type='file' ngModel value=\"{{file}}\"></ion-input>\n      \n     \n      </ion-item>\n\n\n      \n\n\n    </ion-list> \n\n    <div class=\"ion-padding\" align=\"center\">\n      <ion-button type=\"submit\"  [disabled]=\"form.invalid\" expand=\"block\" style=\"width: 150px;\">\n        Actualizar\n      </ion-button>\n      \n    </div>\n  </form>\n\n</ion-content>\n<style>\n  #myFileInput{\n    position: absolute;\n    opacity: 0;\n  }\n</style>");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-header nombre=\"perfil\"></app-header>\n\n<ion-content>\n\n  <form #form=\"ngForm\" (ngSubmit)=\"UpdateUser(form)\">\n    <ion-list>   \n        \n  \n\n \n      \n\n\n\n      <ion-item>\n        <ion-icon name=\"person-outline\" size='large' color='success' style='margin-right: 7.5px;'></ion-icon>\n        <ion-input value=\"{{user.Nombre}}\" name=\"nombre\" required type='text' ngModel></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-icon name=\"person-outline\" size='large' color='success' style='margin-right: 7.5px;'></ion-icon>\n        <ion-input value=\"{{user.Apellido}}\" name=\"apellido\" required type='text' ngModel></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-icon name=\"logo-whatsapp\" size='large' color='success' style='margin-right: 7.5px;'></ion-icon>\n        <ion-input value=\"{{user.Telefono}}\" name=\"telefono\" required type='text' ngModel></ion-input>\n      </ion-item>\n\n      \n      \n      <ion-item>\n\n                  <ion-img id=\"blah\" [src]=\"image\" alt=\"your image\" style=\"margin-top:7.5px;margin-bottom: 7.5px;height: 350px;width: 350px;\"></ion-img>\n         \n        </ion-item>\n\n\n      <!-- <ion-item>\n        <ion-label><ion-icon name=\"image-outline\"></ion-icon><ion-text style='margin-left: 7.5px;'>Cambiar foto</ion-text></ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-input type='file' accept=\"image/*\" id=\"perfilFoto\" name=\"foto\" (change)=\"readURL($event);\" class=\"fileInput\" ngModel></ion-input>\n      </ion-item> -->\n\n      <ion-item>\n        <ion-label><ion-icon name=\"cloud-upload-outline\"></ion-icon>  <ion-text style='margin-left:7.5px'>Cambiar foto</ion-text></ion-label>\n        <ion-input id=\"myFileInput\" (change)=\"readURL($event);\" accept=\"image/*\" placeholder=\"archivo\" name=\"archivo\" type='file' ngModel value=\"{{file}}\"></ion-input>\n      \n     \n      </ion-item>\n\n\n      \n\n\n    </ion-list> \n\n    <div class=\"ion-padding\" align=\"center\">\n      <ion-button type=\"submit\"  [disabled]=\"form.invalid\" expand=\"block\" style=\"width: 150px;\">\n        Actualizar\n      </ion-button>\n      \n    </div>\n  </form>\n\n</ion-content>\n<style>\n  #myFileInput{\n    position: absolute;\n    opacity: 0;\n  }\n</style>");
 
 /***/ }),
 
@@ -104,7 +104,7 @@ PerfilUpdatePageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2ZvbGRlci9wZXJmaWwtdXBkYXRlL3BlcmZpbC11cGRhdGUucGFnZS5zY3NzIn0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("ion-content {\n  --ion-background-color:#ffffff;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZm9sZGVyL3BlcmZpbC11cGRhdGUvcGVyZmlsLXVwZGF0ZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSw4QkFBQTtBQUNKIiwiZmlsZSI6InNyYy9hcHAvZm9sZGVyL3BlcmZpbC11cGRhdGUvcGVyZmlsLXVwZGF0ZS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tY29udGVudHtcclxuICAgIC0taW9uLWJhY2tncm91bmQtY29sb3I6I2ZmZmZmZjtcclxufSJdfQ== */");
 
 /***/ }),
 
@@ -177,17 +177,17 @@ let PerfilUpdatePage = class PerfilUpdatePage {
             //   this.guardarArchivo(telefono);
             // }
             // else{
-            this.UpdateUserCompleto(telefono, this.image);
+            this.UpdateUserCompleto(telefono, form.value.nombre, form.value.apellido, this.image);
             // }
         });
     }
-    guardarArchivo(telefono) {
+    guardarArchivo(telefono, nombre, apellido) {
         //this.presentLoading("Espere por favor...");
         var storageRef = this.angularFireStorage.storage.ref();
         storageRef.child(this.file.name).put(this.file)
             .then(data => {
             data.ref.getDownloadURL().then(downloadURL => {
-                this.UpdateUserCompleto(telefono, downloadURL);
+                this.UpdateUserCompleto(telefono, nombre, apellido, downloadURL);
             }).catch(err => { this.loading.dismiss(), this.failedAlert("Error al cargar la foto de perfil, intentelo de nuevo"); });
         });
     }
@@ -205,10 +205,12 @@ let PerfilUpdatePage = class PerfilUpdatePage {
             yield alert.present();
         });
     }
-    UpdateUserCompleto(telefono, downloadURL) {
+    UpdateUserCompleto(telefono, nombre, apellido, downloadURL) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             this.user.Telefono = telefono;
             this.user.Foto = downloadURL;
+            this.user.Nombre = nombre;
+            this.user.Apellido = apellido;
             var userId = localStorage.getItem('userId');
             this.usuarioService.updateUsuario(userId, this.user).
                 then(auth => {

@@ -104,7 +104,7 @@ CrearPublicacionesGeneralesPageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0_
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2ZvbGRlci9jcmVhci1wdWJsaWNhY2lvbmVzLWdlbmVyYWxlcy9jcmVhci1wdWJsaWNhY2lvbmVzLWdlbmVyYWxlcy5wYWdlLnNjc3MifQ== */");
+/* harmony default export */ __webpack_exports__["default"] = ("ion-content {\n  --ion-background-color:#ffffff;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZm9sZGVyL2NyZWFyLXB1YmxpY2FjaW9uZXMtZ2VuZXJhbGVzL2NyZWFyLXB1YmxpY2FjaW9uZXMtZ2VuZXJhbGVzLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLDhCQUFBO0FBQ0oiLCJmaWxlIjoic3JjL2FwcC9mb2xkZXIvY3JlYXItcHVibGljYWNpb25lcy1nZW5lcmFsZXMvY3JlYXItcHVibGljYWNpb25lcy1nZW5lcmFsZXMucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWNvbnRlbnR7XHJcbiAgICAtLWlvbi1iYWNrZ3JvdW5kLWNvbG9yOiNmZmZmZmY7XHJcbn0iXX0= */");
 
 /***/ }),
 
@@ -126,6 +126,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var angularfire2_storage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! angularfire2/storage */ "./node_modules/angularfire2/storage/index.js");
 /* harmony import */ var angularfire2_storage__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(angularfire2_storage__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+/* harmony import */ var src_app_models_usuario__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/models/usuario */ "./src/app/models/usuario.ts");
+/* harmony import */ var src_app_services_usuario_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/app/services/usuario.service */ "./src/app/services/usuario.service.ts");
+
+
 
 
 
@@ -134,16 +138,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let CrearPublicacionesGeneralesPage = class CrearPublicacionesGeneralesPage {
-    constructor(angularFireStorage, router, alertCtrt, publicacionesService, activateRoute, loadingController) {
+    constructor(angularFireStorage, router, usuarioService, alertCtrt, publicacionesService, activateRoute, loadingController) {
         this.angularFireStorage = angularFireStorage;
         this.router = router;
+        this.usuarioService = usuarioService;
         this.alertCtrt = alertCtrt;
         this.publicacionesService = publicacionesService;
         this.activateRoute = activateRoute;
         this.loadingController = loadingController;
         this.publicacion = new src_app_models_publicacionesGenerales__WEBPACK_IMPORTED_MODULE_3__["PublicacionesGenerales"]();
+        this.user = new src_app_models_usuario__WEBPACK_IMPORTED_MODULE_7__["Usuarios"]();
     }
     ngOnInit() {
+        this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => { this.user = res; });
+        this.idUser = localStorage.getItem('userId');
     }
     crearPublicacion(form) {
         this.presentLoading("Espere por favor...");
@@ -216,9 +224,11 @@ let CrearPublicacionesGeneralesPage = class CrearPublicacionesGeneralesPage {
     guardarCompleto(downloadURL, downloadURL1) {
         this.publicacion.Foto = downloadURL;
         this.publicacion.Foto1 = downloadURL1;
+        this.user.Publicaciones = this.user.Publicaciones + 1;
+        this.usuarioService.updateUsuario(this.idUser, this.user);
         this.publicacionesService.addPublicacion(this.publicacion).then(auth => {
             this.loading.dismiss();
-            this.router.navigate(["/categorias"]);
+            this.router.navigate(["/publicaciones"]);
         }).catch((error) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             this.loading.dismiss();
             this.failedAlert("Algo salió mal, inténtelo de nuevo");
@@ -228,6 +238,7 @@ let CrearPublicacionesGeneralesPage = class CrearPublicacionesGeneralesPage {
 CrearPublicacionesGeneralesPage.ctorParameters = () => [
     { type: angularfire2_storage__WEBPACK_IMPORTED_MODULE_5__["AngularFireStorage"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
+    { type: src_app_services_usuario_service__WEBPACK_IMPORTED_MODULE_8__["UsuarioService"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["AlertController"] },
     { type: src_app_services_publicaciones_generales_service__WEBPACK_IMPORTED_MODULE_4__["PublicacionesGeneralesService"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },

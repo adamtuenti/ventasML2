@@ -15,6 +15,7 @@ export class PerfilPage implements OnInit {
 
   sugerencia: sugerenciaCategoriaLocal = new sugerenciaCategoriaLocal();
   public user: Usuarios=new Usuarios();
+  premium;
 
   constructor(private sugerenciaService: SugerenciaLocalesService,
               private usuarioService: UsuarioService,
@@ -22,7 +23,16 @@ export class PerfilPage implements OnInit {
               private authService:AuthService) { }
 
   ngOnInit() {
-    this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => {this.user =res;});
+    this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => {this.user =res;this.verPremium()});
+  }
+
+  verPremium(){
+    if(this.user.Premium){
+      this.premium = 'Sí'
+    }
+    else{
+      this.premium = 'No'
+    }
   }
 
   async crearSugerencia() {

@@ -58,10 +58,14 @@ export class PerfilUpdatePage implements OnInit {
 
   async UpdateUser(form):Promise<void>{
    // this.presentLoading("Espere por favor...");
-   this.presentLoading("Espere por favor...");
+    this.presentLoading("Espere por favor...");
     var telefono = form.value.telefono;
-    if(telefono.length==10){
+    var primeros = telefono.slice(0,3);
+    if(telefono.slice(0,1)==0){
       telefono = '+593' + telefono.slice(1,telefono.length);
+    }
+    else if(primeros == '+593'){
+      telefono = telefono
     }
 
     
@@ -69,12 +73,12 @@ export class PerfilUpdatePage implements OnInit {
     //   this.guardarArchivo(telefono);
     // }
     // else{
-      this.UpdateUserCompleto(telefono,this.image)
+      this.UpdateUserCompleto(telefono,form.value.nombre,form.value.apellido,this.image)
     // }
     
   }
 
-  guardarArchivo(telefono: string){
+  guardarArchivo(telefono: string, nombre:string, apellido: string){
     //this.presentLoading("Espere por favor...");
     
     var storageRef = this.angularFireStorage.storage.ref()
@@ -85,7 +89,7 @@ export class PerfilUpdatePage implements OnInit {
             data=>{
                     data.ref.getDownloadURL().then(
                         downloadURL => {
-                          this.UpdateUserCompleto(telefono, downloadURL)
+                          this.UpdateUserCompleto(telefono, nombre, apellido, downloadURL)
 
                       
                         }
@@ -115,10 +119,13 @@ export class PerfilUpdatePage implements OnInit {
  
 
   
-  async UpdateUserCompleto(telefono: string, downloadURL:string){
+  async UpdateUserCompleto(telefono: string, nombre: string, apellido: string, downloadURL:string){
     this.user.Telefono = telefono;
     this.user.Foto = downloadURL;
+    this.user.Nombre = nombre;
+    this.user.Apellido = apellido;
     var userId = localStorage.getItem('userId')
+    localStorage.setItem('FotoPerfil',downloadURL);
     this.usuarioService.updateUsuario(userId, this.user).
     then(
       auth=>{

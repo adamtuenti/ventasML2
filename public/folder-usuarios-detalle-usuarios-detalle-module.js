@@ -101,7 +101,7 @@ UsuariosDetallePageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorat
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2ZvbGRlci91c3Vhcmlvcy1kZXRhbGxlL3VzdWFyaW9zLWRldGFsbGUucGFnZS5zY3NzIn0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("ion-content {\n  --ion-background-color:#ffffff;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZm9sZGVyL3VzdWFyaW9zLWRldGFsbGUvdXN1YXJpb3MtZGV0YWxsZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSw4QkFBQTtBQUNKIiwiZmlsZSI6InNyYy9hcHAvZm9sZGVyL3VzdWFyaW9zLWRldGFsbGUvdXN1YXJpb3MtZGV0YWxsZS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tY29udGVudHtcclxuICAgIC0taW9uLWJhY2tncm91bmQtY29sb3I6I2ZmZmZmZjtcclxufSJdfQ== */");
 
 /***/ }),
 

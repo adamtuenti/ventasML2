@@ -130,7 +130,8 @@ export class RegistrarPage implements OnInit {
         then(
           (res)=>{
             localStorage.setItem('userId', res.user.uid);
-            localStorage.setItem('Fondo','#FBC8B5');                   
+            localStorage.setItem('Fondo','#FBC8B5');
+            localStorage.setItem('FotoPerfil',downloadURL);                   
             this.router.navigateByUrl('/categorias');
         },
           

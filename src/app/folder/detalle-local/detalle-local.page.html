@@ -30,6 +30,14 @@
      
       <ion-label style="font-size: 17.5px;text-align: center;margin-top: 5px;margin-right: 5px;">{{local.Descripcion}}</ion-label>
     </div>
+
+    <ion-item *ngIf="idPropietario == idUser">
+      <ion-icon slot='end' name="create-outline" size ='large' color='success' [routerLink]="['/editar-local',idLocal,idPropietario]"></ion-icon>
+
+    </ion-item>
+
+    
+
   
   </ion-card>
 
@@ -64,11 +72,24 @@
         <ion-label>{{local.Referencia}}</ion-label>
       </ion-item>
 
+      <ng-container>
+        <ion-item>
+          <ion-icon name="calendar-number-outline" size="large" color="success" style="margin-right: 8px;"></ion-icon>
+          <ion-label>Horario de atención</ion-label>
 
-      <ion-item>
+        </ion-item>
+        <div style='margin-top: 5px;padding: 10px;'>
+          <ion-label style='font-size: 15px;text-align: center;'>
+            {{local.HorarioAtencion}}
+          </ion-label>
+        </div>
+      </ng-container>
+
+
+      <!-- <ion-item>
         <ion-icon routerLink="/perfil-update" name="create-outline" size="large" style="margin-right: 8px;" layout="icon-end" slot="end"></ion-icon>
 
-      </ion-item>
+      </ion-item> -->
     
     </ion-card>
 

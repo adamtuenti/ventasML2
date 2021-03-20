@@ -10,13 +10,23 @@
 
   <ng-container *ngIf="!condicion">
   <ng-container *ngFor="let local of locales | filtroLocal: textoBuscar">
-    <ion-item *ngIf = 'local.CategoriaLocal == categoria' [routerLink]="['/productos-locales',local.id, local.Usuario]" >
-      <ion-avatar slot="start" style="height: 50px;width: 50px;margin-right: 7.5px;">
-        <img src="{{local.Foto}}">
-      </ion-avatar> 
-      <ion-label style="font-size: 18.2px; margin-left: 8.5px;">{{local.Nombre}}</ion-label>
-      <ion-icon name="bicycle-outline" color = 'success' slot = 'end' size = 'large' *ngIf = 'local.Domicilio == "Si"'></ion-icon>   
-    </ion-item>
+    <ion-card *ngIf = 'local.CategoriaLocal == categoria'>
+      <ion-item [routerLink]="['/productos-locales',local.id, local.Usuario]" >
+        <ion-avatar slot="start" style="height: 50px;width: 50px;margin-right: 7.5px;">
+          <img src="{{local.Foto}}">
+        </ion-avatar> 
+        <ion-label style="font-size: 18.2px; margin-left: 8.5px;">{{local.Nombre}}</ion-label>
+  
+  
+        
+        <ion-icon name="bicycle-outline" color = 'success' slot = 'end' size = 'large' *ngIf = 'local.Domicilio == "Si"'></ion-icon>   
+      </ion-item>
+
+      <ion-item *ngIf="local.Usuario == idUser">
+        <ion-icon slot='end' name="create-outline" [routerLink]="['/editar-local',local.id,idUser]"></ion-icon>
+      </ion-item>
+    </ion-card>
+    
 
   </ng-container>
 

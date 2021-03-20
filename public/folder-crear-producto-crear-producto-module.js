@@ -104,7 +104,7 @@ CrearProductoPageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2ZvbGRlci9jcmVhci1wcm9kdWN0by9jcmVhci1wcm9kdWN0by5wYWdlLnNjc3MifQ== */");
+/* harmony default export */ __webpack_exports__["default"] = ("ion-content {\n  --ion-background-color:#ffffff;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZm9sZGVyL2NyZWFyLXByb2R1Y3RvL2NyZWFyLXByb2R1Y3RvLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLDhCQUFBO0FBQ0oiLCJmaWxlIjoic3JjL2FwcC9mb2xkZXIvY3JlYXItcHJvZHVjdG8vY3JlYXItcHJvZHVjdG8ucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWNvbnRlbnR7XHJcbiAgICAtLWlvbi1iYWNrZ3JvdW5kLWNvbG9yOiNmZmZmZmY7XHJcbn0iXX0= */");
 
 /***/ }),
 
@@ -126,6 +126,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var angularfire2_storage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! angularfire2/storage */ "./node_modules/angularfire2/storage/index.js");
 /* harmony import */ var angularfire2_storage__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(angularfire2_storage__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+/* harmony import */ var src_app_models_usuario__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/models/usuario */ "./src/app/models/usuario.ts");
+/* harmony import */ var src_app_services_usuario_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/app/services/usuario.service */ "./src/app/services/usuario.service.ts");
+
+
 
 
 
@@ -134,19 +138,22 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let CrearProductoPage = class CrearProductoPage {
-    constructor(angularFireStorage, router, alertCtrt, productosService, activateRoute, loadingController) {
+    constructor(angularFireStorage, usuarioService, router, alertCtrt, productosService, activateRoute, loadingController) {
         this.angularFireStorage = angularFireStorage;
+        this.usuarioService = usuarioService;
         this.router = router;
         this.alertCtrt = alertCtrt;
         this.productosService = productosService;
         this.activateRoute = activateRoute;
         this.loadingController = loadingController;
         this.producto = new src_app_models_productos__WEBPACK_IMPORTED_MODULE_3__["Productos"]();
+        this.user = new src_app_models_usuario__WEBPACK_IMPORTED_MODULE_7__["Usuarios"]();
     }
     ngOnInit() {
         this.activateRoute.paramMap.subscribe(paramMap => {
             this.idCategoria = paramMap.get('idCategoria');
         });
+        this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => { this.user = res; this.idUser = localStorage.getItem('userId'); });
     }
     crearProducto(form) {
         this.presentLoading("Espere por favor...");
@@ -204,16 +211,23 @@ let CrearProductoPage = class CrearProductoPage {
         storageRef.child(this.file.name).put(this.file)
             .then(data => {
             data.ref.getDownloadURL().then(downloadURL => {
-                storageRef1.child(this.file1.name).put(this.file1)
-                    .then(data => {
-                    data.ref.getDownloadURL().then(downloadURL1 => this.guardarCompleto(downloadURL, downloadURL1));
-                }).catch(err => { this.loading.dismiss(), this.failedAlert("Error al cargar la foto 1"); });
-            }).catch(err => { this.loading.dismiss(), this.failedAlert("Error al cargar la foto 2"); });
+                if (this.file1 != null) {
+                    storageRef1.child(this.file1.name).put(this.file1)
+                        .then(data => {
+                        data.ref.getDownloadURL().then(downloadURL1 => this.guardarCompleto(downloadURL, downloadURL1));
+                    }).catch(err => { this.loading.dismiss(), this.failedAlert("Error al cargar la foto 2"); });
+                }
+                else {
+                    this.guardarCompleto(downloadURL, '');
+                }
+            }).catch(err => { this.loading.dismiss(), this.failedAlert("Error al cargar la foto 1"); });
         });
     }
     guardarCompleto(downloadURL, downloadURL1) {
         this.producto.Foto1 = downloadURL;
         this.producto.Foto2 = downloadURL1;
+        this.user.Productos = this.user.Productos + 1;
+        this.usuarioService.updateUsuario(this.idUser, this.user);
         this.productosService.addProducto(this.producto).then(auth => {
             this.loading.dismiss();
             this.router.navigate(["/productos", this.idCategoria]);
@@ -225,6 +239,7 @@ let CrearProductoPage = class CrearProductoPage {
 };
 CrearProductoPage.ctorParameters = () => [
     { type: angularfire2_storage__WEBPACK_IMPORTED_MODULE_5__["AngularFireStorage"] },
+    { type: src_app_services_usuario_service__WEBPACK_IMPORTED_MODULE_8__["UsuarioService"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["AlertController"] },
     { type: src_app_services_productos_service__WEBPACK_IMPORTED_MODULE_4__["ProductosService"] },

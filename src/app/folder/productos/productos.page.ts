@@ -25,7 +25,7 @@ export class ProductosPage implements OnInit {
     this.activateRoute.paramMap.subscribe(paramMap => {
       this.categoria = paramMap.get('categoria');
 
-      this.productosService.getProductos().subscribe(res=> {this.productos = res;this.condicion = this.getDatos()});
+      this.productosService.getProductos().subscribe(res=> {this.productos = res;this.condicion = this.getDatos();this.shuffle(this.productos)});
     });
     
   }
@@ -48,6 +48,24 @@ export class ProductosPage implements OnInit {
     productos.Visitas= productos.Visitas + 1
     this.productosService.updateProducto(id,productos)
       this.router.navigate(['/producto-detalle',productos.id,productos.Vendedor]); 
+  }
+
+  shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+    return array;
   }
 
   

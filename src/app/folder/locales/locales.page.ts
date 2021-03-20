@@ -14,6 +14,7 @@ export class LocalesPage implements OnInit {
   categoria: string;
   textoBuscar = '';
   condicion: boolean;
+  idUser;
   
   constructor(private router: Router,
               private localesService: LocalesService,
@@ -22,6 +23,7 @@ export class LocalesPage implements OnInit {
   ngOnInit() {
     this.activateRoute.paramMap.subscribe(paramMap => {
       this.categoria = paramMap.get('id');
+      this.idUser = localStorage.getItem('userId');
       this.localesService.getLocales().subscribe(res=> {this.locales = res;this.condicion = this.getDatos()});
     });   
   }

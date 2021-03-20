@@ -25,10 +25,10 @@
   <ion-list *ngFor="let servicio of servicios | filtroServicios: textoBuscar">
     
       <ion-item  *ngIf = 'servicio.Visibilidad'>
-        <ion-avatar slot="start" style="height: 50px;width: 50px;margin-right: 8.5px;" [routerLink]="['/servicio-detalle',servicio.id]">
+        <ion-avatar slot="start" style="height: 50px;width: 50px;margin-right: 8.5px;" [routerLink]="['/servicio-detalle',servicio.id, servicio.Usuario]">
           <img src="{{servicio.Foto}}">
         </ion-avatar> 
-        <ion-label style="font-size: 17.2px;" [routerLink]="['/servicio-detalle',servicio.id]">{{servicio.Titulo}}</ion-label>
+        <ion-label style="font-size: 17.2px;" [routerLink]="['/servicio-detalle',servicio.id, servicio.Usuario]">{{servicio.Titulo}}</ion-label>
 
         <ion-icon  *ngIf="servicio.Usuario == idUser" name="trash-outline" slot='end' color='danger'(click)="alert(servicio.id)"></ion-icon>
   

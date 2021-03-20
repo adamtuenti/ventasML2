@@ -400,6 +400,30 @@ const routes = [
     {
         path: 'publicacion-detalle/:idPublicacion/:idUser',
         loadChildren: () => Promise.all(/*! import() | folder-publicacion-detalle-publicacion-detalle-module */[__webpack_require__.e("common"), __webpack_require__.e("folder-publicacion-detalle-publicacion-detalle-module")]).then(__webpack_require__.bind(null, /*! ./folder/publicacion-detalle/publicacion-detalle.module */ "./src/app/folder/publicacion-detalle/publicacion-detalle.module.ts")).then(m => m.PublicacionDetallePageModule)
+    },
+    {
+        path: 'servicios',
+        loadChildren: () => Promise.all(/*! import() | folder-servicios-servicios-module */[__webpack_require__.e("common"), __webpack_require__.e("folder-servicios-servicios-module")]).then(__webpack_require__.bind(null, /*! ./folder/servicios/servicios.module */ "./src/app/folder/servicios/servicios.module.ts")).then(m => m.ServiciosPageModule)
+    },
+    {
+        path: 'servicio-detalle/:idServicio/:idUser',
+        loadChildren: () => Promise.all(/*! import() | folder-servicio-detalle-servicio-detalle-module */[__webpack_require__.e("common"), __webpack_require__.e("folder-servicio-detalle-servicio-detalle-module")]).then(__webpack_require__.bind(null, /*! ./folder/servicio-detalle/servicio-detalle.module */ "./src/app/folder/servicio-detalle/servicio-detalle.module.ts")).then(m => m.ServicioDetallePageModule)
+    },
+    {
+        path: 'crear-servicio',
+        loadChildren: () => Promise.all(/*! import() | folder-crear-servicio-crear-servicio-module */[__webpack_require__.e("common"), __webpack_require__.e("folder-crear-servicio-crear-servicio-module")]).then(__webpack_require__.bind(null, /*! ./folder/crear-servicio/crear-servicio.module */ "./src/app/folder/crear-servicio/crear-servicio.module.ts")).then(m => m.CrearServicioPageModule)
+    },
+    {
+        path: 'mis-productos',
+        loadChildren: () => Promise.all(/*! import() | folder-mis-productos-mis-productos-module */[__webpack_require__.e("common"), __webpack_require__.e("folder-mis-productos-mis-productos-module")]).then(__webpack_require__.bind(null, /*! ./folder/mis-productos/mis-productos.module */ "./src/app/folder/mis-productos/mis-productos.module.ts")).then(m => m.MisProductosPageModule)
+    },
+    {
+        path: 'mis-publicaciones',
+        loadChildren: () => Promise.all(/*! import() | folder-mis-publicaciones-mis-publicaciones-module */[__webpack_require__.e("common"), __webpack_require__.e("folder-mis-publicaciones-mis-publicaciones-module")]).then(__webpack_require__.bind(null, /*! ./folder/mis-publicaciones/mis-publicaciones.module */ "./src/app/folder/mis-publicaciones/mis-publicaciones.module.ts")).then(m => m.MisPublicacionesPageModule)
+    },
+    {
+        path: 'editar-producto/:idProducto',
+        loadChildren: () => Promise.all(/*! import() | folder-editar-producto-editar-producto-module */[__webpack_require__.e("common"), __webpack_require__.e("folder-editar-producto-editar-producto-module")]).then(__webpack_require__.bind(null, /*! ./folder/editar-producto/editar-producto.module */ "./src/app/folder/editar-producto/editar-producto.module.ts")).then(m => m.EditarProductoPageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {
@@ -630,13 +654,12 @@ let NoLoginGuard = class NoLoginGuard {
     }
     canActivate(next, state) {
         return this.AFauth.authState.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(auth => {
-            console.log("estado", localStorage.getItem('Estado'));
             if (Object(util__WEBPACK_IMPORTED_MODULE_5__["isNullOrUndefined"])(auth)) {
                 return true;
                 //redirigir al login
             }
             else {
-                this.router.navigateByUrl('/usuarios-pendientes');
+                this.router.navigateByUrl('/categorias');
                 return false;
                 //redirigir al home profesor
             }
@@ -707,6 +730,7 @@ let AuthService = class AuthService {
                     Manzana: manzana,
                     Premium: true,
                     Publicaciones: 0,
+                    Productos: 0,
                     Vendedor: false,
                     Telefono: telefono,
                     Villa: villa,

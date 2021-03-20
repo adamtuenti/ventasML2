@@ -107,7 +107,7 @@ CategoriasLocalesPageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decor
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2ZvbGRlci9jYXRlZ29yaWFzLWxvY2FsZXMvY2F0ZWdvcmlhcy1sb2NhbGVzLnBhZ2Uuc2NzcyJ9 */");
+/* harmony default export */ __webpack_exports__["default"] = ("ion-content {\n  --ion-background-color:#ffffff;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZm9sZGVyL2NhdGVnb3JpYXMtbG9jYWxlcy9jYXRlZ29yaWFzLWxvY2FsZXMucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksOEJBQUE7QUFDSiIsImZpbGUiOiJzcmMvYXBwL2ZvbGRlci9jYXRlZ29yaWFzLWxvY2FsZXMvY2F0ZWdvcmlhcy1sb2NhbGVzLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1jb250ZW50e1xyXG4gICAgLS1pb24tYmFja2dyb3VuZC1jb2xvcjojZmZmZmZmO1xyXG59Il19 */");
 
 /***/ }),
 

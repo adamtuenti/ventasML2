@@ -489,7 +489,7 @@ ComponentsModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2ZvbGRlci9jb21wb25lbnRzL2hlYWRlci9oZWFkZXIuY29tcG9uZW50LnNjc3MifQ== */");
+/* harmony default export */ __webpack_exports__["default"] = ("ion-header {\n  --ion-background-color:#FCE4F6;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZm9sZGVyL2NvbXBvbmVudHMvaGVhZGVyL2hlYWRlci5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLDhCQUFBO0FBQ0oiLCJmaWxlIjoic3JjL2FwcC9mb2xkZXIvY29tcG9uZW50cy9oZWFkZXIvaGVhZGVyLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWhlYWRlcntcclxuICAgIC0taW9uLWJhY2tncm91bmQtY29sb3I6I0ZDRTRGNjtcclxufSJdfQ== */");
 
 /***/ }),
 
@@ -605,6 +605,22 @@ class ProductosLocales {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PublicacionesGenerales", function() { return PublicacionesGenerales; });
 class PublicacionesGenerales {
+}
+
+
+/***/ }),
+
+/***/ "./src/app/models/servicios.ts":
+/*!*************************************!*\
+  !*** ./src/app/models/servicios.ts ***!
+  \*************************************/
+/*! exports provided: Servicios */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Servicios", function() { return Servicios; });
+class Servicios {
 }
 
 
@@ -819,6 +835,42 @@ FiltroProductosPipe = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 /***/ }),
 
+/***/ "./src/app/pipes/filtro-servicios.pipe.ts":
+/*!************************************************!*\
+  !*** ./src/app/pipes/filtro-servicios.pipe.ts ***!
+  \************************************************/
+/*! exports provided: FiltroServiciosPipe */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FiltroServiciosPipe", function() { return FiltroServiciosPipe; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+
+
+let FiltroServiciosPipe = class FiltroServiciosPipe {
+    transform(servicios, texto) {
+        if (texto.length === 0) {
+            return servicios;
+        }
+        texto = texto.toLocaleLowerCase();
+        return servicios.filter(servicio => {
+            return servicio.Descripcion.toLocaleLowerCase().includes(texto) ||
+                servicio.Titulo.toLocaleLowerCase().includes(texto);
+        });
+    }
+};
+FiltroServiciosPipe = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Pipe"])({
+        name: 'filtroServicios'
+    })
+], FiltroServiciosPipe);
+
+
+
+/***/ }),
+
 /***/ "./src/app/pipes/filtro-usuario.pipe.ts":
 /*!**********************************************!*\
   !*** ./src/app/pipes/filtro-usuario.pipe.ts ***!
@@ -874,6 +926,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _filtro_categoria_local_pipe__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./filtro-categoria-local.pipe */ "./src/app/pipes/filtro-categoria-local.pipe.ts");
 /* harmony import */ var _filtro_producto_local_pipe__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./filtro-producto-local.pipe */ "./src/app/pipes/filtro-producto-local.pipe.ts");
 /* harmony import */ var _filtro_local_pipe__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./filtro-local.pipe */ "./src/app/pipes/filtro-local.pipe.ts");
+/* harmony import */ var _filtro_servicios_pipe__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./filtro-servicios.pipe */ "./src/app/pipes/filtro-servicios.pipe.ts");
+
 
 
 
@@ -887,8 +941,8 @@ let PipesModule = class PipesModule {
 };
 PipesModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-        declarations: [_filtro_usuario_pipe__WEBPACK_IMPORTED_MODULE_3__["FiltroUsuarioPipe"], _filtro_categoria_pipe__WEBPACK_IMPORTED_MODULE_4__["FiltroCategoriaPipe"], _filtro_productos_pipe__WEBPACK_IMPORTED_MODULE_5__["FiltroProductosPipe"], _filtro_categoria_local_pipe__WEBPACK_IMPORTED_MODULE_6__["FiltroCategoriaLocalPipe"], _filtro_producto_local_pipe__WEBPACK_IMPORTED_MODULE_7__["FiltroProductoLocalPipe"], _filtro_local_pipe__WEBPACK_IMPORTED_MODULE_8__["FiltroLocalPipe"]],
-        exports: [_filtro_usuario_pipe__WEBPACK_IMPORTED_MODULE_3__["FiltroUsuarioPipe"], _filtro_categoria_pipe__WEBPACK_IMPORTED_MODULE_4__["FiltroCategoriaPipe"], _filtro_productos_pipe__WEBPACK_IMPORTED_MODULE_5__["FiltroProductosPipe"], _filtro_categoria_local_pipe__WEBPACK_IMPORTED_MODULE_6__["FiltroCategoriaLocalPipe"], _filtro_producto_local_pipe__WEBPACK_IMPORTED_MODULE_7__["FiltroProductoLocalPipe"], _filtro_local_pipe__WEBPACK_IMPORTED_MODULE_8__["FiltroLocalPipe"]],
+        declarations: [_filtro_usuario_pipe__WEBPACK_IMPORTED_MODULE_3__["FiltroUsuarioPipe"], _filtro_categoria_pipe__WEBPACK_IMPORTED_MODULE_4__["FiltroCategoriaPipe"], _filtro_productos_pipe__WEBPACK_IMPORTED_MODULE_5__["FiltroProductosPipe"], _filtro_categoria_local_pipe__WEBPACK_IMPORTED_MODULE_6__["FiltroCategoriaLocalPipe"], _filtro_producto_local_pipe__WEBPACK_IMPORTED_MODULE_7__["FiltroProductoLocalPipe"], _filtro_local_pipe__WEBPACK_IMPORTED_MODULE_8__["FiltroLocalPipe"], _filtro_servicios_pipe__WEBPACK_IMPORTED_MODULE_9__["FiltroServiciosPipe"]],
+        exports: [_filtro_usuario_pipe__WEBPACK_IMPORTED_MODULE_3__["FiltroUsuarioPipe"], _filtro_categoria_pipe__WEBPACK_IMPORTED_MODULE_4__["FiltroCategoriaPipe"], _filtro_productos_pipe__WEBPACK_IMPORTED_MODULE_5__["FiltroProductosPipe"], _filtro_categoria_local_pipe__WEBPACK_IMPORTED_MODULE_6__["FiltroCategoriaLocalPipe"], _filtro_producto_local_pipe__WEBPACK_IMPORTED_MODULE_7__["FiltroProductoLocalPipe"], _filtro_local_pipe__WEBPACK_IMPORTED_MODULE_8__["FiltroLocalPipe"], _filtro_servicios_pipe__WEBPACK_IMPORTED_MODULE_9__["FiltroServiciosPipe"]],
         imports: [
             _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"]
         ]
@@ -1194,7 +1248,7 @@ let ProductosService = class ProductosService {
     updateProducto(id, productos) {
         return this.productosCollection.doc(id).update(Object.assign({}, productos));
     }
-    removeproducto(id) {
+    removerProducto(id) {
         return this.productosCollection.doc(id).delete();
     }
 };
@@ -1253,9 +1307,9 @@ let PublicacionesGeneralesService = class PublicacionesGeneralesService {
     addPublicacion(publicacion) {
         return this.publicacionesCollection.add(Object.assign({}, publicacion));
     }
-    // updateProducto(id:string, productos:Productos){
-    //   return this.publicacionesCollection.doc(id).update({...productos});
-    // }
+    updatePublicacion(id, publicacion) {
+        return this.publicacionesCollection.doc(id).update(Object.assign({}, publicacion));
+    }
     removePublicacion(id) {
         return this.publicacionesCollection.doc(id).delete();
     }
@@ -1268,6 +1322,63 @@ PublicacionesGeneralesService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__dec
         providedIn: 'root'
     })
 ], PublicacionesGeneralesService);
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/servicios.service.ts":
+/*!***********************************************!*\
+  !*** ./src/app/services/servicios.service.ts ***!
+  \***********************************************/
+/*! exports provided: ServiciosService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ServiciosService", function() { return ServiciosService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var angularfire2_firestore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! angularfire2/firestore */ "./node_modules/angularfire2/firestore/index.js");
+/* harmony import */ var angularfire2_firestore__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(angularfire2_firestore__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+
+
+
+
+let ServiciosService = class ServiciosService {
+    constructor(firestore) {
+        this.firestore = firestore;
+        this.serviciosCollection = firestore.collection('Servicios'); //, ref => ref.where("Nombre", "==", "Celulares")
+        this.servicios = this.serviciosCollection.snapshotChanges().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(actions => {
+            return actions.map(a => {
+                const data = a.payload.doc.data();
+                const id = a.payload.doc.id;
+                return Object.assign({ id }, data);
+            });
+        }));
+    }
+    getServicios() {
+        return this.servicios;
+    }
+    getServicio(id) {
+        return this.serviciosCollection.doc(id).valueChanges();
+    }
+    addServicio(servicios) {
+        return this.serviciosCollection.add(Object.assign({}, servicios));
+    }
+    removeServicio(id) {
+        return this.serviciosCollection.doc(id).delete();
+    }
+};
+ServiciosService.ctorParameters = () => [
+    { type: angularfire2_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestore"] }
+];
+ServiciosService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    })
+], ServiciosService);
 
 
 

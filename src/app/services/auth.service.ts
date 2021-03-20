@@ -43,6 +43,7 @@ export class AuthService {
           Manzana: manzana,
           Premium: true,
           Publicaciones: 0,
+          Productos: 0,
           Vendedor: false,
           Telefono: telefono,
           Villa: villa,

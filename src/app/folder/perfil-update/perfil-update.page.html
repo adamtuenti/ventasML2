@@ -13,8 +13,18 @@
 
 
       <ion-item>
+        <ion-icon name="person-outline" size='large' color='success' style='margin-right: 7.5px;'></ion-icon>
+        <ion-input value="{{user.Nombre}}" name="nombre" type='text' ngModel></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="person-outline" size='large' color='success' style='margin-right: 7.5px;'></ion-icon>
+        <ion-input value="{{user.Apellido}}" name="apellido" type='text' ngModel></ion-input>
+      </ion-item>
+
+      <ion-item>
         <ion-icon name="logo-whatsapp" size='large' color='success' style='margin-right: 7.5px;'></ion-icon>
-        <ion-input value="{{user.Telefono}}" name="telefono" required type='text' ngModel></ion-input>
+        <ion-input value="{{user.Telefono}}" name="telefono" type='text' ngModel></ion-input>
       </ion-item>
 
       

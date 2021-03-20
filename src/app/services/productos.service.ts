@@ -51,7 +51,7 @@ export class ProductosService {
     return this.productosCollection.doc(id).update({...productos});
   }
 
-  removeproducto(id:string){
+  removerProducto(id:string){
     return this.productosCollection.doc(id).delete();
  }
 

@@ -9,11 +9,14 @@ export class HeaderComponent implements OnInit {
 
   text: string;
   @Input('nombre') nombre : string;
+  
+  FotoPerfil = localStorage.getItem('FotoPerfil');
 
   constructor() { 
   }
 
   ngOnInit(){
+    this.FotoPerfil = localStorage.getItem('FotoPerfil')
     this.text = this.nombre;
   }
 
