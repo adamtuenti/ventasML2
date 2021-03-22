@@ -10,7 +10,7 @@ export class HeaderComponent implements OnInit {
   text: string;
   @Input('nombre') nombre : string;
   
-  FotoPerfil = localStorage.getItem('FotoPerfil');
+  FotoPerfil;
 
   constructor() { 
   }

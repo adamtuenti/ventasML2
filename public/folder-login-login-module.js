@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-content>\r\n<ion-card style=\"margin-top:25px\">\r\n    \r\n    <ion-img src=\"../../assets/logoTasky.png\" style=\"width: 100%;height: 285px;margin-top:5px\" alt=\"hola\"></ion-img>\r\n    \r\n    \r\n    <form #form=\"ngForm\" (ngSubmit)=\"loginUser(form)\">\r\n      <ion-list>   \r\n        \r\n        <ion-item>\r\n          <ion-label><ion-icon name=\"mail-outline\"></ion-icon><ion-text color=\"danger\"></ion-text></ion-label>\r\n          <ion-input placeholder=\"Correo\" name=\"email\" type='email' ngModel required></ion-input>\r\n        </ion-item>\r\n\r\n        <ion-item>\r\n          <ion-label><ion-icon name=\"key-outline\"></ion-icon> <ion-text color=\"danger\"></ion-text></ion-label>\r\n          <ion-input placeholder=\"Contraseña\" name=\"password\" type='password' ngModel required></ion-input>\r\n        </ion-item>\r\n      </ion-list>\r\n\r\n      <div class=\"ion-padding\" align=\"center\" style=\"margin-top:5px\">\r\n        <ion-button  style=\"width: 150px;\" shape=\"round\" type=\"submit\"  [disabled]=\"form.invalid\" expand=\"block\">\r\n          Ingresar\r\n        </ion-button>\r\n        \r\n      </div>\r\n\r\n      <div align=\"center\" style=\"margin-top:15.5px\">\r\n        <p (click)=\"presentResetPassword()\" style=\"font-size:15px\">Restablecer contraseña</p>\r\n        <p style=\"font-size:15px\" routerLink=\"/registrar\" routerDirection=\"root\">Crear cuenta</p>\r\n\r\n      </div>\r\n\r\n    </form>\r\n  </ion-card>\r\n</ion-content>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-content>\r\n<ion-card style=\"margin-top:25px\">\r\n    \r\n    <ion-img src=\"../../assets/mL2.png\" style=\"width: 100%;height: 285px;margin-top:7.5px;margin-bottom: 7.5px;\" alt=\"hola\"></ion-img>\r\n    \r\n    \r\n    <form #form=\"ngForm\" (ngSubmit)=\"loginUser(form)\">\r\n      <ion-list>   \r\n        \r\n        <ion-item>\r\n          <ion-label><ion-icon name=\"mail-outline\"></ion-icon><ion-text color=\"danger\"></ion-text></ion-label>\r\n          <ion-input placeholder=\"Correo\" name=\"email\" type='email' ngModel required></ion-input>\r\n        </ion-item>\r\n\r\n        <ion-item>\r\n          <ion-label><ion-icon name=\"key-outline\"></ion-icon> <ion-text color=\"danger\"></ion-text></ion-label>\r\n          <ion-input placeholder=\"Contraseña\" name=\"password\" type='password' ngModel required></ion-input>\r\n        </ion-item>\r\n      </ion-list>\r\n\r\n      <div class=\"ion-padding\" align=\"center\" style=\"margin-top:5px\">\r\n        <ion-button  style=\"width: 150px;\" shape=\"round\" type=\"submit\"  [disabled]=\"form.invalid\" expand=\"block\">\r\n          Ingresar\r\n        </ion-button>\r\n        \r\n      </div>\r\n\r\n      <div align=\"center\" style=\"margin-top:15.5px\">\r\n        <p (click)=\"presentResetPassword()\" style=\"font-size:15px\">Restablecer contraseña</p>\r\n        <p style=\"font-size:15px\" routerLink=\"/registrar\" routerDirection=\"root\">Crear cuenta</p>\r\n\r\n      </div>\r\n\r\n    </form>\r\n  </ion-card>\r\n</ion-content>\r\n");
 
 /***/ }),
 
@@ -101,7 +101,7 @@ LoginPageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("ion-content {\n  --ion-background-color:#ffffff;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZm9sZGVyL2xvZ2luL2xvZ2luLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLDhCQUFBO0FBQ0oiLCJmaWxlIjoic3JjL2FwcC9mb2xkZXIvbG9naW4vbG9naW4ucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWNvbnRlbnR7XHJcbiAgICAtLWlvbi1iYWNrZ3JvdW5kLWNvbG9yOiNmZmZmZmY7XHJcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("ion-content {\n  --ion-background-color:#ffffff;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZm9sZGVyL2xvZ2luL2xvZ2luLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLDhCQUF1QjtBQUMzQiIsImZpbGUiOiJzcmMvYXBwL2ZvbGRlci9sb2dpbi9sb2dpbi5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tY29udGVudHtcclxuICAgIC0taW9uLWJhY2tncm91bmQtY29sb3I6I2ZmZmZmZjtcclxufSJdfQ== */");
 
 /***/ }),
 
@@ -122,6 +122,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/auth.service */ "./src/app/services/auth.service.ts");
 /* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/__ivy_ngcc__/firestore/es2015/index.js");
 /* harmony import */ var src_app_services_mensaje_error_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/services/mensaje-error.service */ "./src/app/services/mensaje-error.service.ts");
+/* harmony import */ var src_app_models_usuario__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/models/usuario */ "./src/app/models/usuario.ts");
+/* harmony import */ var src_app_services_usuario_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/app/services/usuario.service */ "./src/app/services/usuario.service.ts");
+
+
 
 
 
@@ -130,12 +134,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let LoginPage = class LoginPage {
-    constructor(authService, router, alertCtrt, firestore, mensajeErrorService) {
+    constructor(authService, router, alertCtrt, firestore, usuarioService, mensajeErrorService) {
         this.authService = authService;
         this.router = router;
         this.alertCtrt = alertCtrt;
         this.firestore = firestore;
+        this.usuarioService = usuarioService;
         this.mensajeErrorService = mensajeErrorService;
+        this.user = new src_app_models_usuario__WEBPACK_IMPORTED_MODULE_7__["Usuarios"]();
     }
     ngOnInit() {
     }
@@ -145,7 +151,7 @@ let LoginPage = class LoginPage {
                 then((res) => {
                 localStorage.setItem('userId', res.user.uid);
                 localStorage.setItem('Fondo', '#FBC8B5');
-                this.router.navigateByUrl('/categorias');
+                this.usuarioService.getUsuario(res.user.uid).subscribe(res1 => { localStorage.setItem('FotoPerfil', res1.Foto); this.router.navigateByUrl('/categorias'); });
             }, (error) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
                 var mensaje = error.code.split('/')[1];
                 const presentarMensaje = this.mensajeErrorService.AuthErrorCodeSpanish(mensaje);
@@ -230,6 +236,7 @@ LoginPage.ctorParameters = () => [
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["AlertController"] },
     { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_5__["AngularFirestore"] },
+    { type: src_app_services_usuario_service__WEBPACK_IMPORTED_MODULE_8__["UsuarioService"] },
     { type: src_app_services_mensaje_error_service__WEBPACK_IMPORTED_MODULE_6__["MensajeErrorService"] }
 ];
 LoginPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([

@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-header nombre=\"perfil\"></app-header>\n\n<ion-content>\n\n  <form #form=\"ngForm\" (ngSubmit)=\"UpdateUser(form)\">\n    <ion-list>   \n        \n  \n\n \n      \n\n\n\n      <ion-item>\n        <ion-icon name=\"person-outline\" size='large' color='success' style='margin-right: 7.5px;'></ion-icon>\n        <ion-input value=\"{{user.Nombre}}\" name=\"nombre\" required type='text' ngModel></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-icon name=\"person-outline\" size='large' color='success' style='margin-right: 7.5px;'></ion-icon>\n        <ion-input value=\"{{user.Apellido}}\" name=\"apellido\" required type='text' ngModel></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-icon name=\"logo-whatsapp\" size='large' color='success' style='margin-right: 7.5px;'></ion-icon>\n        <ion-input value=\"{{user.Telefono}}\" name=\"telefono\" required type='text' ngModel></ion-input>\n      </ion-item>\n\n      \n      \n      <ion-item>\n\n                  <ion-img id=\"blah\" [src]=\"image\" alt=\"your image\" style=\"margin-top:7.5px;margin-bottom: 7.5px;height: 350px;width: 350px;\"></ion-img>\n         \n        </ion-item>\n\n\n      <!-- <ion-item>\n        <ion-label><ion-icon name=\"image-outline\"></ion-icon><ion-text style='margin-left: 7.5px;'>Cambiar foto</ion-text></ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-input type='file' accept=\"image/*\" id=\"perfilFoto\" name=\"foto\" (change)=\"readURL($event);\" class=\"fileInput\" ngModel></ion-input>\n      </ion-item> -->\n\n      <ion-item>\n        <ion-label><ion-icon name=\"cloud-upload-outline\"></ion-icon>  <ion-text style='margin-left:7.5px'>Cambiar foto</ion-text></ion-label>\n        <ion-input id=\"myFileInput\" (change)=\"readURL($event);\" accept=\"image/*\" placeholder=\"archivo\" name=\"archivo\" type='file' ngModel value=\"{{file}}\"></ion-input>\n      \n     \n      </ion-item>\n\n\n      \n\n\n    </ion-list> \n\n    <div class=\"ion-padding\" align=\"center\">\n      <ion-button type=\"submit\"  [disabled]=\"form.invalid\" expand=\"block\" style=\"width: 150px;\">\n        Actualizar\n      </ion-button>\n      \n    </div>\n  </form>\n\n</ion-content>\n<style>\n  #myFileInput{\n    position: absolute;\n    opacity: 0;\n  }\n</style>");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-header nombre=\"perfil\"></app-header>\n\n<ion-content>\n\n  <form #form=\"ngForm\" (ngSubmit)=\"UpdateUser(form)\">\n    <ion-list>   \n        \n  \n\n \n      \n\n\n\n      <ion-item>\n        <ion-icon name=\"person-outline\" size='large' color='success' style='margin-right: 7.5px;'></ion-icon>\n        <ion-input value=\"{{user.Nombre}}\" name=\"nombre\" type='text' ngModel></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-icon name=\"person-outline\" size='large' color='success' style='margin-right: 7.5px;'></ion-icon>\n        <ion-input value=\"{{user.Apellido}}\" name=\"apellido\" type='text' ngModel></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-icon name=\"logo-whatsapp\" size='large' color='success' style='margin-right: 7.5px;'></ion-icon>\n        <ion-input value=\"{{user.Telefono}}\" name=\"telefono\" type='text' ngModel></ion-input>\n      </ion-item>\n\n      \n      \n      <ion-item>\n\n                  <ion-img id=\"blah\" [src]=\"image\" alt=\"your image\" style=\"margin-top:7.5px;margin-bottom: 7.5px;height: 350px;width: 350px;\"></ion-img>\n         \n        </ion-item>\n\n\n      <!-- <ion-item>\n        <ion-label><ion-icon name=\"image-outline\"></ion-icon><ion-text style='margin-left: 7.5px;'>Cambiar foto</ion-text></ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-input type='file' accept=\"image/*\" id=\"perfilFoto\" name=\"foto\" (change)=\"readURL($event);\" class=\"fileInput\" ngModel></ion-input>\n      </ion-item> -->\n\n      <ion-item>\n        <ion-label><ion-icon name=\"cloud-upload-outline\"></ion-icon>  <ion-text style='margin-left:7.5px'>Cambiar foto</ion-text></ion-label>\n        <ion-input id=\"myFileInput\" (change)=\"readURL($event);\" accept=\"image/*\" placeholder=\"archivo\" name=\"archivo\" type='file' ngModel value=\"{{file}}\"></ion-input>\n      \n     \n      </ion-item>\n\n\n      \n\n\n    </ion-list> \n\n    <div class=\"ion-padding\" align=\"center\">\n      <ion-button type=\"submit\"  [disabled]=\"form.invalid\" expand=\"block\" style=\"width: 150px;\">\n        Actualizar\n      </ion-button>\n      \n    </div>\n  </form>\n\n</ion-content>\n<style>\n  #myFileInput{\n    position: absolute;\n    opacity: 0;\n  }\n</style>");
 
 /***/ }),
 
@@ -104,7 +104,7 @@ PerfilUpdatePageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("ion-content {\n  --ion-background-color:#ffffff;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZm9sZGVyL3BlcmZpbC11cGRhdGUvcGVyZmlsLXVwZGF0ZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSw4QkFBQTtBQUNKIiwiZmlsZSI6InNyYy9hcHAvZm9sZGVyL3BlcmZpbC11cGRhdGUvcGVyZmlsLXVwZGF0ZS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tY29udGVudHtcclxuICAgIC0taW9uLWJhY2tncm91bmQtY29sb3I6I2ZmZmZmZjtcclxufSJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = ("ion-content {\n  --ion-background-color:#ffffff;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZm9sZGVyL3BlcmZpbC11cGRhdGUvcGVyZmlsLXVwZGF0ZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSw4QkFBdUI7QUFDM0IiLCJmaWxlIjoic3JjL2FwcC9mb2xkZXIvcGVyZmlsLXVwZGF0ZS9wZXJmaWwtdXBkYXRlLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1jb250ZW50e1xyXG4gICAgLS1pb24tYmFja2dyb3VuZC1jb2xvcjojZmZmZmZmO1xyXG59Il19 */");
 
 /***/ }),
 
@@ -170,8 +170,12 @@ let PerfilUpdatePage = class PerfilUpdatePage {
             // this.presentLoading("Espere por favor...");
             this.presentLoading("Espere por favor...");
             var telefono = form.value.telefono;
-            if (telefono.length == 10) {
+            var primeros = telefono.slice(0, 3);
+            if (telefono.slice(0, 1) == 0) {
                 telefono = '+593' + telefono.slice(1, telefono.length);
+            }
+            else if (primeros == '+593') {
+                telefono = telefono;
             }
             // if(this.file!='null'){
             //   this.guardarArchivo(telefono);
@@ -212,6 +216,7 @@ let PerfilUpdatePage = class PerfilUpdatePage {
             this.user.Nombre = nombre;
             this.user.Apellido = apellido;
             var userId = localStorage.getItem('userId');
+            localStorage.setItem('FotoPerfil', downloadURL);
             this.usuarioService.updateUsuario(userId, this.user).
                 then(auth => {
                 this.loading.dismiss();
