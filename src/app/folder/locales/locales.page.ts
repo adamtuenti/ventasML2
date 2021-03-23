@@ -13,7 +13,7 @@ export class LocalesPage implements OnInit {
   locales : Locales[] = [];
   categoria: string;
   textoBuscar = '';
-  condicion: boolean;
+  condicion: boolean = false;
   idUser;
   
   constructor(private router: Router,

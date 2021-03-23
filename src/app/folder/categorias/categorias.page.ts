@@ -11,6 +11,7 @@ export class CategoriasPage implements OnInit {
 
   categorias: Categorias[] = [];
   textoBuscar = '';
+  numeroOpcion = 1;
 
   constructor(private categoriasService: CategoriasService) { }
 

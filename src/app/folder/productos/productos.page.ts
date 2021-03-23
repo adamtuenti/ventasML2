@@ -14,7 +14,7 @@ export class ProductosPage implements OnInit {
   productos: Productos[] = [];
   textoBuscar = '';
   categoria;
-  condicion: boolean;
+  condicion: boolean = false;
 
   constructor(private productosService: ProductosService,
               private router: Router,

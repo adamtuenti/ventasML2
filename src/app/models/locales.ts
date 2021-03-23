@@ -14,4 +14,5 @@ export class Locales {
     Visibilidad: boolean;
     Foto:string;
     Domicilio:string;
+    Calificacion: number;
 }

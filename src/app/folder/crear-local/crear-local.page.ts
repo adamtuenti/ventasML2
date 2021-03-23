@@ -73,6 +73,7 @@ export class CrearLocalPage implements OnInit {
     this.local.CategoriaLocal = this.categoria;
     this.local.Visibilidad = true;
     this.local.Domicilio = form.value.domicilio;
+    this.local.Calificacion = 5;
     this.guardarLocal();
   }
 
