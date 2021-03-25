@@ -76,7 +76,7 @@
 </ng-container>
 
 <ion-fab *ngIf = 'idPropietario == idUser' vertical="bottom" horizontal="end" slot="fixed">
-  <ion-fab-button [routerLink]="['/crear-producto-local',idLocal, idPropietario]">
+  <ion-fab-button (click)="validarVendedor()">
    <ion-icon name="add-outline"></ion-icon>
   </ion-fab-button>
 </ion-fab>

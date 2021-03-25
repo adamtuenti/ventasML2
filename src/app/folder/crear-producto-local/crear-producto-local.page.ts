@@ -4,6 +4,8 @@ import { ProductosLocales } from 'src/app/models/productosLocales';
 import { ProductosLocalesService } from 'src/app/services/productos-locales.service';
 import { AngularFireStorage } from 'angularfire2/storage';
 import { AlertController, LoadingController } from '@ionic/angular';
+import { Usuarios } from 'src/app/models/usuario';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 
 @Component({
@@ -20,10 +22,12 @@ export class CrearProductoLocalPage implements OnInit {
   loading: HTMLIonLoadingElement;
   image: string | ArrayBuffer;
   file: File;
+  public user: Usuarios=new Usuarios();
 
   constructor(private angularFireStorage: AngularFireStorage,
     private router: Router,
     private alertCtrt: AlertController,
+    private usuarioService: UsuarioService,
     private productosService: ProductosLocalesService,
     private activateRoute: ActivatedRoute,
     public loadingController: LoadingController,) { }
@@ -32,12 +36,22 @@ export class CrearProductoLocalPage implements OnInit {
     this.activateRoute.paramMap.subscribe(paramMap => {
       this.idLocal = paramMap.get('idLocal');
       this.idPropietario = localStorage.getItem('userId');
+      this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => {this.user =res;});
     });
   }
 
+  capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+
+
   crearProducto(form){
     this.presentLoading("Espere por favor...");
-    this.producto.Titulo = form.value.titulo;
+    var titulo = this.capitalizeFirstLetter(form.value.titulo)
+    
+    this.producto.Titulo = titulo;
+    
     this.producto.Precio = form.value.precio;
     this.producto.Local = this.idLocal;
     this.producto.Usuario = localStorage.getItem('idUser');
@@ -126,6 +140,8 @@ export class CrearProductoLocalPage implements OnInit {
 
   guardarCompleto(downloadURL: string){
     this.producto.Foto = downloadURL;
+    this.user.Productos = this.user.Productos + 1;
+    this.usuarioService.updateUsuario(this.idPropietario,this.user)
     this.productosService.addProducto(this.producto).then(
       auth=>{
         

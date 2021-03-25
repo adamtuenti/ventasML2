@@ -10,7 +10,7 @@
 
   <ng-container *ngIf="!condicion">
   <ng-container *ngFor="let local of locales | filtroLocal: textoBuscar">
-    <ion-card *ngIf = 'local.CategoriaLocal == categoria'>
+    <ion-card *ngIf = 'local.CategoriaLocal == categoria && local.Visibilidad == true'>
       
       <ion-item [routerLink]="['/productos-locales',local.id, local.Usuario]" >
         <ion-avatar slot="start" style="height: 50px;width: 50px;margin-right: 7.5px;">
@@ -27,8 +27,8 @@
 
       <ion-item >
 
-        <div slot='end' *ngFor = 'let indice of [].constructor(local.Calificacion); let i = index'>
-          <ion-icon name="star-outline" color = 'warning'></ion-icon>
+        <div slot='end' *ngFor = 'let indice of [].constructor(local.Calificacion); let i = index' style='width: 1%;margin-right: 5px;'>
+          <ion-icon name="star" color = 'warning'></ion-icon>
         </div>
         
 
@@ -58,7 +58,7 @@
 
 
 <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-  <ion-fab-button [routerLink]="['/crear-local',categoria]">
+  <ion-fab-button (click)="validarVendedor()">
    <ion-icon name="add-outline"></ion-icon>
   </ion-fab-button>
 </ion-fab>

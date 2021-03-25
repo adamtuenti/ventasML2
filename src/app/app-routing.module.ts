@@ -141,7 +141,15 @@ const routes: Routes = [
   {
     path: 'editar-local/:idLocal/:idPropietario',
     loadChildren: () => import('./folder/editar-local/editar-local.module').then( m => m.EditarLocalPageModule)
+  },  {
+    path: 'mis-servicios',
+    loadChildren: () => import('./folder/mis-servicios/mis-servicios.module').then( m => m.MisServiciosPageModule)
+  },
+  {
+    path: 'productos-todos',
+    loadChildren: () => import('./folder/productos-todos/productos-todos.module').then( m => m.ProductosTodosPageModule)
   }
+
 
 
 

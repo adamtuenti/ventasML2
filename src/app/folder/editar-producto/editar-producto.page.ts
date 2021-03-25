@@ -72,8 +72,32 @@ export class EditarProductoPage implements OnInit {
 
   async UpdateProducto(form):Promise<void>{
    // this.presentLoading("Espere por favor...");
-    this.presentLoading("Espere por favor...");
-    this.UpdateProductoCompleto(form.value.precio,form.value.titulo,form.value.descripcion,this.image,this.image1)
+    this.presentLoading("Espere por favor...")
+
+    var precio;
+    var titulo;
+    var descripcion;
+
+    if(form.value.precio == ''){
+      precio = this.producto.Precio
+    }else{
+      precio = form.value.precio
+    }
+
+    if(form.value.titulo == ''){
+      titulo = this.producto.Titulo
+    }else{
+      titulo = form.value.titulo
+    }
+
+    if(form.value.descripcion == ''){
+      descripcion = this.producto.Descripcion
+    }else{
+      descripcion = form.value.descripcion
+    }
+
+
+    this.UpdateProductoCompleto(precio,titulo,descripcion,this.image,this.image1)
 
     
   }

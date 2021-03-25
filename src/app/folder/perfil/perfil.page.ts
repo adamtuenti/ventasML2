@@ -75,6 +75,96 @@ export class PerfilPage implements OnInit {
     await alert.present();
   }
 
+  async serVendedor() {
+
+    const alert = await this.alertCtrt.create({
+      cssClass: 'my-custom-class',
+      header: '¿Desea cambiar su estado a vendedor?',
+      
+      message: 'Pronto nos pondremos en contacto con usted!',
+
+
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+           // console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Sí',
+          handler: (data) => {
+            this.convertirseVendedor()
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  async serPremium() {
+
+    const alert = await this.alertCtrt.create({
+      cssClass: 'my-custom-class',
+      header: '¿Desea comprar una cuenta premium?',
+      
+      message: 'Pronto nos pondremos en contacto con usted!',
+
+
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+           // console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Sí',
+          handler: (data) => {
+            this.convertirsePremium()
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+
+  async esperaVendedor() {
+
+    const alert = await this.alertCtrt.create({
+      cssClass: 'my-custom-class',
+      header: 'Cambio de estado a vendedor',
+      
+      message: 'Pronto nos contactaremos con usted para el cambio de estado!',
+
+
+      buttons: [
+        {
+          text: 'Ok',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+           // console.log('Confirm Cancel: blah');
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  convertirseVendedor(){
+    this.user.Verificacion = true;
+    this.usuarioService.updateUsuario(localStorage.getItem('userId'), this.user);
+  }
+
+  convertirsePremium(){
+    this.user.EsperaPremium = true;
+    this.usuarioService.updateUsuario(localStorage.getItem('userId'), this.user);
+  }
+
   agregarSugerencia(sugerencia:string){
     var fechaActual = new Date();
     this.sugerencia.Titulo = sugerencia;

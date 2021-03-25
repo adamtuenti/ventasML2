@@ -47,12 +47,12 @@
 
   <div *ngIf = 'calificarBool'>
 
-    <div *ngIf = 'idPropietario != idUser && calificarBool' style='margin:auto;margin-top: 10px;margin-bottom: 7.5px;' align='center' >
+    <div *ngIf = 'idPropietario != idUser && calificarBool' style='margin:auto;margin-top: 12.5px;margin-bottom: 7.5px;' align='center' >
       <div align='center' style='border-radius: 1px;border-color: black;'>
-        <ion-label style='font-size: 17.2px;margin-bottom: 7.5px;'>Tu calificación al local fue:</ion-label>
+        <ion-label style='font-size: 18.2px;margin-bottom: 7.5px;'>Tu calificación al local fue:</ion-label>
         <br/>
         <label *ngFor = 'let indice of [].constructor(valor); let i = index'>
-          <ion-icon name="star-outline" color = 'warning' size='large'></ion-icon>
+          <ion-icon name="star" color = 'warning' size='large'></ion-icon>
         </label>
   
       </div>

@@ -2,6 +2,8 @@
 
 <ion-content>
 
+
+
   <ion-searchbar
     color="light" 
     placeholder = "Buscar producto..."
@@ -12,7 +14,7 @@
   <ng-container *ngIf="!condicion">
     <ng-container *ngFor="let producto of productos | filtroProductos: textoBuscar">
 
-      <ion-item *ngIf="producto.Categoria == categoria" (click)='aumentarVisita(producto.id,producto)'>
+      <ion-item *ngIf="producto.Categoria == categoria && producto.Visibilidad" (click)='aumentarVisita(producto.id,producto)'>
 
         <ion-avatar slot="start" style="height: 50px;width: 50px;margin-right: 7.5px;">
           <img src="{{producto.Foto1}}">
@@ -44,7 +46,7 @@
 </ng-container>
 
 <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-  <ion-fab-button [routerLink]="['/crear-producto',categoria]">
+  <ion-fab-button (click)="validarVendedor()">
    <ion-icon name="add-outline"></ion-icon>
   </ion-fab-button>
 </ion-fab>

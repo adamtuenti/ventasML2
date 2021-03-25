@@ -14,7 +14,8 @@
 
       <ion-card *ngIf="producto.Vendedor == idUser">
 
-        <ion-item>
+        <ion-item [routerLink]="['/producto-detalle',producto.id,idUser]">
+
 
           <ion-avatar slot="start" style="height: 50px;width: 50px;margin-right: 7.5px;">
             <img src="{{producto.Foto1}}">
@@ -25,12 +26,13 @@
           
             <ion-button fill="outline" slot='end' color="success"><ion-icon name="cash-outline" color="success"></ion-icon><label style="font-size: 14;margin-left: 7.5px;" >${{producto.Precio}}</label></ion-button>
             
-            <!-- <ion-button fill="outline" slot='end'><ion-icon name="eye-outline"></ion-icon><label style="font-size: 12;margin-left: 7.5px;" >{{producto.Visitas}}</label></ion-button> -->
+
   
           
         
         </ion-item>
         <ion-item>
+          <ion-button fill="outline" slot='end'><ion-icon name="eye-outline"></ion-icon><label style="font-size: 12;margin-left: 7.5px;" >{{producto.Visitas}}</label></ion-button>
           <ion-icon name="create-outline" slot='end'  [routerLink]="['/editar-producto',producto.id]"></ion-icon>
           <ion-icon name="trash-outline" slot='end' color='danger'(click)="alert(producto.id)"></ion-icon>
 

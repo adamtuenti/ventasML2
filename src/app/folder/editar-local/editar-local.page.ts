@@ -60,20 +60,86 @@ export class EditarLocalPage implements OnInit {
   async UpdateLocal(form):Promise<void>{
    // this.presentLoading("Espere por favor...");
     this.presentLoading("Espere por favor...");
-    var telefono = form.value.telefono;
-    var primeros = telefono.slice(0,3);
+
+    var nombre;
+    var telefono;
+    var horario;
+    var domicilio;
+    var redSocial;
+    var descripcion;
+    var referencia;
+
+    if(form.value.nombre == ''){
+      nombre = this.local.Nombre;
+    }
+    else{
+      nombre = form.value.nombre;
+    }
+
+    if(form.value.horario == ''){
+      horario = this.local.HorarioAtencion;
+    }
+    else{
+      horario = form.value.horario
+    }
+
+
+    if(form.value.domicilio == ''){
+      domicilio = this.local.Domicilio;
+    }
+    else{
+      domicilio = form.value.domicilio
+    }
+
+    if(form.value.redSocial == ''){
+      redSocial = this.local.RedSocial;
+    }
+    else{
+      redSocial = form.value.redSocial
+    }
+
+    if(form.value.descripcion == ''){
+      descripcion = this.local.Descripcion;
+    }
+    else{
+      descripcion = form.value.descripcion
+    }
+
+    if(form.value.referencia == ''){
+      referencia = this.local.Referencia;
+    }
+    else{
+      referencia = form.value.referencia
+    }
+
+
+    var primeros;
+
+    if(form.value.telefono!=''){
+      telefono = form.value.telefono;
+      primeros = telefono.slice(0,3);
+
+    }else{
+      telefono = this.local.Telefono;
+      primeros = telefono.slice(0,3);
+    }
+    
+
+    
+    
     if(telefono.slice(0,1)==0){
       telefono = '+593' + telefono.slice(1,telefono.length);
     }
     else if(primeros == '+593'){
       telefono = telefono
     }
-    if(form.value.domicilio!=''){
-      this.UpdateLocalCompleto(form.value.nombre,telefono,form.value.horario,form.value.domicilio,form.value.redSocial,form.value.descripcion,form.value.referencia,this.image)
 
-    }else{
-      this.UpdateLocalCompleto(form.value.nombre,telefono,form.value.horario,this.local.Domicilio,form.value.redSocial,form.value.descripcion,form.value.referencia,this.image)
-    }
+
+      this.UpdateLocalCompleto(nombre,telefono,horario,domicilio,redSocial,descripcion,referencia,this.image)
+
+    // }else{
+    //   this.UpdateLocalCompleto(form.value.nombre,telefono,form.value.horario,this.local.Domicilio,form.value.redSocial,form.value.descripcion,form.value.referencia,this.image)
+    // }
     
 
     

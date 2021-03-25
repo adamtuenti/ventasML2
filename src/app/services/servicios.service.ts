@@ -36,7 +36,11 @@ export class ServiciosService {
 
   addServicio(servicios:Servicios){
     return this.serviciosCollection.add({...servicios});
-  } 
+  }
+
+  updateServicio(id:string, servicios:Servicios){
+    return this.serviciosCollection.doc(id).update({...servicios});
+  }
 
 
   removeServicio(id:string){

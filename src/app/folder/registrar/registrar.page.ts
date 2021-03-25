@@ -12,6 +12,9 @@ import { AngularFireStorage } from 'angularfire2/storage';
 import { LoadingController } from '@ionic/angular';
 import { MensajeErrorService } from 'src/app/services/mensaje-error.service';
 
+import { Variables } from 'src/app/models/variables';
+import { VariablesService } from 'src/app/services/variables.service';
+
 @Component({
   selector: 'app-registrar',
   templateUrl: './registrar.page.html',
@@ -22,8 +25,12 @@ export class RegistrarPage implements OnInit {
   file1: File;
   imageSrc: string | ArrayBuffer;
   loading: HTMLIonLoadingElement;
+
+  variables : Variables = new Variables();
+
   constructor(private angularFireStorage: AngularFireStorage,
               private authService:AuthService,
+              private variablesService: VariablesService,
               private router: Router,
               private mensajeErrorService: MensajeErrorService,
               private alertCtrt: AlertController,
@@ -31,6 +38,7 @@ export class RegistrarPage implements OnInit {
              ) { }
 
   ngOnInit() {
+    this.variablesService.getVariable('wCIVneApMUwcOvDwIneJ').subscribe(res=> {this.variables = res;});
     
   }
 
@@ -54,6 +62,10 @@ export class RegistrarPage implements OnInit {
 
         reader.readAsDataURL(this.file);
     }
+  }
+
+  capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
 
@@ -88,8 +100,11 @@ export class RegistrarPage implements OnInit {
       telefono = telefono
     }
 
+    var nombre = this.capitalizeFirstLetter(form.value.nombre)
+    var apellido = this.capitalizeFirstLetter(form.value.apellido)
+
       
-    this.guardarArchivo(form.value.nombre, form.value.apellido,form.value.email, form.value.password, form.value.ciudadela, form.value.manzana, form.value.villa, telefono);
+    this.guardarArchivo(nombre, apellido,form.value.email, form.value.password, form.value.ciudadela, form.value.manzana, form.value.villa, telefono);
     
   }
 

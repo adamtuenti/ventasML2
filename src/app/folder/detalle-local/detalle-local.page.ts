@@ -24,7 +24,7 @@ export class DetalleLocalPage implements OnInit {
 
   idUser;
   idPropietario;
-  calificarBool: boolean;
+  calificarBool;
   valor;
 
   constructor(private router: Router,

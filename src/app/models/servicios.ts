@@ -6,4 +6,5 @@ export class Servicios {
     Titulo: string;
     Descripcion:string;
     Visibilidad:true;
+    Visitas: number;
 }
