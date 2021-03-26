@@ -123,6 +123,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var angularfire2_storage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! angularfire2/storage */ "./node_modules/angularfire2/storage/index.js");
 /* harmony import */ var angularfire2_storage__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(angularfire2_storage__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var src_app_services_mensaje_error_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/services/mensaje-error.service */ "./src/app/services/mensaje-error.service.ts");
+/* harmony import */ var src_app_models_variables__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/models/variables */ "./src/app/models/variables.ts");
+/* harmony import */ var src_app_services_variables_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/app/services/variables.service */ "./src/app/services/variables.service.ts");
+
+
 
 
 
@@ -132,15 +136,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let RegistrarPage = class RegistrarPage {
-    constructor(angularFireStorage, authService, router, mensajeErrorService, alertCtrt, loadingController) {
+    constructor(angularFireStorage, authService, variablesService, router, mensajeErrorService, alertCtrt, loadingController) {
         this.angularFireStorage = angularFireStorage;
         this.authService = authService;
+        this.variablesService = variablesService;
         this.router = router;
         this.mensajeErrorService = mensajeErrorService;
         this.alertCtrt = alertCtrt;
         this.loadingController = loadingController;
+        this.variables = new src_app_models_variables__WEBPACK_IMPORTED_MODULE_7__["Variables"]();
     }
     ngOnInit() {
+        this.variablesService.getVariable('wCIVneApMUwcOvDwIneJ').subscribe(res => { this.variables = res; });
     }
     presentLoading(mensaje) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
@@ -158,6 +165,9 @@ let RegistrarPage = class RegistrarPage {
             reader.onload = e => this.imageSrc = reader.result;
             reader.readAsDataURL(this.file);
         }
+    }
+    capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
     }
     RegistrarUser(form) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
@@ -186,7 +196,9 @@ let RegistrarPage = class RegistrarPage {
             else if (primeros == '+593') {
                 telefono = telefono;
             }
-            this.guardarArchivo(form.value.nombre, form.value.apellido, form.value.email, form.value.password, form.value.ciudadela, form.value.manzana, form.value.villa, telefono);
+            var nombre = this.capitalizeFirstLetter(form.value.nombre);
+            var apellido = this.capitalizeFirstLetter(form.value.apellido);
+            this.guardarArchivo(nombre, apellido, form.value.email, form.value.password, form.value.ciudadela, form.value.manzana, form.value.villa, telefono);
         });
     }
     guardarArchivo(nombre, apellido, email, password, ciudadela, manzana, villa, telefono) {
@@ -251,6 +263,7 @@ let RegistrarPage = class RegistrarPage {
 RegistrarPage.ctorParameters = () => [
     { type: angularfire2_storage__WEBPACK_IMPORTED_MODULE_5__["AngularFireStorage"] },
     { type: src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"] },
+    { type: src_app_services_variables_service__WEBPACK_IMPORTED_MODULE_8__["VariablesService"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
     { type: src_app_services_mensaje_error_service__WEBPACK_IMPORTED_MODULE_6__["MensajeErrorService"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["AlertController"] },

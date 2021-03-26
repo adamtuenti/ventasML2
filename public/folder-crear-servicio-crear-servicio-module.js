@@ -151,6 +151,7 @@ let CrearServicioPage = class CrearServicioPage {
         this.servicio.Descripcion = form.value.descripcion;
         this.servicio.Usuario = localStorage.getItem('userId');
         this.servicio.Visibilidad = true;
+        this.servicio.Visitas = 0;
         this.guardarServicio();
     }
     presentLoading(mensaje) {

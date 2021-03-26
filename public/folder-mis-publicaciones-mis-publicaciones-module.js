@@ -186,8 +186,8 @@ let MisPublicacionesPage = class MisPublicacionesPage {
     }
     remove(id) {
         this.publicacionesService.removePublicacion(id);
-        this.user.Publicaciones = this.user.Publicaciones - 1;
-        this.usuarioService.updateUsuario(this.idUser, this.user);
+        // this.user.Publicaciones = this.user.Publicaciones - 1;
+        // this.usuarioService.updateUsuario(this.idUser,this.user)
     }
 };
 MisPublicacionesPage.ctorParameters = () => [

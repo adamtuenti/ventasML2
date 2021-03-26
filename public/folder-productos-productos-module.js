@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-header nombre=\"categorias\"></app-header>\r\n\r\n<ion-content>\r\n\r\n  <ion-searchbar\r\n    color=\"light\" \r\n    placeholder = \"Buscar producto...\"\r\n    animated\r\n    (ionChange)=\"buscar($event)\">\r\n  </ion-searchbar>\r\n\r\n  <ng-container *ngIf=\"!condicion\">\r\n    <ng-container *ngFor=\"let producto of productos | filtroProductos: textoBuscar\">\r\n\r\n      <ion-item *ngIf=\"producto.Categoria == categoria\" (click)='aumentarVisita(producto.id,producto)'>\r\n\r\n        <ion-avatar slot=\"start\" style=\"height: 50px;width: 50px;margin-right: 7.5px;\">\r\n          <img src=\"{{producto.Foto1}}\">\r\n        </ion-avatar>\r\n\r\n        <ion-label style=\"font-size: 17.2px; margin-left: 7.5px;\">{{producto.Titulo}}</ion-label>\r\n\r\n        \r\n          <!-- <ion-button fill=\"outline\" slot='end' color=\"success\"><ion-icon name=\"cash-outline\" color=\"success\"></ion-icon><label style=\"font-size: 14;margin-left: 7.5px;\" >${{producto.Precio}}</label></ion-button> -->\r\n          <!-- <ion-button fill=\"outline\" slot='end'><ion-icon name=\"eye-outline\"></ion-icon><label style=\"font-size: 12;margin-left: 7.5px;\" >{{producto.Visitas}}</label></ion-button> -->\r\n\r\n        \r\n      \r\n      </ion-item>\r\n    </ng-container>\r\n\r\n  </ng-container>\r\n\r\n  <ng-container *ngIf=\"condicion\">\r\n\r\n  <div style=\"margin-top: 50px;\" align='center'> \r\n    <ion-text color=\"medium\">\r\n\r\n      <img src=\"https://firebasestorage.googleapis.com/v0/b/taskyapp01.appspot.com/o/iconos%2Fgrupos.png?alt=media&token=8aa84d63-18b5-424d-9b6a-dfd1075eeb77\" style=\"width: 55%; height:58%;margin:auto;\" alet=\"foto\">\r\n      \r\n      <p style=\"font-size: 21px;margin:auto;margin-top:7.5px\">No hay productos registrados.</p>\r\n    </ion-text>  \r\n  </div>\r\n</ng-container>\r\n\r\n<ion-fab vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\">\r\n  <ion-fab-button [routerLink]=\"['/crear-producto',categoria]\">\r\n   <ion-icon name=\"add-outline\"></ion-icon>\r\n  </ion-fab-button>\r\n</ion-fab>\r\n\r\n\r\n</ion-content>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-header nombre=\"categorias\"></app-header>\r\n\r\n<ion-content>\r\n\r\n\r\n\r\n  <ion-searchbar\r\n    color=\"light\" \r\n    placeholder = \"Buscar producto...\"\r\n    animated\r\n    (ionChange)=\"buscar($event)\">\r\n  </ion-searchbar>\r\n\r\n  <ng-container *ngIf=\"!condicion\">\r\n    <ng-container *ngFor=\"let producto of productos | filtroProductos: textoBuscar\">\r\n\r\n      <ion-item *ngIf=\"producto.Categoria == categoria && producto.Visibilidad\" (click)='aumentarVisita(producto.id,producto)'>\r\n\r\n        <ion-avatar slot=\"start\" style=\"height: 50px;width: 50px;margin-right: 7.5px;\">\r\n          <img src=\"{{producto.Foto1}}\">\r\n        </ion-avatar>\r\n\r\n        <ion-label style=\"font-size: 17.2px; margin-left: 7.5px;\">{{producto.Titulo}}</ion-label>\r\n\r\n        \r\n          <!-- <ion-button fill=\"outline\" slot='end' color=\"success\"><ion-icon name=\"cash-outline\" color=\"success\"></ion-icon><label style=\"font-size: 14;margin-left: 7.5px;\" >${{producto.Precio}}</label></ion-button> -->\r\n          <!-- <ion-button fill=\"outline\" slot='end'><ion-icon name=\"eye-outline\"></ion-icon><label style=\"font-size: 12;margin-left: 7.5px;\" >{{producto.Visitas}}</label></ion-button> -->\r\n\r\n        \r\n      \r\n      </ion-item>\r\n    </ng-container>\r\n\r\n  </ng-container>\r\n\r\n  <ng-container *ngIf=\"condicion\">\r\n\r\n  <div style=\"margin-top: 50px;\" align='center'> \r\n    <ion-text color=\"medium\">\r\n\r\n      <img src=\"https://firebasestorage.googleapis.com/v0/b/taskyapp01.appspot.com/o/iconos%2Fgrupos.png?alt=media&token=8aa84d63-18b5-424d-9b6a-dfd1075eeb77\" style=\"width: 55%; height:58%;margin:auto;\" alet=\"foto\">\r\n      \r\n      <p style=\"font-size: 21px;margin:auto;margin-top:7.5px\">No hay productos registrados.</p>\r\n    </ion-text>  \r\n  </div>\r\n</ng-container>\r\n\r\n<ion-fab vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\">\r\n  <ion-fab-button (click)=\"validarVendedor()\">\r\n   <ion-icon name=\"add-outline\"></ion-icon>\r\n  </ion-fab-button>\r\n</ion-fab>\r\n\r\n\r\n</ion-content>\r\n");
 
 /***/ }),
 
@@ -125,22 +125,40 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
 /* harmony import */ var src_app_services_productos_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/productos.service */ "./src/app/services/productos.service.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+/* harmony import */ var src_app_models_usuario__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/models/usuario */ "./src/app/models/usuario.ts");
+/* harmony import */ var src_app_services_usuario_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/services/usuario.service */ "./src/app/services/usuario.service.ts");
+/* harmony import */ var src_app_models_variables__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/models/variables */ "./src/app/models/variables.ts");
+/* harmony import */ var src_app_services_variables_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/app/services/variables.service */ "./src/app/services/variables.service.ts");
+
+
+
+
+
 
 
 
 
 
 let ProductosPage = class ProductosPage {
-    constructor(productosService, router, activateRoute) {
+    constructor(productosService, router, usuarioService, variablesService, alertCtrt, activateRoute) {
         this.productosService = productosService;
         this.router = router;
+        this.usuarioService = usuarioService;
+        this.variablesService = variablesService;
+        this.alertCtrt = alertCtrt;
         this.activateRoute = activateRoute;
         this.productos = [];
         this.textoBuscar = '';
+        this.user = new src_app_models_usuario__WEBPACK_IMPORTED_MODULE_5__["Usuarios"]();
+        this.condicion = false;
+        this.variables = new src_app_models_variables__WEBPACK_IMPORTED_MODULE_7__["Variables"]();
     }
     ngOnInit() {
         this.activateRoute.paramMap.subscribe(paramMap => {
             this.categoria = paramMap.get('categoria');
+            this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => { this.user = res; });
+            this.variablesService.getVariable('wCIVneApMUwcOvDwIneJ').subscribe(res => { this.variables = res; });
             this.productosService.getProductos().subscribe(res => { this.productos = res; this.condicion = this.getDatos(); this.shuffle(this.productos); });
         });
     }
@@ -175,10 +193,71 @@ let ProductosPage = class ProductosPage {
         }
         return array;
     }
+    validarVendedor() {
+        if (this.user.Vendedor) {
+            if (this.user.Productos >= this.variables.NumeroProductos) {
+                if (this.user.Premium) {
+                    this.router.navigate(['/crear-producto', this.categoria]);
+                }
+                else {
+                    this.serPremium();
+                }
+            }
+            else {
+                this.router.navigate(['/crear-producto', this.categoria]);
+            }
+        }
+        else {
+            this.serVendedor();
+        }
+    }
+    serPremium() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            const alert = yield this.alertCtrt.create({
+                cssClass: 'my-custom-class',
+                header: 'Ya excedió el número de productos gratis (' + this.variables.NumeroProductos.toString() + ')',
+                message: 'Para poder subir más productos, diríjase a su perfil y solicite ser premium.',
+                buttons: [
+                    {
+                        text: 'Ok',
+                        role: 'cancel',
+                        cssClass: 'secondary',
+                        handler: (blah) => {
+                            // console.log('Confirm Cancel: blah');
+                        }
+                    }
+                ]
+            });
+            yield alert.present();
+        });
+    }
+    serVendedor() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            const alert = yield this.alertCtrt.create({
+                cssClass: 'my-custom-class',
+                header: 'Su cuenta no es de vendedor',
+                message: 'Para poder subir un producto, diríjase a su perfil y solicite ser vendedor.',
+                buttons: [
+                    {
+                        text: 'Ok',
+                        role: 'cancel',
+                        cssClass: 'secondary',
+                        handler: (blah) => {
+                            // console.log('Confirm Cancel: blah');
+                        }
+                    }
+                ]
+            });
+            yield alert.present();
+        });
+    }
 };
 ProductosPage.ctorParameters = () => [
     { type: src_app_services_productos_service__WEBPACK_IMPORTED_MODULE_3__["ProductosService"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
+    { type: src_app_services_usuario_service__WEBPACK_IMPORTED_MODULE_6__["UsuarioService"] },
+    { type: src_app_services_variables_service__WEBPACK_IMPORTED_MODULE_8__["VariablesService"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] }
 ];
 ProductosPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([

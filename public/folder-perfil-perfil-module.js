@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-header nombre=\"perfil\"></app-header>\n\n<ion-content>\n  \n  <ion-img class=\"circle-pic\" style=\"width: 275px;height: 275px;\" src=\"{{user.Foto}}\" ></ion-img>\n\n  <ion-card>\n    <ion-item>\n      <ion-icon name=\"person-outline\" size=\"large\" style=\"margin-right: 8px;\"></ion-icon>\n      <ion-label style=\"font-size: 17px;\">{{user.Nombre}} {{user.Apellido}}</ion-label>\n    </ion-item>\n  \n    <ion-item>\n      <ion-icon name=\"mail-outline\" size=\"large\" style=\"margin-right: 8px;\"></ion-icon>\n      <ion-label style=\"font-size: 17px;\">{{user.Correo}}</ion-label>\n    </ion-item>\n\n    <ion-item>\n      <ion-icon name=\"call-outline\" size=\"large\" style=\"margin-right: 8px;\"></ion-icon>\n      <ion-label style=\"font-size: 17px;\">{{user.Telefono}}</ion-label>\n    </ion-item>\n\n    <ion-item>\n      <ion-icon name=\"megaphone-outline\" size=\"large\" style=\"margin-right: 8px;\"></ion-icon>\n      <ion-label style=\"font-size: 17px;\">{{user.Publicaciones}}</ion-label>\n    </ion-item>\n\n    <ion-item>\n      <ion-icon name=\"cart-outline\" size=\"large\" style=\"margin-right: 8px;\"></ion-icon>\n      <ion-label style=\"font-size: 17px;\">{{user.Productos}}</ion-label>\n    </ion-item>\n\n\n    <ion-item>\n      <ion-icon name=\"diamond-outline\" size=\"large\" style=\"margin-right: 8px;\"></ion-icon>\n      <ion-label style=\"font-size: 17px;\">{{premium}}</ion-label>\n    </ion-item>\n\n\n    <ion-item>\n      <ion-icon routerLink=\"/perfil-update\" name=\"create-outline\" size=\"large\" style=\"margin-right: 8px;\" layout=\"icon-end\" slot=\"end\"></ion-icon>\n\n    </ion-item>\n  \n  </ion-card>\n\n\n  <ion-item style=\"margin-top: 25px;margin-bottom: 10px;\">\n    <ion-button style=\"width: 225px;height: 45px;margin-top:12.5px;margin:auto;\" color=\"success\" [routerLink]=\"['/mis-publicaciones']\">\n      <ion-icon name=\"megaphone-outline\" size=\"large\" style=\"margin-right: 8px;\"></ion-icon>\n      <ion-label style=\"font-size: 17px;\">Mis anuncios</ion-label>\n    </ion-button>\n\n  </ion-item>\n\n\n  <ion-item style=\"margin-top: 15px;margin-bottom: 15px;\">\n    <ion-button style=\"width: 225px;height: 45px;margin-top:12.5px;margin:auto;\" color=\"success\" [routerLink]=\"['/mis-productos']\">\n      <ion-icon name=\"bag-check-outline\" size=\"large\" style=\"margin-right: 8px;\"></ion-icon>\n      <ion-label style=\"font-size: 17px;\">Mis productos</ion-label>\n    </ion-button>\n\n  </ion-item>\n\n  <ion-item style=\"margin-top: 10px;margin-bottom: 25px;\">\n    <ion-button style=\"width: 225px;height: 45px;margin-top:12.5px;margin:auto;\" color=\"danger\" (click)=\"logOutUser()\">\n      <ion-icon name=\"log-out-outline\" size=\"large\" style=\"margin-right: 8px;\"></ion-icon>\n      <ion-label style=\"font-size: 17px;\">Cerrar Sesión</ion-label>\n    </ion-button>\n\n  </ion-item>\n\n  \n\n    \n\n\n  \n  \n\n  <ion-fab vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\">\n    <ion-fab-button (click)=\"crearSugerencia()\">\n     <ion-icon name=\"help-circle-outline\" size=\"large\"></ion-icon>\n    </ion-fab-button>\n  </ion-fab>\n\n</ion-content>\n<style>\n  .circle-pic {     \n    width: 55%;\n    height: 35%;\n    margin: auto;\n    display: block;\n    margin-bottom: 10px;\n    margin-top: 10px;\n    /* -webkit-border-radius: 50%;\n    border-radius: 50%;\n    border-width: 50px; */\n\n  }\n</style>");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-header nombre=\"perfil\"></app-header>\n\n<ion-content>\n  \n  <ion-img class=\"circle-pic\" style=\"width: 275px;height: 275px;\" src=\"{{user.Foto}}\" ></ion-img>\n\n  <ion-card>\n    <ion-item>\n      <ion-icon name=\"person-outline\" size=\"large\" style=\"margin-right: 8px;\"></ion-icon>\n      <ion-label style=\"font-size: 17px;\">{{user.Nombre}} {{user.Apellido}}</ion-label>\n    </ion-item>\n  \n    <ion-item>\n      <ion-icon name=\"mail-outline\" size=\"large\" style=\"margin-right: 8px;\"></ion-icon>\n      <ion-label style=\"font-size: 17px;\">{{user.Correo}}</ion-label>\n    </ion-item>\n\n    <ion-item>\n      <ion-icon name=\"call-outline\" size=\"large\" style=\"margin-right: 8px;\"></ion-icon>\n      <ion-label style=\"font-size: 17px;\">{{user.Telefono}}</ion-label>\n    </ion-item>\n\n    <ion-item>\n      <ion-icon name=\"megaphone-outline\" size=\"large\" style=\"margin-right: 8px;\"></ion-icon>\n      <ion-label style=\"font-size: 17px;\">{{user.Publicaciones}}</ion-label>\n    </ion-item>\n\n    <ion-item>\n      <ion-icon name=\"cart-outline\" size=\"large\" style=\"margin-right: 8px;\"></ion-icon>\n      <ion-label style=\"font-size: 17px;\">{{user.Productos}}</ion-label>\n    </ion-item>\n\n\n    <ion-item>\n      <ion-icon name=\"diamond-outline\" size=\"large\" style=\"margin-right: 8px;\"></ion-icon>\n      <ion-label style=\"font-size: 17px;\">{{premium}}</ion-label>\n    </ion-item>\n\n\n    <ion-item>\n      <ion-icon routerLink=\"/perfil-update\" name=\"create-outline\" size=\"large\" style=\"margin-right: 8px;\" layout=\"icon-end\" slot=\"end\"></ion-icon>\n\n    </ion-item>\n  \n  </ion-card>\n\n\n  <ion-item *ngIf = '!user.Vendedor && !user.Verificacion' style=\"margin-top: 25px;margin-bottom: 10px;\">\n    <ion-button style=\"width: 225px;height: 45px;margin-top:12.5px;margin:auto;\" color=\"success\" (click)=\"serVendedor()\">\n      <ion-icon name=\"hand-left-outline\" size=\"large\" style=\"margin-right: 8px;\"></ion-icon>\n      <ion-label style=\"font-size: 17px;\">Ser vendedor</ion-label>\n    </ion-button>\n  </ion-item>\n\n  \n\n\n\n  <ion-item *ngIf = '!user.Vendedor && user.Verificacion' style=\"margin-top: 25px;margin-bottom: 10px;\">\n    <ion-button style=\"width: 225px;height: 45px;margin-top:12.5px;margin:auto;\" color=\"warning\" (click)=\"esperaVendedor()\">\n      <ion-icon name=\"hand-left-outline\" size=\"large\" style=\"margin-right: 8px;\"></ion-icon>\n      <ion-label style=\"font-size: 11px;\">En espera (vendedor)</ion-label>\n    </ion-button>\n  </ion-item>\n\n  <ion-item *ngIf = '!user.Premium' style=\"margin-top: 15px;margin-bottom: 10px;\">\n    <ion-button style=\"width: 225px;height: 45px;margin-top:12.5px;margin:auto;\" color=\"success\" (click)=\"serPremium()\">\n      <ion-icon name=\"diamond-outline\" size=\"large\" style=\"margin-right: 8px;\"></ion-icon>\n      <ion-label style=\"font-size: 17px;\">Ser premium</ion-label>\n    </ion-button>\n  </ion-item>\n\n\n  <ion-item *ngIf = 'user.Vendedor' style=\"margin-top: 22px;margin-bottom: 10px;\">\n    <ion-button style=\"width: 225px;height: 45px;margin-top:12.5px;margin:auto;\" color=\"success\" [routerLink]=\"['/mis-publicaciones']\">\n      <ion-icon name=\"megaphone-outline\" size=\"large\" style=\"margin-right: 8px;\"></ion-icon>\n      <ion-label style=\"font-size: 17px;\">Mis anuncios</ion-label>\n    </ion-button>\n\n  </ion-item>\n\n  <ion-item *ngIf = 'user.Vendedor' style=\"margin-top: 15px;margin-bottom: 10px;\">\n    <ion-button style=\"width: 225px;height: 45px;margin-top:12.5px;margin:auto;\" color=\"success\" [routerLink]=\"['/mis-servicios']\">\n      <ion-icon name=\"rocket-outline\" size=\"large\" style=\"margin-right: 8px;\"></ion-icon>\n      <ion-label style=\"font-size: 17px;\">Mis servicios</ion-label>\n    </ion-button>\n\n  </ion-item>\n\n\n  <ion-item *ngIf = 'user.Vendedor' style=\"margin-top: 15px;margin-bottom: 15px;\">\n    <ion-button style=\"width: 225px;height: 45px;margin-top:12.5px;margin:auto;\" color=\"success\" [routerLink]=\"['/mis-productos']\">\n      <ion-icon name=\"bag-check-outline\" size=\"large\" style=\"margin-right: 8px;\"></ion-icon>\n      <ion-label style=\"font-size: 17px;\">Mis productos</ion-label>\n    </ion-button>\n\n  </ion-item>\n\n  <ion-item style=\"margin-top: 10px;margin-bottom: 25px;\">\n    <ion-button style=\"width: 225px;height: 45px;margin-top:12.5px;margin:auto;\" color=\"danger\" (click)=\"logOutUser()\">\n      <ion-icon name=\"log-out-outline\" size=\"large\" style=\"margin-right: 8px;\"></ion-icon>\n      <ion-label style=\"font-size: 17px;\">Cerrar Sesión</ion-label>\n    </ion-button>\n\n  </ion-item>\n\n  \n\n    \n\n\n  \n  \n\n  <ion-fab vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\">\n    <ion-fab-button (click)=\"crearSugerencia()\">\n     <ion-icon name=\"help-circle-outline\" size=\"large\"></ion-icon>\n    </ion-fab-button>\n  </ion-fab>\n\n</ion-content>\n<style>\n  .circle-pic {     \n    width: 55%;\n    height: 35%;\n    margin: auto;\n    display: block;\n    margin-bottom: 10px;\n    margin-top: 10px;\n    /* -webkit-border-radius: 50%;\n    border-radius: 50%;\n    border-width: 50px; */\n\n  }\n</style>");
 
 /***/ }),
 
@@ -190,6 +190,84 @@ let PerfilPage = class PerfilPage {
             });
             yield alert.present();
         });
+    }
+    serVendedor() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            const alert = yield this.alertCtrt.create({
+                cssClass: 'my-custom-class',
+                header: '¿Desea cambiar su estado a vendedor?',
+                message: 'Pronto nos pondremos en contacto con usted!',
+                buttons: [
+                    {
+                        text: 'Cancel',
+                        role: 'cancel',
+                        cssClass: 'secondary',
+                        handler: (blah) => {
+                            // console.log('Confirm Cancel: blah');
+                        }
+                    }, {
+                        text: 'Sí',
+                        handler: (data) => {
+                            this.convertirseVendedor();
+                        }
+                    }
+                ]
+            });
+            yield alert.present();
+        });
+    }
+    serPremium() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            const alert = yield this.alertCtrt.create({
+                cssClass: 'my-custom-class',
+                header: '¿Desea comprar una cuenta premium?',
+                message: 'Pronto nos pondremos en contacto con usted!',
+                buttons: [
+                    {
+                        text: 'Cancel',
+                        role: 'cancel',
+                        cssClass: 'secondary',
+                        handler: (blah) => {
+                            // console.log('Confirm Cancel: blah');
+                        }
+                    }, {
+                        text: 'Sí',
+                        handler: (data) => {
+                            this.convertirsePremium();
+                        }
+                    }
+                ]
+            });
+            yield alert.present();
+        });
+    }
+    esperaVendedor() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            const alert = yield this.alertCtrt.create({
+                cssClass: 'my-custom-class',
+                header: 'Cambio de estado a vendedor',
+                message: 'Pronto nos contactaremos con usted para el cambio de estado!',
+                buttons: [
+                    {
+                        text: 'Ok',
+                        role: 'cancel',
+                        cssClass: 'secondary',
+                        handler: (blah) => {
+                            // console.log('Confirm Cancel: blah');
+                        }
+                    }
+                ]
+            });
+            yield alert.present();
+        });
+    }
+    convertirseVendedor() {
+        this.user.Verificacion = true;
+        this.usuarioService.updateUsuario(localStorage.getItem('userId'), this.user);
+    }
+    convertirsePremium() {
+        this.user.EsperaPremium = true;
+        this.usuarioService.updateUsuario(localStorage.getItem('userId'), this.user);
     }
     agregarSugerencia(sugerencia) {
         var fechaActual = new Date();

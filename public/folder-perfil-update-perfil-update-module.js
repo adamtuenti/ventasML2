@@ -169,19 +169,41 @@ let PerfilUpdatePage = class PerfilUpdatePage {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             // this.presentLoading("Espere por favor...");
             this.presentLoading("Espere por favor...");
-            var telefono = form.value.telefono;
-            var primeros = telefono.slice(0, 3);
+            var telefono;
+            var nombre;
+            var apellido;
+            var primeros;
+            if (form.value.telefono == '') {
+                telefono = this.user.Telefono;
+                primeros = telefono.slice(0, 3);
+            }
+            else {
+                telefono = form.value.telefono;
+                primeros = telefono.slice(0, 3);
+            }
             if (telefono.slice(0, 1) == 0) {
                 telefono = '+593' + telefono.slice(1, telefono.length);
             }
             else if (primeros == '+593') {
                 telefono = telefono;
             }
+            if (form.value.nombre == '') {
+                nombre = this.user.Nombre;
+            }
+            else {
+                nombre = form.value.nombre;
+            }
+            if (form.value.apellido == '') {
+                apellido = this.user.Apellido;
+            }
+            else {
+                apellido = form.value.apellido;
+            }
             // if(this.file!='null'){
             //   this.guardarArchivo(telefono);
             // }
             // else{
-            this.UpdateUserCompleto(telefono, form.value.nombre, form.value.apellido, this.image);
+            this.UpdateUserCompleto(telefono, nombre, apellido, this.image);
             // }
         });
     }

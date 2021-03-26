@@ -20,6 +20,7 @@ export class ComentariosLocalPage implements OnInit {
   idUser;
   idPropietario;
   condicion: boolean;
+  usuarios:Usuarios[] = [];
 
 
   constructor(private comentariosService: ComentariosService,
@@ -34,6 +35,7 @@ export class ComentariosLocalPage implements OnInit {
       this.comentariosService.getComentarios().subscribe(res => {this.comentarios = res;this.condicion = this.getDatos()});
       this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => {this.user =res;});
       this.idUser = localStorage.getItem('userId');
+      this.usuarioService.getUsuarios().subscribe(res => this.usuarios = res);
     });
     
   }

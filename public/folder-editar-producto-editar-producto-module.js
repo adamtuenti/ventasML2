@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-header nombre=\"perfil\"></app-header>\n\n<ion-content>\n\n\n  <form #form=\"ngForm\" (ngSubmit)=\"UpdateProducto(form)\">\n    <ion-list>   \n        \n  \n\n \n      \n\n\n\n     \n\n      \n      \n      \n\n      <ion-item>\n        <ion-icon name=\"bag-check-outline\" color=\"success\" size='large' style = 'margin-right: 7.5px;'></ion-icon>\n        <ion-input value=\"{{producto.Titulo}}\" name=\"titulo\" type='text' ngModel></ion-input>\n      </ion-item>\n\n      \n\n      <ion-item>\n        <ion-icon name=\"cash-outline\" color=\"success\" size='large' style = 'margin-right: 7.5px;'></ion-icon>\n        <ion-input value=\"{{producto.Precio}}\" name=\"precio\" type='text' ngModel></ion-input>\n      </ion-item>\n\n      <ng-container>\n        \n        <ion-input style= 'text-align: center;' value=\"{{producto.Descripcion}}\" name=\"descripcion\" required type='text' ngModel></ion-input>\n      </ng-container>\n\n      <ion-item style='margin-top: 7.5px;'>\n\n        <ion-img id=\"blah\" [src]=\"image\" alt=\"your image\" style=\"margin-top:5px;margin-bottom: 5px;height: 350px;width: 350px;margin:auto;\"></ion-img>\n        \n         \n      </ion-item>\n\n\n      \n      <ion-item >\n\n        \n          <ion-icon name=\"cloud-upload-outline\"></ion-icon>  <ion-text style='margin-left:7.5px'>Cambiar foto 1</ion-text>\n          <ion-input id=\"myFileInput\" (change)=\"readURL($event);\" accept=\"image/*\" placeholder=\"archivo\" name=\"archivo\" type='file' ngModel value=\"{{file}}\"></ion-input>\n        \n     \n      </ion-item>\n\n      <ion-item *ngIf='image1!=\"\"'>\n        <ion-img id=\"blah\" [src]=\"image1\" alt=\"your image\" style=\"margin-top:5px;margin-bottom: 5px;height: 350px;width: 350px;\"></ion-img>\n      </ion-item>\n\n      \n      <ion-item *ngIf='image1!=\"\"'>\n        <ion-icon name=\"cloud-upload-outline\"></ion-icon>  <ion-text style='margin-left:5.5px'>Cambiar foto 2</ion-text>\n        <ion-input id=\"myFileInput\" (change)=\"readURL1($event);\" accept=\"image/*\" placeholder=\"archivo\" name=\"archivo1\" type='file' ngModel value=\"{{file1}}\"></ion-input>\n      </ion-item>\n\n      <ion-item *ngIf='image1==\"\"'>\n        <ion-icon name=\"cloud-upload-outline\"></ion-icon>  <ion-text style='margin-left:5.5px'>Agregar foto</ion-text>\n        <ion-input id=\"myFileInput\" (change)=\"readURL1($event);\" accept=\"image/*\" placeholder=\"archivo\" name=\"archivo1\" type='file' ngModel value=\"{{file1}}\"></ion-input>\n    \n\n      </ion-item>\n        \n      \n\n\n      \n\n\n    </ion-list> \n\n    <div class=\"ion-padding\" align=\"center\">\n      <ion-button type=\"submit\"  [disabled]=\"form.invalid\" expand=\"block\" style=\"width: 150px;\">\n        Actualizar\n      </ion-button>\n      \n    </div>\n  </form>\n\n</ion-content>\n<style>\n  #myFileInput{\n    position: absolute;\n    opacity: 0;\n  }\n</style>");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-header nombre=\"perfil\"></app-header>\n\n<ion-content>\n\n\n  <form #form=\"ngForm\" (ngSubmit)=\"UpdateProducto(form)\">\n    <ion-list>   \n        \n  \n\n \n      \n\n\n\n     \n\n      \n      \n      \n\n      <ion-item>\n        <ion-icon name=\"bag-check-outline\" color=\"success\" size='large' style = 'margin-right: 7.5px;'></ion-icon>\n        <ion-input value=\"{{producto.Titulo}}\" name=\"titulo\" type='text' ngModel></ion-input>\n      </ion-item>\n\n      \n\n      <ion-item>\n        <ion-icon name=\"cash-outline\" color=\"success\" size='large' style = 'margin-right: 7.5px;'></ion-icon>\n        <ion-input value=\"{{producto.Precio}}\" name=\"precio\" type='text' ngModel></ion-input>\n      </ion-item>\n\n      <ng-container>\n        \n        <ion-input style= 'text-align: center;' value=\"{{producto.Descripcion}}\" name=\"descripcion\" type='text' ngModel></ion-input>\n      </ng-container>\n\n      <ion-item style='margin-top: 7.5px;'>\n\n        <ion-img id=\"blah\" [src]=\"image\" alt=\"your image\" style=\"margin-top:5px;margin-bottom: 5px;height: 350px;width: 350px;margin:auto;\"></ion-img>\n        \n         \n      </ion-item>\n\n\n      \n      <ion-item >\n\n        \n          <ion-icon name=\"cloud-upload-outline\"></ion-icon>  <ion-text style='margin-left:7.5px'>Cambiar foto 1</ion-text>\n          <ion-input id=\"myFileInput\" (change)=\"readURL($event);\" accept=\"image/*\" placeholder=\"archivo\" name=\"archivo\" type='file' ngModel value=\"{{file}}\"></ion-input>\n        \n     \n      </ion-item>\n\n      <ion-item *ngIf='image1!=\"\"'>\n        <ion-img id=\"blah\" [src]=\"image1\" alt=\"your image\" style=\"margin-top:5px;margin-bottom: 5px;height: 350px;width: 350px;\"></ion-img>\n      </ion-item>\n\n      \n      <ion-item *ngIf='image1!=\"\"'>\n        <ion-icon name=\"cloud-upload-outline\"></ion-icon>  <ion-text style='margin-left:5.5px'>Cambiar foto 2</ion-text>\n        <ion-input id=\"myFileInput\" (change)=\"readURL1($event);\" accept=\"image/*\" placeholder=\"archivo\" name=\"archivo1\" type='file' ngModel value=\"{{file1}}\"></ion-input>\n      </ion-item>\n\n      <ion-item *ngIf='image1==\"\"'>\n        <ion-icon name=\"cloud-upload-outline\"></ion-icon>  <ion-text style='margin-left:5.5px'>Agregar foto</ion-text>\n        <ion-input id=\"myFileInput\" (change)=\"readURL1($event);\" accept=\"image/*\" placeholder=\"archivo\" name=\"archivo1\" type='file' ngModel value=\"{{file1}}\"></ion-input>\n    \n\n      </ion-item>\n        \n      \n\n\n      \n\n\n    </ion-list> \n\n    <div class=\"ion-padding\" align=\"center\">\n      <ion-button type=\"submit\"  [disabled]=\"form.invalid\" expand=\"block\" style=\"width: 150px;\">\n        Actualizar\n      </ion-button>\n      \n    </div>\n  </form>\n\n</ion-content>\n<style>\n  #myFileInput{\n    position: absolute;\n    opacity: 0;\n  }\n</style>");
 
 /***/ }),
 
@@ -182,7 +182,28 @@ let EditarProductoPage = class EditarProductoPage {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             // this.presentLoading("Espere por favor...");
             this.presentLoading("Espere por favor...");
-            this.UpdateProductoCompleto(form.value.precio, form.value.titulo, form.value.descripcion, this.image, this.image1);
+            var precio;
+            var titulo;
+            var descripcion;
+            if (form.value.precio == '') {
+                precio = this.producto.Precio;
+            }
+            else {
+                precio = form.value.precio;
+            }
+            if (form.value.titulo == '') {
+                titulo = this.producto.Titulo;
+            }
+            else {
+                titulo = form.value.titulo;
+            }
+            if (form.value.descripcion == '') {
+                descripcion = this.producto.Descripcion;
+            }
+            else {
+                descripcion = form.value.descripcion;
+            }
+            this.UpdateProductoCompleto(precio, titulo, descripcion, this.image, this.image1);
         });
     }
     UpdateProductoCompleto(precio, titulo, descripcion, downloadURL, downloadURL1) {

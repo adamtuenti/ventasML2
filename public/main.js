@@ -428,6 +428,14 @@ const routes = [
     {
         path: 'editar-local/:idLocal/:idPropietario',
         loadChildren: () => Promise.all(/*! import() | folder-editar-local-editar-local-module */[__webpack_require__.e("common"), __webpack_require__.e("folder-editar-local-editar-local-module")]).then(__webpack_require__.bind(null, /*! ./folder/editar-local/editar-local.module */ "./src/app/folder/editar-local/editar-local.module.ts")).then(m => m.EditarLocalPageModule)
+    },
+    {
+        path: 'mis-servicios',
+        loadChildren: () => Promise.all(/*! import() | folder-mis-servicios-mis-servicios-module */[__webpack_require__.e("common"), __webpack_require__.e("folder-mis-servicios-mis-servicios-module")]).then(__webpack_require__.bind(null, /*! ./folder/mis-servicios/mis-servicios.module */ "./src/app/folder/mis-servicios/mis-servicios.module.ts")).then(m => m.MisServiciosPageModule)
+    },
+    {
+        path: 'productos-todos',
+        loadChildren: () => Promise.all(/*! import() | folder-productos-todos-productos-todos-module */[__webpack_require__.e("common"), __webpack_require__.e("folder-productos-todos-productos-todos-module")]).then(__webpack_require__.bind(null, /*! ./folder/productos-todos/productos-todos.module */ "./src/app/folder/productos-todos/productos-todos.module.ts")).then(m => m.ProductosTodosPageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {
@@ -684,6 +692,22 @@ NoLoginGuard = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 /***/ }),
 
+/***/ "./src/app/models/variables.ts":
+/*!*************************************!*\
+  !*** ./src/app/models/variables.ts ***!
+  \*************************************/
+/*! exports provided: Variables */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Variables", function() { return Variables; });
+class Variables {
+}
+
+
+/***/ }),
+
 /***/ "./src/app/services/auth.service.ts":
 /*!******************************************!*\
   !*** ./src/app/services/auth.service.ts ***!
@@ -702,6 +726,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(firebase__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
 /* harmony import */ var _usuario_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./usuario.service */ "./src/app/services/usuario.service.ts");
+/* harmony import */ var _models_variables__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../models/variables */ "./src/app/models/variables.ts");
+/* harmony import */ var _variables_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./variables.service */ "./src/app/services/variables.service.ts");
+
+
 
 
 
@@ -709,10 +737,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let AuthService = class AuthService {
-    constructor(router, firestore, usuarioService) {
+    constructor(router, firestore, variablesService, usuarioService) {
         this.router = router;
         this.firestore = firestore;
+        this.variablesService = variablesService;
         this.usuarioService = usuarioService;
+        this.variables = new _models_variables__WEBPACK_IMPORTED_MODULE_6__["Variables"]();
     }
     loginUser(email, password) {
         return new Promise((resolve, reject) => {
@@ -723,30 +753,46 @@ let AuthService = class AuthService {
         });
     }
     registerUser(nombre, apellido, email, password, ciudadela, manzana, villa, telefono, downloadURL) {
+        this.variablesService.getVariable('wCIVneApMUwcOvDwIneJ').subscribe(res => { this.variables = res; });
         return new Promise((resolve, reject) => {
             firebase__WEBPACK_IMPORTED_MODULE_3__["auth"]().createUserWithEmailAndPassword(email, password).then(res => {
-                this.firestore.collection('Usuarios').doc(res.user.uid).set({
-                    Nombre: nombre,
-                    Apellido: apellido,
-                    Correo: email,
-                    Ciudadela: ciudadela,
-                    Foto: downloadURL,
-                    Manzana: manzana,
-                    Premium: true,
-                    Publicaciones: 0,
-                    Productos: 0,
-                    Vendedor: false,
-                    Telefono: telefono,
-                    Villa: villa,
-                    Verificacion: true,
-                    EsperaPremium: false
-                });
+                if (this.variables.RegistroVendedores) {
+                    this.firestore.collection('Usuarios').doc(res.user.uid).set({
+                        Nombre: nombre,
+                        Apellido: apellido,
+                        Correo: email,
+                        Ciudadela: ciudadela,
+                        Foto: downloadURL,
+                        Manzana: manzana,
+                        Premium: true,
+                        Publicaciones: 0,
+                        Productos: 0,
+                        Vendedor: true,
+                        Telefono: telefono,
+                        Villa: villa,
+                        Verificacion: false,
+                        EsperaPremium: false
+                    });
+                }
+                else {
+                    this.firestore.collection('Usuarios').doc(res.user.uid).set({
+                        Nombre: nombre,
+                        Apellido: apellido,
+                        Correo: email,
+                        Ciudadela: ciudadela,
+                        Foto: downloadURL,
+                        Manzana: manzana,
+                        Premium: false,
+                        Publicaciones: 0,
+                        Productos: 0,
+                        Vendedor: false,
+                        Telefono: telefono,
+                        Villa: villa,
+                        Verificacion: false,
+                        EsperaPremium: false
+                    });
+                }
                 resolve(res);
-                // firebase.auth().signInWithEmailAndPassword(email, password).then( res=>{ 
-                //   localStorage.setItem('userId', res.user.uid);
-                // resolve(res);   
-                // }).catch(err => reject(err))
-                // }).catch(err => reject(err))
             });
         });
     }
@@ -761,6 +807,7 @@ let AuthService = class AuthService {
 AuthService.ctorParameters = () => [
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] },
     { type: angularfire2_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestore"] },
+    { type: _variables_service__WEBPACK_IMPORTED_MODULE_7__["VariablesService"] },
     { type: _usuario_service__WEBPACK_IMPORTED_MODULE_5__["UsuarioService"] }
 ];
 AuthService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
@@ -827,6 +874,57 @@ UsuarioService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
         providedIn: 'root'
     })
 ], UsuarioService);
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/variables.service.ts":
+/*!***********************************************!*\
+  !*** ./src/app/services/variables.service.ts ***!
+  \***********************************************/
+/*! exports provided: VariablesService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VariablesService", function() { return VariablesService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var angularfire2_firestore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! angularfire2/firestore */ "./node_modules/angularfire2/firestore/index.js");
+/* harmony import */ var angularfire2_firestore__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(angularfire2_firestore__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+
+
+
+
+let VariablesService = class VariablesService {
+    constructor(firestore) {
+        this.firestore = firestore;
+        this.variablesCollection = firestore.collection('VariablesGlobales'); //, ref => ref.where("Nombre", "==", "Celulares")
+        this.variables = this.variablesCollection.snapshotChanges().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(actions => {
+            return actions.map(a => {
+                const data = a.payload.doc.data();
+                const id = a.payload.doc.id;
+                return Object.assign({ id }, data);
+            });
+        }));
+    }
+    getVariables() {
+        return this.variables;
+    }
+    getVariable(id) {
+        return this.variablesCollection.doc(id).valueChanges();
+    }
+};
+VariablesService.ctorParameters = () => [
+    { type: angularfire2_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestore"] }
+];
+VariablesService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    })
+], VariablesService);
 
 
 

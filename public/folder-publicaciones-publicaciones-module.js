@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-header nombre=\"publicaciones\"></app-header>\r\n\r\n<ion-content>\r\n\r\n  <ion-slides pager=\"true\" [options]=\"slideOpts\" style=\"margin-top: 11.5px;\">\r\n    <ion-slide style=\"height: 375px;width: 95%;\" *ngFor=\"let publicidadDetalle of publicidad\">\r\n      \r\n      <ion-content>\r\n        <ion-item>\r\n\r\n          <ion-button  expand=\"full\" href=\"{{publicidadDetalle.Imagen}}\" color=\"light\" style=\"height: 300px;width: 100%;\" fill=\"clear\"><ion-img src=\"{{publicidadDetalle.Imagen}}\" style=\"height: 100%;width: 100%;\"></ion-img></ion-button>\r\n          <!-- <ion-img src=\"{{publicidadDetalle.Imagen}}\" style=\"height: 275px;width: 100%;\"></ion-img> -->\r\n\r\n        </ion-item>\r\n        <div style=\"margin:auto;\">\r\n          <!-- <ion-button  expand=\"full\"  expand=\"full\" href=\"{{publicidadDetalle.Imagen}}\" style=\"width: 50px;height: 50px;\" color=\"light\"><ion-icon name=\"expand-outline\" size=\"large\" ></ion-icon> </ion-button> -->\r\n          <a href= 'https://api.whatsapp.com/send?phone={{publicidadDetalle.Telefono}}'><ion-icon name=\"logo-whatsapp\" size=\"large\" color=\"success\"></ion-icon></a>\r\n        </div>\r\n\r\n      </ion-content>\r\n      \r\n    </ion-slide>\r\n    <!-- <ion-slide *ngIf='publicidad.Imagen!=\"\"' style=\"height: 325px;width: 85%;margin: auto\">\r\n      <ion-button expand=\"full\" href=\"{{publicidad.Imagen}}\" color=\"light\" style=\"height: 100%;width: 100%;\" fill=\"clear\"><ion-img src=\"{{publicidad.Imagen}}\" style=\"height: 275px;width: 100%;\"></ion-img></ion-button>\r\n    </ion-slide> -->\r\n    \r\n  </ion-slides>\r\n\r\n\r\n  <ion-list *ngFor=\"let publicacion of publicaciones\">\r\n    <ion-card style=\"background-color: #ACC8FC\">\r\n\r\n        <ion-card-header (click)='aumentarVisitaPublicacion(publicacion.id,publicacion.Usuario,publicacion)'>\r\n          <ion-item>\r\n            <ion-card-title >\r\n              <label style='color:black;font-size: 17.2px;'>\r\n                {{publicacion.Titulo}}\r\n              </label>\r\n            </ion-card-title>  \r\n          </ion-item> \r\n\r\n        </ion-card-header>\r\n\r\n        <ion-card-content (click)='aumentarVisitaPublicacion(publicacion.id,publicacion.Usuario,publicacion)'>\r\n          <label style='color:black;font-size: 15px;'>{{publicacion.Descripcion}}</label>\r\n          \r\n        </ion-card-content>\r\n\r\n        <ion-item>\r\n\r\n          <ion-icon *ngIf=\"publicacion.Usuario == idUser\" name=\"trash-outline\" slot='start' color='danger'(click)=\"alert(publicacion.id)\"></ion-icon>\r\n          <ion-item slot='end'>\r\n            \r\n            {{publicacion.Fecha | date:'yyyy/MM/dd'}}\r\n          </ion-item>\r\n\r\n        </ion-item>\r\n        \r\n        \r\n\r\n      \r\n    </ion-card>\r\n\r\n  </ion-list>\r\n\r\n\r\n  <ion-fab vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\" >\r\n    <ion-fab-button [routerLink]=\"['/crear-publicaciones-generales']\">\r\n    <ion-icon name=\"add-outline\"></ion-icon>\r\n    </ion-fab-button>\r\n  </ion-fab>\r\n</ion-content>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-header nombre=\"publicaciones\"></app-header>\r\n\r\n<ion-content>\r\n\r\n  <ion-slides pager=\"true\" [options]=\"slideOpts\" style=\"margin-top: 11.5px;\">\r\n    <ion-slide style=\"height: 375px;width: 95%;\" *ngFor=\"let publicidadDetalle of publicidad\">\r\n      \r\n      <ion-content>\r\n        <ion-item>\r\n\r\n          <ion-button  expand=\"full\" href=\"{{publicidadDetalle.Imagen}}\" color=\"light\" style=\"height: 300px;width: 100%;\" fill=\"clear\"><ion-img src=\"{{publicidadDetalle.Imagen}}\" style=\"height: 100%;width: 100%;\"></ion-img></ion-button>\r\n          <!-- <ion-img src=\"{{publicidadDetalle.Imagen}}\" style=\"height: 275px;width: 100%;\"></ion-img> -->\r\n\r\n        </ion-item>\r\n        <div style=\"margin:auto;\">\r\n          <!-- <ion-button  expand=\"full\"  expand=\"full\" href=\"{{publicidadDetalle.Imagen}}\" style=\"width: 50px;height: 50px;\" color=\"light\"><ion-icon name=\"expand-outline\" size=\"large\" ></ion-icon> </ion-button> -->\r\n          <a href= 'https://api.whatsapp.com/send?phone={{publicidadDetalle.Telefono}}'><ion-icon name=\"logo-whatsapp\" size=\"large\" color=\"success\"></ion-icon></a>\r\n        </div>\r\n\r\n      </ion-content>\r\n      \r\n    </ion-slide>\r\n    <!-- <ion-slide *ngIf='publicidad.Imagen!=\"\"' style=\"height: 325px;width: 85%;margin: auto\">\r\n      <ion-button expand=\"full\" href=\"{{publicidad.Imagen}}\" color=\"light\" style=\"height: 100%;width: 100%;\" fill=\"clear\"><ion-img src=\"{{publicidad.Imagen}}\" style=\"height: 275px;width: 100%;\"></ion-img></ion-button>\r\n    </ion-slide> -->\r\n    \r\n  </ion-slides>\r\n\r\n\r\n  <ion-list *ngFor=\"let publicacion of publicaciones\">\r\n    <ion-card style=\"background-color: #ACC8FC\" *ngIf = 'publicacion.Visibilidad'>\r\n\r\n        <ion-card-header (click)='aumentarVisitaPublicacion(publicacion.id,publicacion.Usuario,publicacion)'>\r\n          <ion-item>\r\n            <ion-card-title >\r\n              <label style='color:black;font-size: 17.2px;'>\r\n                {{publicacion.Titulo}}\r\n              </label>\r\n            </ion-card-title>  \r\n          </ion-item> \r\n\r\n        </ion-card-header>\r\n\r\n        <ion-card-content (click)='aumentarVisitaPublicacion(publicacion.id,publicacion.Usuario,publicacion)'>\r\n          <label style='color:black;font-size: 15px;'>{{publicacion.Descripcion}}</label>\r\n          \r\n        </ion-card-content>\r\n\r\n        <ion-item>\r\n\r\n          <ion-icon *ngIf=\"publicacion.Usuario == idUser\" name=\"trash-outline\" slot='start' color='danger'(click)=\"alert(publicacion.id)\"></ion-icon>\r\n          <ion-item slot='end'>\r\n            \r\n            {{publicacion.Fecha | date:'yyyy/MM/dd'}}\r\n          </ion-item>\r\n\r\n        </ion-item>\r\n        \r\n        \r\n\r\n      \r\n    </ion-card>\r\n\r\n  </ion-list>\r\n\r\n\r\n  <ion-fab vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\" >\r\n    <ion-fab-button (click)=\"validarPremium()\">\r\n    <ion-icon name=\"add-outline\"></ion-icon>\r\n    </ion-fab-button>\r\n  </ion-fab>\r\n</ion-content>\r\n");
 
 /***/ }),
 
@@ -126,6 +126,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var angularfire2_storage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! angularfire2/storage */ "./node_modules/angularfire2/storage/index.js");
 /* harmony import */ var angularfire2_storage__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(angularfire2_storage__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+/* harmony import */ var src_app_models_usuario__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/models/usuario */ "./src/app/models/usuario.ts");
+/* harmony import */ var src_app_services_usuario_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/app/services/usuario.service */ "./src/app/services/usuario.service.ts");
+/* harmony import */ var src_app_models_variables__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! src/app/models/variables */ "./src/app/models/variables.ts");
+/* harmony import */ var src_app_services_variables_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! src/app/services/variables.service */ "./src/app/services/variables.service.ts");
+
+
+
+
 
 
 
@@ -134,11 +142,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let PublicacionesPage = class PublicacionesPage {
-    constructor(angularFireStorage, router, alertCtrt, publicacionesService, publicidadService, activateRoute, loadingController) {
+    constructor(angularFireStorage, router, alertCtrt, publicacionesService, variablesService, usuarioService, publicidadService, activateRoute, loadingController) {
         this.angularFireStorage = angularFireStorage;
         this.router = router;
         this.alertCtrt = alertCtrt;
         this.publicacionesService = publicacionesService;
+        this.variablesService = variablesService;
+        this.usuarioService = usuarioService;
         this.publicidadService = publicidadService;
         this.activateRoute = activateRoute;
         this.loadingController = loadingController;
@@ -148,11 +158,15 @@ let PublicacionesPage = class PublicacionesPage {
         };
         this.publicaciones = [];
         this.publicidad = [];
+        this.user = new src_app_models_usuario__WEBPACK_IMPORTED_MODULE_7__["Usuarios"]();
+        this.variables = new src_app_models_variables__WEBPACK_IMPORTED_MODULE_9__["Variables"]();
     }
     ngOnInit() {
         this.publicacionesService.getPublicaciones().subscribe(res => { this.publicaciones = res; });
         this.publicidadService.getPublicidad().subscribe(res => { this.publicidad = res; this.shuffle(this.publicidad); });
+        this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => { this.user = res; });
         this.idUser = localStorage.getItem('userId');
+        this.variablesService.getVariable('wCIVneApMUwcOvDwIneJ').subscribe(res => { this.variables = res; });
     }
     alert(id) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
@@ -200,12 +214,47 @@ let PublicacionesPage = class PublicacionesPage {
         }
         return array;
     }
+    validarPremium() {
+        if (this.user.Publicaciones >= this.variables.NumeroPublicaciones) {
+            if (this.user.Premium) {
+                this.router.navigate(['/crear-publicaciones-generales']);
+            }
+            else {
+                this.serPremium();
+            }
+        }
+        else {
+            this.router.navigate(['/crear-publicaciones-generales']);
+        }
+    }
+    serPremium() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            const alert = yield this.alertCtrt.create({
+                cssClass: 'my-custom-class',
+                header: 'Ya excedió el número de publicaciones gratis (' + this.variables.NumeroPublicaciones.toString() + ')',
+                message: 'Para poder realizar más publicaciones, diríjase a su perfil y solicite ser premium.',
+                buttons: [
+                    {
+                        text: 'Ok',
+                        role: 'cancel',
+                        cssClass: 'secondary',
+                        handler: (blah) => {
+                            // console.log('Confirm Cancel: blah');
+                        }
+                    }
+                ]
+            });
+            yield alert.present();
+        });
+    }
 };
 PublicacionesPage.ctorParameters = () => [
     { type: angularfire2_storage__WEBPACK_IMPORTED_MODULE_5__["AngularFireStorage"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["AlertController"] },
     { type: src_app_services_publicaciones_generales_service__WEBPACK_IMPORTED_MODULE_3__["PublicacionesGeneralesService"] },
+    { type: src_app_services_variables_service__WEBPACK_IMPORTED_MODULE_10__["VariablesService"] },
+    { type: src_app_services_usuario_service__WEBPACK_IMPORTED_MODULE_8__["UsuarioService"] },
     { type: src_app_services_publicidad_service__WEBPACK_IMPORTED_MODULE_4__["PublicidadService"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["LoadingController"] }

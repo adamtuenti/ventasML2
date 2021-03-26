@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n<app-header nombre=\"categorias\"></app-header>\n\n<ion-content>\n\n  <ion-segment color=\"tertiary\" value=\"categorias\">\n\n    <ion-segment-button value=\"categorias\" [routerLink]=\"['/categorias']\" routerDirection=\"root\">\n      <ion-icon name=\"gift-outline\" size=\"large\"></ion-icon> <ion-label style=\"font-size: 11px;\">Categorias</ion-label>\n    </ion-segment-button>\n\n    <ion-segment-button value=\"grupos\" [routerLink]=\"['/servicios']\" routerDirection=\"root\">\n      <ion-icon name=\"rocket-outline\" size=\"large\"></ion-icon> <ion-label style=\"font-size: 11px;\">Servicios</ion-label>\n    </ion-segment-button>\n\n  </ion-segment>\n\n  <ion-searchbar\n    color=\"light\" \n    placeholder = \"Buscar servicio...\"\n    animated\n    (ionChange)=\"buscar($event)\">\n  </ion-searchbar>\n\n  <ion-list *ngFor=\"let servicio of servicios | filtroServicios: textoBuscar\">\n    \n      <ion-item  *ngIf = 'servicio.Visibilidad'>\n        <ion-avatar slot=\"start\" style=\"height: 50px;width: 50px;margin-right: 8.5px;\" [routerLink]=\"['/servicio-detalle',servicio.id, servicio.Usuario]\">\n          <img src=\"{{servicio.Foto}}\">\n        </ion-avatar> \n        <ion-label style=\"font-size: 17.2px;\" [routerLink]=\"['/servicio-detalle',servicio.id, servicio.Usuario]\">{{servicio.Titulo}}</ion-label>\n\n        <ion-icon  *ngIf=\"servicio.Usuario == idUser\" name=\"trash-outline\" slot='end' color='danger'(click)=\"alert(servicio.id)\"></ion-icon>\n  \n          \n  \n      </ion-item>\n      \n        \n\n      \n\n    \n    \n\n  </ion-list>\n\n\n\n\n  <ion-fab vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\">\n    <ion-fab-button [routerLink]=\"['/crear-servicio']\">\n    <ion-icon name=\"add-outline\"></ion-icon>\n    </ion-fab-button>\n  </ion-fab>\n\n  \n\n\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("\n<app-header nombre=\"categorias\"></app-header>\n\n<ion-content>\n\n  <ion-segment color=\"tertiary\" value=\"servicios\">\n\n    \n\n    <ion-segment-button value=\"productos\" [routerLink]=\"['/productos-todos']\" >\n      <ion-icon name=\"gift-outline\" size=\"large\"></ion-icon> <ion-label style=\"font-size: 11px;\">Productos</ion-label>\n    </ion-segment-button>\n\n    <ion-segment-button value=\"categorias\" [routerLink]=\"['/categorias']\" >\n      <ion-icon name=\"list-outline\" size=\"large\"></ion-icon> <ion-label style=\"font-size: 11px;\">Categorias</ion-label>\n    </ion-segment-button>\n\n    <ion-segment-button value=\"servicios\" [routerLink]=\"['/servicios']\">\n      <ion-icon name=\"rocket-outline\" size=\"large\"></ion-icon> <ion-label style=\"font-size: 11px;\">Servicios</ion-label>\n    </ion-segment-button>\n\n  </ion-segment>\n\n  <ion-searchbar\n    color=\"light\" \n    placeholder = \"Buscar servicio...\"\n    animated\n    (ionChange)=\"buscar($event)\">\n  </ion-searchbar>\n\n  <ion-list *ngFor=\"let servicio of servicios | filtroServicios: textoBuscar\">\n    \n      <ion-card  *ngIf = 'servicio.Visibilidad'>\n        <ion-item (click)='aumentarVisita(servicio.id, servicio)'>\n          <ion-avatar slot=\"start\" style=\"height: 50px;width: 50px;margin-right: 8.5px;\" >\n            <img src=\"{{servicio.Foto}}\">\n          </ion-avatar> \n          <ion-label style=\"font-size: 17.2px;\">{{servicio.Titulo}}</ion-label>\n  \n\n        </ion-item>\n\n        <ion-item *ngIf=\"servicio.Usuario == idUser\">\n          <ion-icon   name=\"trash-outline\" slot='end' color='danger'(click)=\"alert(servicio.id)\"></ion-icon>\n\n        </ion-item>\n        \n        \n  \n          \n  \n      </ion-card>\n      \n        \n\n      \n\n    \n    \n\n  </ion-list>\n\n\n\n\n  <ion-fab vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\">\n    <ion-fab-button [routerLink]=\"['/crear-servicio']\">\n    <ion-icon name=\"add-outline\"></ion-icon>\n    </ion-fab-button>\n  </ion-fab>\n\n  \n\n\n</ion-content>\n");
 
 /***/ }),
 
@@ -141,12 +141,31 @@ let ServiciosPage = class ServiciosPage {
         this.textoBuscar = '';
     }
     ngOnInit() {
-        this.servicioService.getServicios().subscribe(res => { this.servicios = res; });
+        this.servicioService.getServicios().subscribe(res => { this.servicios = res; this.shuffle(this.servicios); });
         this.idUser = localStorage.getItem('userId');
     }
     buscar(event) {
         const texto = event.target.value;
         this.textoBuscar = texto;
+    }
+    shuffle(array) {
+        var currentIndex = array.length, temporaryValue, randomIndex;
+        // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
+            // Pick a remaining element...
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+            // And swap it with the current element.
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+        return array;
+    }
+    aumentarVisita(id, servicios) {
+        servicios.Visitas = servicios.Visitas + 1;
+        this.servicioService.updateServicio(id, servicios);
+        this.router.navigate(['/servicio-detalle', servicios.id, servicios.Usuario]);
     }
     alert(id) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {

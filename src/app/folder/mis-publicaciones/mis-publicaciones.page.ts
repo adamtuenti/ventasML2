@@ -66,8 +66,8 @@ export class MisPublicacionesPage implements OnInit {
   }
   remove(id){
     this.publicacionesService.removePublicacion(id)
-    this.user.Publicaciones = this.user.Publicaciones - 1;
-    this.usuarioService.updateUsuario(this.idUser,this.user)
+    // this.user.Publicaciones = this.user.Publicaciones - 1;
+    // this.usuarioService.updateUsuario(this.idUser,this.user)
   }
 
 }

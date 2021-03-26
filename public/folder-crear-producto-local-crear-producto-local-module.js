@@ -126,6 +126,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var angularfire2_storage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! angularfire2/storage */ "./node_modules/angularfire2/storage/index.js");
 /* harmony import */ var angularfire2_storage__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(angularfire2_storage__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+/* harmony import */ var src_app_models_usuario__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/models/usuario */ "./src/app/models/usuario.ts");
+/* harmony import */ var src_app_services_usuario_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/app/services/usuario.service */ "./src/app/services/usuario.service.ts");
+
+
 
 
 
@@ -134,24 +138,31 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let CrearProductoLocalPage = class CrearProductoLocalPage {
-    constructor(angularFireStorage, router, alertCtrt, productosService, activateRoute, loadingController) {
+    constructor(angularFireStorage, router, alertCtrt, usuarioService, productosService, activateRoute, loadingController) {
         this.angularFireStorage = angularFireStorage;
         this.router = router;
         this.alertCtrt = alertCtrt;
+        this.usuarioService = usuarioService;
         this.productosService = productosService;
         this.activateRoute = activateRoute;
         this.loadingController = loadingController;
         this.producto = new src_app_models_productosLocales__WEBPACK_IMPORTED_MODULE_3__["ProductosLocales"]();
+        this.user = new src_app_models_usuario__WEBPACK_IMPORTED_MODULE_7__["Usuarios"]();
     }
     ngOnInit() {
         this.activateRoute.paramMap.subscribe(paramMap => {
             this.idLocal = paramMap.get('idLocal');
             this.idPropietario = localStorage.getItem('userId');
+            this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => { this.user = res; });
         });
+    }
+    capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
     }
     crearProducto(form) {
         this.presentLoading("Espere por favor...");
-        this.producto.Titulo = form.value.titulo;
+        var titulo = this.capitalizeFirstLetter(form.value.titulo);
+        this.producto.Titulo = titulo;
         this.producto.Precio = form.value.precio;
         this.producto.Local = this.idLocal;
         this.producto.Usuario = localStorage.getItem('idUser');
@@ -211,6 +222,8 @@ let CrearProductoLocalPage = class CrearProductoLocalPage {
     }
     guardarCompleto(downloadURL) {
         this.producto.Foto = downloadURL;
+        this.user.Productos = this.user.Productos + 1;
+        this.usuarioService.updateUsuario(this.idPropietario, this.user);
         this.productosService.addProducto(this.producto).then(auth => {
             this.loading.dismiss();
             this.router.navigate(["/categorias"]);
@@ -224,6 +237,7 @@ CrearProductoLocalPage.ctorParameters = () => [
     { type: angularfire2_storage__WEBPACK_IMPORTED_MODULE_5__["AngularFireStorage"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["AlertController"] },
+    { type: src_app_services_usuario_service__WEBPACK_IMPORTED_MODULE_8__["UsuarioService"] },
     { type: src_app_services_productos_locales_service__WEBPACK_IMPORTED_MODULE_4__["ProductosLocalesService"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["LoadingController"] }
