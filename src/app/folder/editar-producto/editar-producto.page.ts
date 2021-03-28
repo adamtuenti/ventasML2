@@ -17,7 +17,7 @@ export class EditarProductoPage implements OnInit {
   producto: Productos = new Productos();
   image;
   image1;
-  file: File;
+  file0: File;
   file1: File;
   loading: HTMLIonLoadingElement;
   idProducto;
@@ -50,12 +50,12 @@ export class EditarProductoPage implements OnInit {
 
   readURL(event): void {
     if (event.target.files && event.target.files[0]) {
-        this.file = event.target.files[0];
+        this.file0 = event.target.files[0];
 
         const reader = new FileReader();
         reader.onload = e => this.image = reader.result;
 
-        reader.readAsDataURL(this.file);
+        reader.readAsDataURL(this.file0);
     }
   }
 

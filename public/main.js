@@ -288,8 +288,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
 /* harmony import */ var _guards_no_login_guard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./guards/no-login.guard */ "./src/app/guards/no-login.guard.ts");
-/* harmony import */ var _guards_auth_guard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./guards/auth.guard */ "./src/app/guards/auth.guard.ts");
-
 
 
 
@@ -300,26 +298,26 @@ const routes = [
         redirectTo: 'login',
         pathMatch: 'full'
     },
-    {
-        path: 'comentarios/:idLocal',
-        loadChildren: () => Promise.all(/*! import() | folder-comentarios-comentarios-module */[__webpack_require__.e("common"), __webpack_require__.e("folder-comentarios-comentarios-module")]).then(__webpack_require__.bind(null, /*! ./folder/comentarios/comentarios.module */ "./src/app/folder/comentarios/comentarios.module.ts")).then(m => m.ComentariosPageModule),
-        canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_4__["AuthGuard"]]
-    },
-    {
-        path: 'comentario-detalle/:id',
-        loadChildren: () => Promise.all(/*! import() | folder-comentario-detalle-comentario-detalle-module */[__webpack_require__.e("common"), __webpack_require__.e("folder-comentario-detalle-comentario-detalle-module")]).then(__webpack_require__.bind(null, /*! ./folder/comentario-detalle/comentario-detalle.module */ "./src/app/folder/comentario-detalle/comentario-detalle.module.ts")).then(m => m.ComentarioDetallePageModule),
-        canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_4__["AuthGuard"]]
-    },
-    {
-        path: 'premium-pendientes',
-        loadChildren: () => Promise.all(/*! import() | folder-premium-pendientes-premium-pendientes-module */[__webpack_require__.e("common"), __webpack_require__.e("folder-premium-pendientes-premium-pendientes-module")]).then(__webpack_require__.bind(null, /*! ./folder/premium-pendientes/premium-pendientes.module */ "./src/app/folder/premium-pendientes/premium-pendientes.module.ts")).then(m => m.PremiumPendientesPageModule),
-        canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_4__["AuthGuard"]]
-    },
-    {
-        path: 'premium-pendientes-detalle/:id',
-        loadChildren: () => Promise.all(/*! import() | folder-premium-pendientes-detalle-premium-pendientes-detalle-module */[__webpack_require__.e("common"), __webpack_require__.e("folder-premium-pendientes-detalle-premium-pendientes-detalle-module")]).then(__webpack_require__.bind(null, /*! ./folder/premium-pendientes-detalle/premium-pendientes-detalle.module */ "./src/app/folder/premium-pendientes-detalle/premium-pendientes-detalle.module.ts")).then(m => m.PremiumPendientesDetallePageModule),
-        canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_4__["AuthGuard"]]
-    },
+    // {
+    //   path: 'comentarios/:idLocal',
+    //   loadChildren: () => import('./folder/comentarios/comentarios.module').then( m => m.ComentariosPageModule),
+    //   canActivate:[AuthGuard]
+    // },
+    // {
+    //   path: 'comentario-detalle/:id',
+    //   loadChildren: () => import('./folder/comentario-detalle/comentario-detalle.module').then( m => m.ComentarioDetallePageModule),
+    //   canActivate:[AuthGuard]
+    // },
+    // {
+    //   path: 'premium-pendientes',
+    //   loadChildren: () => import('./folder/premium-pendientes/premium-pendientes.module').then( m => m.PremiumPendientesPageModule),
+    //   canActivate:[AuthGuard]
+    // },
+    // {
+    //   path: 'premium-pendientes-detalle/:id',
+    //   loadChildren: () => import('./folder/premium-pendientes-detalle/premium-pendientes-detalle.module').then( m => m.PremiumPendientesDetallePageModule),
+    //   canActivate:[AuthGuard]
+    // },
     {
         path: 'login',
         loadChildren: () => Promise.all(/*! import() | folder-login-login-module */[__webpack_require__.e("common"), __webpack_require__.e("folder-login-login-module")]).then(__webpack_require__.bind(null, /*! ./folder/login/login.module */ "./src/app/folder/login/login.module.ts")).then(m => m.LoginPageModule),
@@ -573,63 +571,6 @@ AppModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
     })
 ], AppModule);
-
-
-
-/***/ }),
-
-/***/ "./src/app/guards/auth.guard.ts":
-/*!**************************************!*\
-  !*** ./src/app/guards/auth.guard.ts ***!
-  \**************************************/
-/*! exports provided: AuthGuard */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthGuard", function() { return AuthGuard; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
-/* harmony import */ var angularfire2_auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! angularfire2/auth */ "./node_modules/angularfire2/auth/index.js");
-/* harmony import */ var angularfire2_auth__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(angularfire2_auth__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
-/* harmony import */ var util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! util */ "./node_modules/util/util.js");
-/* harmony import */ var util__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(util__WEBPACK_IMPORTED_MODULE_5__);
-
-
-
-
-
-
-let AuthGuard = class AuthGuard {
-    constructor(router, AFauth) {
-        this.router = router;
-        this.AFauth = AFauth;
-    }
-    canActivate(next, state) {
-        return this.AFauth.authState.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(auth => {
-            if (Object(util__WEBPACK_IMPORTED_MODULE_5__["isNullOrUndefined"])(auth)) {
-                this.router.navigateByUrl('/login');
-                return false;
-                //redirigir al login
-            }
-            else {
-                return true;
-                //redirigir al home profesor
-            }
-        }));
-    }
-};
-AuthGuard.ctorParameters = () => [
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
-    { type: angularfire2_auth__WEBPACK_IMPORTED_MODULE_3__["AngularFireAuth"] }
-];
-AuthGuard = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-        providedIn: 'root'
-    })
-], AuthGuard);
 
 
 

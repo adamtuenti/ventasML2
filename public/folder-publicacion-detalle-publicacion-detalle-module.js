@@ -148,6 +148,10 @@ let PublicacionDetallePage = class PublicacionDetallePage {
         this.loadingController = loadingController;
         this.publicacion = new src_app_models_publicacionesGenerales__WEBPACK_IMPORTED_MODULE_3__["PublicacionesGenerales"]();
         this.user = new src_app_models_usuario__WEBPACK_IMPORTED_MODULE_7__["Usuarios"]();
+        this.slideOpts = {
+            initialSlide: 0,
+            speed: 400
+        };
     }
     ngOnInit() {
         this.activateRoute.paramMap.subscribe(paramMap => {

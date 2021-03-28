@@ -17,6 +17,11 @@ export class PublicacionDetallePage implements OnInit {
   publicacion : PublicacionesGenerales = new PublicacionesGenerales();
   public user: Usuarios=new Usuarios();
   
+  slideOpts = {
+    initialSlide: 0,
+    speed: 400
+  };
+  
 
   constructor(private angularFireStorage: AngularFireStorage,
               private router: Router,

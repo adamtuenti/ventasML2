@@ -10,27 +10,27 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   
-  {
-    path: 'comentarios/:idLocal',
-    loadChildren: () => import('./folder/comentarios/comentarios.module').then( m => m.ComentariosPageModule),
-    canActivate:[AuthGuard]
-  },
+  // {
+  //   path: 'comentarios/:idLocal',
+  //   loadChildren: () => import('./folder/comentarios/comentarios.module').then( m => m.ComentariosPageModule),
+  //   canActivate:[AuthGuard]
+  // },
   
-  {
-    path: 'comentario-detalle/:id',
-    loadChildren: () => import('./folder/comentario-detalle/comentario-detalle.module').then( m => m.ComentarioDetallePageModule),
-    canActivate:[AuthGuard]
-  },
-  {
-    path: 'premium-pendientes',
-    loadChildren: () => import('./folder/premium-pendientes/premium-pendientes.module').then( m => m.PremiumPendientesPageModule),
-    canActivate:[AuthGuard]
-  },
-  {
-    path: 'premium-pendientes-detalle/:id',
-    loadChildren: () => import('./folder/premium-pendientes-detalle/premium-pendientes-detalle.module').then( m => m.PremiumPendientesDetallePageModule),
-    canActivate:[AuthGuard]
-  },
+  // {
+  //   path: 'comentario-detalle/:id',
+  //   loadChildren: () => import('./folder/comentario-detalle/comentario-detalle.module').then( m => m.ComentarioDetallePageModule),
+  //   canActivate:[AuthGuard]
+  // },
+  // {
+  //   path: 'premium-pendientes',
+  //   loadChildren: () => import('./folder/premium-pendientes/premium-pendientes.module').then( m => m.PremiumPendientesPageModule),
+  //   canActivate:[AuthGuard]
+  // },
+  // {
+  //   path: 'premium-pendientes-detalle/:id',
+  //   loadChildren: () => import('./folder/premium-pendientes-detalle/premium-pendientes-detalle.module').then( m => m.PremiumPendientesDetallePageModule),
+  //   canActivate:[AuthGuard]
+  // },
   {
     path: 'login',
     loadChildren: () => import('./folder/login/login.module').then( m => m.LoginPageModule),
@@ -141,7 +141,8 @@ const routes: Routes = [
   {
     path: 'editar-local/:idLocal/:idPropietario',
     loadChildren: () => import('./folder/editar-local/editar-local.module').then( m => m.EditarLocalPageModule)
-  },  {
+  },
+  {
     path: 'mis-servicios',
     loadChildren: () => import('./folder/mis-servicios/mis-servicios.module').then( m => m.MisServiciosPageModule)
   },
