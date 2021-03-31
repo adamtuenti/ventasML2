@@ -1297,7 +1297,7 @@ __webpack_require__.r(__webpack_exports__);
 let PublicacionesGeneralesService = class PublicacionesGeneralesService {
     constructor(firestore) {
         this.firestore = firestore;
-        this.publicacionesCollection = firestore.collection('PublicacionesGenerales'); //, ref => ref.where("Nombre", "==", "Celulares")
+        this.publicacionesCollection = firestore.collection('PublicacionesGenerales', ref => ref.orderBy("Fecha", "desc")); //, ref => ref.where("Nombre", "==", "Celulares")
         this.publicaciones = this.publicacionesCollection.snapshotChanges().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(actions => {
             return actions.map(a => {
                 const data = a.payload.doc.data();
