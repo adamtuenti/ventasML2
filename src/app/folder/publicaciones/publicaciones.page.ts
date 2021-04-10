@@ -42,7 +42,11 @@ export class PublicacionesPage implements OnInit {
   ngOnInit() {
     this.publicacionesService.getPublicaciones().subscribe(res=> {this.publicaciones = res;});
     this.publicidadService.getPublicidad().subscribe(res => {this.publicidad = res;this.shuffle(this.publicidad)});
-    this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => {this.user =res;});
+
+    if(localStorage.getItem('userId') != null){
+      this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => {this.user =res;});
+    }
+    
     this.idUser = localStorage.getItem('userId');
     this.variablesService.getVariable('wCIVneApMUwcOvDwIneJ').subscribe(res=> {this.variables = res;});
   }
@@ -111,6 +115,48 @@ export class PublicacionesPage implements OnInit {
     }
 
   }
+
+  validarSesion(){
+    if(this.idUser != null){
+      this.router.navigate(['/crear-publicaciones-generales']);
+    }
+
+    else{
+      this.iniciarSesion();
+    }
+
+  }
+  async iniciarSesion() {
+
+    const alert = await this.alertCtrt.create({
+      cssClass: 'my-custom-class',
+      header: 'No ha iniciado sesión',
+      
+      message: 'Para publicar un anuncio primero debe iniciar sesión.',
+
+
+      buttons: [
+        {
+          text: 'Iniciar sesión',
+          handler: (data) => {
+            this.router.navigate(['/login']);
+            
+          }
+        },
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+           // console.log('Confirm Cancel: blah');
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+
 
   async serPremium() {
 

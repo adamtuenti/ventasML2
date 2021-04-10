@@ -22,6 +22,7 @@ export class ProductosPage implements OnInit {
   public user: Usuarios=new Usuarios();
   condicion: boolean = false;
   variables : Variables = new Variables();
+  idUser;
 
   constructor(private productosService: ProductosService,
               private router: Router,
@@ -34,7 +35,12 @@ export class ProductosPage implements OnInit {
 
     this.activateRoute.paramMap.subscribe(paramMap => {
       this.categoria = paramMap.get('categoria');
-      this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => {this.user =res;});
+      this.idUser = localStorage.getItem('userId');
+      if(localStorage.getItem('userId') != null){
+        this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => {this.user =res;});
+      }
+
+      
       this.variablesService.getVariable('wCIVneApMUwcOvDwIneJ').subscribe(res=> {this.variables = res;});
       this.productosService.getProductos().subscribe(res=> {this.productos = res;this.condicion = this.getDatos();this.shuffle(this.productos)});
     });
@@ -79,23 +85,64 @@ export class ProductosPage implements OnInit {
     return array;
   }
 
-  validarVendedor(){
-    if(this.user.Vendedor){
-      if(this.user.Productos >= this.variables.NumeroProductos){
-        if(this.user.Premium){
-          this.router.navigate(['/crear-producto',this.categoria]);
-        }else{
-          this.serPremium();
-        }
-      }else{
-        this.router.navigate(['/crear-producto',this.categoria]);
-      }
+  validarSesion(){
+    if(this.idUser != null){
+      this.router.navigate(['/crear-producto',this.categoria]);
+    }
+
+    else{
+      this.iniciarSesion();
+    }
+
+  }
+
+  // validarVendedor(){
+  //   if(this.user.Vendedor){
+  //     if(this.user.Productos >= this.variables.NumeroProductos){
+  //       if(this.user.Premium){
+  //         this.router.navigate(['/crear-producto',this.categoria]);
+  //       }else{
+  //         this.serPremium();
+  //       }
+  //     }else{
+  //       this.router.navigate(['/crear-producto',this.categoria]);
+  //     }
       
 
-    }else{
-      this.serVendedor()
+  //   }else{
+  //     this.serVendedor()
 
-    }
+  //   }
+  // }
+
+  async iniciarSesion() {
+
+    const alert = await this.alertCtrt.create({
+      cssClass: 'my-custom-class',
+      header: 'No ha iniciado sesión',
+      
+      message: 'Para agregar un producto primero debe iniciar sesión.',
+
+
+      buttons: [
+        {
+          text: 'Iniciar sesión',
+          handler: (data) => {
+            this.router.navigate(['/login']);
+            
+          }
+        },
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+           // console.log('Confirm Cancel: blah');
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
 
   async serPremium() {

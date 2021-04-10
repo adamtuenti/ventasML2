@@ -17,7 +17,7 @@ export class AuthGuard implements CanActivate {
       state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
         return this.AFauth.authState.pipe(map( auth =>{
         if(isNullOrUndefined(auth)){
-          this.router.navigateByUrl('/login');
+          this.router.navigateByUrl('/categorias');
           return false;
           //redirigir al login
         }else{

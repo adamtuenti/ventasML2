@@ -104,7 +104,7 @@ export class RegistrarPage implements OnInit {
     var apellido = this.capitalizeFirstLetter(form.value.apellido)
 
       
-    this.guardarArchivo(nombre, apellido,form.value.email, form.value.password, form.value.ciudadela, form.value.manzana, form.value.villa, telefono);
+    this.RegistrarUserCompleto(nombre, apellido,form.value.email, form.value.password, form.value.ciudadela, form.value.manzana, form.value.villa, telefono, 'https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fperfil.png?alt=media&token=ee5b8e7d-43b5-43c1-9be9-98186a2ab2ce');
     
   }
 
@@ -136,7 +136,7 @@ export class RegistrarPage implements OnInit {
 
   
   async RegistrarUserCompleto(nombre:string, apellido: string, email:string, password:string, ciudadela:string ,manzana:string, villa: string, telefono: string, downloadURL:string){
-    this.authService.registerUser(nombre, apellido, email, password, ciudadela, manzana, villa, telefono, downloadURL).
+    this.authService.registerUser(nombre, apellido, email, password, ciudadela, manzana, villa, telefono, 'https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fperfil.png?alt=media&token=ee5b8e7d-43b5-43c1-9be9-98186a2ab2ce').
     then(
       auth=>{
         this.loading.dismiss();
@@ -146,7 +146,7 @@ export class RegistrarPage implements OnInit {
           (res)=>{
             localStorage.setItem('userId', res.user.uid);
             localStorage.setItem('Fondo','#FBC8B5');
-            localStorage.setItem('FotoPerfil',downloadURL);                   
+            localStorage.setItem('FotoPerfil','https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fperfil.png?alt=media&token=ee5b8e7d-43b5-43c1-9be9-98186a2ab2ce');                   
             this.router.navigateByUrl('/categorias');
         },
           

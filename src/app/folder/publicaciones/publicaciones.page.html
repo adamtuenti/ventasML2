@@ -46,7 +46,7 @@
           
         </ion-card-content>
 
-        <ion-item>
+        <ion-item *ngIf = 'idUser != null'>
 
           <ion-icon *ngIf="publicacion.Usuario == idUser" name="trash-outline" slot='start' color='danger'(click)="alert(publicacion.id)"></ion-icon>
           <ion-item slot='end'>
@@ -54,6 +54,12 @@
             {{publicacion.Fecha | date:'yyyy/MM/dd'}}
           </ion-item>
 
+        </ion-item>
+
+        <ion-item *ngIf = 'idUser == null'>
+          <ion-item slot='end'>
+            {{publicacion.Fecha | date:'yyyy/MM/dd'}}
+          </ion-item>
         </ion-item>
         
         
@@ -65,7 +71,7 @@
 
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed" >
-    <ion-fab-button (click)="validarPremium()">
+    <ion-fab-button (click)="validarSesion()">
     <ion-icon name="add-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>

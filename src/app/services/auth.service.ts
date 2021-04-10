@@ -49,7 +49,7 @@ export class AuthService {
     return new Promise ((resolve, reject)=>{
       firebase.auth().createUserWithEmailAndPassword(email, password).then( res=>{ 
 
-        if(this.variables.RegistroVendedores){
+        // if(this.variables.RegistroVendedores){
             this.firestore.collection('Usuarios').doc(res.user.uid).set({
             Nombre: nombre,
             Apellido: apellido,
@@ -68,26 +68,26 @@ export class AuthService {
 
           });
 
-        }else{
-          this.firestore.collection('Usuarios').doc(res.user.uid).set({
-            Nombre: nombre,
-            Apellido: apellido,
-            Correo: email,
-            Ciudadela: ciudadela,
-            Foto: downloadURL,
-            Manzana: manzana,
-            Premium: false,
-            Publicaciones: 0,
-            Productos: 0,
-            Vendedor: false,
-            Telefono: telefono,
-            Villa: villa,
-            Verificacion: false,
-            EsperaPremium: false
+        // }else{
+        //   this.firestore.collection('Usuarios').doc(res.user.uid).set({
+        //     Nombre: nombre,
+        //     Apellido: apellido,
+        //     Correo: email,
+        //     Ciudadela: ciudadela,
+        //     Foto: downloadURL,
+        //     Manzana: manzana,
+        //     Premium: false,
+        //     Publicaciones: 0,
+        //     Productos: 0,
+        //     Vendedor: false,
+        //     Telefono: telefono,
+        //     Villa: villa,
+        //     Verificacion: false,
+        //     EsperaPremium: false
 
-          });
+        //   });
 
-        }
+        // }
         
         
       

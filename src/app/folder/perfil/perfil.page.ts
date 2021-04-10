@@ -16,6 +16,7 @@ export class PerfilPage implements OnInit {
   sugerencia: sugerenciaCategoriaLocal = new sugerenciaCategoriaLocal();
   public user: Usuarios=new Usuarios();
   premium;
+  id;
 
   constructor(private sugerenciaService: SugerenciaLocalesService,
               private usuarioService: UsuarioService,
@@ -23,7 +24,11 @@ export class PerfilPage implements OnInit {
               private authService:AuthService) { }
 
   ngOnInit() {
-    this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => {this.user =res;this.verPremium()});
+    this.id = localStorage.getItem('userId');
+    if(localStorage.getItem('userId')!=null){
+      this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => {this.user =res;this.verPremium()});
+    }
+    
   }
 
   verPremium(){

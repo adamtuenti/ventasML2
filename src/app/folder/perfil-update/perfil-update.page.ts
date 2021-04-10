@@ -147,11 +147,11 @@ export class PerfilUpdatePage implements OnInit {
   
   async UpdateUserCompleto(telefono: string, nombre: string, apellido: string, downloadURL:string){
     this.user.Telefono = telefono;
-    this.user.Foto = downloadURL;
+    // this.user.Foto = downloadURL;
     this.user.Nombre = nombre;
     this.user.Apellido = apellido;
     var userId = localStorage.getItem('userId')
-    localStorage.setItem('FotoPerfil',downloadURL);
+    // localStorage.setItem('FotoPerfil',downloadURL);
     this.usuarioService.updateUsuario(userId, this.user).
     then(
       auth=>{

@@ -32,9 +32,55 @@ export class LocalesPage implements OnInit {
       this.categoria = paramMap.get('id');
       this.idUser = localStorage.getItem('userId');
       this.localesService.getLocales().subscribe(res=> {this.locales = res;this.condicion = this.getDatos()});
-      this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => {this.user =res;});
+      if(localStorage.getItem('userId') != null){
+        this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => {this.user =res;});
+      }
+      
     });   
   }
+
+  validarSesion(){
+    if(this.idUser != null){
+      this.router.navigate(['/crear-local',this.categoria]);
+    }
+
+    else{
+      this.iniciarSesion();
+    }
+
+  }
+  async iniciarSesion() {
+
+    const alert = await this.alertCtrt.create({
+      cssClass: 'my-custom-class',
+      header: 'No ha iniciado sesión',
+      
+      message: 'Para crear un local primero debe iniciar sesión.',
+
+
+      buttons: [
+        {
+          text: 'Iniciar sesión',
+          handler: (data) => {
+            this.router.navigate(['/login']);
+            
+          }
+        },
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+           // console.log('Confirm Cancel: blah');
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+
+
 
   validarVendedor(){
     if(this.user.Vendedor){
