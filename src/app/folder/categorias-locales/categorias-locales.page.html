@@ -2,6 +2,20 @@
 
 <ion-content>
 
+  <ion-segment color="tertiary" value="categorias">
+
+    <ion-segment-button value="todos" [routerLink]="['/locales-todos']" >
+      <ion-icon name="gift-outline" size="large"></ion-icon> <ion-label style="font-size: 11px;">Locales</ion-label>
+    </ion-segment-button>
+
+    <ion-segment-button value="categorias" [routerLink]="['/categorias-locales']" >
+      <ion-icon name="list-outline" size="large"></ion-icon> <ion-label style="font-size: 11px;">Categorías</ion-label>
+    </ion-segment-button>
+
+  </ion-segment>
+
+
+
   <ion-searchbar
     color="light" 
     placeholder = "Buscar categoría..."

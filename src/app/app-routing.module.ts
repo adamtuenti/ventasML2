@@ -6,7 +6,7 @@ import {AuthGuard} from './guards/auth.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'categorias',
+    redirectTo: 'productos-todos',
     pathMatch: 'full'
   },
   
@@ -149,14 +149,19 @@ const routes: Routes = [
   {
     path: 'productos-todos',
     loadChildren: () => import('./folder/productos-todos/productos-todos.module').then( m => m.ProductosTodosPageModule)
-  },  {
+  },
+  {
     path: 'crear-producto-perfil',
     loadChildren: () => import('./folder/crear-producto-perfil/crear-producto-perfil.module').then( m => m.CrearProductoPerfilPageModule)
   },
   {
     path: 'crear-local-perfil',
     loadChildren: () => import('./folder/crear-local-perfil/crear-local-perfil.module').then( m => m.CrearLocalPerfilPageModule)
+  },  {
+    path: 'locales-todos',
+    loadChildren: () => import('./folder/locales-todos/locales-todos.module').then( m => m.LocalesTodosPageModule)
   }
+
 
 
 

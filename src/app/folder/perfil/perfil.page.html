@@ -129,19 +129,24 @@
 
   <div *ngIf = 'id==null'>
 
-    <ion-img class="circle-pic" style="width: 225px;height: 225px;margin-top: 25%;" src="https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2FiconMl2.png?alt=media&token=e6ee4d9e-33a0-4ab2-851f-d50930465e47" ></ion-img>
+    <ion-img class="circle-pic" style="width: 275px;height: 275px;margin-top: 105px;" src="https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2FiconMl2.png?alt=media&token=e6ee4d9e-33a0-4ab2-851f-d50930465e47" ></ion-img>
 
       
     <div align = 'center' style="margin-top:35px;">
+
+    <ion-item>
       <ion-button style="width: 215px;height: 42px;margin-top:15.5px;margin:auto;" color="success" [routerLink]="['/login']">
         <ion-icon name="person-outline" size="large" style="margin-right: 8px;"></ion-icon>
         <ion-label style="font-size: 15px;">Iniciar sesión</ion-label>
       </ion-button>
+    </ion-item>
 
-      <ion-button style="width: 215px;height: 42px;margin-top:15.5px;" color="success" [routerLink]="['/registrar']">
+    <ion-item style = 'margin-top:15px;'>
+      <ion-button style="width: 215px;height: 42px;margin:auto;" color="success" [routerLink]="['/registrar']">
         <ion-icon name="rocket-outline" size="large" style="margin-right: 8px;"></ion-icon>
         <ion-label style="font-size: 15px;">Registrarse </ion-label>
       </ion-button>
+    </ion-item>
 
     </div>
       

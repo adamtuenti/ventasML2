@@ -1,0 +1,26 @@
+<app-header nombre="locales"></app-header>
+
+<ion-content>
+
+  <ion-segment color="tertiary" value="todos">
+
+    <ion-segment-button value="todos" [routerLink]="['/locales-todos']" >
+      <ion-icon name="gift-outline" size="large"></ion-icon> <ion-label style="font-size: 11px;">Locales</ion-label>
+    </ion-segment-button>
+
+    <ion-segment-button value="categorias" [routerLink]="['/categorias-locales']" >
+      <ion-icon name="list-outline" size="large"></ion-icon> <ion-label style="font-size: 11px;">Categorías</ion-label>
+    </ion-segment-button>
+
+  </ion-segment>
+
+  <ion-slides pager="true" [options]="slideOpts" style="margin-top: 15px;">
+    <ion-slide style="height: 500px;width: 90%;" *ngFor="let local of locales">
+          <ion-img *ngIf='local.Visibilidad' src="{{local.Foto}}" style="height: 475px;width: 100%;" (click)='aumentarVisita(local.id,local)'></ion-img>
+    </ion-slide>
+
+  </ion-slides>
+
+
+</ion-content>
+ 

@@ -22,7 +22,7 @@ export class NoLoginGuard implements CanActivate {
       }
       else{
        
-        this.router.navigateByUrl('/categorias');
+        this.router.navigateByUrl('/productos-todos');
         return false;
       //redirigir al home profesor
       }

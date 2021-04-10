@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Comentarios } from 'src/app/models/comentarios';
 import { ComentariosService } from 'src/app/services/comentarios.service';
-import { ActivatedRoute } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { Usuarios } from 'src/app/models/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-comentarios-local',
@@ -26,6 +26,7 @@ export class ComentariosLocalPage implements OnInit {
   constructor(private comentariosService: ComentariosService,
               private activateRoute: ActivatedRoute,
               private usuarioService: UsuarioService,
+              private router: Router,
               private alertCtrt: AlertController) { }
 
   ngOnInit() {
@@ -33,7 +34,10 @@ export class ComentariosLocalPage implements OnInit {
       this.idLocal = paramMap.get('idLocal');
       this.idPropietario = paramMap.get('idPropietario');
       this.comentariosService.getComentarios().subscribe(res => {this.comentarios = res;this.condicion = this.getDatos()});
-      this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => {this.user =res;});
+      if(localStorage.getItem('userId') != null){
+        this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => {this.user =res;});
+      }
+      
       this.idUser = localStorage.getItem('userId');
       this.usuarioService.getUsuarios().subscribe(res => this.usuarios = res);
     });
@@ -126,5 +130,47 @@ export class ComentariosLocalPage implements OnInit {
     this.comentariosService.addComentario(this.comentario);
 
   }
+
+  validarSesion(){
+    if(this.idUser != null){
+      this.crearComentario();
+    }
+
+    else{
+      this.iniciarSesion();
+    }
+
+  }
+  async iniciarSesion() {
+
+    const alert = await this.alertCtrt.create({
+      cssClass: 'my-custom-class',
+      header: 'No ha iniciado sesión',
+      
+      message: 'Para promocionar un servicio primero debe iniciar sesión.',
+
+
+      buttons: [
+        {
+          text: 'Iniciar sesión',
+          handler: (data) => {
+            this.router.navigate(['/login']);
+            
+          }
+        },
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+           // console.log('Confirm Cancel: blah');
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  
 
 }

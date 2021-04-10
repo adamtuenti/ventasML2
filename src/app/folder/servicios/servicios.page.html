@@ -28,9 +28,9 @@
     (ionChange)="buscar($event)">
   </ion-searchbar>
 
-  <ion-list *ngFor="let servicio of servicios | filtroServicios: textoBuscar">
+  <ng-container *ngFor="let servicio of servicios | filtroServicios: textoBuscar">
     
-      <ion-card  *ngIf = 'servicio.Visibilidad'>
+      <ion-card>
         <ion-item (click)='aumentarVisita(servicio.id, servicio)'>
           <ion-avatar slot="start" style="height: 50px;width: 50px;margin-right: 8.5px;" >
             <img src="{{servicio.Foto}}">
@@ -51,16 +51,7 @@
   
       </ion-card>
       
-        
-
-      
-
-    
-    
-
-  </ion-list>
-
-
+  </ng-container>
 
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
