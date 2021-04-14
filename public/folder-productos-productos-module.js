@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-header nombre=\"categorias\"></app-header>\r\n\r\n<ion-content>\r\n\r\n\r\n\r\n  <ion-searchbar\r\n    color=\"light\" \r\n    placeholder = \"Buscar producto...\"\r\n    animated\r\n    (ionChange)=\"buscar($event)\">\r\n  </ion-searchbar>\r\n\r\n  <ng-container *ngIf=\"!condicion\">\r\n    <ng-container *ngFor=\"let producto of productos | filtroProductos: textoBuscar\">\r\n\r\n      <ion-item *ngIf=\"producto.Categoria == categoria && producto.Visibilidad\" (click)='aumentarVisita(producto.id,producto)'>\r\n\r\n        <ion-avatar slot=\"start\" style=\"height: 50px;width: 50px;margin-right: 7.5px;\">\r\n          <img src=\"{{producto.Foto1}}\">\r\n        </ion-avatar>\r\n\r\n        <ion-label style=\"font-size: 17.2px; margin-left: 7.5px;\">{{producto.Titulo}}</ion-label>\r\n\r\n        \r\n          <!-- <ion-button fill=\"outline\" slot='end' color=\"success\"><ion-icon name=\"cash-outline\" color=\"success\"></ion-icon><label style=\"font-size: 14;margin-left: 7.5px;\" >${{producto.Precio}}</label></ion-button> -->\r\n          <!-- <ion-button fill=\"outline\" slot='end'><ion-icon name=\"eye-outline\"></ion-icon><label style=\"font-size: 12;margin-left: 7.5px;\" >{{producto.Visitas}}</label></ion-button> -->\r\n\r\n        \r\n      \r\n      </ion-item>\r\n    </ng-container>\r\n\r\n  </ng-container>\r\n\r\n  <ng-container *ngIf=\"condicion\">\r\n\r\n  <div style=\"margin-top: 50px;\" align='center'> \r\n    <ion-text color=\"medium\">\r\n\r\n      <img src=\"https://firebasestorage.googleapis.com/v0/b/taskyapp01.appspot.com/o/iconos%2Fgrupos.png?alt=media&token=8aa84d63-18b5-424d-9b6a-dfd1075eeb77\" style=\"width: 55%; height:58%;margin:auto;\" alet=\"foto\">\r\n      \r\n      <p style=\"font-size: 21px;margin:auto;margin-top:7.5px\">No hay productos registrados.</p>\r\n    </ion-text>  \r\n  </div>\r\n</ng-container>\r\n\r\n<ion-fab vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\">\r\n  <ion-fab-button (click)=\"validarVendedor()\">\r\n   <ion-icon name=\"add-outline\"></ion-icon>\r\n  </ion-fab-button>\r\n</ion-fab>\r\n\r\n\r\n</ion-content>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-header nombre=\"categorias\"></app-header>\r\n\r\n<ion-content>\r\n\r\n\r\n\r\n  <ion-searchbar\r\n    color=\"light\" \r\n    placeholder = \"Buscar producto...\"\r\n    animated\r\n    (ionChange)=\"buscar($event)\">\r\n  </ion-searchbar>\r\n\r\n  <ng-container *ngIf=\"!condicion\">\r\n    <ng-container *ngFor=\"let producto of productos | filtroProductos: textoBuscar\">\r\n\r\n      <ion-item *ngIf=\"producto.Categoria == categoria && producto.Visibilidad\" (click)='aumentarVisita(producto.id,producto)'>\r\n\r\n        <ion-avatar slot=\"start\" style=\"height: 50px;width: 50px;margin-right: 7.5px;\">\r\n          <img src=\"{{producto.Foto1}}\">\r\n        </ion-avatar>\r\n\r\n        <ion-label style=\"font-size: 17.2px; margin-left: 7.5px;\">{{producto.Titulo}}</ion-label>\r\n\r\n        \r\n          <!-- <ion-button fill=\"outline\" slot='end' color=\"success\"><ion-icon name=\"cash-outline\" color=\"success\"></ion-icon><label style=\"font-size: 14;margin-left: 7.5px;\" >${{producto.Precio}}</label></ion-button> -->\r\n          <!-- <ion-button fill=\"outline\" slot='end'><ion-icon name=\"eye-outline\"></ion-icon><label style=\"font-size: 12;margin-left: 7.5px;\" >{{producto.Visitas}}</label></ion-button> -->\r\n\r\n        \r\n      \r\n      </ion-item>\r\n    </ng-container>\r\n\r\n  </ng-container>\r\n\r\n  <ng-container *ngIf=\"condicion\">\r\n\r\n  <div style=\"margin-top: 50px;\" align='center'> \r\n    <ion-text color=\"medium\">\r\n\r\n      <img src=\"https://firebasestorage.googleapis.com/v0/b/taskyapp01.appspot.com/o/iconos%2Fgrupos.png?alt=media&token=8aa84d63-18b5-424d-9b6a-dfd1075eeb77\" style=\"width: 250px; height:250px;margin:auto;\" alet=\"foto\">\r\n      \r\n      <p style=\"font-size: 21px;margin:auto;margin-top:7.5px\">No hay productos registrados.</p>\r\n    </ion-text>  \r\n  </div>\r\n</ng-container>\r\n\r\n<ion-fab vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\">\r\n  <ion-fab-button (click)=\"validarSesion()\">\r\n   <ion-icon name=\"add-outline\"></ion-icon>\r\n  </ion-fab-button>\r\n</ion-fab>\r\n\r\n\r\n</ion-content>\r\n");
 
 /***/ }),
 
@@ -157,7 +157,10 @@ let ProductosPage = class ProductosPage {
     ngOnInit() {
         this.activateRoute.paramMap.subscribe(paramMap => {
             this.categoria = paramMap.get('categoria');
-            this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => { this.user = res; });
+            this.idUser = localStorage.getItem('userId');
+            if (localStorage.getItem('userId') != null) {
+                this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => { this.user = res; });
+            }
             this.variablesService.getVariable('wCIVneApMUwcOvDwIneJ').subscribe(res => { this.variables = res; });
             this.productosService.getProductos().subscribe(res => { this.productos = res; this.condicion = this.getDatos(); this.shuffle(this.productos); });
         });
@@ -193,23 +196,54 @@ let ProductosPage = class ProductosPage {
         }
         return array;
     }
-    validarVendedor() {
-        if (this.user.Vendedor) {
-            if (this.user.Productos >= this.variables.NumeroProductos) {
-                if (this.user.Premium) {
-                    this.router.navigate(['/crear-producto', this.categoria]);
-                }
-                else {
-                    this.serPremium();
-                }
-            }
-            else {
-                this.router.navigate(['/crear-producto', this.categoria]);
-            }
+    validarSesion() {
+        if (this.idUser != null) {
+            this.router.navigate(['/crear-producto', this.categoria]);
         }
         else {
-            this.serVendedor();
+            this.iniciarSesion();
         }
+    }
+    // validarVendedor(){
+    //   if(this.user.Vendedor){
+    //     if(this.user.Productos >= this.variables.NumeroProductos){
+    //       if(this.user.Premium){
+    //         this.router.navigate(['/crear-producto',this.categoria]);
+    //       }else{
+    //         this.serPremium();
+    //       }
+    //     }else{
+    //       this.router.navigate(['/crear-producto',this.categoria]);
+    //     }
+    //   }else{
+    //     this.serVendedor()
+    //   }
+    // }
+    iniciarSesion() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            const alert = yield this.alertCtrt.create({
+                cssClass: 'my-custom-class',
+                header: 'No ha iniciado sesión',
+                message: 'Para agregar un producto primero debe iniciar sesión.',
+                buttons: [
+                    {
+                        text: 'Iniciar sesión',
+                        handler: (data) => {
+                            this.router.navigate(['/login']);
+                        }
+                    },
+                    {
+                        text: 'Cancelar',
+                        role: 'cancel',
+                        cssClass: 'secondary',
+                        handler: (blah) => {
+                            // console.log('Confirm Cancel: blah');
+                        }
+                    }
+                ]
+            });
+            yield alert.present();
+        });
     }
     serPremium() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {

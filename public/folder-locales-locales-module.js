@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-header nombre=\"locales\"></app-header>\r\n\r\n<ion-content>\r\n  <ion-searchbar\r\n    color=\"light\" \r\n    placeholder = \"Buscar local...\"\r\n    animated\r\n    (ionChange)=\"buscar($event)\">\r\n  </ion-searchbar>\r\n\r\n  <ng-container *ngIf=\"!condicion\">\r\n  <ng-container *ngFor=\"let local of locales | filtroLocal: textoBuscar\">\r\n    <ion-card *ngIf = 'local.CategoriaLocal == categoria && local.Visibilidad == true'>\r\n      \r\n      <ion-item [routerLink]=\"['/productos-locales',local.id, local.Usuario]\" >\r\n        <ion-avatar slot=\"start\" style=\"height: 50px;width: 50px;margin-right: 7.5px;\">\r\n          <img src=\"{{local.Foto}}\">\r\n        </ion-avatar> \r\n        <ion-label style=\"font-size: 18.2px; margin-left: 8.5px;\">{{local.Nombre}}</ion-label>\r\n\r\n        <ion-icon name=\"bicycle-outline\" color = 'success' slot = 'end' size = 'large' *ngIf = 'local.Domicilio == \"Si\"'></ion-icon>\r\n  \r\n  \r\n        \r\n        \r\n      </ion-item>\r\n\r\n      <ion-item >\r\n\r\n        <div slot='end' *ngFor = 'let indice of [].constructor(local.Calificacion); let i = index' style='width: 1%;margin-right: 5px;'>\r\n          <ion-icon name=\"star\" color = 'warning'></ion-icon>\r\n        </div>\r\n        \r\n\r\n        <!-- <ion-button fill=\"outline\" color = 'warning' slot='end' size='medium'><ion-icon name=\"star-outline\" color = 'warning' size='medium'></ion-icon><label style=\"font-size: 14;margin-left: 7.5px;\" >{{local.Calificacion}}</label></ion-button>\r\n              -->\r\n        <ion-icon *ngIf=\"local.Usuario == idUser\" slot='start' name=\"create-outline\" [routerLink]=\"['/editar-local',local.id,idUser]\"></ion-icon>\r\n      </ion-item>\r\n    </ion-card>\r\n    \r\n\r\n  </ng-container>\r\n\r\n  \r\n  </ng-container>\r\n\r\n   <ng-container *ngIf=\"condicion\">\r\n\r\n  <div style=\"margin-top: 50px;\" align='center'> \r\n    <ion-text color=\"medium\">\r\n\r\n      <img src=\"https://firebasestorage.googleapis.com/v0/b/taskyapp01.appspot.com/o/iconos%2Fgrupos.png?alt=media&token=8aa84d63-18b5-424d-9b6a-dfd1075eeb77\" style=\"width: 55%; height:58%;margin:auto;\" alet=\"foto\">\r\n      \r\n      <p style=\"font-size: 21px;margin:auto;margin-top:7.5px\">No hay locales en esta categoría.</p>\r\n    </ion-text>  \r\n  </div>\r\n</ng-container>\r\n\r\n\r\n<ion-fab vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\">\r\n  <ion-fab-button (click)=\"validarVendedor()\">\r\n   <ion-icon name=\"add-outline\"></ion-icon>\r\n  </ion-fab-button>\r\n</ion-fab>\r\n</ion-content>\r\n ");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-header nombre=\"locales\"></app-header>\r\n\r\n<ion-content>\r\n  \r\n\r\n\r\n  <ion-searchbar\r\n    color=\"light\" \r\n    placeholder = \"Buscar local...\"\r\n    animated\r\n    (ionChange)=\"buscar($event)\">\r\n  </ion-searchbar>\r\n\r\n  <ng-container *ngIf=\"!condicion\">\r\n  <ng-container *ngFor=\"let local of locales | filtroLocal: textoBuscar\">\r\n    <ion-card *ngIf = 'local.CategoriaLocal == categoria'> \r\n      <!-- && local.Visibilidad == true' -->\r\n      \r\n      <ion-item [routerLink]=\"['/productos-locales',local.id, local.Usuario]\" >\r\n        <ion-avatar slot=\"start\" style=\"height: 50px;width: 50px;margin-right: 7.5px;\">\r\n          <img src=\"{{local.Foto}}\">\r\n        </ion-avatar> \r\n        <ion-label style=\"font-size: 18.2px; margin-left: 8.5px;\">{{local.Nombre}}</ion-label>\r\n\r\n        <ion-icon name=\"bicycle-outline\" color = 'success' slot = 'end' size = 'large' *ngIf = 'local.Domicilio == \"Si\"'></ion-icon>\r\n  \r\n  \r\n        \r\n        \r\n      </ion-item>\r\n\r\n      <ion-item >\r\n\r\n        <div slot='end' *ngFor = 'let indice of [].constructor(local.Calificacion); let i = index' style='width: 1%;margin-right: 5px;'>\r\n          <ion-icon name=\"star\" color = 'warning'></ion-icon>\r\n        </div>\r\n        \r\n\r\n        <!-- <ion-button fill=\"outline\" color = 'warning' slot='end' size='medium'><ion-icon name=\"star-outline\" color = 'warning' size='medium'></ion-icon><label style=\"font-size: 14;margin-left: 7.5px;\" >{{local.Calificacion}}</label></ion-button>\r\n              -->\r\n        <ion-icon *ngIf=\"local.Usuario == idUser\" slot='start' name=\"create-outline\" [routerLink]=\"['/editar-local',local.id,idUser]\"></ion-icon>\r\n      </ion-item>\r\n    </ion-card>\r\n    \r\n\r\n  </ng-container>\r\n\r\n  \r\n  </ng-container>\r\n\r\n   <ng-container *ngIf=\"condicion\">\r\n\r\n  <div style=\"margin-top: 50px;\" align='center'> \r\n    <ion-text color=\"medium\">\r\n\r\n      <img src=\"https://firebasestorage.googleapis.com/v0/b/taskyapp01.appspot.com/o/iconos%2Fgrupos.png?alt=media&token=8aa84d63-18b5-424d-9b6a-dfd1075eeb77\" style=\"width: 250px; height:250px;margin:auto;\" alet=\"foto\">\r\n      \r\n      <p style=\"font-size: 21px;margin:auto;margin-top:7.5px\">No hay locales en esta categoría.</p>\r\n    </ion-text>  \r\n  </div>\r\n</ng-container>\r\n\r\n\r\n<ion-fab vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\">\r\n  <ion-fab-button (click)=\"validarSesion()\">\r\n   <ion-icon name=\"add-outline\"></ion-icon>\r\n  </ion-fab-button>\r\n</ion-fab>\r\n</ion-content>\r\n ");
 
 /***/ }),
 
@@ -153,7 +153,43 @@ let LocalesPage = class LocalesPage {
             this.categoria = paramMap.get('id');
             this.idUser = localStorage.getItem('userId');
             this.localesService.getLocales().subscribe(res => { this.locales = res; this.condicion = this.getDatos(); });
-            this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => { this.user = res; });
+            if (localStorage.getItem('userId') != null) {
+                this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => { this.user = res; });
+            }
+        });
+    }
+    validarSesion() {
+        if (this.idUser != null) {
+            this.router.navigate(['/crear-local', this.categoria]);
+        }
+        else {
+            this.iniciarSesion();
+        }
+    }
+    iniciarSesion() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            const alert = yield this.alertCtrt.create({
+                cssClass: 'my-custom-class',
+                header: 'No ha iniciado sesión',
+                message: 'Para crear un local primero debe iniciar sesión.',
+                buttons: [
+                    {
+                        text: 'Iniciar sesión',
+                        handler: (data) => {
+                            this.router.navigate(['/login']);
+                        }
+                    },
+                    {
+                        text: 'Cancelar',
+                        role: 'cancel',
+                        cssClass: 'secondary',
+                        handler: (blah) => {
+                            // console.log('Confirm Cancel: blah');
+                        }
+                    }
+                ]
+            });
+            yield alert.present();
         });
     }
     validarVendedor() {

@@ -158,7 +158,9 @@ let ProductosLocalesPage = class ProductosLocalesPage {
             this.idLocal = paramMap.get('idLocal');
             this.idPropietario = paramMap.get('idPropietario');
             this.variablesService.getVariable('wCIVneApMUwcOvDwIneJ').subscribe(res => { this.variables = res; });
-            this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => { this.user = res; });
+            if (localStorage.getItem('userId') != null) {
+                this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => { this.user = res; });
+            }
             this.productosService.getProductos().subscribe(res => { this.productos = res; this.condicion = this.getDatos(); });
             this.idUser = localStorage.getItem('userId');
         });

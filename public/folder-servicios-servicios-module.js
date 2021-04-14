@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n<app-header nombre=\"categorias\"></app-header>\n\n<ion-content>\n\n  <ion-segment color=\"tertiary\" value=\"servicios\">\n\n    \n\n    <ion-segment-button value=\"productos\" [routerLink]=\"['/productos-todos']\" >\n      <ion-icon name=\"gift-outline\" size=\"large\"></ion-icon> <ion-label style=\"font-size: 11px;\">Productos</ion-label>\n    </ion-segment-button>\n\n    <ion-segment-button value=\"categorias\" [routerLink]=\"['/categorias']\" >\n      <ion-icon name=\"list-outline\" size=\"large\"></ion-icon> <ion-label style=\"font-size: 11px;\">Categorias</ion-label>\n    </ion-segment-button>\n\n    <ion-segment-button value=\"servicios\" [routerLink]=\"['/servicios']\">\n      <ion-icon name=\"rocket-outline\" size=\"large\"></ion-icon> <ion-label style=\"font-size: 11px;\">Servicios</ion-label>\n    </ion-segment-button>\n\n  </ion-segment>\n\n  <ion-searchbar\n    color=\"light\" \n    placeholder = \"Buscar servicio...\"\n    animated\n    (ionChange)=\"buscar($event)\">\n  </ion-searchbar>\n\n  <ion-list *ngFor=\"let servicio of servicios | filtroServicios: textoBuscar\">\n    \n      <ion-card  *ngIf = 'servicio.Visibilidad'>\n        <ion-item (click)='aumentarVisita(servicio.id, servicio)'>\n          <ion-avatar slot=\"start\" style=\"height: 50px;width: 50px;margin-right: 8.5px;\" >\n            <img src=\"{{servicio.Foto}}\">\n          </ion-avatar> \n          <ion-label style=\"font-size: 17.2px;\">{{servicio.Titulo}}</ion-label>\n  \n\n        </ion-item>\n\n        <ion-item *ngIf=\"servicio.Usuario == idUser\">\n          <ion-icon   name=\"trash-outline\" slot='end' color='danger'(click)=\"alert(servicio.id)\"></ion-icon>\n\n        </ion-item>\n        \n        \n  \n          \n  \n      </ion-card>\n      \n        \n\n      \n\n    \n    \n\n  </ion-list>\n\n\n\n\n  <ion-fab vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\">\n    <ion-fab-button [routerLink]=\"['/crear-servicio']\">\n    <ion-icon name=\"add-outline\"></ion-icon>\n    </ion-fab-button>\n  </ion-fab>\n\n  \n\n\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("\n<app-header nombre=\"categorias\"></app-header>\n\n<ion-content>\n\n  <ion-segment color=\"tertiary\" value=\"servicios\">\n\n    \n\n    <ion-segment-button value=\"productos\" [routerLink]=\"['/productos-todos']\" >\n      <ion-icon name=\"gift-outline\" size=\"large\"></ion-icon> <ion-label style=\"font-size: 11px;\">Productos</ion-label>\n    </ion-segment-button>\n\n    <ion-segment-button value=\"categorias\" [routerLink]=\"['/categorias']\" >\n      <ion-icon name=\"list-outline\" size=\"large\"></ion-icon> <ion-label style=\"font-size: 11px;\">Categorias</ion-label>\n    </ion-segment-button>\n\n    <ion-segment-button value=\"servicios\" [routerLink]=\"['/servicios']\">\n      <ion-icon name=\"rocket-outline\" size=\"large\"></ion-icon> <ion-label style=\"font-size: 11px;\">Servicios</ion-label>\n    </ion-segment-button>\n\n  </ion-segment>\n\n  <ion-searchbar\n    color=\"light\" \n    placeholder = \"Buscar servicio...\"\n    animated\n    (ionChange)=\"buscar($event)\">\n  </ion-searchbar>\n\n  <ng-container *ngFor=\"let servicio of servicios | filtroServicios: textoBuscar\">\n    \n      <ion-card>\n        <ion-item (click)='aumentarVisita(servicio.id, servicio)'>\n          <ion-avatar slot=\"start\" style=\"height: 50px;width: 50px;margin-right: 8.5px;\" >\n            <img src=\"{{servicio.Foto}}\">\n          </ion-avatar> \n          <ion-label style=\"font-size: 17.2px;\">{{servicio.Titulo}}</ion-label>\n  \n\n        </ion-item>\n\n        <ion-item *ngIf=\"servicio.Usuario == idUser\">\n          <ion-icon   name=\"trash-outline\" slot='end' color='danger'(click)=\"alert(servicio.id)\"></ion-icon>\n\n        </ion-item>\n        \n        \n  \n          \n  \n      </ion-card>\n      \n  </ng-container>\n\n\n  <ion-fab vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\">\n    <ion-fab-button (click)=\"validarSesion()\">\n    <ion-icon name=\"add-outline\"></ion-icon>\n    </ion-fab-button>\n  </ion-fab>\n\n  \n\n\n</ion-content>\n");
 
 /***/ }),
 
@@ -166,6 +166,40 @@ let ServiciosPage = class ServiciosPage {
         servicios.Visitas = servicios.Visitas + 1;
         this.servicioService.updateServicio(id, servicios);
         this.router.navigate(['/servicio-detalle', servicios.id, servicios.Usuario]);
+    }
+    validarSesion() {
+        if (this.idUser != null) {
+            this.router.navigate(['/crear-servicio']);
+        }
+        else {
+            this.iniciarSesion();
+        }
+    }
+    iniciarSesion() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            const alert = yield this.alertCtrt.create({
+                cssClass: 'my-custom-class',
+                header: 'No ha iniciado sesión',
+                message: 'Para promocionar un servicio primero debe iniciar sesión.',
+                buttons: [
+                    {
+                        text: 'Iniciar sesión',
+                        handler: (data) => {
+                            this.router.navigate(['/login']);
+                        }
+                    },
+                    {
+                        text: 'Cancelar',
+                        role: 'cancel',
+                        cssClass: 'secondary',
+                        handler: (blah) => {
+                            // console.log('Confirm Cancel: blah');
+                        }
+                    }
+                ]
+            });
+            yield alert.present();
+        });
     }
     alert(id) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {

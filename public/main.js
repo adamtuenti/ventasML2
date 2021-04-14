@@ -295,7 +295,7 @@ __webpack_require__.r(__webpack_exports__);
 const routes = [
     {
         path: '',
-        redirectTo: 'login',
+        redirectTo: 'productos-todos',
         pathMatch: 'full'
     },
     // {
@@ -434,6 +434,18 @@ const routes = [
     {
         path: 'productos-todos',
         loadChildren: () => Promise.all(/*! import() | folder-productos-todos-productos-todos-module */[__webpack_require__.e("common"), __webpack_require__.e("folder-productos-todos-productos-todos-module")]).then(__webpack_require__.bind(null, /*! ./folder/productos-todos/productos-todos.module */ "./src/app/folder/productos-todos/productos-todos.module.ts")).then(m => m.ProductosTodosPageModule)
+    },
+    {
+        path: 'crear-producto-perfil',
+        loadChildren: () => Promise.all(/*! import() | folder-crear-producto-perfil-crear-producto-perfil-module */[__webpack_require__.e("common"), __webpack_require__.e("folder-crear-producto-perfil-crear-producto-perfil-module")]).then(__webpack_require__.bind(null, /*! ./folder/crear-producto-perfil/crear-producto-perfil.module */ "./src/app/folder/crear-producto-perfil/crear-producto-perfil.module.ts")).then(m => m.CrearProductoPerfilPageModule)
+    },
+    {
+        path: 'crear-local-perfil',
+        loadChildren: () => Promise.all(/*! import() | folder-crear-local-perfil-crear-local-perfil-module */[__webpack_require__.e("common"), __webpack_require__.e("folder-crear-local-perfil-crear-local-perfil-module")]).then(__webpack_require__.bind(null, /*! ./folder/crear-local-perfil/crear-local-perfil.module */ "./src/app/folder/crear-local-perfil/crear-local-perfil.module.ts")).then(m => m.CrearLocalPerfilPageModule)
+    },
+    {
+        path: 'locales-todos',
+        loadChildren: () => Promise.all(/*! import() | folder-locales-todos-locales-todos-module */[__webpack_require__.e("common"), __webpack_require__.e("folder-locales-todos-locales-todos-module")]).then(__webpack_require__.bind(null, /*! ./folder/locales-todos/locales-todos.module */ "./src/app/folder/locales-todos/locales-todos.module.ts")).then(m => m.LocalesTodosPageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {
@@ -612,7 +624,7 @@ let NoLoginGuard = class NoLoginGuard {
                 //redirigir al login
             }
             else {
-                this.router.navigateByUrl('/categorias');
+                this.router.navigateByUrl('/productos-todos');
                 return false;
                 //redirigir al home profesor
             }
@@ -697,42 +709,41 @@ let AuthService = class AuthService {
         this.variablesService.getVariable('wCIVneApMUwcOvDwIneJ').subscribe(res => { this.variables = res; });
         return new Promise((resolve, reject) => {
             firebase__WEBPACK_IMPORTED_MODULE_3__["auth"]().createUserWithEmailAndPassword(email, password).then(res => {
-                if (this.variables.RegistroVendedores) {
-                    this.firestore.collection('Usuarios').doc(res.user.uid).set({
-                        Nombre: nombre,
-                        Apellido: apellido,
-                        Correo: email,
-                        Ciudadela: ciudadela,
-                        Foto: downloadURL,
-                        Manzana: manzana,
-                        Premium: true,
-                        Publicaciones: 0,
-                        Productos: 0,
-                        Vendedor: true,
-                        Telefono: telefono,
-                        Villa: villa,
-                        Verificacion: false,
-                        EsperaPremium: false
-                    });
-                }
-                else {
-                    this.firestore.collection('Usuarios').doc(res.user.uid).set({
-                        Nombre: nombre,
-                        Apellido: apellido,
-                        Correo: email,
-                        Ciudadela: ciudadela,
-                        Foto: downloadURL,
-                        Manzana: manzana,
-                        Premium: false,
-                        Publicaciones: 0,
-                        Productos: 0,
-                        Vendedor: false,
-                        Telefono: telefono,
-                        Villa: villa,
-                        Verificacion: false,
-                        EsperaPremium: false
-                    });
-                }
+                // if(this.variables.RegistroVendedores){
+                this.firestore.collection('Usuarios').doc(res.user.uid).set({
+                    Nombre: nombre,
+                    Apellido: apellido,
+                    Correo: email,
+                    Ciudadela: ciudadela,
+                    Foto: downloadURL,
+                    Manzana: manzana,
+                    Premium: true,
+                    Publicaciones: 0,
+                    Productos: 0,
+                    Vendedor: true,
+                    Telefono: telefono,
+                    Villa: villa,
+                    Verificacion: false,
+                    EsperaPremium: false
+                });
+                // }else{
+                //   this.firestore.collection('Usuarios').doc(res.user.uid).set({
+                //     Nombre: nombre,
+                //     Apellido: apellido,
+                //     Correo: email,
+                //     Ciudadela: ciudadela,
+                //     Foto: downloadURL,
+                //     Manzana: manzana,
+                //     Premium: false,
+                //     Publicaciones: 0,
+                //     Productos: 0,
+                //     Vendedor: false,
+                //     Telefono: telefono,
+                //     Villa: villa,
+                //     Verificacion: false,
+                //     EsperaPremium: false
+                //   });
+                // }
                 resolve(res);
             });
         });

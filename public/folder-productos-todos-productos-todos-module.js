@@ -145,8 +145,11 @@ let ProductosTodosPage = class ProductosTodosPage {
         };
     }
     ngOnInit() {
-        this.productosService.getProductos().subscribe(res => { this.productos = res; this.shuffle(this.productos); });
-        this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => { this.user = res; });
+        this.productosService.getProductos().subscribe(res => { this.productos = res; this.shuffle(this.productos); this.recortar(); });
+        // this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => {this.user =res;});
+    }
+    recortar() {
+        this.productos = this.productos.slice(0, 11);
     }
     shuffle(array) {
         var currentIndex = array.length, temporaryValue, randomIndex;

@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-header nombre=\"locales\"></app-header>\r\n\r\n<ion-content>\r\n\r\n  <ion-searchbar\r\n    color=\"light\" \r\n    placeholder = \"Buscar categoría...\"\r\n    animated\r\n    (ionChange)=\"buscar($event)\">\r\n  </ion-searchbar>\r\n\r\n  <ion-list *ngFor=\"let categoria of categorias | filtroCategoriaLocal: textoBuscar\">\r\n\r\n    <ion-item [routerLink]=\"['/locales',categoria.id]\">\r\n\r\n      <ion-icon name=\"{{categoria.Icono}}\" slot=\"start\" size='large'></ion-icon>\r\n      <ion-label style=\"font-size: 17.2px;\">{{categoria.Nombre}}</ion-label>\r\n    </ion-item>\r\n\r\n  </ion-list>\r\n\r\n  <ion-fab vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\">\r\n    <ion-fab-button (click)=\"crearLocal()\">\r\n     <ion-icon name=\"add-outline\"></ion-icon>\r\n    </ion-fab-button>\r\n  </ion-fab>\r\n\r\n \r\n</ion-content>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-header nombre=\"locales\"></app-header>\r\n\r\n<ion-content>\r\n\r\n  <ion-segment color=\"tertiary\" value=\"categorias\">\r\n\r\n    <ion-segment-button value=\"todos\" [routerLink]=\"['/locales-todos']\" >\r\n      <ion-icon name=\"gift-outline\" size=\"large\"></ion-icon> <ion-label style=\"font-size: 11px;\">Locales</ion-label>\r\n    </ion-segment-button>\r\n\r\n    <ion-segment-button value=\"categorias\" [routerLink]=\"['/categorias-locales']\" >\r\n      <ion-icon name=\"list-outline\" size=\"large\"></ion-icon> <ion-label style=\"font-size: 11px;\">Categorías</ion-label>\r\n    </ion-segment-button>\r\n\r\n  </ion-segment>\r\n\r\n\r\n\r\n  <ion-searchbar\r\n    color=\"light\" \r\n    placeholder = \"Buscar categoría...\"\r\n    animated\r\n    (ionChange)=\"buscar($event)\">\r\n  </ion-searchbar>\r\n\r\n  <ion-list *ngFor=\"let categoria of categorias | filtroCategoriaLocal: textoBuscar\">\r\n\r\n    <ion-item [routerLink]=\"['/locales',categoria.id]\">\r\n\r\n      <ion-icon name=\"{{categoria.Icono}}\" slot=\"start\" size='large'></ion-icon>\r\n      <ion-label style=\"font-size: 17.2px;\">{{categoria.Nombre}}</ion-label>\r\n    </ion-item>\r\n\r\n  </ion-list>\r\n\r\n  <ion-fab vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\">\r\n    <ion-fab-button (click)=\"validarSesion()\">\r\n     <ion-icon name=\"add-outline\"></ion-icon>\r\n    </ion-fab-button>\r\n  </ion-fab>\r\n\r\n \r\n</ion-content>\r\n");
 
 /***/ }),
 
@@ -123,10 +123,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CategoriasLocalesPage", function() { return CategoriasLocalesPage; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var src_app_models_sugerenciaCategoriaLocal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/models/sugerenciaCategoriaLocal */ "./src/app/models/sugerenciaCategoriaLocal.ts");
-/* harmony import */ var src_app_services_categorias_locales_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/categorias-locales.service */ "./src/app/services/categorias-locales.service.ts");
+/* harmony import */ var src_app_services_categorias_locales_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/categorias-locales.service */ "./src/app/services/categorias-locales.service.ts");
+/* harmony import */ var src_app_models_sugerenciaCategoriaLocal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/models/sugerenciaCategoriaLocal */ "./src/app/models/sugerenciaCategoriaLocal.ts");
 /* harmony import */ var src_app_services_sugerencia_locales_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/sugerencia-locales.service */ "./src/app/services/sugerencia-locales.service.ts");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+
 
 
 
@@ -134,15 +136,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let CategoriasLocalesPage = class CategoriasLocalesPage {
-    constructor(categoriasService, sugerenciaService, alertCtrt) {
+    constructor(categoriasService, sugerenciaService, router, alertCtrt) {
         this.categoriasService = categoriasService;
         this.sugerenciaService = sugerenciaService;
+        this.router = router;
         this.alertCtrt = alertCtrt;
         this.categorias = [];
         this.textoBuscar = '';
-        this.sugerenciaLocal = new src_app_models_sugerenciaCategoriaLocal__WEBPACK_IMPORTED_MODULE_2__["sugerenciaCategoriaLocal"]();
+        this.sugerenciaLocal = new src_app_models_sugerenciaCategoriaLocal__WEBPACK_IMPORTED_MODULE_3__["sugerenciaCategoriaLocal"]();
     }
     ngOnInit() {
+        this.idUser = localStorage.getItem('userId');
         this.categoriasService.getCategorias().subscribe(res => { this.categorias = res; });
     }
     buscar(event) {
@@ -196,10 +200,45 @@ let CategoriasLocalesPage = class CategoriasLocalesPage {
         ;
         this.sugerenciaService.addSugerencia(this.sugerenciaLocal);
     }
+    validarSesion() {
+        if (this.idUser != null) {
+            this.crearLocal();
+        }
+        else {
+            this.iniciarSesion();
+        }
+    }
+    iniciarSesion() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            const alert = yield this.alertCtrt.create({
+                cssClass: 'my-custom-class',
+                header: 'No ha iniciado sesión',
+                message: 'Para sugerir una categoría primero debe iniciar sesión.',
+                buttons: [
+                    {
+                        text: 'Iniciar sesión',
+                        handler: (data) => {
+                            this.router.navigate(['/login']);
+                        }
+                    },
+                    {
+                        text: 'Cancelar',
+                        role: 'cancel',
+                        cssClass: 'secondary',
+                        handler: (blah) => {
+                            // console.log('Confirm Cancel: blah');
+                        }
+                    }
+                ]
+            });
+            yield alert.present();
+        });
+    }
 };
 CategoriasLocalesPage.ctorParameters = () => [
-    { type: src_app_services_categorias_locales_service__WEBPACK_IMPORTED_MODULE_3__["CategoriasLocalesService"] },
+    { type: src_app_services_categorias_locales_service__WEBPACK_IMPORTED_MODULE_2__["CategoriasLocalesService"] },
     { type: src_app_services_sugerencia_locales_service__WEBPACK_IMPORTED_MODULE_4__["SugerenciaLocalesService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["AlertController"] }
 ];
 CategoriasLocalesPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
@@ -209,56 +248,6 @@ CategoriasLocalesPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])
         styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! ./categorias-locales.page.scss */ "./src/app/folder/categorias-locales/categorias-locales.page.scss")).default]
     })
 ], CategoriasLocalesPage);
-
-
-
-/***/ }),
-
-/***/ "./src/app/services/categorias-locales.service.ts":
-/*!********************************************************!*\
-  !*** ./src/app/services/categorias-locales.service.ts ***!
-  \********************************************************/
-/*! exports provided: CategoriasLocalesService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CategoriasLocalesService", function() { return CategoriasLocalesService; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var angularfire2_firestore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! angularfire2/firestore */ "./node_modules/angularfire2/firestore/index.js");
-/* harmony import */ var angularfire2_firestore__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(angularfire2_firestore__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
-
-
-
-
-// import firebase from 'firebase/app';
-// import 'firebase/firestore';
-let CategoriasLocalesService = class CategoriasLocalesService {
-    constructor(firestore) {
-        this.firestore = firestore;
-        this.categoriasCollection = firestore.collection('CategoriasLocales', ref => ref.orderBy("Nombre", "asc"));
-        this.categorias = this.categoriasCollection.snapshotChanges().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(actions => {
-            return actions.map(a => {
-                const data = a.payload.doc.data();
-                const id = a.payload.doc.id;
-                return Object.assign({ id }, data);
-            });
-        }));
-    }
-    getCategorias() {
-        return this.categorias;
-    }
-};
-CategoriasLocalesService.ctorParameters = () => [
-    { type: angularfire2_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestore"] }
-];
-CategoriasLocalesService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-        providedIn: 'root'
-    })
-], CategoriasLocalesService);
 
 
 
