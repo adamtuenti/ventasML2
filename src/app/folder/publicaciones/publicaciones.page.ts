@@ -49,6 +49,25 @@ export class PublicacionesPage implements OnInit {
     
     this.idUser = localStorage.getItem('userId');
     this.variablesService.getVariable('wCIVneApMUwcOvDwIneJ').subscribe(res=> {this.variables = res;});
+
+    
+
+  }
+
+  convertirFecha(){
+    
+    var fecha = new Date('Thu Apr 15 2021 15:45:35 GMT-0500 (hora de Ecuador)');
+    console.log(fecha.getTime())
+
+    for(let i = 0; i < this.publicaciones.length; i++){
+      var fecha = new Date(this.publicaciones[i].Fecha)
+      var time = fecha.getTime()
+      this.publicaciones[i].Time = time;
+      console.log(time)
+      this.publicacionesService.updatePublicacion(this.publicaciones[i].id,this.publicaciones[i])
+
+
+    }
   }
 
   async alert(id) {

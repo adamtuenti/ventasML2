@@ -127,6 +127,7 @@ export class ComentariosLocalPage implements OnInit {
     this.comentario.Usuario = this.idUser;
     this.comentario.Descripcion = comentario;
     this.comentario.Fecha = fechaActual.toString();
+    this.comentario.Time = Date.now();
     this.comentariosService.addComentario(this.comentario);
 
   }

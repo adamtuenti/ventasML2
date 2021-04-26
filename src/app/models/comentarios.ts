@@ -4,4 +4,5 @@ export class Comentarios {
     Usuario: string;
     Empresa: string;
     Fecha: string;
+    Time: number;
 }

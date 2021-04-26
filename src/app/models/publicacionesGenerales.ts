@@ -8,4 +8,5 @@ export class PublicacionesGenerales {
     Visitas: number;
     Visibilidad: boolean;
     Fecha: string;
+    Time: number;
 }

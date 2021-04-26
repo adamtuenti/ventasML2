@@ -47,6 +47,7 @@ export class CrearPublicacionesGeneralesPage implements OnInit {
     this.publicacion.Visitas = 0;
     this.publicacion.Visibilidad = true;
     this.publicacion.Fecha = fechaActual.toString();
+    this.publicacion.Time = Date.now();
 
     this.guardarPublicacion();
  
