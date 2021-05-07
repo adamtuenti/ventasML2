@@ -38,6 +38,27 @@
         <div *ngIf="form.hasError('minlength', 'password')">
           <span>La contraseña debe tener 6 al menos caracteres</span>
         </div>
+
+        <ion-item>
+          <ion-icon color="black" name="person-add-outline"></ion-icon>
+          <ion-label style = "margin-left: 6.5px;">¿Fue recomendado?</ion-label>
+
+          
+          <ion-select name="opciones" (ionChange) = "onChange($event)" ngModel required>
+            <ion-select-option value="Si">Si</ion-select-option>
+            <ion-select-option value="No">No</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+
+        <ion-item *ngIf = 'referido == "Si"'>
+          <ion-icon color="black" name="person-outline"></ion-icon>
+          <ion-label style = "margin-left: 6.5px;">Usuario que le recomendó: </ion-label>
+          <ion-select required  name='idReferido' ngModel (ionChange) = "onChangeId($event)" required>
+                  <ion-select-option *ngFor="let cat of usuarios" [value]="cat.id">{{cat.Apellido}} {{cat.Nombre}}</ion-select-option>
+          </ion-select>
+  
+        </ion-item>
         
 
 

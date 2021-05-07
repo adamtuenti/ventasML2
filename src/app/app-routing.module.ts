@@ -6,7 +6,7 @@ import {AuthGuard} from './guards/auth.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'productos-todos',
+    redirectTo: 'carousel',
     pathMatch: 'full'
   },
   
@@ -157,10 +157,23 @@ const routes: Routes = [
   {
     path: 'crear-local-perfil',
     loadChildren: () => import('./folder/crear-local-perfil/crear-local-perfil.module').then( m => m.CrearLocalPerfilPageModule)
-  },  {
+  },
+  {
     path: 'locales-todos',
     loadChildren: () => import('./folder/locales-todos/locales-todos.module').then( m => m.LocalesTodosPageModule)
+  },
+  {
+    path: 'carousel',
+    loadChildren: () => import('./folder/carousel/carousel.module').then( m => m.CarouselPageModule)
+  },  {
+    path: 'promocion-locales',
+    loadChildren: () => import('./folder/promocion-locales/promocion-locales.module').then( m => m.PromocionLocalesPageModule)
+  },
+  {
+    path: 'anuncio-primero',
+    loadChildren: () => import('./folder/anuncio-primero/anuncio-primero.module').then( m => m.AnuncioPrimeroPageModule)
   }
+
 
 
 

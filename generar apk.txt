@@ -6,8 +6,13 @@
 5) clave de tasky tasky2021
 
 
-ionic cordova build --release android
 keytool -genkey -v -keystore ml2.keystore -alias ml2 -keyalg RSA -keysize 2048 -validity 10000
+
+
+#actualizar app en play store
+
+cambiar la version en el xml 
+ionic cordova build --release android
 jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore ml2.keystore C:\Users\anava\Documents\ventasML2\platforms\android\app\build\outputs\apk\release\app-release-unsigned.apk ml2
 C:\Users\anava\AppData\Local\Android\Sdk\build-tools\30.0.3\zipalign -v 4 platforms\android\app\build\outputs\apk\release\app-release-unsigned.apk ml2.apk
 

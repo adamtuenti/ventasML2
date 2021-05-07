@@ -15,6 +15,11 @@ import { MensajeErrorService } from 'src/app/services/mensaje-error.service';
 import { Variables } from 'src/app/models/variables';
 import { VariablesService } from 'src/app/services/variables.service';
 
+import * as firebase from 'firebase';
+
+import { UsuarioService } from 'src/app/services/usuario.service';
+import { Usuarios } from 'src/app/models/usuario';
+
 @Component({
   selector: 'app-registrar',
   templateUrl: './registrar.page.html',
@@ -25,8 +30,12 @@ export class RegistrarPage implements OnInit {
   file1: File;
   imageSrc: string | ArrayBuffer;
   loading: HTMLIonLoadingElement;
+  usuarios = [];
+  usuarioReferido : Usuarios = new Usuarios()
 
   variables : Variables = new Variables();
+
+  referido;
 
   constructor(private angularFireStorage: AngularFireStorage,
               private authService:AuthService,
@@ -35,11 +44,29 @@ export class RegistrarPage implements OnInit {
               private mensajeErrorService: MensajeErrorService,
               private alertCtrt: AlertController,
               public loadingController: LoadingController,
+
+              private usuarioService: UsuarioService,
              ) { }
 
   ngOnInit() {
     this.variablesService.getVariable('wCIVneApMUwcOvDwIneJ').subscribe(res=> {this.variables = res;});
     
+    firebase.firestore().collection('Usuarios').orderBy('Apellido').onSnapshot(snap =>{
+            this.usuarios = []
+            snap.forEach(element => {
+              this.usuarios.push(element.data())
+            })
+          })
+  }
+
+  onChange($event){
+    this.referido = $event.target.value;
+    
+  }
+
+  onChangeId($event){
+    this.usuarioService.getUsuario($event.target.value).subscribe(res=> {this.usuarioReferido = res;});
+
   }
 
   
@@ -103,12 +130,44 @@ export class RegistrarPage implements OnInit {
     var nombre = this.capitalizeFirstLetter(form.value.nombre)
     var apellido = this.capitalizeFirstLetter(form.value.apellido)
 
+    var idReferido;
+    if(form.value.idReferido == null){
+      idReferido = ''
+      this.RegistrarUserCompleto(nombre, apellido,form.value.email, form.value.password, form.value.ciudadela, form.value.manzana, form.value.villa, telefono, 'https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fperfil.png?alt=media&token=ee5b8e7d-43b5-43c1-9be9-98186a2ab2ce', '');
+    }else{
+      idReferido = form.value.idReferido
+      this.actualizarReferido()
       
-    this.RegistrarUserCompleto(nombre, apellido,form.value.email, form.value.password, form.value.ciudadela, form.value.manzana, form.value.villa, telefono, 'https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fperfil.png?alt=media&token=ee5b8e7d-43b5-43c1-9be9-98186a2ab2ce');
+      
+      this.RegistrarUserCompleto(nombre, apellido,form.value.email, form.value.password, form.value.ciudadela, form.value.manzana, form.value.villa, telefono, 'https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fperfil.png?alt=media&token=ee5b8e7d-43b5-43c1-9be9-98186a2ab2ce', idReferido);
+    }
+
+    
+
+      
+    
     
   }
 
-  guardarArchivo(nombre:string, apellido: string, email:string, password:string, ciudadela:string ,manzana:string, villa: string, telefono: string){
+  actualizarReferido(){
+    this.usuarioReferido.NumeroReferidos = this.usuarioReferido.NumeroReferidos + 1
+    this.usuarioService.updateUsuario(this.usuarioReferido.id, this.usuarioReferido).then(
+      auth=>{
+        //this.loading.dismiss();
+        
+       
+       
+      }  
+    ).catch(async error => {
+     // this.loading.dismiss();
+      var mensaje=error.code.split('/')[1];
+      const presentarMensaje = this.mensajeErrorService.AuthErrorCodeSpanish(mensaje);
+      console.log(presentarMensaje)
+    })
+
+  }
+
+  guardarArchivo(nombre:string, apellido: string, email:string, password:string, ciudadela:string ,manzana:string, villa: string, telefono: string, id : string){
     
     var storageRef = this.angularFireStorage.storage.ref()
 
@@ -119,7 +178,7 @@ export class RegistrarPage implements OnInit {
                     data.ref.getDownloadURL().then(
                         downloadURL => {
                           
-                            this.RegistrarUserCompleto(nombre, apellido, email, password, ciudadela, manzana, villa, telefono, downloadURL)  
+                            this.RegistrarUserCompleto(nombre, apellido, email, password, ciudadela, manzana, villa, telefono, downloadURL, id)  
 
                       
                         }
@@ -135,8 +194,8 @@ export class RegistrarPage implements OnInit {
  
 
   
-  async RegistrarUserCompleto(nombre:string, apellido: string, email:string, password:string, ciudadela:string ,manzana:string, villa: string, telefono: string, downloadURL:string){
-    this.authService.registerUser(nombre, apellido, email, password, ciudadela, manzana, villa, telefono, 'https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fperfil.png?alt=media&token=ee5b8e7d-43b5-43c1-9be9-98186a2ab2ce').
+  async RegistrarUserCompleto(nombre:string, apellido: string, email:string, password:string, ciudadela:string ,manzana:string, villa: string, telefono: string, downloadURL:string, idReferido: string){
+    this.authService.registerUser(nombre, apellido, email, password, ciudadela, manzana, villa, telefono, 'https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fperfil.png?alt=media&token=ee5b8e7d-43b5-43c1-9be9-98186a2ab2ce', idReferido).
     then(
       auth=>{
         this.loading.dismiss();
@@ -144,13 +203,15 @@ export class RegistrarPage implements OnInit {
         this.authService.loginUser(email, password).
         then(
           (res)=>{
+            this.actualizarReferido();
             localStorage.setItem('userId', res.user.uid);
             localStorage.setItem('Fondo','#FBC8B5');
             localStorage.setItem('FotoPerfil','https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fperfil.png?alt=media&token=ee5b8e7d-43b5-43c1-9be9-98186a2ab2ce');                   
-            this.router.navigateByUrl('/categorias');
+            this.router.navigateByUrl('/carousel');
         },
           
           async error => {
+            console.log('aqui estamos agustinw-rl@hotmail.com')
             var mensaje=error.code.split('/')[1]
             const presentarMensaje = this.mensajeErrorService.AuthErrorCodeSpanish(mensaje);
             const alert = await this.alertCtrt.create({
@@ -170,6 +231,7 @@ export class RegistrarPage implements OnInit {
        
       }  
     ).catch(async error => {
+      console.log('aqui esamos error agustinw-rl@hotmail.com')
       this.loading.dismiss();
       var mensaje=error.code.split('/')[1];
       const presentarMensaje = this.mensajeErrorService.AuthErrorCodeSpanish(mensaje);

@@ -1,0 +1,28 @@
+ion-content{
+
+    --ion-background-color:'white';
+}
+
+.vertical-center {
+    .fixed-content,
+    .scroll-content {
+        display: flex;
+        align-items: center;
+
+        ion-list {
+            max-width: 300px; 
+            width:100%; 
+            margin: auto; 
+            text-align: center;
+        }
+    }
+}
+
+.myColor {
+    background-color: #3880FF;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 7.5px;
+  }

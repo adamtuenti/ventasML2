@@ -40,7 +40,7 @@ export class AuthService {
     })
   }
 
-  registerUser(nombre:string, apellido: string, email:string, password:string, ciudadela:string ,manzana:string, villa: string, telefono: string, downloadURL:string):Promise<any>{
+  registerUser(nombre:string, apellido: string, email:string, password:string, ciudadela:string ,manzana:string, villa: string, telefono: string, downloadURL:string, idReferido: string):Promise<any>{
     
     this.variablesService.getVariable('wCIVneApMUwcOvDwIneJ').subscribe(res=> {this.variables = res;});
 
@@ -64,8 +64,10 @@ export class AuthService {
             Telefono: telefono,
             Villa: villa,
             Verificacion: false,
-            EsperaPremium: false
-
+            EsperaPremium: false,
+            id: res.user.uid,
+            NumeroReferidos: 0,
+            Referido: idReferido
           });
 
         // }else{
@@ -97,8 +99,8 @@ export class AuthService {
 
 
       resolve(res);
-
-      });  
+         
+      }).catch(err => reject(err))
     })
   }
 
