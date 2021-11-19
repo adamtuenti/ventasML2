@@ -14,27 +14,32 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class PublicacionDetallePage implements OnInit {
 
-  publicacion : PublicacionesGenerales = new PublicacionesGenerales();
-  public user: Usuarios=new Usuarios();
-  
+  publicacion: PublicacionesGenerales = new PublicacionesGenerales();
+  public user: Usuarios = new Usuarios();
+
   slideOpts = {
-    initialSlide: 0,
-    speed: 400
+    //initialSlide: 0,
+    //speed: 400,
+    //zoom: true,
+    zoom: {
+      maxRatio: 2
+    }
   };
-  
+
+
 
   constructor(private angularFireStorage: AngularFireStorage,
-              private router: Router,
-              private alertCtrt: AlertController,
-              private usuarioService: UsuarioService,
-              private publicacionesService: PublicacionesGeneralesService,
-              private activateRoute: ActivatedRoute,
-              public loadingController: LoadingController) { }
+    private router: Router,
+    private alertCtrt: AlertController,
+    private usuarioService: UsuarioService,
+    private publicacionesService: PublicacionesGeneralesService,
+    private activateRoute: ActivatedRoute,
+    public loadingController: LoadingController) { }
 
   ngOnInit() {
     this.activateRoute.paramMap.subscribe(paramMap => {
-      this.usuarioService.getUsuario(paramMap.get('idUser')).subscribe(res => {this.user =res;});
-      this.publicacionesService.getPublicacion(paramMap.get('idPublicacion')).subscribe(res=> {this.publicacion = res;});
+      this.usuarioService.getUsuario(paramMap.get('idUser')).subscribe(res => { this.user = res; });
+      this.publicacionesService.getPublicacion(paramMap.get('idPublicacion')).subscribe(res => { this.publicacion = res; });
     });
   }
 

@@ -1,41 +1,54 @@
-
 <app-header nombre="categorias"></app-header>
 
 <ion-content>
 
   <ion-segment color="tertiary" value="productos">
 
-    
 
-    <ion-segment-button value="productos" [routerLink]="['/productos-todos']" >
-      <ion-icon name="gift-outline" size="large"></ion-icon> <ion-label style="font-size: 11px;">Productos</ion-label>
+
+    <ion-segment-button value="productos" [routerLink]="['/productos-todos']">
+      <ion-icon name="gift-outline" size="large"></ion-icon>
+      <ion-label style="font-size: 11px;">Productos</ion-label>
     </ion-segment-button>
 
-    <ion-segment-button value="categorias" [routerLink]="['/categorias']" >
-      <ion-icon name="list-outline" size="large"></ion-icon> <ion-label style="font-size: 11px;">Categorias</ion-label>
+    <ion-segment-button value="categorias" [routerLink]="['/categorias']">
+      <ion-icon name="list-outline" size="large"></ion-icon>
+      <ion-label style="font-size: 11px;">Categorias</ion-label>
     </ion-segment-button>
 
     <ion-segment-button value="servicios" [routerLink]="['/servicios']">
-      <ion-icon name="rocket-outline" size="large"></ion-icon> <ion-label style="font-size: 11px;">Servicios</ion-label>
+      <ion-icon name="rocket-outline" size="large"></ion-icon>
+      <ion-label style="font-size: 11px;">Servicios</ion-label>
     </ion-segment-button>
 
   </ion-segment>
-
+  <!--
   <ion-slides pager="true" [options]="slideOpts" style="margin-top: 15px;">
     <ion-slide style="height: 500px;width: 90%;" *ngFor="let producto of productos">
-      
-
- 
 
           <ion-img *ngIf='producto.Visibilidad' src="{{producto.Foto1}}" style="height: 475px;width: 100%;" (click)='aumentarVisita(producto.id,producto)'></ion-img>
 
-        
-
-
-      
     </ion-slide>
+  </ion-slides> -->
 
-  </ion-slides>
+  <ion-grid>
+    <ion-row style="height: 500px;width: 100%;">
+      <ion-col sizeLg="4" sizeMd="4" sizeXs="6" *ngFor="let producto of productos">
+
+        <ion-card (click)='aumentarVisita(producto.id,producto)'>
+          <ion-card-header id="headerCard">
+
+            <ion-img *ngIf='producto.Visibilidad' src="{{producto.Foto1}}" style="height: 100%; padding: 0;"></ion-img>
+          </ion-card-header>
+          <ion-card-content>
+            <p>{{producto.Precio}} </p>
+            <h2>{{producto.Titulo}}</h2>
+          </ion-card-content>
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
   <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="validarVendedor()">
@@ -45,7 +58,7 @@
 
 
 
-  
+
 
 
 </ion-content>

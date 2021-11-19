@@ -1,3 +1,24 @@
 ion-content{
     --ion-background-color:#ffffff;
 }
+
+ion-card-header{
+    background-color: #E0E0E0;
+    /*width: 180px;*/
+    height: 180px;
+}
+
+ion-card{
+    display: flex;
+    flex-direction: column;
+    /*width: 180px;*/
+    margin: 0 !important;
+    height: 260px;
+  }
+
+  #headerCard{
+    padding: 0;
+  }
+  h2{
+      padding-top: 2px;
+  }
