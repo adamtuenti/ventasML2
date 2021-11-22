@@ -32,7 +32,16 @@ export class ProductosTodosPage implements OnInit {
   }
 
   recortar(){
-    this.productos = this.productos.slice(0,11)
+    this.productos = this.productos.slice(0,25)
+
+    // for(let i = 0; i < this.productos.length; i ++){
+    //   if(this.productos[i].Precio[0] == '$'){
+    //     //console.log('Mal: ',this.productos[i].Precio.slice(1,))
+    //     this.productos[i].Precio = this.productos[i].Precio.slice(1,)
+    //     this.productosService.updateProducto(this.productos[i].id, this.productos[i])
+    //   }
+    // }
+
   }
 
 

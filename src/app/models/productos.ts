@@ -4,7 +4,7 @@ export class Productos {
     Descripcion: string;
     Foto1: string;
     Foto2: string;
-    Precio: number;
+    Precio: string;
     Titulo: string;
     Vendedor: string;
     Visitas:number;

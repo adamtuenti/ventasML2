@@ -18,7 +18,14 @@ C:\Users\anava\AppData\Local\Android\Sdk\build-tools\30.0.3\zipalign -v 4 platfo
 
 clave: 123456
 
+<<<<<<< HEAD
 
 
 
 firebase deploy --only hosting:ventasml2
+=======
+Propuesta de Valor:
+- Amigable con el usuario
+- Gratuito
+- Seguro con tus datos
+>>>>>>> b2d075ff88870971cb25211939523f75bd1853d3

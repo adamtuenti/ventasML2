@@ -102,7 +102,7 @@ export class EditarProductoPage implements OnInit {
     
   }
 
-  async UpdateProductoCompleto(precio: number, titulo: string, descripcion:string,downloadURL:string, downloadURL1:string){
+  async UpdateProductoCompleto(precio: string, titulo: string, descripcion:string,downloadURL:string, downloadURL1:string){
     this.producto.Precio = precio;
     this.producto.Foto1 = downloadURL;
     this.producto.Foto2 = downloadURL1;

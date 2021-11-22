@@ -34,7 +34,7 @@ export class LocalesTodosPage implements OnInit {
   }
 
   recortar(){
-    this.locales = this.locales.slice(0,11)
+    this.locales = this.locales.slice(0,25)
   }
 
   shuffle(array) {
@@ -58,7 +58,7 @@ export class LocalesTodosPage implements OnInit {
   aumentarVisita(id:string,locales:Locales){
     // locales.Visitas = locales.Visitas + 1
     // this.localesService.updateLocal(id,locales)
-    this.router.navigate(['/productos-locales',locales.id, locales.Usuario]); 
+    this.router.navigate(['/detalle-local',locales.id, locales.Usuario]); 
   }
 
 

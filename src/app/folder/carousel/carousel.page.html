@@ -1,42 +1,91 @@
-
-
 <ion-content class="vertical-center">
-  
 
-  <ion-slides pager="true" [options]="slideOpts" style="height: 92%;margin-top: 45px;">
-    <ion-slide style="height: 100%;width: 85%;margin: auto;" *ngFor = 'let dato of carousel'>
 
+  <ion-slides pager="true" [options]="slideOpts" style="height: 85%;margin-top: 45px;">
+    <!-- <ion-slide style="height: 100%;width: 85%;margin: auto;" *ngFor='let dato of carousel'>
+      
       <ion-content>
 
-        
-
-        <div align = 'center' style = 'margin-bottom: 45px;margin-top:35.2px;'>
-          <ion-img src= "{{dato.Foto}}" style="height: 235px;width: 235px;margin:auto"></ion-img>
+        <div align='center' style='margin-bottom: 10%;margin-top:45.2px;'>
+          <ion-img src="{{dato.imagen}}" style="height: 215px;width: 215px;margin:auto"></ion-img>
         </div>
-     
-          
-   
-        <div align = 'center' style = 'text-align: center;margin:auto;width: 85%;'>
-          <ion-label style = 'color:black;font-size: 22.5px;text-align: center;margin:auto;'>{{dato.Descripcion}}</ion-label>
+
+        <div align='center' style='color:black;font-size: 19.1px;text-align: center;margin:auto;width: 85%;'>
+          <ion-label style='color:black;font-size: 19.1px;text-align: center;margin:auto;'>{{dato.Descripcion}}
+          </ion-label>
 
         </div>
-          
 
+      </ion-content> 
 
-         
+    </ion-slide> -->
+    <ion-slide style="height: 100%;width: 85%;margin: auto;">
 
+      <ion-content>
+        <div align='center' style='margin-bottom: 10%;margin-top:45.2px;'>
+          <ion-img src="assets/img/home_registrar.png" style="height: 215px;width: 215px;margin:auto"></ion-img>
+        </div>
+        <div align='center' style='color:black;font-size: 19.1px;text-align: center;margin:auto;width: 85%;'>
+          <ion-label style='color:black;font-size: 19.1px;text-align: center;margin:auto;'>Una vez te hayas registrado
+            podrás:
+          </ion-label>
+        </div>
       </ion-content>
-      
+
     </ion-slide>
 
-  
+    <ion-slide style="height: 100%;width: 85%;margin: auto;">
+
+      <ion-content>
+        <div align='center' style='margin-bottom: 10%;margin-top:45.2px;'>
+          <ion-img src="assets/img/home_anuncios.png" style="height: 215px;width: 215px;margin:auto"></ion-img>
+        </div>
+        <div align='center' style='color:black;font-size: 19.1px;text-align: center;margin:auto;width: 85%;'>
+          <ion-label style='color:black;font-size: 19.1px;text-align: center;margin:auto;'>Publicar anuncios de los
+            servicios y productos que ofrezcas.
+          </ion-label>
+        </div>
+      </ion-content>
+
+    </ion-slide>
+
+    <ion-slide style="height: 100%;width: 85%;margin: auto;">
+
+      <ion-content>
+        <div align='center' style='margin-bottom: 10%;margin-top:45.2px;'>
+          <ion-img src="assets/img/home_categoria.png" style="height: 215px;width: 215px;margin:auto"></ion-img>
+        </div>
+        <div align='center' style='color:black;font-size: 19.1px;text-align: center;margin:auto;width: 85%;'>
+          <ion-label style='color:black;font-size: 19.1px;text-align: center;margin:auto;'>Subir tus productos en la
+            categoría correspondiente.
+          </ion-label>
+        </div>
+      </ion-content>
+
+    </ion-slide>
+
+    <ion-slide style="height: 100%;width: 85%;margin: auto;">
+
+      <ion-content>
+        <div align='center' style='margin-bottom: 10%;margin-top:45.2px;'>
+          <ion-img src="assets/img/home_local.png" style="height: 215px;width: 215px;margin:auto"></ion-img>
+        </div>
+        <div align='center' style='color:black;font-size: 19.1px;text-align: center;margin:auto;width: 85%;'>
+          <ion-label style='color:black;font-size: 19.1px;text-align: center;margin:auto;'>Promocionar tu local y
+            agregar los productos que ofrece en la opción "cartilla".
+          </ion-label>
+        </div>
+      </ion-content>
+
+    </ion-slide>
+
 
 
   </ion-slides>
 
-  <ion-fab vertical="start" horizontal="end" slot="fixed" style = 'margin-top: 7.5px;margin-right: 7.5px;'>
+  <ion-fab vertical="start" horizontal="end" slot="fixed" style='margin-top: 7.5px;margin-right: 7.5px;'>
 
-     <ion-icon (click) = 'cambiar()' name="close-circle-outline" size="large"></ion-icon>
+    <ion-icon (click)='cambiar()' name="close-circle-outline" size="large"></ion-icon>
 
   </ion-fab>
 
@@ -44,8 +93,10 @@
 </ion-content>
 
 <ion-footer class="myColor">
-  <div align = 'center'>
-    <img src = 'https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2FML2%20gratis%20(2).png?alt=media&token=1ffed55e-3c07-46c0-8674-6a03c20663a1' style = 'height: 75px;width: 250px;margin: auto;'/>
+  <div align='center'>
+    <img
+      src='https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2FML2%20gratis%20(4).png?alt=media&token=ba6712b7-fe58-4a7f-b4f1-3b9dd8511b6c'
+      style='height: 75px;width: 250px;margin: auto;' />
   </div>
 
 </ion-footer>
