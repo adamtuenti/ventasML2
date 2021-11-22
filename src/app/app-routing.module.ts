@@ -165,13 +165,18 @@ const routes: Routes = [
   {
     path: 'carousel',
     loadChildren: () => import('./folder/carousel/carousel.module').then( m => m.CarouselPageModule)
-  },  {
+  },
+  {
     path: 'promocion-locales',
     loadChildren: () => import('./folder/promocion-locales/promocion-locales.module').then( m => m.PromocionLocalesPageModule)
   },
   {
     path: 'anuncio-primero',
     loadChildren: () => import('./folder/anuncio-primero/anuncio-primero.module').then( m => m.AnuncioPrimeroPageModule)
+  },
+  {
+    path: 'comunicacion-local/:idLocal/:idPropietario',
+    loadChildren: () => import('./folder/comunicacion-local/comunicacion-local.module').then( m => m.ComunicacionLocalPageModule)
   }
 
 

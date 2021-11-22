@@ -7,6 +7,11 @@ import { VariablesService } from 'src/app/services/variables.service';
 import { Usuarios } from 'src/app/models/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
+
+// import { Locales } from 'src/app/models/locales';
+// import { LocalesService } from 'src/app/services/locales.service';
+
+
 @Component({
   selector: 'app-carousel',
   templateUrl: './carousel.page.html',
@@ -15,6 +20,8 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 export class CarouselPage implements OnInit {
 
   //usuarios:Usuarios[] = [];
+
+  //locales : Locales[] = [];
 
 
   carousel = []
@@ -29,6 +36,8 @@ export class CarouselPage implements OnInit {
 
   constructor(private router: Router,
   //private usuarioService: UsuarioService,
+
+  //private localesService: LocalesService,
               private variablesService: VariablesService,
               ) { }
 
@@ -38,6 +47,9 @@ export class CarouselPage implements OnInit {
 
   ngOnInit() {
     this.variablesService.getVariable('wCIVneApMUwcOvDwIneJ').subscribe(res=> {this.promocion = res.Promocion; this.registrarPromo = res.registrarPromo});
+
+    //this.localesService.getLocales().subscribe(res=> {this.locales = res;this.cambiarLocales()})
+
 
     firebase.firestore().collection('Carousel').orderBy('Orden').onSnapshot(snap =>{
       this.carousel = []
@@ -50,6 +62,13 @@ export class CarouselPage implements OnInit {
 
     //this.usuarioService.getUsuarios().subscribe(res => {this.usuarios = res;this.funcion()});
   }
+
+  // cambiarLocales(){
+  //   for(let i = 0; i< this.locales.length; i++){
+  //     this.locales[i].Premium = true
+  //     this.localesService.updateLocal(this.locales[i].id,this.locales[i]);
+  //   }
+  // }
 
   IonViewWillLeave(){
     //this.nativeAudio.unload('audioWo')
@@ -64,15 +83,14 @@ export class CarouselPage implements OnInit {
   // }
 
   cambiar(){
-    console.log(this.promocion)
     if(this.promocion){
-
       if(this.registrarPromo){
-
+        this.router.navigateByUrl('/anuncio-primero');
       }else{
+        this.router.navigateByUrl('/promocion-locales');
 
       }
-      this.router.navigateByUrl('/perfil');
+      
 
     }else{
       this.router.navigateByUrl('/publicaciones');

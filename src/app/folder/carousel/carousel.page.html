@@ -3,21 +3,21 @@
 <ion-content class="vertical-center">
   
 
-  <ion-slides pager="true" [options]="slideOpts" style="height: 85%;margin-top: 45px;">
+  <ion-slides pager="true" [options]="slideOpts" style="height: 92%;margin-top: 45px;">
     <ion-slide style="height: 100%;width: 85%;margin: auto;" *ngFor = 'let dato of carousel'>
 
       <ion-content>
 
         
 
-        <div align = 'center' style = 'margin-bottom: 10%;margin-top:45.2px;'>
-          <ion-img src= "{{dato.Foto}}" style="height: 215px;width: 215px;margin:auto"></ion-img>
+        <div align = 'center' style = 'margin-bottom: 45px;margin-top:35.2px;'>
+          <ion-img src= "{{dato.Foto}}" style="height: 235px;width: 235px;margin:auto"></ion-img>
         </div>
      
           
    
-        <div align = 'center' style = 'color:black;font-size: 19.1px;text-align: center;margin:auto;width: 85%;'>
-          <ion-label style = 'color:black;font-size: 19.1px;text-align: center;margin:auto;'>{{dato.Descripcion}}</ion-label>
+        <div align = 'center' style = 'text-align: center;margin:auto;width: 85%;'>
+          <ion-label style = 'color:black;font-size: 22.5px;text-align: center;margin:auto;'>{{dato.Descripcion}}</ion-label>
 
         </div>
           

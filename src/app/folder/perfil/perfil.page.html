@@ -49,7 +49,7 @@
       </ion-card>
 
 
-      <ion-item *ngIf = '!user.Vendedor && !user.Verificacion' style="margin-top: 25px;margin-bottom: 10px;">
+      <ion-item *ngIf = '!user.Vendedor && !user.Verificacion' style="margin-top: 25px;margin-bottom: 10px;" lines = 'none'>
         <ion-button style="width: 225px;height: 45px;margin-top:12.5px;margin:auto;" color="success" (click)="serVendedor()">
           <ion-icon name="hand-left-outline" size="large" style="margin-right: 8px;"></ion-icon>
           <ion-label style="font-size: 17px;">Ser vendedor</ion-label>
@@ -60,14 +60,14 @@
 
 
 
-      <ion-item *ngIf = '!user.Vendedor && user.Verificacion' style="margin-top: 25px;margin-bottom: 10px;">
+      <ion-item *ngIf = '!user.Vendedor && user.Verificacion' style="margin-top: 25px;margin-bottom: 10px;" lines = 'none'>
         <ion-button style="width: 225px;height: 45px;margin-top:12.5px;margin:auto;" color="warning" (click)="esperaVendedor()">
           <ion-icon name="hand-left-outline" size="large" style="margin-right: 8px;"></ion-icon>
           <ion-label style="font-size: 11px;">En espera (vendedor)</ion-label>
         </ion-button>
       </ion-item>
 
-      <ion-item *ngIf = '!user.Premium' style="margin-top: 15px;margin-bottom: 10px;">
+      <ion-item *ngIf = '!user.Premium' style="margin-top: 15px;margin-bottom: 10px;" lines = 'none'>
         <ion-button style="width: 225px;height: 45px;margin-top:12.5px;margin:auto;" color="success" (click)="serPremium()">
           <ion-icon name="diamond-outline" size="large" style="margin-right: 8px;"></ion-icon>
           <ion-label style="font-size: 17px;">Ser premium</ion-label>
@@ -75,7 +75,7 @@
       </ion-item>
 
 
-      <ion-item *ngIf = 'user.Vendedor' style="margin-top: 22px;margin-bottom: 10px;">
+      <ion-item *ngIf = 'user.Vendedor' style="margin-top: 22px;margin-bottom: 10px;" lines = 'none'>
         <ion-button style="width: 225px;height: 45px;margin-top:12.5px;margin:auto;" color="success" [routerLink]="['/mis-publicaciones']">
           <ion-icon name="megaphone-outline" size="large" style="margin-right: 8px;"></ion-icon>
           <ion-label style="font-size: 17px;">Mis anuncios</ion-label>
@@ -83,7 +83,7 @@
 
       </ion-item>
 
-      <ion-item *ngIf = 'user.Vendedor' style="margin-top: 15px;margin-bottom: 10px;">
+      <ion-item *ngIf = 'user.Vendedor' style="margin-top: 15px;margin-bottom: 10px;" lines = 'none'>
         <ion-button style="width: 225px;height: 45px;margin-top:12.5px;margin:auto;" color="success" [routerLink]="['/mis-servicios']">
           <ion-icon name="rocket-outline" size="large" style="margin-right: 8px;"></ion-icon>
           <ion-label style="font-size: 17px;">Mis servicios</ion-label>
@@ -91,7 +91,7 @@
 
       </ion-item>
 
-      <ion-item style="margin-top: 15px;margin-bottom: 10px;">
+      <ion-item style="margin-top: 15px;margin-bottom: 10px;" lines = 'none'>
         <ion-button style="width: 225px;height: 45px;margin-top:12.5px;margin:auto;" color="success" [routerLink]="['/crear-local-perfil']">
           <ion-icon name="home-outline" size="large" style="margin-right: 8px;"></ion-icon>
           <ion-label style="font-size: 17px;">Crear local</ion-label>
@@ -100,7 +100,7 @@
       </ion-item>
 
 
-      <ion-item *ngIf = 'user.Vendedor' style="margin-top: 15px;margin-bottom: 15px;">
+      <ion-item *ngIf = 'user.Vendedor' style="margin-top: 15px;margin-bottom: 15px;" lines = 'none'>
         <ion-button style="width: 225px;height: 45px;margin-top:12.5px;margin:auto;" color="success" [routerLink]="['/mis-productos']">
           <ion-icon name="bag-check-outline" size="large" style="margin-right: 8px;"></ion-icon>
           <ion-label style="font-size: 17px;">Mis productos</ion-label>
@@ -108,7 +108,7 @@
 
       </ion-item>
 
-      <ion-item style="margin-top: 10px;margin-bottom: 25px;">
+      <ion-item style="margin-top: 10px;margin-bottom: 25px;" lines = 'none'>
         <ion-button style="width: 225px;height: 45px;margin-top:12.5px;margin:auto;" color="danger" (click)="logOutUser()">
           <ion-icon name="log-out-outline" size="large" style="margin-right: 8px;"></ion-icon>
           <ion-label style="font-size: 17px;">Cerrar Sesión</ion-label>
@@ -134,14 +134,14 @@
       
     <div align = 'center' style="margin-top:35px;">
 
-    <ion-item>
+    <ion-item lines = 'none'>
       <ion-button style="width: 215px;height: 42px;margin-top:15.5px;margin:auto;" color="success" [routerLink]="['/login']">
         <ion-icon name="person-outline" size="large" style="margin-right: 8px;"></ion-icon>
         <ion-label style="font-size: 15px;">Iniciar sesión</ion-label>
       </ion-button>
     </ion-item>
 
-    <ion-item style = 'margin-top:15px;'>
+    <ion-item style = 'margin-top:15px;' lines = 'none'>
       <ion-button style="width: 215px;height: 42px;margin:auto;" color="success" [routerLink]="['/registrar']">
         <ion-icon name="rocket-outline" size="large" style="margin-right: 8px;"></ion-icon>
         <ion-label style="font-size: 15px;">Registrarse </ion-label>

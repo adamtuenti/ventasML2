@@ -151,7 +151,7 @@ let LoginPage = class LoginPage {
                 then((res) => {
                 localStorage.setItem('userId', res.user.uid);
                 localStorage.setItem('Fondo', '#FBC8B5');
-                this.usuarioService.getUsuario(res.user.uid).subscribe(res1 => { localStorage.setItem('FotoPerfil', res1.Foto); this.router.navigateByUrl('/categorias'); });
+                this.usuarioService.getUsuario(res.user.uid).subscribe(res1 => { localStorage.setItem('FotoPerfil', res1.Foto); this.router.navigateByUrl('/carousel'); });
             }, (error) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
                 var mensaje = error.code.split('/')[1];
                 const presentarMensaje = this.mensajeErrorService.AuthErrorCodeSpanish(mensaje);

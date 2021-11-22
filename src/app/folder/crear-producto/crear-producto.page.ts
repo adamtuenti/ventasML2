@@ -7,6 +7,8 @@ import { AlertController, LoadingController } from '@ionic/angular';
 import { Usuarios } from 'src/app/models/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
+import * as firebase from 'firebase';
+
 
 @Component({
   selector: 'app-crear-producto',
@@ -15,7 +17,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class CrearProductoPage implements OnInit {
 
-  public producto: Productos = new Productos();
+  producto = {Titulo:'',Descripcion:'',Vendedor:'',Categoria:'',Visitas:0,Precio:0,Visibilidad:true,Foto1:'',Foto2:'',id:''};
   public user: Usuarios=new Usuarios();
   idCategoria;
   miId: '7G091ZlAzKhS9TrNFqAX';
@@ -146,23 +148,47 @@ export class CrearProductoPage implements OnInit {
 
   }
 
-  guardarCompleto(downloadURL: string, downloadURL1: string){
+  async guardarCompleto(downloadURL: string, downloadURL1: string){
+
+
+    const docRef = firebase.firestore().collection("Productos").doc();
     this.producto.Foto1 = downloadURL;
     this.producto.Foto2 = downloadURL1;
+    this.producto.id = docRef.id
+    
+    await docRef.set(this.producto)
+
+    
+     
+
+  
+
+    
     this.user.Productos = this.user.Productos + 1;
-    this.usuarioService.updateUsuario(this.idUser,this.user)
-    this.productosService.addProducto(this.producto).then(
+    this.usuarioService.updateUsuario(this.idUser,this.user).then(
       auth=>{
         
         this.loading.dismiss();
 
 
-        this.router.navigate(["/productos",this.idCategoria])
+       this.router.navigate(["/productos",this.idCategoria])
       }       
     ).catch(async error => {
       this.loading.dismiss();
       this.failedAlert("Algo salió mal, inténtelo de nuevo");
     })
+    // this.producto
+    // this.productosService.addProducto(this.producto).then(
+    //   auth=>{
+        
+    //     this.loading.dismiss();
+
+    
+    //   }       
+    // ).catch(async error => {
+    //   this.loading.dismiss();
+    //   this.failedAlert("Algo salió mal, inténtelo de nuevo");
+    // })
   }
 
 }

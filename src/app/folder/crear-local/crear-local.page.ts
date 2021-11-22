@@ -6,6 +6,9 @@ import { LocalesService } from 'src/app/services/locales.service';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { AngularFireStorage } from 'angularfire2/storage';
 
+
+import * as firebase from 'firebase';
+
 @Component({
   selector: 'app-crear-local',
   templateUrl: './crear-local.page.html',
@@ -13,7 +16,7 @@ import { AngularFireStorage } from 'angularfire2/storage';
 })
 export class CrearLocalPage implements OnInit {
   categoria: string;
-  public local: Locales= new Locales();
+  public local = {Nombre:'',Descripcion:'',Ciudadela:'',Manzana:'',Villa:'',Telefono:'',RedSocial:'',HorarioAtencion:'',Referencia:'',Usuario:'',CategoriaLocal:'',Visibilidad:true,Domicilio:'',Calificacion:5,Foto:'',id:''}
   loading: HTMLIonLoadingElement;
 
   image: string | ArrayBuffer;
@@ -59,6 +62,11 @@ export class CrearLocalPage implements OnInit {
       telefono = telefono;
     }
 
+    var redSocial = ''
+    if(form.value.redSocial != null){
+      redSocial = form.value.redSocial
+    }
+
     this.presentLoading("Espere por favor...");
     this.local.Nombre = form.value.nombre;
     this.local.Descripcion = form.value.descripcion;
@@ -66,7 +74,7 @@ export class CrearLocalPage implements OnInit {
     this.local.Manzana = form.value.manzana;
     this.local.Villa = form.value.villa;
     this.local.Telefono = telefono;
-    this.local.RedSocial = form.value.redSocial;
+    this.local.RedSocial = redSocial;
     this.local.HorarioAtencion = form.value.horarioAtencion;
     this.local.Referencia = form.value.referencia;
     this.local.Usuario = localStorage.getItem('userId');
@@ -98,20 +106,15 @@ export class CrearLocalPage implements OnInit {
     
   }
 
-  crearLocalFinal(downloadURL: string){
+  async crearLocalFinal(downloadURL: string){
     this.local.Foto = downloadURL;
-    this.localesService.addLocal(this.local).then(
-      auth=>{
-        
-        this.loading.dismiss();
+    this.loading.dismiss();
+    const docRef = firebase.firestore().collection("Locales").doc();
+    this.local.id = docRef.id
+    
+    await docRef.set(this.local)
 
-
-        this.router.navigate(["/locales",this.categoria])
-      }       
-    ).catch(async error => {
-      this.loading.dismiss();
-      this.failedAlert("Algo salió mal, inténtelo de nuevo");
-    })
+    this.router.navigate(["/comunicacion-local",docRef.id,localStorage.getItem('userId')])
 
   }
 

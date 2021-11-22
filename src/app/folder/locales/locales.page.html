@@ -13,7 +13,7 @@
 
   <ng-container *ngIf="!condicion">
   <ng-container *ngFor="let local of locales | filtroLocal: textoBuscar">
-    <ion-card *ngIf = 'local.CategoriaLocal == categoria'> 
+    <ion-card> 
       <!-- && local.Visibilidad == true' -->
       
       <ion-item [routerLink]="['/productos-locales',local.id, local.Usuario]" >

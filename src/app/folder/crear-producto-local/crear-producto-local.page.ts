@@ -148,7 +148,7 @@ export class CrearProductoLocalPage implements OnInit {
         this.loading.dismiss();
 
 
-        this.router.navigate(["/categorias"])
+        this.router.navigate(["/productos-locales",this.idLocal, this.idPropietario])
       }       
     ).catch(async error => {
       this.loading.dismiss();

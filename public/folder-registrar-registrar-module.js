@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<!-- <ion-header>\r\n  <ion-toolbar color=\"primary\">\r\n    <ion-title>Registro</ion-title>\r\n  </ion-toolbar>\r\n</ion-header> -->\r\n\r\n<ion-content padding>\r\n  <ion-card>\r\n    <!-- <ion-list>\r\n      <ion-img src=\"../../assets/log.png\"></ion-img>\r\n    </ion-list> -->\r\n    <div align=\"center\" style=\"margin-top:15px\">\r\n      <label style=\"font-size: 31px;\">Registro</label>\r\n    </div>\r\n\r\n    <form #form=\"ngForm\" (ngSubmit)=\"RegistrarUser(form)\" >\r\n      <ion-list>   \r\n          \r\n        <ion-item>\r\n          <ion-icon color=\"black\" name=\"person-outline\"></ion-icon>\r\n          <ion-input style = \"margin-left: 6.5px;\" required placeholder=\"Nombre\" name=\"nombre\" type='text' ngModel required></ion-input>\r\n        </ion-item>\r\n\r\n        <ion-item>\r\n          <ion-icon color=\"black\" name=\"person-outline\"></ion-icon>\r\n          <ion-input style = \"margin-left: 6.5px;\" required placeholder=\"Apellido\" name=\"apellido\" type='text' ngModel required></ion-input>\r\n        </ion-item>\r\n        \r\n        <ion-item>\r\n          <ion-icon color=\"black\" name=\"mail-outline\"></ion-icon>\r\n          <ion-input style = \"margin-left: 6.5px;\" required placeholder=\"Correo\" name=\"email\" type='email' ngModel required></ion-input>\r\n        </ion-item>\r\n\r\n        <ion-item>\r\n          <ion-icon color=\"black\" name=\"key-outline\"></ion-icon>\r\n          <ion-input style = \"margin-left: 6.5px;\" placeholder=\"Contraseña\" name=\"password\" type='password' ngModel minlength=\"6\" required></ion-input>\r\n        </ion-item>\r\n        <div *ngIf=\"form.hasError('minlength', 'password')\">\r\n          <span>La contraseña debe tener 6 al menos caracteres</span>\r\n        </div>\r\n        \r\n\r\n\r\n        <ion-item>\r\n          <ion-icon color=\"black\" name=\"call-outline\"></ion-icon>\r\n          <ion-input style = \"margin-left: 6.5px;\" placeholder=\"WhatsApp\" name=\"telefono\" type='text' ngModel required></ion-input>\r\n        </ion-item>\r\n\r\n        <ion-item>\r\n          <ion-icon color=\"black\" name=\"storefront-outline\"></ion-icon>\r\n          <ion-label style = \"margin-left: 6.5px;\">Ciudadela: </ion-label>\r\n          <ion-select required  name='ciudadela' ngModel>\r\n           \r\n                  <ion-select-option value=\"Paraíso del Río 1\">Paraíso del Río 1</ion-select-option>\r\n                  <ion-select-option value=\"Paraíso del Río 2\">Paraíso del Río 2</ion-select-option> \r\n                  <ion-select-option value=\"Toledo\">Toledo</ion-select-option> \r\n                  <ion-select-option value=\"Marbella\">Marbella</ion-select-option> \r\n                  <ion-select-option value=\"Victoria del Río\">Victoria del Río</ion-select-option>\r\n                  <ion-select-option value=\"Salamanca\">Salamanca</ion-select-option>\r\n                  <ion-select-option value=\"Victoria Club\">Victoria Club</ion-select-option>\r\n                  <ion-select-option value=\"Plaza Victoria\">Plaza Victoria</ion-select-option>\r\n                  <ion-select-option value=\"Valle Victoria\">Valle Victoria</ion-select-option>\r\n                  <ion-select-option value=\"Alameda del Río\">Alameda del Río</ion-select-option>\r\n\r\n          \r\n          </ion-select>\r\n  \r\n        </ion-item>\r\n\r\n        <ion-item>\r\n          <ion-icon color=\"black\" name=\"trail-sign-outline\"></ion-icon>\r\n          <ion-input style = \"margin-left: 6.5px;\" placeholder=\"Manzana\" name=\"manzana\" type='text' ngModel required></ion-input>\r\n        </ion-item>\r\n\r\n        <ion-item>\r\n          <ion-icon color=\"black\" name=\"bookmark-outline\"></ion-icon>\r\n          <ion-input style = \"margin-left: 6.5px;\" placeholder=\"Villa\" name=\"villa\" type='text' ngModel required></ion-input>\r\n        </ion-item>\r\n\r\n\r\n\r\n\r\n        \r\n        \r\n        \r\n        \r\n\r\n          <!-- <ion-item>\r\n            <ion-icon color=\"black\" name=\"image-outline\"></ion-icon> <ion-label style = \"margin-left: 6.5px;\">Foto de Perfil </ion-label>\r\n          \r\n            <ion-input type='file' accept=\"image/*\" id=\"myFileInput\" name=\"foto\" (change)=\"readURL($event);\" class=\"fileInput\" ngModel required></ion-input>\r\n          </ion-item> -->\r\n\r\n\r\n          <!-- <ion-item>\r\n            <ion-label><ion-icon name=\"image-outline\"></ion-icon> Seleccione su foto de perfil <ion-text color=\"\"></ion-text></ion-label>\r\n          </ion-item>\r\n\r\n          <ion-item>\r\n            <ion-input type='file' accept=\"image/*\" id=\"perfilFoto\" name=\"foto\" (change)=\"readURL($event);\" class=\"fileInput\" ngModel required></ion-input>\r\n          </ion-item> -->\r\n          \r\n          \r\n          \r\n        \r\n\r\n\r\n      </ion-list> \r\n      \r\n\r\n      <div class=\"ion-padding\" align=\"center\">\r\n        <ion-button type=\"submit\"  style=\"width: 150px;\" [disabled]=\"form.invalid\" expand=\"block\">\r\n          Registrar\r\n        </ion-button>\r\n        <p style=\"font-size: 15px;\" routerLink=\"/login\" routerDirection=\"root\">Ya tengo cuenta</p>\r\n      </div>\r\n    </form>\r\n  </ion-card>\r\n</ion-content>\r\n\r\n<style>\r\n#myFileInput{\r\n  position: absolute;\r\n  opacity: 0;\r\n}\r\n  .perfil {\r\n    display: flex;\r\n    justify-content: center;\r\n    width: 200px;\r\n  }\r\n  .item ion-thumbnail {\r\n    min-width: 10rem;    \r\n    min-height: 10rem;\r\n    /* img {\r\n      max-width: 10rem;    \r\n      min-width: 10rem;\r\n    }   */\r\n  }\r\n  ion-img {     \r\n      width: 60%;\r\n      margin: auto;\r\n      display: block;\r\n  }\r\n</style>");
+/* harmony default export */ __webpack_exports__["default"] = ("<!-- <ion-header>\r\n  <ion-toolbar color=\"primary\">\r\n    <ion-title>Registro</ion-title>\r\n  </ion-toolbar>\r\n</ion-header> -->\r\n\r\n<ion-content padding>\r\n  <ion-card>\r\n    <!-- <ion-list>\r\n      <ion-img src=\"../../assets/log.png\"></ion-img>\r\n    </ion-list> -->\r\n    <div align=\"center\" style=\"margin-top:15px\">\r\n      <label style=\"font-size: 31px;\">Registro</label>\r\n    </div>\r\n\r\n    <form #form=\"ngForm\" (ngSubmit)=\"RegistrarUser(form)\" >\r\n      <ion-list>   \r\n          \r\n        <ion-item>\r\n          <ion-icon color=\"black\" name=\"person-outline\"></ion-icon>\r\n          <ion-input style = \"margin-left: 6.5px;\" required placeholder=\"Nombre\" name=\"nombre\" type='text' ngModel required></ion-input>\r\n        </ion-item>\r\n\r\n        <ion-item>\r\n          <ion-icon color=\"black\" name=\"person-outline\"></ion-icon>\r\n          <ion-input style = \"margin-left: 6.5px;\" required placeholder=\"Apellido\" name=\"apellido\" type='text' ngModel required></ion-input>\r\n        </ion-item>\r\n        \r\n        <ion-item>\r\n          <ion-icon color=\"black\" name=\"mail-outline\"></ion-icon>\r\n          <ion-input style = \"margin-left: 6.5px;\" required placeholder=\"Correo\" name=\"email\" type='email' ngModel required></ion-input>\r\n        </ion-item>\r\n\r\n        <ion-item>\r\n          <ion-icon color=\"black\" name=\"key-outline\"></ion-icon>\r\n          <ion-input style = \"margin-left: 6.5px;\" placeholder=\"Contraseña\" name=\"password\" type='password' ngModel minlength=\"6\" required></ion-input>\r\n        </ion-item>\r\n        <div *ngIf=\"form.hasError('minlength', 'password')\">\r\n          <span>La contraseña debe tener 6 al menos caracteres</span>\r\n        </div>\r\n\r\n        <ion-item>\r\n          <ion-icon color=\"black\" name=\"person-add-outline\"></ion-icon>\r\n          <ion-label style = \"margin-left: 6.5px;\">¿Fue recomendado?</ion-label>\r\n\r\n          \r\n          <ion-select name=\"opciones\" (ionChange) = \"onChange($event)\" ngModel required>\r\n            <ion-select-option value=\"Si\">Si</ion-select-option>\r\n            <ion-select-option value=\"No\">No</ion-select-option>\r\n          </ion-select>\r\n        </ion-item>\r\n\r\n\r\n        <ion-item *ngIf = 'referido == \"Si\"'>\r\n          <ion-icon color=\"black\" name=\"person-outline\"></ion-icon>\r\n          <ion-label style = \"margin-left: 6.5px;\">Usuario que le recomendó: </ion-label>\r\n          <ion-select required  name='idReferido' ngModel (ionChange) = \"onChangeId($event)\" required>\r\n                  <ion-select-option *ngFor=\"let cat of usuarios\" [value]=\"cat.id\">{{cat.Apellido}} {{cat.Nombre}}</ion-select-option>\r\n          </ion-select>\r\n  \r\n        </ion-item>\r\n        \r\n\r\n\r\n        <ion-item>\r\n          <ion-icon color=\"black\" name=\"call-outline\"></ion-icon>\r\n          <ion-input style = \"margin-left: 6.5px;\" placeholder=\"WhatsApp\" name=\"telefono\" type='text' ngModel required></ion-input>\r\n        </ion-item>\r\n\r\n        <ion-item>\r\n          <ion-icon color=\"black\" name=\"storefront-outline\"></ion-icon>\r\n          <ion-label style = \"margin-left: 6.5px;\">Ciudadela: </ion-label>\r\n          <ion-select required  name='ciudadela' ngModel>\r\n           \r\n                  <ion-select-option value=\"Paraíso del Río 1\">Paraíso del Río 1</ion-select-option>\r\n                  <ion-select-option value=\"Paraíso del Río 2\">Paraíso del Río 2</ion-select-option> \r\n                  <ion-select-option value=\"Toledo\">Toledo</ion-select-option> \r\n                  <ion-select-option value=\"Marbella\">Marbella</ion-select-option> \r\n                  <ion-select-option value=\"Victoria del Río\">Victoria del Río</ion-select-option>\r\n                  <ion-select-option value=\"Salamanca\">Salamanca</ion-select-option>\r\n                  <ion-select-option value=\"Victoria Club\">Victoria Club</ion-select-option>\r\n                  <ion-select-option value=\"Plaza Victoria\">Plaza Victoria</ion-select-option>\r\n                  <ion-select-option value=\"Valle Victoria\">Valle Victoria</ion-select-option>\r\n                  <ion-select-option value=\"Alameda del Río\">Alameda del Río</ion-select-option>\r\n\r\n          \r\n          </ion-select>\r\n  \r\n        </ion-item>\r\n\r\n        <ion-item>\r\n          <ion-icon color=\"black\" name=\"trail-sign-outline\"></ion-icon>\r\n          <ion-input style = \"margin-left: 6.5px;\" placeholder=\"Manzana\" name=\"manzana\" type='text' ngModel required></ion-input>\r\n        </ion-item>\r\n\r\n        <ion-item>\r\n          <ion-icon color=\"black\" name=\"bookmark-outline\"></ion-icon>\r\n          <ion-input style = \"margin-left: 6.5px;\" placeholder=\"Villa\" name=\"villa\" type='text' ngModel required></ion-input>\r\n        </ion-item>\r\n\r\n\r\n\r\n\r\n        \r\n        \r\n        \r\n        \r\n\r\n          <!-- <ion-item>\r\n            <ion-icon color=\"black\" name=\"image-outline\"></ion-icon> <ion-label style = \"margin-left: 6.5px;\">Foto de Perfil </ion-label>\r\n          \r\n            <ion-input type='file' accept=\"image/*\" id=\"myFileInput\" name=\"foto\" (change)=\"readURL($event);\" class=\"fileInput\" ngModel required></ion-input>\r\n          </ion-item> -->\r\n\r\n\r\n          <!-- <ion-item>\r\n            <ion-label><ion-icon name=\"image-outline\"></ion-icon> Seleccione su foto de perfil <ion-text color=\"\"></ion-text></ion-label>\r\n          </ion-item>\r\n\r\n          <ion-item>\r\n            <ion-input type='file' accept=\"image/*\" id=\"perfilFoto\" name=\"foto\" (change)=\"readURL($event);\" class=\"fileInput\" ngModel required></ion-input>\r\n          </ion-item> -->\r\n          \r\n          \r\n          \r\n        \r\n\r\n\r\n      </ion-list> \r\n      \r\n\r\n      <div class=\"ion-padding\" align=\"center\">\r\n        <ion-button type=\"submit\"  style=\"width: 150px;\" [disabled]=\"form.invalid\" expand=\"block\">\r\n          Registrar\r\n        </ion-button>\r\n        <p style=\"font-size: 15px;\" routerLink=\"/login\" routerDirection=\"root\">Ya tengo cuenta</p>\r\n      </div>\r\n    </form>\r\n  </ion-card>\r\n</ion-content>\r\n\r\n<style>\r\n#myFileInput{\r\n  position: absolute;\r\n  opacity: 0;\r\n}\r\n  .perfil {\r\n    display: flex;\r\n    justify-content: center;\r\n    width: 200px;\r\n  }\r\n  .item ion-thumbnail {\r\n    min-width: 10rem;    \r\n    min-height: 10rem;\r\n    /* img {\r\n      max-width: 10rem;    \r\n      min-width: 10rem;\r\n    }   */\r\n  }\r\n  ion-img {     \r\n      width: 60%;\r\n      margin: auto;\r\n      display: block;\r\n  }\r\n</style>");
 
 /***/ }),
 
@@ -125,6 +125,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_services_mensaje_error_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/services/mensaje-error.service */ "./src/app/services/mensaje-error.service.ts");
 /* harmony import */ var src_app_models_variables__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/models/variables */ "./src/app/models/variables.ts");
 /* harmony import */ var src_app_services_variables_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/app/services/variables.service */ "./src/app/services/variables.service.ts");
+/* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! firebase */ "./node_modules/firebase/dist/index.cjs.js");
+/* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(firebase__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var src_app_services_usuario_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! src/app/services/usuario.service */ "./src/app/services/usuario.service.ts");
+/* harmony import */ var src_app_models_usuario__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! src/app/models/usuario */ "./src/app/models/usuario.ts");
+
+
+
 
 
 
@@ -136,7 +143,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let RegistrarPage = class RegistrarPage {
-    constructor(angularFireStorage, authService, variablesService, router, mensajeErrorService, alertCtrt, loadingController) {
+    constructor(angularFireStorage, authService, variablesService, router, mensajeErrorService, alertCtrt, loadingController, usuarioService) {
         this.angularFireStorage = angularFireStorage;
         this.authService = authService;
         this.variablesService = variablesService;
@@ -144,10 +151,25 @@ let RegistrarPage = class RegistrarPage {
         this.mensajeErrorService = mensajeErrorService;
         this.alertCtrt = alertCtrt;
         this.loadingController = loadingController;
+        this.usuarioService = usuarioService;
+        this.usuarios = [];
+        this.usuarioReferido = new src_app_models_usuario__WEBPACK_IMPORTED_MODULE_11__["Usuarios"]();
         this.variables = new src_app_models_variables__WEBPACK_IMPORTED_MODULE_7__["Variables"]();
     }
     ngOnInit() {
         this.variablesService.getVariable('wCIVneApMUwcOvDwIneJ').subscribe(res => { this.variables = res; });
+        firebase__WEBPACK_IMPORTED_MODULE_9__["firestore"]().collection('Usuarios').orderBy('Apellido').onSnapshot(snap => {
+            this.usuarios = [];
+            snap.forEach(element => {
+                this.usuarios.push(element.data());
+            });
+        });
+    }
+    onChange($event) {
+        this.referido = $event.target.value;
+    }
+    onChangeId($event) {
+        this.usuarioService.getUsuario($event.target.value).subscribe(res => { this.usuarioReferido = res; });
     }
     presentLoading(mensaje) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
@@ -198,30 +220,52 @@ let RegistrarPage = class RegistrarPage {
             }
             var nombre = this.capitalizeFirstLetter(form.value.nombre);
             var apellido = this.capitalizeFirstLetter(form.value.apellido);
-            this.RegistrarUserCompleto(nombre, apellido, form.value.email, form.value.password, form.value.ciudadela, form.value.manzana, form.value.villa, telefono, 'https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fperfil.png?alt=media&token=ee5b8e7d-43b5-43c1-9be9-98186a2ab2ce');
+            var idReferido;
+            if (form.value.idReferido == null) {
+                idReferido = '';
+                this.RegistrarUserCompleto(nombre, apellido, form.value.email, form.value.password, form.value.ciudadela, form.value.manzana, form.value.villa, telefono, 'https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fperfil.png?alt=media&token=ee5b8e7d-43b5-43c1-9be9-98186a2ab2ce', '');
+            }
+            else {
+                idReferido = form.value.idReferido;
+                this.actualizarReferido();
+                this.RegistrarUserCompleto(nombre, apellido, form.value.email, form.value.password, form.value.ciudadela, form.value.manzana, form.value.villa, telefono, 'https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fperfil.png?alt=media&token=ee5b8e7d-43b5-43c1-9be9-98186a2ab2ce', idReferido);
+            }
         });
     }
-    guardarArchivo(nombre, apellido, email, password, ciudadela, manzana, villa, telefono) {
+    actualizarReferido() {
+        this.usuarioReferido.NumeroReferidos = this.usuarioReferido.NumeroReferidos + 1;
+        this.usuarioService.updateUsuario(this.usuarioReferido.id, this.usuarioReferido).then(auth => {
+            //this.loading.dismiss();
+        }).catch((error) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            // this.loading.dismiss();
+            var mensaje = error.code.split('/')[1];
+            const presentarMensaje = this.mensajeErrorService.AuthErrorCodeSpanish(mensaje);
+            console.log(presentarMensaje);
+        }));
+    }
+    guardarArchivo(nombre, apellido, email, password, ciudadela, manzana, villa, telefono, id) {
         var storageRef = this.angularFireStorage.storage.ref();
         storageRef.child(this.file.name).put(this.file)
             .then(data => {
             data.ref.getDownloadURL().then(downloadURL => {
-                this.RegistrarUserCompleto(nombre, apellido, email, password, ciudadela, manzana, villa, telefono, downloadURL);
+                this.RegistrarUserCompleto(nombre, apellido, email, password, ciudadela, manzana, villa, telefono, downloadURL, id);
             }).catch(err => { this.loading.dismiss(), this.failedAlert("Error al cargar la foto de perfil, intentelo de nuevo"); });
         });
     }
-    RegistrarUserCompleto(nombre, apellido, email, password, ciudadela, manzana, villa, telefono, downloadURL) {
+    RegistrarUserCompleto(nombre, apellido, email, password, ciudadela, manzana, villa, telefono, downloadURL, idReferido) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-            this.authService.registerUser(nombre, apellido, email, password, ciudadela, manzana, villa, telefono, 'https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fperfil.png?alt=media&token=ee5b8e7d-43b5-43c1-9be9-98186a2ab2ce').
+            this.authService.registerUser(nombre, apellido, email, password, ciudadela, manzana, villa, telefono, 'https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fperfil.png?alt=media&token=ee5b8e7d-43b5-43c1-9be9-98186a2ab2ce', idReferido).
                 then(auth => {
                 this.loading.dismiss();
                 this.authService.loginUser(email, password).
                     then((res) => {
+                    this.actualizarReferido();
                     localStorage.setItem('userId', res.user.uid);
                     localStorage.setItem('Fondo', '#FBC8B5');
                     localStorage.setItem('FotoPerfil', 'https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fperfil.png?alt=media&token=ee5b8e7d-43b5-43c1-9be9-98186a2ab2ce');
-                    this.router.navigateByUrl('/categorias');
+                    this.router.navigateByUrl('/carousel');
                 }, (error) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+                    console.log('aqui estamos agustinw-rl@hotmail.com');
                     var mensaje = error.code.split('/')[1];
                     const presentarMensaje = this.mensajeErrorService.AuthErrorCodeSpanish(mensaje);
                     const alert = yield this.alertCtrt.create({
@@ -232,6 +276,7 @@ let RegistrarPage = class RegistrarPage {
                 }));
                 ///this.router.navigateByUrl("/categorias")
             }).catch((error) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+                console.log('aqui esamos error agustinw-rl@hotmail.com');
                 this.loading.dismiss();
                 var mensaje = error.code.split('/')[1];
                 const presentarMensaje = this.mensajeErrorService.AuthErrorCodeSpanish(mensaje);
@@ -267,7 +312,8 @@ RegistrarPage.ctorParameters = () => [
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
     { type: src_app_services_mensaje_error_service__WEBPACK_IMPORTED_MODULE_6__["MensajeErrorService"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["AlertController"] },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"] }
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"] },
+    { type: src_app_services_usuario_service__WEBPACK_IMPORTED_MODULE_10__["UsuarioService"] }
 ];
 RegistrarPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({

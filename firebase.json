@@ -1,6 +1,8 @@
+
 {
   "hosting": {
     "public": "public",
+    "site": "ventasml2",
     "ignore": [
       "firebase.json",
       "**/.*",

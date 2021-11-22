@@ -162,6 +162,7 @@ let CrearPublicacionesGeneralesPage = class CrearPublicacionesGeneralesPage {
         this.publicacion.Visitas = 0;
         this.publicacion.Visibilidad = true;
         this.publicacion.Fecha = fechaActual.toString();
+        this.publicacion.Time = Date.now();
         this.guardarPublicacion();
     }
     presentLoading(mensaje) {

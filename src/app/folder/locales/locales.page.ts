@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
-import { Locales } from 'src/app/models/locales';
-import { LocalesService } from 'src/app/services/locales.service';
+// import { Locales } from 'src/app/models/locales';
+// import { LocalesService } from 'src/app/services/locales.service';
 import { Usuarios } from 'src/app/models/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { AlertController } from '@ionic/angular';
+import * as firebase from 'firebase';
 
 
 @Component({
@@ -14,7 +15,7 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./locales.page.scss'],
 })
 export class LocalesPage implements OnInit {
-  locales : Locales[] = [];
+  locales = [];
   categoria: string;
   textoBuscar = '';
   condicion: boolean = false;
@@ -22,7 +23,7 @@ export class LocalesPage implements OnInit {
   public user: Usuarios=new Usuarios();
   
   constructor(private router: Router,
-              private localesService: LocalesService,
+              //private localesService: LocalesService,
               private usuarioService: UsuarioService,
               private alertCtrt: AlertController,
               private activateRoute: ActivatedRoute) { }
@@ -31,12 +32,30 @@ export class LocalesPage implements OnInit {
     this.activateRoute.paramMap.subscribe(paramMap => {
       this.categoria = paramMap.get('id');
       this.idUser = localStorage.getItem('userId');
-      this.localesService.getLocales().subscribe(res=> {this.locales = res;this.condicion = this.getDatos()});
+      //this.localesService.getLocales().subscribe(res=> {this.locales = res;this.condicion = this.getDatos()});
       if(localStorage.getItem('userId') != null){
         this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => {this.user =res;});
       }
+
+
+      firebase.firestore().collection('Locales').where('CategoriaLocal','==',paramMap.get('id')).onSnapshot(snap =>{
+      this.locales = []
+        snap.forEach(element => {
+          this.locales.push(element.data())
+        })
+        if(this.locales.length == 0){
+          this.condicion = true
+        }
+        //this.nativeAudio.play('audioWo')
+      })
+
+
       
-    });   
+    });
+
+    
+
+
   }
 
   validarSesion(){

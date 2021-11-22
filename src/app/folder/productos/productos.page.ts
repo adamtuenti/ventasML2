@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
-import { Productos } from 'src/app/models/productos';
+// import { Productos } from 'src/app/models/productos';
 import { ProductosService } from 'src/app/services/productos.service';
 import { AlertController } from '@ionic/angular';
 import { Usuarios } from 'src/app/models/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Variables } from 'src/app/models/variables';
 import { VariablesService } from 'src/app/services/variables.service';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-productos',
@@ -16,7 +17,7 @@ import { VariablesService } from 'src/app/services/variables.service';
 })
 export class ProductosPage implements OnInit {
 
-  productos: Productos[] = [];
+  productos = [];
   textoBuscar = '';
   categoria;
   public user: Usuarios=new Usuarios();
@@ -24,7 +25,8 @@ export class ProductosPage implements OnInit {
   variables : Variables = new Variables();
   idUser;
 
-  constructor(private productosService: ProductosService,
+  constructor(
+              private productosService: ProductosService,
               private router: Router,
               private usuarioService: UsuarioService,
               private variablesService: VariablesService,
@@ -42,7 +44,18 @@ export class ProductosPage implements OnInit {
 
       
       this.variablesService.getVariable('wCIVneApMUwcOvDwIneJ').subscribe(res=> {this.variables = res;});
-      this.productosService.getProductos().subscribe(res=> {this.productos = res;this.condicion = this.getDatos();this.shuffle(this.productos)});
+      //this.productosService.getProductos().subscribe(res=> {this.productos = res;this.condicion = this.getDatos();this.shuffle(this.productos)});
+      firebase.firestore().collection('Productos').where('Categoria','==',paramMap.get('categoria')).where('Visibilidad','==',true).onSnapshot(snap =>{
+        this.productos = []
+        snap.forEach(element => {
+          this.productos.push(element.data())
+        })
+        if(this.productos.length == 0){
+          this.condicion = true
+        }this.shuffle(this.productos)
+        //this.nativeAudio.play('audioWo')
+      })
+    
     });
     
   }
@@ -61,7 +74,7 @@ export class ProductosPage implements OnInit {
     return true;
   }
 
-  aumentarVisita(id:string,productos:Productos){
+  aumentarVisita(id:string,productos:any){
     productos.Visitas= productos.Visitas + 1
     this.productosService.updateProducto(id,productos)
       this.router.navigate(['/producto-detalle',productos.id,productos.Vendedor]); 

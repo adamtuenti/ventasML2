@@ -15,4 +15,5 @@ export class Locales {
     Foto:string;
     Domicilio:string;
     Calificacion: number;
+    Premium: boolean;
 }

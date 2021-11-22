@@ -295,7 +295,7 @@ __webpack_require__.r(__webpack_exports__);
 const routes = [
     {
         path: '',
-        redirectTo: 'productos-todos',
+        redirectTo: 'carousel',
         pathMatch: 'full'
     },
     // {
@@ -446,6 +446,22 @@ const routes = [
     {
         path: 'locales-todos',
         loadChildren: () => Promise.all(/*! import() | folder-locales-todos-locales-todos-module */[__webpack_require__.e("common"), __webpack_require__.e("folder-locales-todos-locales-todos-module")]).then(__webpack_require__.bind(null, /*! ./folder/locales-todos/locales-todos.module */ "./src/app/folder/locales-todos/locales-todos.module.ts")).then(m => m.LocalesTodosPageModule)
+    },
+    {
+        path: 'carousel',
+        loadChildren: () => __webpack_require__.e(/*! import() | folder-carousel-carousel-module */ "folder-carousel-carousel-module").then(__webpack_require__.bind(null, /*! ./folder/carousel/carousel.module */ "./src/app/folder/carousel/carousel.module.ts")).then(m => m.CarouselPageModule)
+    },
+    {
+        path: 'promocion-locales',
+        loadChildren: () => __webpack_require__.e(/*! import() | folder-promocion-locales-promocion-locales-module */ "folder-promocion-locales-promocion-locales-module").then(__webpack_require__.bind(null, /*! ./folder/promocion-locales/promocion-locales.module */ "./src/app/folder/promocion-locales/promocion-locales.module.ts")).then(m => m.PromocionLocalesPageModule)
+    },
+    {
+        path: 'anuncio-primero',
+        loadChildren: () => __webpack_require__.e(/*! import() | folder-anuncio-primero-anuncio-primero-module */ "folder-anuncio-primero-anuncio-primero-module").then(__webpack_require__.bind(null, /*! ./folder/anuncio-primero/anuncio-primero.module */ "./src/app/folder/anuncio-primero/anuncio-primero.module.ts")).then(m => m.AnuncioPrimeroPageModule)
+    },
+    {
+        path: 'comunicacion-local/:idLocal/:idPropietario',
+        loadChildren: () => __webpack_require__.e(/*! import() | folder-comunicacion-local-comunicacion-local-module */ "folder-comunicacion-local-comunicacion-local-module").then(__webpack_require__.bind(null, /*! ./folder/comunicacion-local/comunicacion-local.module */ "./src/app/folder/comunicacion-local/comunicacion-local.module.ts")).then(m => m.ComunicacionLocalPageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {
@@ -624,7 +640,7 @@ let NoLoginGuard = class NoLoginGuard {
                 //redirigir al login
             }
             else {
-                this.router.navigateByUrl('/productos-todos');
+                this.router.navigateByUrl('/carousel');
                 return false;
                 //redirigir al home profesor
             }
@@ -705,7 +721,7 @@ let AuthService = class AuthService {
             }).catch(err => reject(err));
         });
     }
-    registerUser(nombre, apellido, email, password, ciudadela, manzana, villa, telefono, downloadURL) {
+    registerUser(nombre, apellido, email, password, ciudadela, manzana, villa, telefono, downloadURL, idReferido) {
         this.variablesService.getVariable('wCIVneApMUwcOvDwIneJ').subscribe(res => { this.variables = res; });
         return new Promise((resolve, reject) => {
             firebase__WEBPACK_IMPORTED_MODULE_3__["auth"]().createUserWithEmailAndPassword(email, password).then(res => {
@@ -724,7 +740,10 @@ let AuthService = class AuthService {
                     Telefono: telefono,
                     Villa: villa,
                     Verificacion: false,
-                    EsperaPremium: false
+                    EsperaPremium: false,
+                    id: res.user.uid,
+                    NumeroReferidos: 0,
+                    Referido: idReferido
                 });
                 // }else{
                 //   this.firestore.collection('Usuarios').doc(res.user.uid).set({
@@ -745,7 +764,7 @@ let AuthService = class AuthService {
                 //   });
                 // }
                 resolve(res);
-            });
+            }).catch(err => reject(err));
         });
     }
     resetPassword(email) {

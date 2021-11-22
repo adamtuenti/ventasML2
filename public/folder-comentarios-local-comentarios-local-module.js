@@ -237,6 +237,7 @@ let ComentariosLocalPage = class ComentariosLocalPage {
         this.comentario.Usuario = this.idUser;
         this.comentario.Descripcion = comentario;
         this.comentario.Fecha = fechaActual.toString();
+        this.comentario.Time = Date.now();
         this.comentariosService.addComentario(this.comentario);
     }
     validarSesion() {

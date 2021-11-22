@@ -226,7 +226,7 @@ let CrearProductoLocalPage = class CrearProductoLocalPage {
         this.usuarioService.updateUsuario(this.idPropietario, this.user);
         this.productosService.addProducto(this.producto).then(auth => {
             this.loading.dismiss();
-            this.router.navigate(["/categorias"]);
+            this.router.navigate(["/productos-locales", this.idLocal, this.idPropietario]);
         }).catch((error) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             this.loading.dismiss();
             this.failedAlert("Algo salió mal, inténtelo de nuevo");
