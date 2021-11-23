@@ -28,29 +28,31 @@
       <ion-col sizeLg="4" sizeMd="4" sizeXs="6" *ngFor="let local of locales">
 
         <ion-card (click)='aumentarVisita(local.id,local)'>
+          <ion-card-content id='starts'>
+            <ion-item lines='none'>
+              <div slot='start' *ngFor='let indice of [].constructor(local.Calificacion); let i = index'
+                style='width: 1%;margin-left: 5px;'>
+                <ion-icon name="star" color='warning'></ion-icon>
+              </div>
+
+            </ion-item>
+          </ion-card-content>
           <ion-card-header id="headerCard">
-
-            <ion-img *ngIf='local.Visibilidad' src="{{local.Foto}}" style="height: 95%; padding: 0;"></ion-img>
+            <ion-img *ngIf='local.Visibilidad' src="{{local.Foto}}" style="height: 100%; padding: 0;"></ion-img>
           </ion-card-header>
-
           <ion-card-content>
-            <p style = 'font-size: 15px; align-items: center;'>{{local.Nombre}} </p>
-            
-            
-            
+            <p style='font-size: 15px; align-items: center;color: black;'>{{local.Nombre}} </p>
+
             <!-- <h2>CALIFICACIÓN: {{local.Calificacion}}</h2> -->
           </ion-card-content>
-          
-          <ion-footer>
-            <ion-item lines = 'none'>
-              <div slot='end' *ngFor = 'let indice of [].constructor(local.Calificacion); let i = index' style='width: 1%;margin-right: 5px;'>
-                <ion-icon name="star" color = 'warning'></ion-icon>
-              </div>
-  
-            </ion-item>
+          <ion-row class="card-footer">
+            <ion-col>
+              <ion-icon name="locate" color='warning' style='padding-left: 10px;padding-right: 7px;'></ion-icon>
+              <p style='font-size: 15px; align-items: left; margin-top: 0px;margin-bottom: 0px; display: inline-block;'>
+                {{local.Ciudadela}} </p>
+            </ion-col>
+          </ion-row>
 
-          </ion-footer>
-          
         </ion-card>
 
       </ion-col>
