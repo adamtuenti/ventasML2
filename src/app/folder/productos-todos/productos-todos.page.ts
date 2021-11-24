@@ -14,7 +14,9 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 export class ProductosTodosPage implements OnInit {
 
   productos: Productos[] = [];
+  productosTemp: Productos[] = [];
   public user: Usuarios=new Usuarios();
+  textoBuscar = '';
 
   slideOpts = {
     initialSlide: 0,
@@ -27,21 +29,39 @@ export class ProductosTodosPage implements OnInit {
               private activateRoute: ActivatedRoute,) { }
 
   ngOnInit() {
-    this.productosService.getProductos().subscribe(res=> {this.productos = res;this.shuffle(this.productos);this.recortar()});
+    this.productosService.getProductos().subscribe(res=> {this.productos = res;this.shuffle(this.productos);});
     // this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => {this.user =res;});
   }
 
   recortar(){
-    this.productos = this.productos.slice(0,25)
+    //if(this.textoBuscar == ''){
+      this.productosTemp = this.productos.slice(0,2)
+    // }else{
+    //   this.productosTemp = this.productos
+    // }
+    
+    
 
     // for(let i = 0; i < this.productos.length; i ++){
-    //   if(this.productos[i].Precio[0] == '$'){
+    //   //if(this.productos[i].Precio[0] == '$'){
+    //    //console.log(this.productos[i].Precio)
     //     //console.log('Mal: ',this.productos[i].Precio.slice(1,))
-    //     this.productos[i].Precio = this.productos[i].Precio.slice(1,)
-    //     this.productosService.updateProducto(this.productos[i].id, this.productos[i])
-    //   }
+    //   //   this.productos[i].Precio = this.productos[i].Precio.slice(1,)
+    //   //  this.productosService.updateProducto(this.productos[i].id, this.productos[i])
+    //    this.productos[i].Precio = this.productos[i].Precio.replace(' ', "")
+    //    this.productos[i].Precio = this.productos[i].Precio.replace('encebollado', "")
+    //    //this.productos[i].Precio = this.productos[i].Precio.replace('lb', "")
+    //    this.productosService.updateProducto(this.productos[i].id, this.productos[i])
+    //    //console.log(this.productos[i].Precio)
+      
+    //   //}
     // }
 
+  }
+
+  buscar(event){
+    const texto = event.target.value
+    this.textoBuscar=texto;
   }
 
 

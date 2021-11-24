@@ -87,7 +87,8 @@ export class CarouselPage implements OnInit {
       if(this.registrarPromo){
         this.router.navigateByUrl('/anuncio-primero');
       }else{
-        this.router.navigateByUrl('/promocion-locales');
+        this.router.navigateByUrl('/publicaciones');
+        //this.router.navigateByUrl('/promocion-locales');
 
       }
       

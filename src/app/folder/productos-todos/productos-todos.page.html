@@ -22,6 +22,13 @@
     </ion-segment-button>
 
   </ion-segment>
+
+  <ion-searchbar
+    color="light" 
+    placeholder = "Buscar producto..."
+    animated
+    (ionChange)="buscar($event)">
+  </ion-searchbar>
   <!--
   <ion-slides pager="true" [options]="slideOpts" style="margin-top: 15px;">
     <ion-slide style="height: 500px;width: 90%;" *ngFor="let producto of productos">
@@ -33,7 +40,7 @@
 
   <ion-grid>
     <ion-row style="height: 500px;width: 100%;">
-      <ion-col sizeLg="4" sizeMd="4" sizeXs="6" *ngFor="let producto of productos">
+      <ion-col sizeLg="4" sizeMd="4" sizeXs="6" *ngFor="let producto of productos | filtroProductosGeneral: textoBuscar">
 
         <ion-card (click)='aumentarVisita(producto.id,producto)'>
           <ion-card-header id="headerCard">
@@ -58,6 +65,12 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+
+  <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="validarSesion()">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab> -->
 
   <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="validarVendedor()">

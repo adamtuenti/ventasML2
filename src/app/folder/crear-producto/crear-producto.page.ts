@@ -44,6 +44,11 @@ export class CrearProductoPage implements OnInit {
     this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => {this.user =res; this.idUser = localStorage.getItem('userId');});
   }
 
+  countChange(event) {
+    event.target.value = event.target.value.replace(/[^0-9 | .]*/g, '');
+    //event.target.value = event.target.value.replace(",", '.');
+  }
+
   crearProducto(form){
     this.presentLoading("Espere por favor...");
     this.producto.Titulo = form.value.titulo;

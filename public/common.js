@@ -813,6 +813,42 @@ FiltroProductoLocalPipe = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"
 
 /***/ }),
 
+/***/ "./src/app/pipes/filtro-productos-general.pipe.ts":
+/*!********************************************************!*\
+  !*** ./src/app/pipes/filtro-productos-general.pipe.ts ***!
+  \********************************************************/
+/*! exports provided: FiltroProductoGeneralPie */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FiltroProductoGeneralPie", function() { return FiltroProductoGeneralPie; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+
+
+let FiltroProductoGeneralPie = class FiltroProductoGeneralPie {
+    transform(productos, texto) {
+        if (texto.length === 0) {
+            return productos;
+        }
+        texto = texto.toLocaleLowerCase();
+        return productos.filter(producto => {
+            return producto.Descripcion.toLocaleLowerCase().includes(texto) ||
+                producto.Titulo.toLocaleLowerCase().includes(texto);
+        });
+    }
+};
+FiltroProductoGeneralPie = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Pipe"])({
+        name: 'filtroProductosGeneral'
+    })
+], FiltroProductoGeneralPie);
+
+
+
+/***/ }),
+
 /***/ "./src/app/pipes/filtro-productos.pipe.ts":
 /*!************************************************!*\
   !*** ./src/app/pipes/filtro-productos.pipe.ts ***!
@@ -941,6 +977,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _filtro_producto_local_pipe__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./filtro-producto-local.pipe */ "./src/app/pipes/filtro-producto-local.pipe.ts");
 /* harmony import */ var _filtro_local_pipe__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./filtro-local.pipe */ "./src/app/pipes/filtro-local.pipe.ts");
 /* harmony import */ var _filtro_servicios_pipe__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./filtro-servicios.pipe */ "./src/app/pipes/filtro-servicios.pipe.ts");
+/* harmony import */ var _filtro_productos_general_pipe__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./filtro-productos-general.pipe */ "./src/app/pipes/filtro-productos-general.pipe.ts");
+
 
 
 
@@ -955,8 +993,8 @@ let PipesModule = class PipesModule {
 };
 PipesModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-        declarations: [_filtro_usuario_pipe__WEBPACK_IMPORTED_MODULE_3__["FiltroUsuarioPipe"], _filtro_categoria_pipe__WEBPACK_IMPORTED_MODULE_4__["FiltroCategoriaPipe"], _filtro_productos_pipe__WEBPACK_IMPORTED_MODULE_5__["FiltroProductosPipe"], _filtro_categoria_local_pipe__WEBPACK_IMPORTED_MODULE_6__["FiltroCategoriaLocalPipe"], _filtro_producto_local_pipe__WEBPACK_IMPORTED_MODULE_7__["FiltroProductoLocalPipe"], _filtro_local_pipe__WEBPACK_IMPORTED_MODULE_8__["FiltroLocalPipe"], _filtro_servicios_pipe__WEBPACK_IMPORTED_MODULE_9__["FiltroServiciosPipe"]],
-        exports: [_filtro_usuario_pipe__WEBPACK_IMPORTED_MODULE_3__["FiltroUsuarioPipe"], _filtro_categoria_pipe__WEBPACK_IMPORTED_MODULE_4__["FiltroCategoriaPipe"], _filtro_productos_pipe__WEBPACK_IMPORTED_MODULE_5__["FiltroProductosPipe"], _filtro_categoria_local_pipe__WEBPACK_IMPORTED_MODULE_6__["FiltroCategoriaLocalPipe"], _filtro_producto_local_pipe__WEBPACK_IMPORTED_MODULE_7__["FiltroProductoLocalPipe"], _filtro_local_pipe__WEBPACK_IMPORTED_MODULE_8__["FiltroLocalPipe"], _filtro_servicios_pipe__WEBPACK_IMPORTED_MODULE_9__["FiltroServiciosPipe"]],
+        declarations: [_filtro_usuario_pipe__WEBPACK_IMPORTED_MODULE_3__["FiltroUsuarioPipe"], _filtro_categoria_pipe__WEBPACK_IMPORTED_MODULE_4__["FiltroCategoriaPipe"], _filtro_productos_general_pipe__WEBPACK_IMPORTED_MODULE_10__["FiltroProductoGeneralPie"], _filtro_productos_pipe__WEBPACK_IMPORTED_MODULE_5__["FiltroProductosPipe"], _filtro_categoria_local_pipe__WEBPACK_IMPORTED_MODULE_6__["FiltroCategoriaLocalPipe"], _filtro_producto_local_pipe__WEBPACK_IMPORTED_MODULE_7__["FiltroProductoLocalPipe"], _filtro_local_pipe__WEBPACK_IMPORTED_MODULE_8__["FiltroLocalPipe"], _filtro_servicios_pipe__WEBPACK_IMPORTED_MODULE_9__["FiltroServiciosPipe"]],
+        exports: [_filtro_usuario_pipe__WEBPACK_IMPORTED_MODULE_3__["FiltroUsuarioPipe"], _filtro_categoria_pipe__WEBPACK_IMPORTED_MODULE_4__["FiltroCategoriaPipe"], _filtro_productos_general_pipe__WEBPACK_IMPORTED_MODULE_10__["FiltroProductoGeneralPie"], _filtro_productos_pipe__WEBPACK_IMPORTED_MODULE_5__["FiltroProductosPipe"], _filtro_categoria_local_pipe__WEBPACK_IMPORTED_MODULE_6__["FiltroCategoriaLocalPipe"], _filtro_producto_local_pipe__WEBPACK_IMPORTED_MODULE_7__["FiltroProductoLocalPipe"], _filtro_local_pipe__WEBPACK_IMPORTED_MODULE_8__["FiltroLocalPipe"], _filtro_servicios_pipe__WEBPACK_IMPORTED_MODULE_9__["FiltroServiciosPipe"]],
         imports: [
             _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"]
         ]
