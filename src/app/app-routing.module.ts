@@ -192,6 +192,10 @@ const routes: Routes = [
   {
     path: 'categoria-crear-producto',
     loadChildren: () => import('./folder/categoria-crear-producto/categoria-crear-producto.module').then( m => m.CategoriaCrearProductoPageModule)
+  },
+  {
+    path: 'categoria-crear-local',
+    loadChildren: () => import('./folder/categoria-crear-local/categoria-crear-local.module').then( m => m.CategoriaCrearLocalPageModule)
   }
 
 
