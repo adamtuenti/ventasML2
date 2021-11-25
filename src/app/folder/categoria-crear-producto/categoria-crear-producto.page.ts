@@ -4,22 +4,19 @@ import { CategoriasService } from 'src/app/services/categorias.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-categorias',
-  templateUrl: './categorias.page.html',
-  styleUrls: ['./categorias.page.scss'],
+  selector: 'app-categoria-crear-producto',
+  templateUrl: './categoria-crear-producto.page.html',
+  styleUrls: ['./categoria-crear-producto.page.scss'],
 })
-export class CategoriasPage implements OnInit {
+export class CategoriaCrearProductoPage implements OnInit {
 
   categorias: Categorias[] = [];
   textoBuscar = '';
-  numeroOpcion = 1;
-  idUser;
 
   constructor(private categoriasService: CategoriasService,
-              private router: Router,) { }
+              private router: Router) { }
 
   ngOnInit() {
-    this.idUser = localStorage.getItem('userId');
     this.categoriasService.getCategorias().subscribe(res=> {this.categorias = res;});
   }
 
@@ -28,6 +25,6 @@ export class CategoriasPage implements OnInit {
     this.textoBuscar=texto;
   }
 
-
+  
 
 }

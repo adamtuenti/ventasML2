@@ -1,5 +1,5 @@
 
-<app-header nombre="categorias"></app-header>
+<app-header nombre="productos"></app-header>
 
 <ion-content>
 
@@ -28,19 +28,42 @@
     (ionChange)="buscar($event)">
   </ion-searchbar>
 
-  <ion-list *ngFor="let categoria of categorias | filtroCategoria: textoBuscar">
+  <!-- <ion-list *ngFor="let categoria of categorias | filtroCategoria: textoBuscar">
     <ion-item [routerLink]="['/productos',categoria.id]">
       <ion-icon name="{{categoria.Icono}}" slot="start" size='large'></ion-icon>
       <ion-label style="font-size: 17.2px;">{{categoria.Nombre}}</ion-label>
     </ion-item>
 
-  </ion-list>
+  </ion-list> -->
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="validarSesion()">
-      <ion-icon name="add-outline"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+  <ion-grid>
+    <ion-row style="height: 350px;width: 100%;">
+      <ion-col sizeLg="4" sizeMd="4" sizeXs="6" *ngFor="let categoria of categorias | filtroCategoria: textoBuscar">
+
+        <ion-card [routerLink]="['/crear-producto',categoria.id]">
+        <ion-card-content style = 'align-items: center;justify-content: center;'>
+          
+          <div align = 'center'>
+            <ion-icon name="{{categoria.Icono}}" size='large' style = 'align-items: center;'></ion-icon>
+          </div>
+            
+          
+            
+          
+      
+              <h1 style='color:black;font-size: 15px;text-align: center;margin:auto;margin-top: 7.5px'>
+                {{categoria.Nombre}}</h1>
+
+
+
+
+
+          </ion-card-content>
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
   
 

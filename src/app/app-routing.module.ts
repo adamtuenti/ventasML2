@@ -47,6 +47,10 @@ const routes: Routes = [
     loadChildren: () => import('./folder/categorias/categorias.module').then( m => m.CategoriasPageModule)
   },
   {
+    path: 'categoria-crear-producto',
+    loadChildren: () => import('./folder/categoria-crear-producto/categoria-crear-producto.module').then( m => m.CategoriaCrearProductoPageModule)
+  },
+  {
     path: 'perfil',
     loadChildren: () => import('./folder/perfil/perfil.module').then( m => m.PerfilPageModule)
   },
@@ -177,7 +181,19 @@ const routes: Routes = [
   {
     path: 'comunicacion-local/:idLocal/:idPropietario',
     loadChildren: () => import('./folder/comunicacion-local/comunicacion-local.module').then( m => m.ComunicacionLocalPageModule)
+  },  {
+    path: 'crear-producto-todos',
+    loadChildren: () => import('./folder/crear-producto-todos/crear-producto-todos.module').then( m => m.CrearProductoTodosPageModule)
+  },
+  {
+    path: 'categoria-crear',
+    loadChildren: () => import('./folder/categoria-crear/categoria-crear.module').then( m => m.CategoriaCrearPageModule)
+  },
+  {
+    path: 'categoria-crear-producto',
+    loadChildren: () => import('./folder/categoria-crear-producto/categoria-crear-producto.module').then( m => m.CategoriaCrearProductoPageModule)
   }
+
 
 
 

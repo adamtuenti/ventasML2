@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Productos } from 'src/app/models/productos';
 import { ProductosService } from 'src/app/services/productos.service';
 import { Usuarios } from 'src/app/models/usuario';
+import { AlertController } from '@ionic/angular';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class ProductosTodosPage implements OnInit {
 
   productos: Productos[] = [];
   productosTemp: Productos[] = [];
-  public user: Usuarios=new Usuarios();
+  idUser;
   textoBuscar = '';
 
   slideOpts = {
@@ -25,10 +26,12 @@ export class ProductosTodosPage implements OnInit {
 
   constructor(private productosService: ProductosService,
               private router: Router,
+              private alertCtrt: AlertController,
               private usuarioService: UsuarioService,
               private activateRoute: ActivatedRoute,) { }
 
   ngOnInit() {
+    this.idUser = localStorage.getItem('userId');
     this.productosService.getProductos().subscribe(res=> {this.productos = res;this.shuffle(this.productos);});
     // this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => {this.user =res;});
   }
@@ -87,6 +90,47 @@ export class ProductosTodosPage implements OnInit {
     productos.Visitas= productos.Visitas + 1
     this.productosService.updateProducto(id,productos)
     this.router.navigate(['/producto-detalle',productos.id,productos.Vendedor]); 
+  }
+
+  validarSesion(){
+    if(this.idUser != null){
+      this.router.navigate(['/categoria-crear-producto']);
+    }
+
+    else{
+      this.iniciarSesion();
+    }
+
+  }
+
+  async iniciarSesion() {
+
+    const alert = await this.alertCtrt.create({
+      cssClass: 'my-custom-class',
+      header: 'No ha iniciado sesión',
+      
+      message: 'Para agregar un producto primero debe iniciar sesión.',
+
+
+      buttons: [
+        {
+          text: 'Iniciar sesión',
+          handler: (data) => {
+            this.router.navigate(['/login']);
+            
+          }
+        },
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+           // console.log('Confirm Cancel: blah');
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
 
   

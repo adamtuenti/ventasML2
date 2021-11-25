@@ -179,7 +179,7 @@ export class CrearProductoPage implements OnInit {
         this.loading.dismiss();
 
 
-        this.router.navigate(["/productos", this.idCategoria])
+        this.router.navigate(["/mis-productos"])
       }
     ).catch(async error => {
       this.loading.dismiss();
