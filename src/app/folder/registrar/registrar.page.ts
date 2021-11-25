@@ -31,45 +31,51 @@ export class RegistrarPage implements OnInit {
   imageSrc: string | ArrayBuffer;
   loading: HTMLIonLoadingElement;
   usuarios = [];
-  usuarioReferido : Usuarios = new Usuarios()
+  usuarioReferido: Usuarios = new Usuarios()
 
-  variables : Variables = new Variables();
+  variables: Variables = new Variables();
 
   referido;
 
   constructor(private angularFireStorage: AngularFireStorage,
-              private authService:AuthService,
-              private variablesService: VariablesService,
-              private router: Router,
-              private mensajeErrorService: MensajeErrorService,
-              private alertCtrt: AlertController,
-              public loadingController: LoadingController,
+    private authService: AuthService,
+    private variablesService: VariablesService,
+    private router: Router,
+    private mensajeErrorService: MensajeErrorService,
+    private alertCtrt: AlertController,
+    public loadingController: LoadingController,
 
-              private usuarioService: UsuarioService,
-             ) { }
+    private usuarioService: UsuarioService,
+  ) { }
 
   ngOnInit() {
-    this.variablesService.getVariable('wCIVneApMUwcOvDwIneJ').subscribe(res=> {this.variables = res;});
-    
-    firebase.firestore().collection('Usuarios').orderBy('Apellido').onSnapshot(snap =>{
-            this.usuarios = []
-            snap.forEach(element => {
-              this.usuarios.push(element.data())
-            })
-          })
+    this.variablesService.getVariable('wCIVneApMUwcOvDwIneJ').subscribe(res => { this.variables = res; });
+
+    firebase.firestore().collection('Usuarios').orderBy('Apellido').onSnapshot(snap => {
+      this.usuarios = []
+      snap.forEach(element => {
+        this.usuarios.push(element.data())
+      })
+    })
   }
 
-  onChange($event){
+  countChange(event) {
+    event.target.value = event.target.value.replace(/[^0-9 | .]*/g, '');
+    event.target.value = event.target.value.replace(' ', '');
+    //event.target.value = event.target.value.replace(",", '.');
+  }
+
+  onChange($event) {
     this.referido = $event.target.value;
-    
-  }
-
-  onChangeId($event){
-    this.usuarioService.getUsuario($event.target.value).subscribe(res=> {this.usuarioReferido = res;});
 
   }
 
-  
+  onChangeId($event) {
+    this.usuarioService.getUsuario($event.target.value).subscribe(res => { this.usuarioReferido = res; });
+
+  }
+
+
 
   async presentLoading(mensaje: string) {
     this.loading = await this.loadingController.create({
@@ -82,12 +88,12 @@ export class RegistrarPage implements OnInit {
 
   readURL(event): void {
     if (event.target.files && event.target.files[0]) {
-        this.file = event.target.files[0];
+      this.file = event.target.files[0];
 
-        const reader = new FileReader();
-        reader.onload = e => this.imageSrc = reader.result;
+      const reader = new FileReader();
+      reader.onload = e => this.imageSrc = reader.result;
 
-        reader.readAsDataURL(this.file);
+      reader.readAsDataURL(this.file);
     }
   }
 
@@ -97,8 +103,8 @@ export class RegistrarPage implements OnInit {
 
 
 
-  async RegistrarUser(form):Promise<void>{
-    if (this.ValidateEmail(form.value.email)==false){
+  async RegistrarUser(form): Promise<void> {
+    if (this.ValidateEmail(form.value.email) == false) {
       const alert = await this.alertCtrt.create({
         message: 'Ingrese un correo valido.',
         buttons: ['OK']
@@ -107,7 +113,7 @@ export class RegistrarPage implements OnInit {
       await alert.present();
       return;
     }
-    if ((String(form.value.email)).length<6){
+    if ((String(form.value.email)).length < 6) {
       const alert = await this.alertCtrt.create({
         message: 'Contraseña demasiado corta, ingrese almenos 6 caracteres.',
         buttons: ['OK']
@@ -116,14 +122,14 @@ export class RegistrarPage implements OnInit {
       await alert.present();
       return;
     }
-    
+
     this.presentLoading("Espere por favor...");
     var telefono = form.value.telefono;
-    var primeros = telefono.slice(0,3);
-    if(telefono.slice(0,1)==0){
-      telefono = '+593' + telefono.slice(1,telefono.length);
+    var primeros = telefono.slice(0, 3);
+    if (telefono.slice(0, 1) == 0) {
+      telefono = '+593' + telefono.slice(1, telefono.length);
     }
-    else if(primeros == '+593'){
+    else if (primeros == '+593') {
       telefono = telefono
     }
 
@@ -131,138 +137,137 @@ export class RegistrarPage implements OnInit {
     var apellido = this.capitalizeFirstLetter(form.value.apellido)
 
     var idReferido;
-    if(form.value.idReferido == null){
+    if (form.value.idReferido == null) {
       idReferido = ''
-      this.RegistrarUserCompleto(nombre, apellido,form.value.email, form.value.password, form.value.ciudadela, form.value.manzana, form.value.villa, telefono, 'https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fperfil.png?alt=media&token=ee5b8e7d-43b5-43c1-9be9-98186a2ab2ce', '');
-    }else{
+      this.RegistrarUserCompleto(nombre, apellido, form.value.email, form.value.password, form.value.ciudadela, form.value.manzana, form.value.villa, telefono, 'https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fperfil.png?alt=media&token=ee5b8e7d-43b5-43c1-9be9-98186a2ab2ce', '');
+    } else {
       idReferido = form.value.idReferido
       this.actualizarReferido()
-      
-      
-      this.RegistrarUserCompleto(nombre, apellido,form.value.email, form.value.password, form.value.ciudadela, form.value.manzana, form.value.villa, telefono, 'https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fperfil.png?alt=media&token=ee5b8e7d-43b5-43c1-9be9-98186a2ab2ce', idReferido);
+
+
+      this.RegistrarUserCompleto(nombre, apellido, form.value.email, form.value.password, form.value.ciudadela, form.value.manzana, form.value.villa, telefono, 'https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fperfil.png?alt=media&token=ee5b8e7d-43b5-43c1-9be9-98186a2ab2ce', idReferido);
     }
 
-    
 
-      
-    
-    
+
+
+
+
   }
 
-  actualizarReferido(){
+  actualizarReferido() {
     this.usuarioReferido.NumeroReferidos = this.usuarioReferido.NumeroReferidos + 1
     this.usuarioService.updateUsuario(this.usuarioReferido.id, this.usuarioReferido).then(
-      auth=>{
+      auth => {
         //this.loading.dismiss();
-        
-       
-       
-      }  
+
+
+
+      }
     ).catch(async error => {
-     // this.loading.dismiss();
-      var mensaje=error.code.split('/')[1];
+      // this.loading.dismiss();
+      var mensaje = error.code.split('/')[1];
       const presentarMensaje = this.mensajeErrorService.AuthErrorCodeSpanish(mensaje);
       console.log(presentarMensaje)
     })
 
   }
 
-  guardarArchivo(nombre:string, apellido: string, email:string, password:string, ciudadela:string ,manzana:string, villa: string, telefono: string, id : string){
-    
+  guardarArchivo(nombre: string, apellido: string, email: string, password: string, ciudadela: string, manzana: string, villa: string, telefono: string, id: string) {
+
     var storageRef = this.angularFireStorage.storage.ref()
 
-    
-    storageRef.child(this.file.name).put(this.file)
-    .then(
-            data=>{
-                    data.ref.getDownloadURL().then(
-                        downloadURL => {
-                          
-                            this.RegistrarUserCompleto(nombre, apellido, email, password, ciudadela, manzana, villa, telefono, downloadURL, id)  
 
-                      
-                        }
-                    ).catch(err=>{this.loading.dismiss(), this.failedAlert("Error al cargar la foto de perfil, intentelo de nuevo")});
-                    
+    storageRef.child(this.file.name).put(this.file)
+      .then(
+        data => {
+          data.ref.getDownloadURL().then(
+            downloadURL => {
+
+              this.RegistrarUserCompleto(nombre, apellido, email, password, ciudadela, manzana, villa, telefono, downloadURL, id)
+
 
             }
-    )     
+          ).catch(err => { this.loading.dismiss(), this.failedAlert("Error al cargar la foto de perfil, intentelo de nuevo") });
+
+
+        }
+      )
 
 
   }
 
- 
 
-  
-  async RegistrarUserCompleto(nombre:string, apellido: string, email:string, password:string, ciudadela:string ,manzana:string, villa: string, telefono: string, downloadURL:string, idReferido: string){
+
+
+  async RegistrarUserCompleto(nombre: string, apellido: string, email: string, password: string, ciudadela: string, manzana: string, villa: string, telefono: string, downloadURL: string, idReferido: string) {
     this.authService.registerUser(nombre, apellido, email, password, ciudadela, manzana, villa, telefono, 'https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fperfil.png?alt=media&token=ee5b8e7d-43b5-43c1-9be9-98186a2ab2ce', idReferido).
-    then(
-      auth=>{
-        this.loading.dismiss();
+      then(
+        auth => {
+          this.loading.dismiss();
 
-        this.authService.loginUser(email, password).
-        then(
-          (res)=>{
-            this.actualizarReferido();
-            localStorage.setItem('userId', res.user.uid);
-            localStorage.setItem('Fondo','#FBC8B5');
-            localStorage.setItem('FotoPerfil','https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fperfil.png?alt=media&token=ee5b8e7d-43b5-43c1-9be9-98186a2ab2ce');                   
-            this.router.navigateByUrl('/carousel');
-        },
-          
-          async error => {
-            console.log('aqui estamos agustinw-rl@hotmail.com')
-            var mensaje=error.code.split('/')[1]
-            const presentarMensaje = this.mensajeErrorService.AuthErrorCodeSpanish(mensaje);
-            const alert = await this.alertCtrt.create({
-              message: presentarMensaje,
-              buttons:[{text: 'ok', role: 'cancel'}],      
-            });
-            await alert.present();
-          
-          }
-        )
+          this.authService.loginUser(email, password).
+            then(
+              (res) => {
+                this.actualizarReferido();
+                localStorage.setItem('userId', res.user.uid);
+                localStorage.setItem('Fondo', '#FBC8B5');
+                localStorage.setItem('FotoPerfil', 'https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fperfil.png?alt=media&token=ee5b8e7d-43b5-43c1-9be9-98186a2ab2ce');
+                this.router.navigateByUrl('/carousel');
+              },
+
+              async error => {
+                console.log('aqui estamos agustinw-rl@hotmail.com')
+                var mensaje = error.code.split('/')[1]
+                const presentarMensaje = this.mensajeErrorService.AuthErrorCodeSpanish(mensaje);
+                const alert = await this.alertCtrt.create({
+                  message: presentarMensaje,
+                  buttons: [{ text: 'ok', role: 'cancel' }],
+                });
+                await alert.present();
+
+              }
+            )
 
 
 
-        
+
           ///this.router.navigateByUrl("/categorias")
-       
-       
-      }  
-    ).catch(async error => {
-      console.log('aqui esamos error agustinw-rl@hotmail.com')
-      this.loading.dismiss();
-      var mensaje=error.code.split('/')[1];
-      const presentarMensaje = this.mensajeErrorService.AuthErrorCodeSpanish(mensaje);
-      this.failedAlert(presentarMensaje)
-    })
+
+
+        }
+      ).catch(async error => {
+        console.log('aqui esamos error agustinw-rl@hotmail.com')
+        this.loading.dismiss();
+        var mensaje = error.code.split('/')[1];
+        const presentarMensaje = this.mensajeErrorService.AuthErrorCodeSpanish(mensaje);
+        this.failedAlert(presentarMensaje)
+      })
   }
 
 
 
   async failedAlert(text: string) {
     const alert = await this.alertCtrt.create({
-     cssClass: 'my-custom-class',
-     header: text,
-    buttons: [{
-    text: 'OK',
-      handler: () => {
-        
-      }
-    }]   
+      cssClass: 'my-custom-class',
+      header: text,
+      buttons: [{
+        text: 'OK',
+        handler: () => {
+
+        }
+      }]
     });
     await alert.present();
   }
 
-  ValidateEmail(mail:string){
-    if (/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(mail))
-      {
-        return (true)
-      }
-        return (false)
+  ValidateEmail(mail: string) {
+    if (/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(mail)) {
+      return (true)
     }
+    return (false)
+  }
 
-  
+
 
 }
