@@ -17,8 +17,8 @@ import * as firebase from 'firebase';
 })
 export class CrearProductoPage implements OnInit {
 
-  producto = {Titulo:'',Descripcion:'',Vendedor:'',Categoria:'',Visitas:0,Precio:0,Visibilidad:true,Foto1:'',Foto2:'',id:''};
-  public user: Usuarios=new Usuarios();
+  producto = { Titulo: '', Descripcion: '', Vendedor: '', Categoria: '', Visitas: 0, Precio: 0, Visibilidad: true, Foto1: '', Foto2: '', id: '' };
+  public user: Usuarios = new Usuarios();
   idCategoria;
   miId: '7G091ZlAzKhS9TrNFqAX';
   loading: HTMLIonLoadingElement;
@@ -30,26 +30,27 @@ export class CrearProductoPage implements OnInit {
   file1: File;
 
   constructor(private angularFireStorage: AngularFireStorage,
-              private usuarioService: UsuarioService,
-              private router: Router,
-              private alertCtrt: AlertController,
-              private productosService: ProductosService,
-              private activateRoute: ActivatedRoute,
-              public loadingController: LoadingController,) { }
+    private usuarioService: UsuarioService,
+    private router: Router,
+    private alertCtrt: AlertController,
+    private productosService: ProductosService,
+    private activateRoute: ActivatedRoute,
+    public loadingController: LoadingController,) { }
 
   ngOnInit() {
     this.activateRoute.paramMap.subscribe(paramMap => {
       this.idCategoria = paramMap.get('idCategoria');
     });
-    this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => {this.user =res; this.idUser = localStorage.getItem('userId');});
+    this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => { this.user = res; this.idUser = localStorage.getItem('userId'); });
   }
 
   countChange(event) {
     event.target.value = event.target.value.replace(/[^0-9 | .]*/g, '');
+    event.target.value = event.target.value.replace(' ', '');
     //event.target.value = event.target.value.replace(",", '.');
   }
 
-  crearProducto(form){
+  crearProducto(form) {
     this.presentLoading("Espere por favor...");
     this.producto.Titulo = form.value.titulo;
     this.producto.Descripcion = form.value.descripcion;
@@ -60,12 +61,12 @@ export class CrearProductoPage implements OnInit {
     this.producto.Visibilidad = true;
 
     this.guardarProducto();
- 
-   
-    
 
-    
-    
+
+
+
+
+
   }
 
   async presentLoading(mensaje: string) {
@@ -76,108 +77,110 @@ export class CrearProductoPage implements OnInit {
     });
     return this.loading.present();
   }
-  
+
   async failedAlert(text: string) {
     const alert = await this.alertCtrt.create({
-     cssClass: 'my-custom-class',
-     header: text,
-    buttons: [{
-    text: 'OK',
-      handler: () => {
-        
-      }
-    }]   
+      cssClass: 'my-custom-class',
+      header: text,
+      buttons: [{
+        text: 'OK',
+        handler: () => {
+
+        }
+      }]
     });
     await alert.present();
   }
 
   readURL(event): void {
     if (event.target.files && event.target.files[0]) {
-        this.file = event.target.files[0];
+      this.file = event.target.files[0];
 
-        const reader = new FileReader();
-        reader.onload = e => this.image = reader.result;
+      const reader = new FileReader();
+      reader.onload = e => this.image = reader.result;
 
-        reader.readAsDataURL(this.file);
+      reader.readAsDataURL(this.file);
     }
   }
 
   readURL1(event): void {
     if (event.target.files && event.target.files[0]) {
-        this.file1 = event.target.files[0];
+      this.file1 = event.target.files[0];
 
-        const reader = new FileReader();
-        reader.onload = e => this.image1 = reader.result;
+      const reader = new FileReader();
+      reader.onload = e => this.image1 = reader.result;
 
-        reader.readAsDataURL(this.file1);
+      reader.readAsDataURL(this.file1);
     }
   }
 
-  guardarProducto(){
-    
+  guardarProducto() {
+
     var storageRef = this.angularFireStorage.storage.ref()
 
     var storageRef1 = this.angularFireStorage.storage.ref()
 
-    
+
     storageRef.child(this.file.name).put(this.file)
-    .then(
-            data=>{
-                    data.ref.getDownloadURL().then(
-                        downloadURL => {
+      .then(
+        data => {
+          data.ref.getDownloadURL().then(
+            downloadURL => {
 
-                          if(this.file1!=null){
-                            storageRef1.child(this.file1.name).put(this.file1)
-                            .then(
-                              data=>{data.ref.getDownloadURL().then(
-                                downloadURL1 =>this.guardarCompleto(downloadURL, downloadURL1)  
-                                )}
-                            ).catch(err=>{this.loading.dismiss(), this.failedAlert("Error al cargar la foto 2")});
+              if (this.file1 != null) {
+                storageRef1.child(this.file1.name).put(this.file1)
+                  .then(
+                    data => {
+                      data.ref.getDownloadURL().then(
+                        downloadURL1 => this.guardarCompleto(downloadURL, downloadURL1)
+                      )
+                    }
+                  ).catch(err => { this.loading.dismiss(), this.failedAlert("Error al cargar la foto 2") });
 
-                          }
-                          else{
-                            this.guardarCompleto(downloadURL, '')
-                          }
-                          
-                            
-                            
-                          
-                      
-                        }
-                    ).catch(err=>{this.loading.dismiss(), this.failedAlert("Error al cargar la foto 1")});
-                    
+              }
+              else {
+                this.guardarCompleto(downloadURL, '')
+              }
+
+
+
+
 
             }
-    )     
+          ).catch(err => { this.loading.dismiss(), this.failedAlert("Error al cargar la foto 1") });
+
+
+        }
+      )
 
 
   }
 
-  async guardarCompleto(downloadURL: string, downloadURL1: string){
+  async guardarCompleto(downloadURL: string, downloadURL1: string) {
 
 
     const docRef = firebase.firestore().collection("Productos").doc();
     this.producto.Foto1 = downloadURL;
     this.producto.Foto2 = downloadURL1;
     this.producto.id = docRef.id
-    
+
     await docRef.set(this.producto)
 
-    
-     
 
-  
 
-    
+
+
+
+
     this.user.Productos = this.user.Productos + 1;
-    this.usuarioService.updateUsuario(this.idUser,this.user).then(
-      auth=>{
-        
+    this.usuarioService.updateUsuario(this.idUser, this.user).then(
+      auth => {
+
         this.loading.dismiss();
 
 
-       this.router.navigate(["/productos",this.idCategoria])
-      }       
+        this.router.navigate(["/productos", this.idCategoria])
+      }
     ).catch(async error => {
       this.loading.dismiss();
       this.failedAlert("Algo salió mal, inténtelo de nuevo");
@@ -185,10 +188,10 @@ export class CrearProductoPage implements OnInit {
     // this.producto
     // this.productosService.addProducto(this.producto).then(
     //   auth=>{
-        
+
     //     this.loading.dismiss();
 
-    
+
     //   }       
     // ).catch(async error => {
     //   this.loading.dismiss();
