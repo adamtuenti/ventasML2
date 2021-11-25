@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { Locales } from 'src/app/models/locales';
+import { ProductosLocales } from 'src/app/models/productosLocales';
 import { LocalesService } from 'src/app/services/locales.service';
+import { ProductosLocalesService } from 'src/app/services/productos-locales.service';
 import { Usuarios } from 'src/app/models/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { AlertController } from '@ionic/angular';
@@ -16,6 +18,8 @@ import { AlertController } from '@ionic/angular';
 export class LocalesTodosPage implements OnInit {
 
   locales : Locales[] = [];
+  productosLocales : ProductosLocales[] = []
+  textoBuscar = '';
 
   slideOpts = {
     initialSlide: 0,
@@ -26,16 +30,27 @@ export class LocalesTodosPage implements OnInit {
               private localesService: LocalesService,
               private usuarioService: UsuarioService,
               private alertCtrt: AlertController,
+              private productosLocalesService: ProductosLocalesService,
               private activateRoute: ActivatedRoute) { }
 
 
   ngOnInit() {
-      this.localesService.getLocales().subscribe(res=> {this.locales = res;this.shuffle(this.locales);this.recortar(); });
+    //this.productosLocalesService.getProductos().subscribe(res => this.productosLocales = res )
+    this.localesService.getLocales().subscribe(res=> {this.locales = res;this.shuffle(this.locales);this.recortar(); });
       
+      
+  }
+
+  buscar(event){
+    const texto = event.target.value
+    this.textoBuscar=texto;
   }
 
   recortar(){
     this.locales = this.locales.slice(0,25)
+    // for(let i = 0; i < this.productosLocales.length; i++){
+    //   console.log(this.productosLocales[i].Titulo)
+    // }
     //this.editar() 
   }
 

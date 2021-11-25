@@ -8,12 +8,14 @@ import { LocalesTodosPageRoutingModule } from './locales-todos-routing.module';
 
 import { LocalesTodosPage } from './locales-todos.page';
 import { ComponentsModule } from '../components/components.module';
+import { PipesModule } from 'src/app/pipes/pipes.module';
 
 @NgModule({
   imports: [
     CommonModule,
     ComponentsModule,
     FormsModule,
+    PipesModule,
     IonicModule,
     LocalesTodosPageRoutingModule
   ],

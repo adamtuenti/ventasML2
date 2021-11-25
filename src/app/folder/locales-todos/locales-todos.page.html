@@ -23,9 +23,16 @@
 
   </ion-slides> -->
 
+  <ion-searchbar
+    color="light" 
+    placeholder = "Buscar local..."
+    animated
+    (ionChange)="buscar($event)">
+  </ion-searchbar>
+
   <ion-grid>
     <ion-row style="height: 780px;width: 100%;">
-      <ion-col sizeLg="4" sizeMd="4" sizeXs="6" *ngFor="let local of locales">
+      <ion-col sizeLg="4" sizeMd="4" sizeXs="6" *ngFor="let local of locales | filtroLocalProductos: textoBuscar">
 
         <ion-card (click)='aumentarVisita(local.id,local)'>
           <ion-card-content id='starts'>
