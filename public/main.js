@@ -329,7 +329,11 @@ const routes = [
     },
     {
         path: 'categorias',
-        loadChildren: () => Promise.all(/*! import() | folder-categorias-categorias-module */[__webpack_require__.e("common"), __webpack_require__.e("folder-categorias-categorias-module")]).then(__webpack_require__.bind(null, /*! ./folder/categorias/categorias.module */ "./src/app/folder/categorias/categorias.module.ts")).then(m => m.CategoriasPageModule)
+        loadChildren: () => Promise.all(/*! import() | folder-categorias-categorias-module */[__webpack_require__.e("default~folder-categoria-crear-producto-categoria-crear-producto-module~folder-categorias-categorias~d29ed959"), __webpack_require__.e("common"), __webpack_require__.e("folder-categorias-categorias-module")]).then(__webpack_require__.bind(null, /*! ./folder/categorias/categorias.module */ "./src/app/folder/categorias/categorias.module.ts")).then(m => m.CategoriasPageModule)
+    },
+    {
+        path: 'categoria-crear-producto',
+        loadChildren: () => Promise.all(/*! import() | folder-categoria-crear-producto-categoria-crear-producto-module */[__webpack_require__.e("default~folder-categoria-crear-producto-categoria-crear-producto-module~folder-categorias-categorias~d29ed959"), __webpack_require__.e("common"), __webpack_require__.e("folder-categoria-crear-producto-categoria-crear-producto-module")]).then(__webpack_require__.bind(null, /*! ./folder/categoria-crear-producto/categoria-crear-producto.module */ "./src/app/folder/categoria-crear-producto/categoria-crear-producto.module.ts")).then(m => m.CategoriaCrearProductoPageModule)
     },
     {
         path: 'perfil',
@@ -337,7 +341,7 @@ const routes = [
     },
     {
         path: 'productos/:categoria',
-        loadChildren: () => Promise.all(/*! import() | folder-productos-productos-module */[__webpack_require__.e("common"), __webpack_require__.e("folder-productos-productos-module")]).then(__webpack_require__.bind(null, /*! ./folder/productos/productos.module */ "./src/app/folder/productos/productos.module.ts")).then(m => m.ProductosPageModule)
+        loadChildren: () => Promise.all(/*! import() | folder-productos-productos-module */[__webpack_require__.e("default~folder-categoria-crear-producto-categoria-crear-producto-module~folder-categorias-categorias~d29ed959"), __webpack_require__.e("common"), __webpack_require__.e("folder-productos-productos-module")]).then(__webpack_require__.bind(null, /*! ./folder/productos/productos.module */ "./src/app/folder/productos/productos.module.ts")).then(m => m.ProductosPageModule)
     },
     {
         path: 'publicaciones',
@@ -345,7 +349,7 @@ const routes = [
     },
     {
         path: 'categorias-locales',
-        loadChildren: () => Promise.all(/*! import() | folder-categorias-locales-categorias-locales-module */[__webpack_require__.e("common"), __webpack_require__.e("folder-categorias-locales-categorias-locales-module")]).then(__webpack_require__.bind(null, /*! ./folder/categorias-locales/categorias-locales.module */ "./src/app/folder/categorias-locales/categorias-locales.module.ts")).then(m => m.CategoriasLocalesPageModule)
+        loadChildren: () => Promise.all(/*! import() | folder-categorias-locales-categorias-locales-module */[__webpack_require__.e("default~folder-categoria-crear-producto-categoria-crear-producto-module~folder-categorias-categorias~d29ed959"), __webpack_require__.e("common"), __webpack_require__.e("folder-categorias-locales-categorias-locales-module")]).then(__webpack_require__.bind(null, /*! ./folder/categorias-locales/categorias-locales.module */ "./src/app/folder/categorias-locales/categorias-locales.module.ts")).then(m => m.CategoriasLocalesPageModule)
     },
     {
         path: 'producto-detalle/:id/:vendedor',
@@ -361,7 +365,7 @@ const routes = [
     },
     {
         path: 'locales/:id',
-        loadChildren: () => Promise.all(/*! import() | folder-locales-locales-module */[__webpack_require__.e("common"), __webpack_require__.e("folder-locales-locales-module")]).then(__webpack_require__.bind(null, /*! ./folder/locales/locales.module */ "./src/app/folder/locales/locales.module.ts")).then(m => m.LocalesPageModule)
+        loadChildren: () => Promise.all(/*! import() | folder-locales-locales-module */[__webpack_require__.e("default~folder-categoria-crear-producto-categoria-crear-producto-module~folder-categorias-categorias~d29ed959"), __webpack_require__.e("common"), __webpack_require__.e("folder-locales-locales-module")]).then(__webpack_require__.bind(null, /*! ./folder/locales/locales.module */ "./src/app/folder/locales/locales.module.ts")).then(m => m.LocalesPageModule)
     },
     {
         path: 'crear-local/:id',
@@ -373,7 +377,7 @@ const routes = [
     },
     {
         path: 'productos-locales/:idLocal/:idPropietario',
-        loadChildren: () => Promise.all(/*! import() | folder-productos-locales-productos-locales-module */[__webpack_require__.e("common"), __webpack_require__.e("folder-productos-locales-productos-locales-module")]).then(__webpack_require__.bind(null, /*! ./folder/productos-locales/productos-locales.module */ "./src/app/folder/productos-locales/productos-locales.module.ts")).then(m => m.ProductosLocalesPageModule)
+        loadChildren: () => Promise.all(/*! import() | folder-productos-locales-productos-locales-module */[__webpack_require__.e("default~folder-categoria-crear-producto-categoria-crear-producto-module~folder-categorias-categorias~d29ed959"), __webpack_require__.e("common"), __webpack_require__.e("folder-productos-locales-productos-locales-module")]).then(__webpack_require__.bind(null, /*! ./folder/productos-locales/productos-locales.module */ "./src/app/folder/productos-locales/productos-locales.module.ts")).then(m => m.ProductosLocalesPageModule)
     },
     {
         path: 'comentarios-local/:idLocal/:idPropietario',
@@ -401,7 +405,7 @@ const routes = [
     },
     {
         path: 'servicios',
-        loadChildren: () => Promise.all(/*! import() | folder-servicios-servicios-module */[__webpack_require__.e("common"), __webpack_require__.e("folder-servicios-servicios-module")]).then(__webpack_require__.bind(null, /*! ./folder/servicios/servicios.module */ "./src/app/folder/servicios/servicios.module.ts")).then(m => m.ServiciosPageModule)
+        loadChildren: () => Promise.all(/*! import() | folder-servicios-servicios-module */[__webpack_require__.e("default~folder-categoria-crear-producto-categoria-crear-producto-module~folder-categorias-categorias~d29ed959"), __webpack_require__.e("common"), __webpack_require__.e("folder-servicios-servicios-module")]).then(__webpack_require__.bind(null, /*! ./folder/servicios/servicios.module */ "./src/app/folder/servicios/servicios.module.ts")).then(m => m.ServiciosPageModule)
     },
     {
         path: 'servicio-detalle/:idServicio/:idUser',
@@ -413,7 +417,7 @@ const routes = [
     },
     {
         path: 'mis-productos',
-        loadChildren: () => Promise.all(/*! import() | folder-mis-productos-mis-productos-module */[__webpack_require__.e("common"), __webpack_require__.e("folder-mis-productos-mis-productos-module")]).then(__webpack_require__.bind(null, /*! ./folder/mis-productos/mis-productos.module */ "./src/app/folder/mis-productos/mis-productos.module.ts")).then(m => m.MisProductosPageModule)
+        loadChildren: () => Promise.all(/*! import() | folder-mis-productos-mis-productos-module */[__webpack_require__.e("default~folder-categoria-crear-producto-categoria-crear-producto-module~folder-categorias-categorias~d29ed959"), __webpack_require__.e("common"), __webpack_require__.e("folder-mis-productos-mis-productos-module")]).then(__webpack_require__.bind(null, /*! ./folder/mis-productos/mis-productos.module */ "./src/app/folder/mis-productos/mis-productos.module.ts")).then(m => m.MisProductosPageModule)
     },
     {
         path: 'mis-publicaciones',
@@ -433,7 +437,7 @@ const routes = [
     },
     {
         path: 'productos-todos',
-        loadChildren: () => Promise.all(/*! import() | folder-productos-todos-productos-todos-module */[__webpack_require__.e("common"), __webpack_require__.e("folder-productos-todos-productos-todos-module")]).then(__webpack_require__.bind(null, /*! ./folder/productos-todos/productos-todos.module */ "./src/app/folder/productos-todos/productos-todos.module.ts")).then(m => m.ProductosTodosPageModule)
+        loadChildren: () => Promise.all(/*! import() | folder-productos-todos-productos-todos-module */[__webpack_require__.e("default~folder-categoria-crear-producto-categoria-crear-producto-module~folder-categorias-categorias~d29ed959"), __webpack_require__.e("common"), __webpack_require__.e("folder-productos-todos-productos-todos-module")]).then(__webpack_require__.bind(null, /*! ./folder/productos-todos/productos-todos.module */ "./src/app/folder/productos-todos/productos-todos.module.ts")).then(m => m.ProductosTodosPageModule)
     },
     {
         path: 'crear-producto-perfil',
@@ -445,7 +449,7 @@ const routes = [
     },
     {
         path: 'locales-todos',
-        loadChildren: () => Promise.all(/*! import() | folder-locales-todos-locales-todos-module */[__webpack_require__.e("common"), __webpack_require__.e("folder-locales-todos-locales-todos-module")]).then(__webpack_require__.bind(null, /*! ./folder/locales-todos/locales-todos.module */ "./src/app/folder/locales-todos/locales-todos.module.ts")).then(m => m.LocalesTodosPageModule)
+        loadChildren: () => Promise.all(/*! import() | folder-locales-todos-locales-todos-module */[__webpack_require__.e("default~folder-categoria-crear-producto-categoria-crear-producto-module~folder-categorias-categorias~d29ed959"), __webpack_require__.e("common"), __webpack_require__.e("folder-locales-todos-locales-todos-module")]).then(__webpack_require__.bind(null, /*! ./folder/locales-todos/locales-todos.module */ "./src/app/folder/locales-todos/locales-todos.module.ts")).then(m => m.LocalesTodosPageModule)
     },
     {
         path: 'carousel',
@@ -462,6 +466,22 @@ const routes = [
     {
         path: 'comunicacion-local/:idLocal/:idPropietario',
         loadChildren: () => __webpack_require__.e(/*! import() | folder-comunicacion-local-comunicacion-local-module */ "folder-comunicacion-local-comunicacion-local-module").then(__webpack_require__.bind(null, /*! ./folder/comunicacion-local/comunicacion-local.module */ "./src/app/folder/comunicacion-local/comunicacion-local.module.ts")).then(m => m.ComunicacionLocalPageModule)
+    },
+    {
+        path: 'crear-producto-todos',
+        loadChildren: () => __webpack_require__.e(/*! import() | folder-crear-producto-todos-crear-producto-todos-module */ "folder-crear-producto-todos-crear-producto-todos-module").then(__webpack_require__.bind(null, /*! ./folder/crear-producto-todos/crear-producto-todos.module */ "./src/app/folder/crear-producto-todos/crear-producto-todos.module.ts")).then(m => m.CrearProductoTodosPageModule)
+    },
+    {
+        path: 'categoria-crear',
+        loadChildren: () => __webpack_require__.e(/*! import() | folder-categoria-crear-categoria-crear-module */ "folder-categoria-crear-categoria-crear-module").then(__webpack_require__.bind(null, /*! ./folder/categoria-crear/categoria-crear.module */ "./src/app/folder/categoria-crear/categoria-crear.module.ts")).then(m => m.CategoriaCrearPageModule)
+    },
+    {
+        path: 'categoria-crear-producto',
+        loadChildren: () => Promise.all(/*! import() | folder-categoria-crear-producto-categoria-crear-producto-module */[__webpack_require__.e("default~folder-categoria-crear-producto-categoria-crear-producto-module~folder-categorias-categorias~d29ed959"), __webpack_require__.e("common"), __webpack_require__.e("folder-categoria-crear-producto-categoria-crear-producto-module")]).then(__webpack_require__.bind(null, /*! ./folder/categoria-crear-producto/categoria-crear-producto.module */ "./src/app/folder/categoria-crear-producto/categoria-crear-producto.module.ts")).then(m => m.CategoriaCrearProductoPageModule)
+    },
+    {
+        path: 'categoria-crear-local',
+        loadChildren: () => __webpack_require__.e(/*! import() | folder-categoria-crear-local-categoria-crear-local-module */ "folder-categoria-crear-local-categoria-crear-local-module").then(__webpack_require__.bind(null, /*! ./folder/categoria-crear-local/categoria-crear-local.module */ "./src/app/folder/categoria-crear-local/categoria-crear-local.module.ts")).then(m => m.CategoriaCrearLocalPageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {

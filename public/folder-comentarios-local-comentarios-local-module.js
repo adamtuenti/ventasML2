@@ -9,7 +9,20 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-header nombre=\"locales\"></app-header>\n\n<ion-content>\n\n  <ion-segment color=\"tertiary\" value=\"comentarios\">\n\n    <ion-segment-button value=\"anuncios\" [routerLink]=\"['/detalle-local',idLocal,idPropietario]\" routerDirection=\"root\">\n      <ion-icon name=\"information-circle-outline\" size=\"large\"></ion-icon> <ion-label style=\"font-size: 11px;\">Datos</ion-label>\n    </ion-segment-button>\n    \n    <ion-segment-button value=\"cartilla\" [routerLink]=\"['/productos-locales',idLocal,idPropietario]\" routerDirection=\"root\">\n      <ion-icon name=\"book-outline\" size=\"large\"></ion-icon> <ion-label style=\"font-size: 11px;\">Cartilla</ion-label>\n    </ion-segment-button>\n\n    <ion-segment-button value=\"comentarios\" [routerLink]=\"['/comentarios-local',idLocal,idPropietario]\" routerDirection=\"root\">\n      <ion-icon name=\"chatbubbles-outline\" size=\"large\"></ion-icon> <ion-label style=\"font-size: 11px;\">Comentarios</ion-label>\n    </ion-segment-button>\n\n  </ion-segment>\n\n  <ng-container *ngIf=\"!condicion\">\n    <ion-list>\n      <ng-container *ngFor=\"let comentario of comentarios\">\n        <ng-container *ngFor=\"let usuario of usuarios\">\n        <ng-container *ngIf=\"comentario.Empresa == idLocal\">\n          \n        \n          <ion-card *ngIf=\"usuario.id == comentario.Usuario\">\n            \n            <ion-card-header>\n              <ion-item>\n                <ion-avatar>\n                  <img src=\"{{usuario.Foto}}\">\n                </ion-avatar>\n                \n                <ion-label style=\"margin-left: 7.5px;font-weight:bold\">{{usuario.Nombre}} {{usuario.Apellido}}</ion-label>\n                \n    \n                <ion-icon *ngIf = 'idUser == comentario.Usuario' name=\"trash-outline\" slot=\"end\" color='danger'(click)=\"alert(comentario.id)\"></ion-icon>\n              </ion-item>\n    \n            </ion-card-header>\n    \n            <ion-card-content>\n              <ion-item>\n              \n                <label style=\"font-size: 15.5px;color:black;align-items: center;margin-bottom: 5.5px;\">{{comentario.Descripcion}}</label>\n              </ion-item>\n              \n                \n                \n                <ion-item>\n                  <label slot='end'>{{comentario.Fecha | date:'yyyy/MM/dd'}}</label>\n                </ion-item>\n    \n            </ion-card-content>\n            \n            </ion-card>\n          </ng-container>\n        </ng-container>\n  \n\n      </ng-container>\n          \n          \n    </ion-list>\n\n\n  </ng-container>\n\n  <ng-container *ngIf=\"condicion\">\n\n    <div style=\"margin-top: 50px;\" align='center'> \n      <ion-text color=\"medium\">\n  \n        <img src=\"https://firebasestorage.googleapis.com/v0/b/taskyapp01.appspot.com/o/iconos%2Fgrupos.png?alt=media&token=8aa84d63-18b5-424d-9b6a-dfd1075eeb77\" style=\"width: 250px; height:250px;margin:auto;\" alet=\"foto\">\n        \n        <p style=\"font-size: 21px;margin:auto;margin-top:7.5px\">No hay comentarios realizados.</p>\n      </ion-text>  \n    </div>\n  </ng-container>\n\n  \n\n  <ion-fab *ngIf = 'idPropietario != idUser' vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\">\n    <ion-fab-button (click)=\"validarSesion()\">\n     <ion-icon name=\"add-outline\"></ion-icon>\n    </ion-fab-button>\n  </ion-fab>\n  \n  </ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-header nombre=\"locales\"></app-header>\r\n\r\n<ion-content>\r\n\r\n  <ion-segment color=\"tertiary\" value=\"comentarios\">\r\n\r\n    <ion-segment-button value=\"anuncios\" [routerLink]=\"['/detalle-local',idLocal,idPropietario]\" routerDirection=\"root\">\r\n      <ion-icon name=\"information-circle-outline\" size=\"large\"></ion-icon>\r\n      <ion-label style=\"font-size: 11px;\">Datos</ion-label>\r\n    </ion-segment-button>\r\n\r\n    <ion-segment-button value=\"cartilla\" [routerLink]=\"['/productos-locales',idLocal,idPropietario]\"\r\n      routerDirection=\"root\">\r\n      <ion-icon name=\"book-outline\" size=\"large\"></ion-icon>\r\n      <ion-label style=\"font-size: 11px;\">Cartilla</ion-label>\r\n    </ion-segment-button>\r\n\r\n    <ion-segment-button value=\"comentarios\" [routerLink]=\"['/comentarios-local',idLocal,idPropietario]\"\r\n      routerDirection=\"root\">\r\n      <ion-icon name=\"chatbubbles-outline\" size=\"large\"></ion-icon>\r\n      <ion-label style=\"font-size: 11px;\">Comentarios</ion-label>\r\n    </ion-segment-button>\r\n\r\n  </ion-segment>\r\n\r\n  <ng-container *ngIf=\"!condicion\">\r\n    <ion-list>\r\n      <ng-container *ngFor=\"let comentario of comentarios\">\r\n        <ng-container *ngFor=\"let usuario of usuarios\">\r\n          <ng-container *ngIf=\"comentario.Empresa == idLocal\">\r\n\r\n\r\n            <ion-card *ngIf=\"usuario.id == comentario.Usuario\">\r\n\r\n              <ion-card-header>\r\n                <ion-item>\r\n                  <ion-avatar>\r\n                    <img src=\"{{usuario.Foto}}\">\r\n                  </ion-avatar>\r\n\r\n                  <ion-label style=\"margin-left: 7.5px;font-weight:bold\">{{usuario.Nombre}} {{usuario.Apellido}}\r\n                  </ion-label>\r\n\r\n\r\n                  <ion-icon *ngIf='idUser == comentario.Usuario' name=\"trash-outline\" slot=\"end\" color='danger'\r\n                    (click)=\"alert(comentario.id)\"></ion-icon>\r\n                </ion-item>\r\n\r\n              </ion-card-header>\r\n\r\n              <ion-card-content>\r\n                <ion-item>\r\n\r\n                  <label\r\n                    style=\"font-size: 15.5px;color:black;align-items: center;margin-bottom: 5.5px;\">{{comentario.Descripcion}}</label>\r\n                </ion-item>\r\n\r\n\r\n\r\n                <ion-item>\r\n                  <label slot='end'>{{comentario.Fecha | date:'yyyy/MM/dd'}}</label>\r\n                </ion-item>\r\n\r\n              </ion-card-content>\r\n\r\n            </ion-card>\r\n          </ng-container>\r\n        </ng-container>\r\n\r\n\r\n      </ng-container>\r\n\r\n\r\n    </ion-list>\r\n\r\n\r\n  </ng-container>\r\n\r\n  <ng-container *ngIf=\"condicion\">\r\n\r\n    <div style=\"margin-top: 50px;\" align='center'>\r\n      <ion-text color=\"medium\">\r\n\r\n        <img\r\n          src=\"https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Ffile_search.png?alt=media&token=79e21b5c-d8e4-4124-abd8-be52f0bce666\"\r\n          style=\"width: 250px; height:250px;margin:auto;\" alet=\"foto\">\r\n\r\n        <p style=\"font-size: 21px;margin:auto;margin-top:7.5px\">No hay comentarios realizados.</p>\r\n      </ion-text>\r\n    </div>\r\n  </ng-container>\r\n\r\n\r\n\r\n  <ion-fab *ngIf='idPropietario != idUser' vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\">\r\n    <ion-fab-button (click)=\"validarSesion()\">\r\n      <ion-icon name=\"add-outline\"></ion-icon>\r\n    </ion-fab-button>\r\n  </ion-fab>\r\n\r\n</ion-content>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/folder/components/header/header.component.html":
+/*!******************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/folder/components/header/header.component.html ***!
+  \******************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header color = 'header'>  \r\n  <ion-toolbar>\r\n    <ion-segment color=\"tertiary\" value=\"{{text}}\" >\r\n      <ion-segment-button value=\"publicaciones\" [routerLink]=\"['/publicaciones']\" routerDirection=\"root\">\r\n        <ion-icon name=\"megaphone-outline\" size=\"large\"></ion-icon>\r\n        <ion-label style=\"font-size: 11.5px;\">Anuncios</ion-label>\r\n      </ion-segment-button>\r\n\r\n      <ion-segment-button value=\"categorias\" [routerLink]=\"['/productos-todos']\" routerDirection=\"root\">\r\n        <ion-icon name=\"grid-outline\" size=\"large\"></ion-icon>\r\n        <ion-label style=\"font-size: 11.5px;\">Productos</ion-label>\r\n      </ion-segment-button>\r\n\r\n      <ion-segment-button value=\"locales\" [routerLink]=\"['/locales-todos']\" routerDirection=\"root\">\r\n        <ion-icon name=\"storefront-outline\" size=\"large\"></ion-icon>\r\n        <ion-label style=\"font-size: 11.5px;\">Locales</ion-label>\r\n      </ion-segment-button>\r\n    \r\n      <ion-segment-button value=\"perfil\" [routerLink]=\"['/perfil']\" routerDirection=\"root\">\r\n        <ion-icon name=\"person-circle\" size=\"large\"></ion-icon>\r\n        <ion-label style=\"font-size: 11.5px;\">Perfil</ion-label>\r\n        <!-- <ion-avatar style=\"height: 48px;width: 48px;margin: auto;\">\r\n          <img src=\"{{FotoPerfil}}\">\r\n        </ion-avatar> -->\r\n      </ion-segment-button>\r\n\r\n    </ion-segment>\r\n\r\n  </ion-toolbar>\r\n</ion-header>");
 
 /***/ }),
 
@@ -289,6 +302,96 @@ ComentariosLocalPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])(
         styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! ./comentarios-local.page.scss */ "./src/app/folder/comentarios-local/comentarios-local.page.scss")).default]
     })
 ], ComentariosLocalPage);
+
+
+
+/***/ }),
+
+/***/ "./src/app/folder/components/components.module.ts":
+/*!********************************************************!*\
+  !*** ./src/app/folder/components/components.module.ts ***!
+  \********************************************************/
+/*! exports provided: ComponentsModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ComponentsModule", function() { return ComponentsModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var src_app_folder_components_header_header_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/folder/components/header/header.component */ "./src/app/folder/components/header/header.component.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+
+
+
+
+let ComponentsModule = class ComponentsModule {
+};
+ComponentsModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        declarations: [
+            src_app_folder_components_header_header_component__WEBPACK_IMPORTED_MODULE_2__["HeaderComponent"],
+        ],
+        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"], src_app_folder_components_header_header_component__WEBPACK_IMPORTED_MODULE_2__["HeaderComponent"]],
+    })
+], ComponentsModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/folder/components/header/header.component.scss":
+/*!****************************************************************!*\
+  !*** ./src/app/folder/components/header/header.component.scss ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2ZvbGRlci9jb21wb25lbnRzL2hlYWRlci9oZWFkZXIuY29tcG9uZW50LnNjc3MifQ== */");
+
+/***/ }),
+
+/***/ "./src/app/folder/components/header/header.component.ts":
+/*!**************************************************************!*\
+  !*** ./src/app/folder/components/header/header.component.ts ***!
+  \**************************************************************/
+/*! exports provided: HeaderComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HeaderComponent", function() { return HeaderComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+
+
+let HeaderComponent = class HeaderComponent {
+    constructor() {
+    }
+    ngOnInit() {
+        // var foto = localStorage.getItem('FotoPerfil');
+        // if(localStorage.getItem('FotoPerfil') != null){
+        //   this.FotoPerfil = localStorage.getItem('FotoPerfil');
+        // }
+        // else{
+        //   this.FotoPerfil = 'https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2FiconMl2.png?alt=media&token=e6ee4d9e-33a0-4ab2-851f-d50930465e47';
+        // }
+        this.text = this.nombre;
+    }
+};
+HeaderComponent.ctorParameters = () => [];
+HeaderComponent.propDecorators = {
+    nombre: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"], args: ['nombre',] }]
+};
+HeaderComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-header',
+        template: Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! raw-loader!./header.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/folder/components/header/header.component.html")).default,
+        styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! ./header.component.scss */ "./src/app/folder/components/header/header.component.scss")).default]
+    })
+], HeaderComponent);
 
 
 

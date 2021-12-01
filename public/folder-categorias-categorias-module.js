@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\r\n<app-header nombre=\"categorias\"></app-header>\r\n\r\n<ion-content>\r\n\r\n  <ion-segment color=\"tertiary\" value=\"categorias\">\r\n\r\n    \r\n\r\n    <ion-segment-button value=\"productos\" [routerLink]=\"['/productos-todos']\" >\r\n      <ion-icon name=\"gift-outline\" size=\"large\"></ion-icon> <ion-label style=\"font-size: 11px;\">Productos</ion-label>\r\n    </ion-segment-button>\r\n\r\n    <ion-segment-button value=\"categorias\" [routerLink]=\"['/categorias']\" >\r\n      <ion-icon name=\"list-outline\" size=\"large\"></ion-icon> <ion-label style=\"font-size: 11px;\">Categorias</ion-label>\r\n    </ion-segment-button>\r\n\r\n    <ion-segment-button value=\"servicios\" [routerLink]=\"['/servicios']\">\r\n      <ion-icon name=\"rocket-outline\" size=\"large\"></ion-icon> <ion-label style=\"font-size: 11px;\">Servicios</ion-label>\r\n    </ion-segment-button>\r\n\r\n  </ion-segment>\r\n\r\n  <ion-searchbar\r\n    color=\"light\" \r\n    placeholder = \"Buscar categoría...\"\r\n    animated\r\n    (ionChange)=\"buscar($event)\">\r\n  </ion-searchbar>\r\n\r\n  <ion-list *ngFor=\"let categoria of categorias | filtroCategoria: textoBuscar\">\r\n    <ion-item [routerLink]=\"['/productos',categoria.id]\">\r\n      <ion-icon name=\"{{categoria.Icono}}\" slot=\"start\" size='large'></ion-icon>\r\n      <ion-label style=\"font-size: 17.2px;\">{{categoria.Nombre}}</ion-label>\r\n    </ion-item>\r\n\r\n  </ion-list>\r\n\r\n  \r\n\r\n\r\n</ion-content>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("\r\n<app-header nombre=\"categorias\"></app-header>\r\n\r\n<ion-content>\r\n\r\n  <ion-segment color=\"tertiary\" value=\"categorias\">\r\n\r\n    \r\n\r\n    <ion-segment-button value=\"productos\" [routerLink]=\"['/productos-todos']\" >\r\n      <ion-icon name=\"gift-outline\" size=\"large\"></ion-icon> <ion-label style=\"font-size: 11px;\">Productos</ion-label>\r\n    </ion-segment-button>\r\n\r\n    <ion-segment-button value=\"categorias\" [routerLink]=\"['/categorias']\" >\r\n      <ion-icon name=\"list-outline\" size=\"large\"></ion-icon> <ion-label style=\"font-size: 11px;\">Categorias</ion-label>\r\n    </ion-segment-button>\r\n\r\n    <ion-segment-button value=\"servicios\" [routerLink]=\"['/servicios']\">\r\n      <ion-icon name=\"rocket-outline\" size=\"large\"></ion-icon> <ion-label style=\"font-size: 11px;\">Servicios</ion-label>\r\n    </ion-segment-button>\r\n\r\n  </ion-segment>\r\n\r\n  <ion-searchbar\r\n    color=\"light\" \r\n    placeholder = \"Buscar categoría...\"\r\n    animated\r\n    (ionChange)=\"buscar($event)\">\r\n  </ion-searchbar>\r\n\r\n  <ion-list *ngFor=\"let categoria of categorias | filtroCategoria: textoBuscar\">\r\n    <ion-item [routerLink]=\"['/productos',categoria.id]\">\r\n      <ion-icon name=\"{{categoria.Icono}}\" slot=\"start\" size='large'></ion-icon>\r\n      <ion-label style=\"font-size: 17.2px;\">{{categoria.Nombre}}</ion-label>\r\n    </ion-item>\r\n\r\n  </ion-list>\r\n\r\n  <ion-fab vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\">\r\n    <ion-fab-button (click)=\"validarSesion()\">\r\n      <ion-icon name=\"add-outline\"></ion-icon>\r\n    </ion-fab-button>\r\n  </ion-fab>\r\n\r\n  \r\n\r\n\r\n</ion-content>\r\n");
 
 /***/ }),
 
@@ -124,17 +124,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var src_app_services_categorias_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/categorias.service */ "./src/app/services/categorias.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+
 
 
 
 let CategoriasPage = class CategoriasPage {
-    constructor(categoriasService) {
+    constructor(categoriasService, router) {
         this.categoriasService = categoriasService;
+        this.router = router;
         this.categorias = [];
         this.textoBuscar = '';
         this.numeroOpcion = 1;
     }
     ngOnInit() {
+        this.idUser = localStorage.getItem('userId');
         this.categoriasService.getCategorias().subscribe(res => { this.categorias = res; });
     }
     buscar(event) {
@@ -143,7 +147,8 @@ let CategoriasPage = class CategoriasPage {
     }
 };
 CategoriasPage.ctorParameters = () => [
-    { type: src_app_services_categorias_service__WEBPACK_IMPORTED_MODULE_2__["CategoriasService"] }
+    { type: src_app_services_categorias_service__WEBPACK_IMPORTED_MODULE_2__["CategoriasService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }
 ];
 CategoriasPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({

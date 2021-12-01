@@ -1,5 +1,18 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["folder-detalle-local-detalle-local-module"],{
 
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/folder/components/header/header.component.html":
+/*!******************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/folder/components/header/header.component.html ***!
+  \******************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header color = 'header'>  \r\n  <ion-toolbar>\r\n    <ion-segment color=\"tertiary\" value=\"{{text}}\" >\r\n      <ion-segment-button value=\"publicaciones\" [routerLink]=\"['/publicaciones']\" routerDirection=\"root\">\r\n        <ion-icon name=\"megaphone-outline\" size=\"large\"></ion-icon>\r\n        <ion-label style=\"font-size: 11.5px;\">Anuncios</ion-label>\r\n      </ion-segment-button>\r\n\r\n      <ion-segment-button value=\"categorias\" [routerLink]=\"['/productos-todos']\" routerDirection=\"root\">\r\n        <ion-icon name=\"grid-outline\" size=\"large\"></ion-icon>\r\n        <ion-label style=\"font-size: 11.5px;\">Productos</ion-label>\r\n      </ion-segment-button>\r\n\r\n      <ion-segment-button value=\"locales\" [routerLink]=\"['/locales-todos']\" routerDirection=\"root\">\r\n        <ion-icon name=\"storefront-outline\" size=\"large\"></ion-icon>\r\n        <ion-label style=\"font-size: 11.5px;\">Locales</ion-label>\r\n      </ion-segment-button>\r\n    \r\n      <ion-segment-button value=\"perfil\" [routerLink]=\"['/perfil']\" routerDirection=\"root\">\r\n        <ion-icon name=\"person-circle\" size=\"large\"></ion-icon>\r\n        <ion-label style=\"font-size: 11.5px;\">Perfil</ion-label>\r\n        <!-- <ion-avatar style=\"height: 48px;width: 48px;margin: auto;\">\r\n          <img src=\"{{FotoPerfil}}\">\r\n        </ion-avatar> -->\r\n      </ion-segment-button>\r\n\r\n    </ion-segment>\r\n\r\n  </ion-toolbar>\r\n</ion-header>");
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/folder/detalle-local/detalle-local.page.html":
 /*!****************************************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/folder/detalle-local/detalle-local.page.html ***!
@@ -10,6 +23,96 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("<app-header nombre=\"locales\"></app-header>\n\n<ion-content>\n\n  <ion-segment color=\"tertiary\" value=\"informacion\">\n\n    <ion-segment-button value=\"informacion\" [routerLink]=\"['/detalle-local',idLocal, idPropietario]\" routerDirection=\"root\">\n      <ion-icon name=\"information-circle-outline\" size=\"large\"></ion-icon> <ion-label style=\"font-size: 11px;\">Datos</ion-label>\n    </ion-segment-button>\n    \n    <ion-segment-button value=\"cartilla\" [routerLink]=\"['/productos-locales',idLocal, idPropietario]\" routerDirection=\"root\">\n      <ion-icon name=\"book-outline\" size=\"large\"></ion-icon> <ion-label style=\"font-size: 11px;\">Cartilla</ion-label>\n    </ion-segment-button>\n\n    <ion-segment-button value=\"grupos\" [routerLink]=\"['/comentarios-local', idLocal, idPropietario]\" routerDirection=\"root\">\n      <ion-icon name=\"chatbubbles-outline\" size=\"large\"></ion-icon> <ion-label style=\"font-size: 11px;\">Comentarios</ion-label>\n    </ion-segment-button>\n\n  </ion-segment>\n\n  <div *ngIf = '!calificarBool && idUser!=null'> \n\n    <div style='margin:auto;margin-top: 10px;' align='center' *ngIf = 'idPropietario != idUser && !calificarBool'>\n      <form #form=\"ngForm\" (ngSubmit)=\"calificar(form)\">\n        <p class=\"clasificacion\">\n          <input id=\"radio1\" type=\"radio\" name=\"estrellas\" value=5 ngModel required><!--\n          --><label class='estrellaLabel' for=\"radio1\">★</label><!--\n          --><input id=\"radio2\" type=\"radio\" name=\"estrellas\" value=4 ngModel required><!--\n          --><label class='estrellaLabel' for=\"radio2\">★</label><!--\n          --><input id=\"radio3\" type=\"radio\" name=\"estrellas\" value=3 ngModel required><!--\n          --><label class='estrellaLabel' for=\"radio3\">★</label><!--\n          --><input id=\"radio4\" type=\"radio\" name=\"estrellas\" value=2 ngModel required><!--\n          --><label class='estrellaLabel' for=\"radio4\">★</label><!--\n          --><input id=\"radio5\" type=\"radio\" name=\"estrellas\" value=1 ngModel required><!--\n          --><label class='estrellaLabel' for=\"radio5\">★</label>\n        </p>\n  \n        <ion-button style=\"width: 100px;margin:auto;margin-bottom: 8.5px;\" type=\"submit\"  [disabled]=\"form.invalid\" expand=\"block\">\n          Calificar\n        </ion-button>\n      </form>\n    </div>\n\n  </div>\n\n  \n\n  <div *ngIf = 'calificarBool && idUser!=null'>\n\n    <div *ngIf = 'idPropietario != idUser && calificarBool' style='margin:auto;margin-top: 12.5px;' align='center' >\n      <div align='center' style='border-radius: 1px;border-color: black;'>\n        <ion-label style='font-size: 18.2px;margin-bottom: 7.5px;'>Tu calificación al local fue:</ion-label>\n        <br/>\n        <label *ngFor = 'let indice of [].constructor(valor); let i = index'>\n          <ion-icon name=\"star\" color = 'warning' size='large'></ion-icon>\n        </label>\n  \n      </div>\n      \n  \n    </div>\n\n  </div>\n  \n\n\n\n  <ion-img class=\"circle-pic\" style=\"width: 275px;height: 275px;margin:auto;margin-top: 15px;\" src=\"{{local.Foto}}\" ></ion-img>\n\n  <ion-card>\n    <ion-item>\n      <label style=\"margin: auto;display: block;font-size: 25px;font-weight: bold;color:black; align-items: center;text-align: center;margin-top: 7.5px;\">{{local.Nombre}}</label>\n    </ion-item>\n    <div style='margin-top: 5px;padding: 10px;'>\n     \n      <ion-label style=\"font-size: 17.5px;text-align: center;margin-top: 5px;margin-right: 5px;\">{{local.Descripcion}}</ion-label>\n    </div>\n\n    <ion-item *ngIf=\"idPropietario == idUser\">\n      <ion-icon slot='end' name=\"create-outline\" size ='large' color='success' [routerLink]=\"['/editar-local',idLocal,idPropietario]\"></ion-icon>\n\n    </ion-item>\n\n    \n\n  \n  </ion-card>\n\n\n    <ion-card>\n      \n      \n\n\n      <ion-item>\n        <a href= 'https://api.whatsapp.com/send?phone={{local.Telefono}}'><ion-icon name=\"logo-whatsapp\" size=\"large\" color=\"success\" style=\"margin-right: 8px;\"></ion-icon></a>\n        <ion-label>{{local.Telefono}}</ion-label>\n      </ion-item>\n\n      <ion-item>\n        <ion-icon name=\"bicycle-outline\" size=\"large\" color=\"success\" style=\"margin-right: 8px;\"></ion-icon>\n        <ion-label>{{local.Domicilio}}</ion-label>\n      </ion-item> \n\n      <ion-item *ngIf='local.RedSocial != \"\"'>\n        <a href= '{{local.RedSocial}}'><ion-icon name=\"logo-facebook\" size=\"large\" color=\"primary\" style=\"margin-right: 8px;\"></ion-icon></a>\n        <ion-label>{{local.RedSocial}}</ion-label>\n      </ion-item>\n\n      <ion-item>\n        <ion-icon name=\"location-outline\" size=\"large\" color=\"success\" style=\"margin-right: 8px;\"></ion-icon>\n        <ion-label>{{local.Ciudadela}} - Mz: {{local.Manzana}}   Villa: {{local.Villa}}</ion-label>\n      </ion-item>\n      \n      <ion-item *ngIf='local.Referencia != \"\"'>\n        <ion-icon name=\"search-outline\" size=\"large\" color=\"success\" style=\"margin-right: 8px;\"></ion-icon>\n        <ion-label>{{local.Referencia}}</ion-label>\n      </ion-item>\n\n      <ng-container>\n        <ion-item>\n          <ion-icon name=\"calendar-number-outline\" size=\"large\" color=\"success\" style=\"margin-right: 8px;\"></ion-icon>\n          <ion-label>Horario de atención</ion-label>\n\n        </ion-item>\n        <div style='margin-top: 5px;padding: 10px;'>\n          <ion-label style='font-size: 15px;text-align: center;'>\n            {{local.HorarioAtencion}}\n          </ion-label>\n        </div>\n      </ng-container>\n\n\n      <!-- <ion-item>\n        <ion-icon routerLink=\"/perfil-update\" name=\"create-outline\" size=\"large\" style=\"margin-right: 8px;\" layout=\"icon-end\" slot=\"end\"></ion-icon>\n\n      </ion-item> -->\n    \n    </ion-card>\n\n\n\n</ion-content>\n");
+
+/***/ }),
+
+/***/ "./src/app/folder/components/components.module.ts":
+/*!********************************************************!*\
+  !*** ./src/app/folder/components/components.module.ts ***!
+  \********************************************************/
+/*! exports provided: ComponentsModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ComponentsModule", function() { return ComponentsModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var src_app_folder_components_header_header_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/folder/components/header/header.component */ "./src/app/folder/components/header/header.component.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+
+
+
+
+let ComponentsModule = class ComponentsModule {
+};
+ComponentsModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        declarations: [
+            src_app_folder_components_header_header_component__WEBPACK_IMPORTED_MODULE_2__["HeaderComponent"],
+        ],
+        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"], src_app_folder_components_header_header_component__WEBPACK_IMPORTED_MODULE_2__["HeaderComponent"]],
+    })
+], ComponentsModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/folder/components/header/header.component.scss":
+/*!****************************************************************!*\
+  !*** ./src/app/folder/components/header/header.component.scss ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2ZvbGRlci9jb21wb25lbnRzL2hlYWRlci9oZWFkZXIuY29tcG9uZW50LnNjc3MifQ== */");
+
+/***/ }),
+
+/***/ "./src/app/folder/components/header/header.component.ts":
+/*!**************************************************************!*\
+  !*** ./src/app/folder/components/header/header.component.ts ***!
+  \**************************************************************/
+/*! exports provided: HeaderComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HeaderComponent", function() { return HeaderComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+
+
+let HeaderComponent = class HeaderComponent {
+    constructor() {
+    }
+    ngOnInit() {
+        // var foto = localStorage.getItem('FotoPerfil');
+        // if(localStorage.getItem('FotoPerfil') != null){
+        //   this.FotoPerfil = localStorage.getItem('FotoPerfil');
+        // }
+        // else{
+        //   this.FotoPerfil = 'https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2FiconMl2.png?alt=media&token=e6ee4d9e-33a0-4ab2-851f-d50930465e47';
+        // }
+        this.text = this.nombre;
+    }
+};
+HeaderComponent.ctorParameters = () => [];
+HeaderComponent.propDecorators = {
+    nombre: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"], args: ['nombre',] }]
+};
+HeaderComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-header',
+        template: Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! raw-loader!./header.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/folder/components/header/header.component.html")).default,
+        styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! ./header.component.scss */ "./src/app/folder/components/header/header.component.scss")).default]
+    })
+], HeaderComponent);
+
+
 
 /***/ }),
 

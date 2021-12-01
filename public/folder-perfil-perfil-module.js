@@ -1,5 +1,18 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["folder-perfil-perfil-module"],{
 
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/folder/components/header/header.component.html":
+/*!******************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/folder/components/header/header.component.html ***!
+  \******************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header color = 'header'>  \r\n  <ion-toolbar>\r\n    <ion-segment color=\"tertiary\" value=\"{{text}}\" >\r\n      <ion-segment-button value=\"publicaciones\" [routerLink]=\"['/publicaciones']\" routerDirection=\"root\">\r\n        <ion-icon name=\"megaphone-outline\" size=\"large\"></ion-icon>\r\n        <ion-label style=\"font-size: 11.5px;\">Anuncios</ion-label>\r\n      </ion-segment-button>\r\n\r\n      <ion-segment-button value=\"categorias\" [routerLink]=\"['/productos-todos']\" routerDirection=\"root\">\r\n        <ion-icon name=\"grid-outline\" size=\"large\"></ion-icon>\r\n        <ion-label style=\"font-size: 11.5px;\">Productos</ion-label>\r\n      </ion-segment-button>\r\n\r\n      <ion-segment-button value=\"locales\" [routerLink]=\"['/locales-todos']\" routerDirection=\"root\">\r\n        <ion-icon name=\"storefront-outline\" size=\"large\"></ion-icon>\r\n        <ion-label style=\"font-size: 11.5px;\">Locales</ion-label>\r\n      </ion-segment-button>\r\n    \r\n      <ion-segment-button value=\"perfil\" [routerLink]=\"['/perfil']\" routerDirection=\"root\">\r\n        <ion-icon name=\"person-circle\" size=\"large\"></ion-icon>\r\n        <ion-label style=\"font-size: 11.5px;\">Perfil</ion-label>\r\n        <!-- <ion-avatar style=\"height: 48px;width: 48px;margin: auto;\">\r\n          <img src=\"{{FotoPerfil}}\">\r\n        </ion-avatar> -->\r\n      </ion-segment-button>\r\n\r\n    </ion-segment>\r\n\r\n  </ion-toolbar>\r\n</ion-header>");
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/folder/perfil/perfil.page.html":
 /*!**************************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/folder/perfil/perfil.page.html ***!
@@ -10,6 +23,96 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("<app-header nombre=\"perfil\"></app-header>\n\n<ion-content >\n\n\n  <div *ngIf = 'id!=null'>\n\n    \n      <ion-img class=\"circle-pic\" style=\"width: 275px;height: 275px;\" src=\"https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fperfil.png?alt=media&token=ee5b8e7d-43b5-43c1-9be9-98186a2ab2ce\" ></ion-img>\n\n      <ion-card>\n        <ion-item>\n          <ion-icon name=\"person-outline\" size=\"large\" style=\"margin-right: 8px;\"></ion-icon>\n          <ion-label style=\"font-size: 17px;\">{{user.Nombre}} {{user.Apellido}}</ion-label>\n        </ion-item>\n      \n        <ion-item>\n          <ion-icon name=\"mail-outline\" size=\"large\" style=\"margin-right: 8px;\"></ion-icon>\n          <ion-label style=\"font-size: 17px;\">{{user.Correo}}</ion-label>\n        </ion-item>\n\n        <ion-item>\n          <ion-icon name=\"call-outline\" size=\"large\" style=\"margin-right: 8px;\"></ion-icon>\n          <ion-label style=\"font-size: 17px;\">{{user.Telefono}}</ion-label>\n        </ion-item>\n\n        <ion-item>\n          <ion-icon name=\"megaphone-outline\" size=\"large\" style=\"margin-right: 8px;\"></ion-icon>\n          <ion-label style=\"font-size: 17px;\">{{user.Publicaciones}}</ion-label>\n        </ion-item>\n\n        <ion-item>\n          <ion-icon name=\"cart-outline\" size=\"large\" style=\"margin-right: 8px;\"></ion-icon>\n          <ion-label style=\"font-size: 17px;\">{{user.Productos}}</ion-label>\n        </ion-item>\n\n\n        <ion-item>\n          <ion-icon name=\"diamond-outline\" size=\"large\" style=\"margin-right: 8px;\"></ion-icon>\n          <ion-label style=\"font-size: 17px;\">{{premium}}</ion-label>\n        </ion-item>\n\n\n        <ion-item>\n          <ion-icon routerLink=\"/perfil-update\" name=\"create-outline\" size=\"large\" style=\"margin-right: 8px;\" layout=\"icon-end\" slot=\"end\"></ion-icon>\n\n        </ion-item>\n      \n      </ion-card>\n\n\n      <ion-item *ngIf = '!user.Vendedor && !user.Verificacion' style=\"margin-top: 25px;margin-bottom: 10px;\" lines = 'none'>\n        <ion-button style=\"width: 225px;height: 45px;margin-top:12.5px;margin:auto;\" color=\"success\" (click)=\"serVendedor()\">\n          <ion-icon name=\"hand-left-outline\" size=\"large\" style=\"margin-right: 8px;\"></ion-icon>\n          <ion-label style=\"font-size: 17px;\">Ser vendedor</ion-label>\n        </ion-button>\n      </ion-item>\n\n      \n\n\n\n      <ion-item *ngIf = '!user.Vendedor && user.Verificacion' style=\"margin-top: 25px;margin-bottom: 10px;\" lines = 'none'>\n        <ion-button style=\"width: 225px;height: 45px;margin-top:12.5px;margin:auto;\" color=\"warning\" (click)=\"esperaVendedor()\">\n          <ion-icon name=\"hand-left-outline\" size=\"large\" style=\"margin-right: 8px;\"></ion-icon>\n          <ion-label style=\"font-size: 11px;\">En espera (vendedor)</ion-label>\n        </ion-button>\n      </ion-item>\n\n      <ion-item *ngIf = '!user.Premium' style=\"margin-top: 15px;margin-bottom: 10px;\" lines = 'none'>\n        <ion-button style=\"width: 225px;height: 45px;margin-top:12.5px;margin:auto;\" color=\"success\" (click)=\"serPremium()\">\n          <ion-icon name=\"diamond-outline\" size=\"large\" style=\"margin-right: 8px;\"></ion-icon>\n          <ion-label style=\"font-size: 17px;\">Ser premium</ion-label>\n        </ion-button>\n      </ion-item>\n\n\n      <ion-item *ngIf = 'user.Vendedor' style=\"margin-top: 22px;margin-bottom: 10px;\" lines = 'none'>\n        <ion-button style=\"width: 225px;height: 45px;margin-top:12.5px;margin:auto;\" color=\"success\" [routerLink]=\"['/mis-publicaciones']\">\n          <ion-icon name=\"megaphone-outline\" size=\"large\" style=\"margin-right: 8px;\"></ion-icon>\n          <ion-label style=\"font-size: 17px;\">Mis anuncios</ion-label>\n        </ion-button>\n\n      </ion-item>\n\n      <ion-item *ngIf = 'user.Vendedor' style=\"margin-top: 15px;margin-bottom: 10px;\" lines = 'none'>\n        <ion-button style=\"width: 225px;height: 45px;margin-top:12.5px;margin:auto;\" color=\"success\" [routerLink]=\"['/mis-servicios']\">\n          <ion-icon name=\"rocket-outline\" size=\"large\" style=\"margin-right: 8px;\"></ion-icon>\n          <ion-label style=\"font-size: 17px;\">Mis servicios</ion-label>\n        </ion-button>\n\n      </ion-item>\n\n      <ion-item style=\"margin-top: 15px;margin-bottom: 10px;\" lines = 'none'>\n        <ion-button style=\"width: 225px;height: 45px;margin-top:12.5px;margin:auto;\" color=\"success\" [routerLink]=\"['/crear-local-perfil']\">\n          <ion-icon name=\"home-outline\" size=\"large\" style=\"margin-right: 8px;\"></ion-icon>\n          <ion-label style=\"font-size: 17px;\">Crear local</ion-label>\n        </ion-button>\n\n      </ion-item>\n\n\n      <ion-item *ngIf = 'user.Vendedor' style=\"margin-top: 15px;margin-bottom: 15px;\" lines = 'none'>\n        <ion-button style=\"width: 225px;height: 45px;margin-top:12.5px;margin:auto;\" color=\"success\" [routerLink]=\"['/mis-productos']\">\n          <ion-icon name=\"bag-check-outline\" size=\"large\" style=\"margin-right: 8px;\"></ion-icon>\n          <ion-label style=\"font-size: 17px;\">Mis productos</ion-label>\n        </ion-button>\n\n      </ion-item>\n\n      <ion-item style=\"margin-top: 10px;margin-bottom: 25px;\" lines = 'none'>\n        <ion-button style=\"width: 225px;height: 45px;margin-top:12.5px;margin:auto;\" color=\"danger\" (click)=\"logOutUser()\">\n          <ion-icon name=\"log-out-outline\" size=\"large\" style=\"margin-right: 8px;\"></ion-icon>\n          <ion-label style=\"font-size: 17px;\">Cerrar Sesión</ion-label>\n        </ion-button>\n\n      </ion-item>\n\n      \n\n        \n\n\n      \n      \n\n\n  </div>\n\n  <div *ngIf = 'id==null'>\n\n    <ion-img class=\"circle-pic\" style=\"width: 275px;height: 275px;margin-top: 105px;\" src=\"https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2FiconMl2.png?alt=media&token=e6ee4d9e-33a0-4ab2-851f-d50930465e47\" ></ion-img>\n\n      \n    <div align = 'center' style=\"margin-top:35px;\">\n\n    <ion-item lines = 'none'>\n      <ion-button style=\"width: 215px;height: 42px;margin-top:15.5px;margin:auto;\" color=\"success\" [routerLink]=\"['/login']\">\n        <ion-icon name=\"person-outline\" size=\"large\" style=\"margin-right: 8px;\"></ion-icon>\n        <ion-label style=\"font-size: 15px;\">Iniciar sesión</ion-label>\n      </ion-button>\n    </ion-item>\n\n    <ion-item style = 'margin-top:15px;' lines = 'none'>\n      <ion-button style=\"width: 215px;height: 42px;margin:auto;\" color=\"success\" [routerLink]=\"['/registrar']\">\n        <ion-icon name=\"rocket-outline\" size=\"large\" style=\"margin-right: 8px;\"></ion-icon>\n        <ion-label style=\"font-size: 15px;\">Registrarse </ion-label>\n      </ion-button>\n    </ion-item>\n\n    </div>\n      \n\n\n\n   \n\n    \n\n    \n\n\n  </div>\n\n  <ion-fab vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\" *ngIf = 'id!=null'>\n    <ion-fab-button (click)=\"crearSugerencia()\">\n    <ion-icon name=\"help-circle-outline\" size=\"large\"></ion-icon>\n    </ion-fab-button>\n  </ion-fab>\n\n  \n\n</ion-content>\n\n\n\n<style>\n  .circle-pic {     \n    width: 55%;\n    height: 35%;\n    margin: auto;\n    display: block;\n    margin-bottom: 10px;\n    margin-top: 10px;\n    /* -webkit-border-radius: 50%;\n    border-radius: 50%;\n    border-width: 50px; */\n\n  }\n</style>");
+
+/***/ }),
+
+/***/ "./src/app/folder/components/components.module.ts":
+/*!********************************************************!*\
+  !*** ./src/app/folder/components/components.module.ts ***!
+  \********************************************************/
+/*! exports provided: ComponentsModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ComponentsModule", function() { return ComponentsModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var src_app_folder_components_header_header_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/folder/components/header/header.component */ "./src/app/folder/components/header/header.component.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+
+
+
+
+let ComponentsModule = class ComponentsModule {
+};
+ComponentsModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        declarations: [
+            src_app_folder_components_header_header_component__WEBPACK_IMPORTED_MODULE_2__["HeaderComponent"],
+        ],
+        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"], src_app_folder_components_header_header_component__WEBPACK_IMPORTED_MODULE_2__["HeaderComponent"]],
+    })
+], ComponentsModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/folder/components/header/header.component.scss":
+/*!****************************************************************!*\
+  !*** ./src/app/folder/components/header/header.component.scss ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2ZvbGRlci9jb21wb25lbnRzL2hlYWRlci9oZWFkZXIuY29tcG9uZW50LnNjc3MifQ== */");
+
+/***/ }),
+
+/***/ "./src/app/folder/components/header/header.component.ts":
+/*!**************************************************************!*\
+  !*** ./src/app/folder/components/header/header.component.ts ***!
+  \**************************************************************/
+/*! exports provided: HeaderComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HeaderComponent", function() { return HeaderComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+
+
+let HeaderComponent = class HeaderComponent {
+    constructor() {
+    }
+    ngOnInit() {
+        // var foto = localStorage.getItem('FotoPerfil');
+        // if(localStorage.getItem('FotoPerfil') != null){
+        //   this.FotoPerfil = localStorage.getItem('FotoPerfil');
+        // }
+        // else{
+        //   this.FotoPerfil = 'https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2FiconMl2.png?alt=media&token=e6ee4d9e-33a0-4ab2-851f-d50930465e47';
+        // }
+        this.text = this.nombre;
+    }
+};
+HeaderComponent.ctorParameters = () => [];
+HeaderComponent.propDecorators = {
+    nombre: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"], args: ['nombre',] }]
+};
+HeaderComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-header',
+        template: Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! raw-loader!./header.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/folder/components/header/header.component.html")).default,
+        styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! ./header.component.scss */ "./src/app/folder/components/header/header.component.scss")).default]
+    })
+], HeaderComponent);
+
+
 
 /***/ }),
 

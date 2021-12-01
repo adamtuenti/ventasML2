@@ -10,11 +10,11 @@ import { Productos } from '../models/productos';
 export class FiltroLocalProductosPipe implements PipeTransform {
     
     transform(locales: Locales[], texto: string): Locales[] {
-    if(texto.length === 0){return locales}
-      texto=texto.toLocaleLowerCase()
-      return locales.filter(locales => {
-        return locales.Nombre.toLocaleLowerCase().includes(texto) ||
-        locales.Descripcion.toLocaleLowerCase().includes(texto) 
+      if(texto.length === 0){return locales}
+        texto=texto.toLocaleLowerCase()
+        return locales.filter(locales => {
+          return locales.Nombre.toLocaleLowerCase().includes(texto) ||
+          locales.Descripcion.toLocaleLowerCase().includes(texto)
       });
   }
 

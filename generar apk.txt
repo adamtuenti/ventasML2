@@ -18,13 +18,25 @@ C:\Users\anava\AppData\Local\Android\Sdk\build-tools\30.0.3\zipalign -v 4 platfo
 
 clave: 123456
 
+//si funciona//
+C:\Users\anava\AppData\Local\Android\Sdk\build-tools\30.0.3\apksigner sign --ks ml2.keystore --ks-key-alias ml2 --ks-pass pass:123456 --key-pass pass:123456 ml2.apk
+
+
+
 
 //zipalign -f 4 platforms/android/app/build/outputs/apk/release/myapp-release-unsigned.apk myapp.apk
 
-C:\Users\anava\AppData\Local\Android\Sdk\build-tools\30.0.3\apksigner sign --v2-signing-enabled false --ks keystore ml2.keystore ml2.apk
+C:\Users\anava\AppData\Local\Android\Sdk\build-tools\30.0.3\apksigner sign --v2-signing-enabled true --ks keystore ml2.keystore --ks-pass pass:123456 ml2.apk 
 
-
+keytool -printcert -jarfile signapkname.apk
 firebase deploy --only hosting:ventasml2
+
+
+
+
+
+
+
 Propuesta de Valor:
 - Amigable con el usuario
 - Gratuito

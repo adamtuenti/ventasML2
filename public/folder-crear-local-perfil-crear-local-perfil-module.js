@@ -1,5 +1,18 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["folder-crear-local-perfil-crear-local-perfil-module"],{
 
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/folder/components/header/header.component.html":
+/*!******************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/folder/components/header/header.component.html ***!
+  \******************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header color = 'header'>  \r\n  <ion-toolbar>\r\n    <ion-segment color=\"tertiary\" value=\"{{text}}\" >\r\n      <ion-segment-button value=\"publicaciones\" [routerLink]=\"['/publicaciones']\" routerDirection=\"root\">\r\n        <ion-icon name=\"megaphone-outline\" size=\"large\"></ion-icon>\r\n        <ion-label style=\"font-size: 11.5px;\">Anuncios</ion-label>\r\n      </ion-segment-button>\r\n\r\n      <ion-segment-button value=\"categorias\" [routerLink]=\"['/productos-todos']\" routerDirection=\"root\">\r\n        <ion-icon name=\"grid-outline\" size=\"large\"></ion-icon>\r\n        <ion-label style=\"font-size: 11.5px;\">Productos</ion-label>\r\n      </ion-segment-button>\r\n\r\n      <ion-segment-button value=\"locales\" [routerLink]=\"['/locales-todos']\" routerDirection=\"root\">\r\n        <ion-icon name=\"storefront-outline\" size=\"large\"></ion-icon>\r\n        <ion-label style=\"font-size: 11.5px;\">Locales</ion-label>\r\n      </ion-segment-button>\r\n    \r\n      <ion-segment-button value=\"perfil\" [routerLink]=\"['/perfil']\" routerDirection=\"root\">\r\n        <ion-icon name=\"person-circle\" size=\"large\"></ion-icon>\r\n        <ion-label style=\"font-size: 11.5px;\">Perfil</ion-label>\r\n        <!-- <ion-avatar style=\"height: 48px;width: 48px;margin: auto;\">\r\n          <img src=\"{{FotoPerfil}}\">\r\n        </ion-avatar> -->\r\n      </ion-segment-button>\r\n\r\n    </ion-segment>\r\n\r\n  </ion-toolbar>\r\n</ion-header>");
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/folder/crear-local-perfil/crear-local-perfil.page.html":
 /*!**************************************************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/folder/crear-local-perfil/crear-local-perfil.page.html ***!
@@ -10,6 +23,96 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("<app-header nombre=\"perfil\"></app-header>\n\n<ion-content>\n\n  <form #form=\"ngForm\" (ngSubmit)=\"crearLocal(form)\">\n        <ion-list>  \n          \n        <ion-card style=\"margin-top:15px\">\n          <ion-item>\n            <ion-label>Nombre</ion-label>\n          </ion-item>\n          <ion-item>\n          \n            <ion-input required placeholder=\"Ingrese el nombre del local\" name=\"nombre\" type='text' ngModel required></ion-input>\n          </ion-item>\n\n        </ion-card>\n\n        <ion-card style=\"margin-top:15px\">\n            <ion-item>\n              <ion-icon name=\"image-outline\"></ion-icon> <ion-text color=\"\" style=\"margin-left: 7.5px;\" *ngIf='image==null'>Subir foto</ion-text> <ion-text color=\"\" style=\"margin-left: 7.5px;\" *ngIf='image!=null'>Cambiar foto</ion-text>\n          \n              <ion-input type='file' accept=\"image/*\" id=\"myFileInput\" name=\"foto1\" (change)=\"readURL($event);\" class=\"fileInput\" ngModel required></ion-input>\n    \n            </ion-item>\n\n        </ion-card>\n        \n        <ion-card style=\"margin-top:15px\" *ngIf='file!=null'>\n          <ion-item>\n\n            <ng-container>\n              <ion-img id=\"blah\" [src]=\"image\" alt=\"your image\" style=\"margin-top:5px;margin-bottom: 5px;height: 250px;width: 250px;margin:auto;\"></ion-img>\n\n            </ng-container>\n\n          </ion-item>\n    \n        </ion-card>\n\n        \n        <ion-card style=\"margin-top:15px\">\n          <ion-item>\n            <ion-label>Descripción</ion-label>\n          </ion-item>\n          <ion-item>\n            <ion-textarea required placeholder=\"Ingrese una descripción del local\" name=\"descripcion\" type='text' ngModel required></ion-textarea>\n          </ion-item>\n        </ion-card>\n\n        <ion-card style=\"margin-top:15px\">\n          <ion-item>\n            <ion-icon color=\"black\" name=\"bookmarks-outline\"></ion-icon>\n            <ion-label style = \"margin-left: 6.5px;\">Categoría: </ion-label>\n            <ion-select required  name='categoria' ngModel>\n            \n                    <ion-select-option *ngFor=\"let cat of categorias\" [value]=\"cat.id\">{{cat.Nombre}}</ion-select-option>\n                    \n            </ion-select>\n    \n          </ion-item>\n        </ion-card>\n\n        <ion-card style=\"margin-top:15px\">\n          <ion-item>\n            <ion-icon color=\"black\" name=\"storefront-outline\"></ion-icon>\n            <ion-label style = \"margin-left: 6.5px;\">Ciudadela: </ion-label>\n            <ion-select required  name='ciudadela' ngModel>\n             \n                    <ion-select-option value=\"Paraíso del Río 1\">Paraíso del Río 1</ion-select-option>\n                    <ion-select-option value=\"Paraíso del Río 2\">Paraíso del Río 2</ion-select-option> \n                    <ion-select-option value=\"Toledo\">Toledo</ion-select-option>\n                    <ion-select-option value=\"Marbella\">Marbella</ion-select-option> \n                    <ion-select-option value=\"Victoria del Río\">Victoria del Río</ion-select-option>\n                    <ion-select-option value=\"Salamanca\">Salamanca</ion-select-option>\n                    <ion-select-option value=\"Victoria Club\">Victoria Club</ion-select-option>\n                    <ion-select-option value=\"Plaza Victoria\">Plaza Victoria</ion-select-option>\n                    <ion-select-option value=\"Valle Victoria\">Valle Victoria</ion-select-option>\n                    <ion-select-option value=\"Alameda del Río\">Alameda del Río</ion-select-option>\n  \n            \n            </ion-select>\n    \n          </ion-item>\n        </ion-card>\n\n        <ion-card style=\"margin-top:15px\">\n          <ion-item>\n            <ion-label>Manzana </ion-label>\n          </ion-item>\n          <ion-item>\n            <ion-textarea required placeholder=\"Ingrese la manzana\" name=\"manzana\" type='text' ngModel required></ion-textarea>\n          </ion-item>\n        </ion-card>\n\n        <ion-card style=\"margin-top:15px\">\n          <ion-item>\n            <ion-label>Villa</ion-label>\n          </ion-item>\n          <ion-item>\n            <ion-textarea required placeholder=\"Ingrese la Villa\" name=\"villa\" type='text' ngModel required></ion-textarea>\n          </ion-item>\n        </ion-card>\n\n        <ion-card style=\"margin-top:15px\">\n          <ion-item>\n            <ion-label>Teléfono del local</ion-label>\n          </ion-item>\n          <ion-item>\n            <ion-textarea required placeholder=\"Ingrese el número de teléfono\" name=\"telefono\" type='number' ngModel required></ion-textarea>\n          </ion-item>\n        </ion-card>\n\n        <ion-card style=\"margin-top:15px\">\n          <ion-item>\n            \n            <ion-label>Red social</ion-label>\n          </ion-item>\n          <ion-item>\n            <ion-textarea placeholder=\"Ingrese el link de su página de Facebook (opcional)\" name=\"redSocial\" type='text' ngModel></ion-textarea>\n          </ion-item>\n        </ion-card>\n\n        <ion-card style=\"margin-top:15px\">\n          <ion-item>\n            <ion-icon color=\"black\" name=\"bicycle-outline\"></ion-icon>\n            <ion-label style = \"margin-left: 6.5px;\">Entregas a domicilio: </ion-label>\n            <ion-select required  name='domicilio' ngModel>\n             \n                    <ion-select-option value=\"Si\">Sí</ion-select-option>\n                    <ion-select-option value=\"No\">No</ion-select-option> \n\n            </ion-select>\n    \n          </ion-item>\n        </ion-card>\n\n        <ion-card style=\"margin-top:15px\">\n          <ion-item>\n            <ion-label>Horario de atención</ion-label>\n          </ion-item>\n          <ion-item>\n            <ion-textarea required placeholder=\"Ingrese el Horario de atención\" name=\"horarioAtencion\" type='text' ngModel required></ion-textarea>\n          </ion-item>\n        </ion-card>\n\n        <ion-card style=\"margin-top:15px\">\n          <ion-item>\n            <ion-label>Referencia</ion-label>\n          </ion-item>\n          <ion-item>\n            <ion-textarea placeholder=\"Referencia de la ubicación del local (opcional)\" name=\"referencia\" type='text' ngModel></ion-textarea>\n          </ion-item>\n        </ion-card>\n\n       \n               \n        </ion-list>\n  \n        <ion-button  style=\"width: 150px;margin:auto;margin-bottom: 8.5px;\" type=\"submit\"  [disabled]=\"form.invalid\" expand=\"block\">\n          Guardar\n        </ion-button>\n      </form>\n</ion-content>\n<style>\n  #myFileInput{\n    position: absolute;\n    opacity: 0;\n  }\n</style>\n");
+
+/***/ }),
+
+/***/ "./src/app/folder/components/components.module.ts":
+/*!********************************************************!*\
+  !*** ./src/app/folder/components/components.module.ts ***!
+  \********************************************************/
+/*! exports provided: ComponentsModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ComponentsModule", function() { return ComponentsModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var src_app_folder_components_header_header_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/folder/components/header/header.component */ "./src/app/folder/components/header/header.component.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+
+
+
+
+let ComponentsModule = class ComponentsModule {
+};
+ComponentsModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        declarations: [
+            src_app_folder_components_header_header_component__WEBPACK_IMPORTED_MODULE_2__["HeaderComponent"],
+        ],
+        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"], src_app_folder_components_header_header_component__WEBPACK_IMPORTED_MODULE_2__["HeaderComponent"]],
+    })
+], ComponentsModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/folder/components/header/header.component.scss":
+/*!****************************************************************!*\
+  !*** ./src/app/folder/components/header/header.component.scss ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2ZvbGRlci9jb21wb25lbnRzL2hlYWRlci9oZWFkZXIuY29tcG9uZW50LnNjc3MifQ== */");
+
+/***/ }),
+
+/***/ "./src/app/folder/components/header/header.component.ts":
+/*!**************************************************************!*\
+  !*** ./src/app/folder/components/header/header.component.ts ***!
+  \**************************************************************/
+/*! exports provided: HeaderComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HeaderComponent", function() { return HeaderComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+
+
+let HeaderComponent = class HeaderComponent {
+    constructor() {
+    }
+    ngOnInit() {
+        // var foto = localStorage.getItem('FotoPerfil');
+        // if(localStorage.getItem('FotoPerfil') != null){
+        //   this.FotoPerfil = localStorage.getItem('FotoPerfil');
+        // }
+        // else{
+        //   this.FotoPerfil = 'https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2FiconMl2.png?alt=media&token=e6ee4d9e-33a0-4ab2-851f-d50930465e47';
+        // }
+        this.text = this.nombre;
+    }
+};
+HeaderComponent.ctorParameters = () => [];
+HeaderComponent.propDecorators = {
+    nombre: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"], args: ['nombre',] }]
+};
+HeaderComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-header',
+        template: Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! raw-loader!./header.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/folder/components/header/header.component.html")).default,
+        styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! ./header.component.scss */ "./src/app/folder/components/header/header.component.scss")).default]
+    })
+], HeaderComponent);
+
+
 
 /***/ }),
 
