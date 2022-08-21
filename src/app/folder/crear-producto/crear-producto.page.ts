@@ -17,7 +17,7 @@ import * as firebase from 'firebase';
 })
 export class CrearProductoPage implements OnInit {
 
-  producto = { Titulo: '', Descripcion: '', Vendedor: '', Categoria: '', Visitas: 0, Precio: 0, Visibilidad: true, Foto1: '', Foto2: '', id: '' };
+  producto = { Titulo: '', Descripcion: '', Vendedor: '', Categoria: '', Visitas: 0, Precio: 0, Visibilidad: true, Foto1: '', Foto2: '', id: '', Time: 0 };
   public user: Usuarios = new Usuarios();
   idCategoria;
   miId: '7G091ZlAzKhS9TrNFqAX';
@@ -59,6 +59,7 @@ export class CrearProductoPage implements OnInit {
     this.producto.Visitas = 0;
     this.producto.Precio = form.value.precio;
     this.producto.Visibilidad = true;
+    this.producto.Time = Date.now();
 
     this.guardarProducto();
 

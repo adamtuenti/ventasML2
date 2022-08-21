@@ -14,15 +14,15 @@
 
 
 
-  <ion-card>
+  <ion-card style = 'padding: 7.5px;'>
 
     <label
       style="margin: auto;display: block;font-size: 21.5px;font-weight: bold;color:black; align-items: center;text-align: center;margin-top: 7.5px;margin-bottom: 7.5px;">{{servicio.Titulo}}</label>
 
 
-    <ng-container style="margin-bottom: 7.5px;">
+    <ng-container style="margin-bottom: 7.5px; margin-top: 7.5px !important;">
 
-      <ion-label style="font-size: 17.5px;margin-left: 7.5px;margin-top: 7px;">{{servicio.Descripcion}}</ion-label>
+      <ion-label style="font-size: 17.5px;margin-left: 7.5px !important;margin-top: 7px;">{{servicio.Descripcion}}</ion-label>
     </ng-container>
 
 
@@ -44,12 +44,16 @@
       <ion-label style="font-size: 17px;">{{user.Nombre}} {{user.Apellido}}</ion-label>
     </ion-item>
 
+
+    <a href='https://api.whatsapp.com/send?phone={{user.Telefono}}' style = 'text-decoration: none;'>
     <ion-item>
-      <a href='https://api.whatsapp.com/send?phone={{user.Telefono}}'>
+      
         <ion-icon name="logo-whatsapp" size="large" color="success" style="margin-right: 8px;"></ion-icon>
-      </a>
+      
       <ion-label>{{user.Telefono}}</ion-label>
     </ion-item>
+
+  </a>
 
     <ion-item>
       <a href="mailto:{{user.Correo}}">

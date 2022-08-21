@@ -49,7 +49,7 @@
 
     <div *ngIf = 'idPropietario != idUser && calificarBool' style='margin:auto;margin-top: 12.5px;' align='center' >
       <div align='center' style='border-radius: 1px;border-color: black;'>
-        <ion-label style='font-size: 18.2px;margin-bottom: 7.5px;'>Tu calificación al local fue:</ion-label>
+        <ion-label style='font-size: 18.2px;margin-bottom: 7.5px !important;'>Tu calificación al local fue:</ion-label>
         <br/>
         <label *ngFor = 'let indice of [].constructor(valor); let i = index'>
           <ion-icon name="star" color = 'warning' size='large'></ion-icon>
@@ -67,13 +67,13 @@
 
   <ion-img class="circle-pic" style="width: 275px;height: 275px;margin:auto;margin-top: 15px;" src="{{local.Foto}}" ></ion-img>
 
-  <ion-card>
-    <ion-item>
-      <label style="margin: auto;display: block;font-size: 25px;font-weight: bold;color:black; align-items: center;text-align: center;margin-top: 7.5px;">{{local.Nombre}}</label>
+  <ion-card style = 'padding: 7.5px;'>
+    <ion-item lines = 'none'>
+      <label style="margin: auto;display: block;font-size: 25px;font-weight: bold;color:black; align-items: center;text-align: center;margin-top: 7.5px; margin-bottom: 7.5px;">{{local.Nombre}}</label>
     </ion-item>
-    <div style='margin-top: 5px;padding: 10px;'>
+    <div style='margin-top: 5px;padding: 7.5px !important;'>
      
-      <ion-label style="font-size: 17.5px;text-align: center;margin-top: 5px;margin-right: 5px;">{{local.Descripcion}}</ion-label>
+      <ion-label style="font-size: 17.5px;text-align: center;margin-top: 5px;margin-right: 5px; margin-bottom: 7.5px !important;">{{local.Descripcion}}</ion-label>
     </div>
 
     <ion-item *ngIf="idPropietario == idUser">
@@ -87,15 +87,16 @@
   </ion-card>
 
 
-    <ion-card>
+    <ion-card style = 'padding: 3.5px;'>
       
       
 
-
+      <a href= 'https://api.whatsapp.com/send?phone={{local.Telefono}}' style = 'text-decoration: none;'>
       <ion-item>
-        <a href= 'https://api.whatsapp.com/send?phone={{local.Telefono}}'><ion-icon name="logo-whatsapp" size="large" color="success" style="margin-right: 8px;"></ion-icon></a>
+        <ion-icon name="logo-whatsapp" size="large" color="success" style="margin-right: 8px;"></ion-icon>
         <ion-label>{{local.Telefono}}</ion-label>
       </ion-item>
+    </a>
 
       <ion-item>
         <ion-icon name="bicycle-outline" size="large" color="success" style="margin-right: 8px;"></ion-icon>

@@ -9,4 +9,5 @@ export class Productos {
     Vendedor: string;
     Visitas:number;
     Visibilidad: boolean;
+    Time: number;
 }

@@ -34,6 +34,7 @@ export class ProductosPage implements OnInit {
               private activateRoute: ActivatedRoute,) { }
 
   ngOnInit() {
+    
 
     this.activateRoute.paramMap.subscribe(paramMap => {
       this.categoria = paramMap.get('categoria');
@@ -64,6 +65,8 @@ export class ProductosPage implements OnInit {
     const texto = event.target.value
     this.textoBuscar=texto;
   }
+
+  
 
   getDatos(){
     for(let i= 0; i<this.productos.length; i++){

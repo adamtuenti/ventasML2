@@ -31,9 +31,29 @@ export class ProductosTodosPage implements OnInit {
               private activateRoute: ActivatedRoute,) { }
 
   ngOnInit() {
+    
     this.idUser = localStorage.getItem('userId');
-    this.productosService.getProductos().subscribe(res=> {this.productos = res;this.shuffle(this.productos);});
+    this.productosService.getProductos().subscribe(res=> {this.productos = res;});
     // this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => {this.user =res;});
+  }
+
+  renzo(){
+    console.log('hola')
+    for(let i= 0; i< this.productos.length; i++){
+      if(this.productos[i].Categoria == ''){
+        console.log(this.productos[i].Titulo)
+      }
+      // this.productos[i].Time = Date.now()
+      // this.productos[i].Precio = this.productos[i].Precio.replace('$', '');
+      // this.productos[i].Precio = this.productos[i].Precio.replace('C/U', '');
+      // this.productos[i].Precio = this.productos[i].Precio.replace('c/u', '');
+      // this.productos[i].Precio = this.productos[i].Precio.replace('lb', '');
+      // this.productos[i].Precio = this.productos[i].Precio.replace(' ', '');
+      // this.productos[i].Precio = this.productos[i].Precio.replace(',', '.');
+      // console.log(this.productos[i].Time)
+      // this.productosService.updateProducto(this.productos[i].id, this.productos[i])
+    }
+
   }
 
   recortar(){

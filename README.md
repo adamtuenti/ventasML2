@@ -1,1 +1,4 @@
-# ventasML2
+# Ventas ML2
+
+## Framework
+-Angular

@@ -10,7 +10,9 @@ ion-card-header{
 #starts{
     padding-top: 0px;
     padding-bottom: 0px;
-    align-items: center;
+    align-items: left;
+    width: 105%;
+    text-align: left;
 }
 .card-footer {
     position: absolute;
@@ -32,6 +34,7 @@ ion-card{
 
   #headerCard{
     padding: 0;
+    box-shadow: none !important;
   }
   h2{
       padding-top: 2px;

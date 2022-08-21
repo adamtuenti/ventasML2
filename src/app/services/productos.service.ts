@@ -17,7 +17,7 @@ export class ProductosService {
   private productos: Observable<Productos[]>;
 
   constructor(private firestore: AngularFirestore) {
-    this.productosCollection = firestore.collection('Productos'); //, ref => ref.where("Nombre", "==", "Celulares")
+    this.productosCollection = firestore.collection('Productos', ref => ref.orderBy('Time', 'desc')); //, ref => ref.where("Nombre", "==", "Celulares")
     this.productos = this.productosCollection.snapshotChanges().pipe(map(
       actions =>{
         return actions.map( a=>{
@@ -34,7 +34,7 @@ export class ProductosService {
 
   getProductosCategoria(categoria: string){
     
-    return this.firestore.collection('Productos', ref => ref.where("Categoria", "==", "Celulares"));
+    return this.firestore.collection('Productos', ref => ref.where("Categoria", "==", categoria));
 
   }
 

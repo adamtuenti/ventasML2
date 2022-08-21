@@ -42,7 +42,7 @@
     <ion-row style="height: 500px;width: 100%;">
       <ion-col sizeLg="4" sizeMd="4" sizeXs="6" *ngFor="let producto of productos | filtroProductosGeneral: textoBuscar">
 
-        <ion-card (click)='aumentarVisita(producto.id,producto)'>
+        <ion-card (click)='aumentarVisita(producto.id,producto)' style = 'margin-bottom: 7.5px !important;'>
           <ion-card-header id="headerCard">
 
             <ion-img *ngIf='producto.Visibilidad' src="{{producto.Foto1}}" style="height: 100%; padding: 0;"></ion-img>

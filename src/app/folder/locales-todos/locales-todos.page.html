@@ -31,14 +31,14 @@
   </ion-searchbar>
 
   <ion-grid>
-    <ion-row style="height: 780px;width: 100%;">
+    <ion-row style="height: 785.5px;width: 100%;">
       <ion-col sizeLg="4" sizeMd="4" sizeXs="6" *ngFor="let local of locales | filtroLocalProductos: textoBuscar">
 
-        <ion-card (click)='aumentarVisita(local.id,local)'>
-          <ion-card-content id='starts' style = 'align-items: center;'>
-            <ion-item lines='none' style = 'align-items: center;'>
+        <ion-card (click)='aumentarVisita(local.id,local)' style = 'margin-bottom: 7.5px !important;'>
+          <ion-card-content id='starts' style = 'align-items: left;'>
+            <ion-item lines='none' style = 'align-items: left;'>
               <div slot='start' *ngFor='let indice of [].constructor(local.Calificacion); let i = index'
-                style='width: 0.10%;margin-left: 0.050px;'>
+                style='width: 0.025%;margin-left: 0.00125px;'>
                 <ion-icon name="star" color='warning'></ion-icon>
               </div>
 
@@ -47,8 +47,10 @@
           <ion-card-header id="headerCard">
             <ion-img *ngIf='local.Visibilidad' src="{{local.Foto}}" style="height: 100%; padding: 0;"></ion-img>
           </ion-card-header>
-          <ion-card-content>
-            <ion-label style='font-size: 16.2px; align-items: center;color: black; margin-top: 7.5px;'>{{local.Nombre}} </ion-label>
+
+
+          <ion-card-content style = 'padding-top: 5px; width: 100%;'>
+            <ion-label style='font-size: 15.5px; align-items: center;color: black; margin-top: 12.5px; font-weight: bold;'>{{local.Nombre.length > 30 ? local.Nombre.slice(1,29) + '..' : local.Nombre }} </ion-label>
 
             <!-- <h2>CALIFICACIÓN: {{local.Calificacion}}</h2> -->
           </ion-card-content>

@@ -37,10 +37,10 @@
   </ion-list> -->
 
   <ion-grid>
-    <ion-row style="height: 350px;width: 100%;">
+    <ion-row style="width: 100%;">
       <ion-col sizeLg="4" sizeMd="4" sizeXs="6" *ngFor="let categoria of categorias | filtroCategoria: textoBuscar">
 
-        <ion-card [routerLink]="['/crear-producto',categoria.id]">
+        <ion-card [routerLink]="['/crear-producto',categoria.id]" style = 'height: 115px;'>
         <ion-card-content style = 'align-items: center;justify-content: center;'>
           
           <div align = 'center'>
@@ -51,7 +51,7 @@
             
           
       
-              <h1 style='color:black;font-size: 15px;text-align: center;margin:auto;margin-top: 7.5px'>
+              <h1 style='color:black;font-size: 15px;text-align: center;margin:auto;margin-top: 5.5px; font-weight: bold;'>
                 {{categoria.Nombre}}</h1>
 
 
