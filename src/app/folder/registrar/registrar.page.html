@@ -18,13 +18,13 @@
 
         <ion-item>
           <ion-icon color="black" name="person-outline"></ion-icon>
-          <ion-input style="margin-left: 6.5px;" required placeholder="Nombre" name="nombre" type='text' ngModel
+          <ion-input style="margin-left: 6.5px;" (ionInput)="capitalizeFirstLetter($event)" placeholder="Nombre" name="nombre" type='text' ngModel
             required></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-icon color="black" name="person-outline"></ion-icon>
-          <ion-input style="margin-left: 6.5px;" required placeholder="Apellido" name="apellido" type='text' ngModel
+          <ion-input (ionInput)="capitalizeFirstLetter($event)" style="margin-left: 6.5px;" required placeholder="Apellido" name="apellido" type='text' ngModel
             required></ion-input>
         </ion-item>
 
@@ -43,7 +43,7 @@
           <span>La contraseña debe tener 6 al menos caracteres</span>
         </div>
 
-        <ion-item>
+        <!--<ion-item>
           <ion-icon color="black" name="person-add-outline"></ion-icon>
           <ion-label style="margin-left: 6.5px;">¿Fue recomendado?</ion-label>
 
@@ -63,13 +63,13 @@
             </ion-select-option>
           </ion-select>
 
-        </ion-item>
+        </ion-item>-->
 
 
 
         <ion-item>
           <ion-icon color="black" name="call-outline"></ion-icon>
-          <ion-input (ionInput)="countChange($event)" style="margin-left: 6.5px;" placeholder="WhatsApp" name="telefono"
+          <ion-input (ionInput)="countChange($event)" style="margin-left: 6.5px;" placeholder="09xx" name="telefono"
             type='text' ngModel minlength="10" maxlength="10" required></ion-input>
         </ion-item>
         <div *ngIf="form.hasError('minlength', 'telefono')">

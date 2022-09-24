@@ -115,9 +115,11 @@ export class CrearLocalPerfilPage implements OnInit {
       auth=>{
         
         this.loading.dismiss();
+        console.log('local creoado');
+        console.log(this.local)
 
 
-        this.router.navigate(["/perfil"])
+        this.router.navigate(["/detalle-local", this.local.id, this.local.Usuario])
       }       
     ).catch(async error => {
       this.loading.dismiss();

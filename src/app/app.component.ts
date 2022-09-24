@@ -7,9 +7,17 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class AppComponent {
   
-  constructor( private authService:AuthService) {}
+  constructor( private authService:AuthService) { this.checkDarkMode() }
 
   logOutUser(){
     this.authService.logOutUser();
+  }
+
+  checkDarkMode(){
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+    if(prefersDark.matches){
+      document.body.classList.toggle('dark')
+    }
   }
 }

@@ -36,7 +36,7 @@ export class LocalesTodosPage implements OnInit {
 
   ngOnInit() {
     //this.productosLocalesService.getProductos().subscribe(res => this.productosLocales = res )
-    this.localesService.getLocales().subscribe(res=> {this.locales = res;this.shuffle(this.locales);this.recortar();  });
+    this.localesService.getLocales().subscribe(res=> {this.locales = res;this.shuffle(this.locales);  });
       
       
   }

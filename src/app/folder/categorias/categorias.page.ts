@@ -21,6 +21,8 @@ export class CategoriasPage implements OnInit {
   ngOnInit() {
     this.idUser = localStorage.getItem('userId');
     this.categoriasService.getCategorias().subscribe(res=> {this.categorias = res;});
+
+
   }
 
   buscar(event){

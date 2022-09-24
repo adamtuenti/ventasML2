@@ -44,6 +44,12 @@ export class CrearProductoLocalPage implements OnInit {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
+  countChange(event) {
+    event.target.value = event.target.value.replace(/[^0-9 | .]*/g, '');
+    event.target.value = event.target.value.replace(' ', '');
+    //event.target.value = event.target.value.replace(",", '.');
+  }
+
 
 
   crearProducto(form){

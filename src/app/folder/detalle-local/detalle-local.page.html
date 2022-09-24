@@ -2,14 +2,14 @@
 
 <ion-content>
 
-  <ion-segment color="tertiary" value="informacion">
+  <ion-segment color="light" value="informacion">
 
     <ion-segment-button value="informacion" [routerLink]="['/detalle-local',idLocal, idPropietario]" routerDirection="root">
-      <ion-icon name="information-circle-outline" size="large"></ion-icon> <ion-label style="font-size: 11px;">Datos</ion-label>
+      <ion-icon name="information-circle-outline" size="large"></ion-icon> <ion-label style="font-size: 11px; color: black">Datos</ion-label>
     </ion-segment-button>
     
     <ion-segment-button value="cartilla" [routerLink]="['/productos-locales',idLocal, idPropietario]" routerDirection="root">
-      <ion-icon name="book-outline" size="large"></ion-icon> <ion-label style="font-size: 11px;">Cartilla</ion-label>
+      <ion-icon name="book-outline" color = 'black' size="large"></ion-icon> <ion-label style="font-size: 11px; color: black">Cartilla</ion-label>
     </ion-segment-button>
 
     <ion-segment-button value="grupos" [routerLink]="['/comentarios-local', idLocal, idPropietario]" routerDirection="root">
@@ -39,6 +39,23 @@
           Calificar
         </ion-button>
       </form>
+    </div>
+
+  </div>
+
+  <div *ngIf = 'idUser===null'> 
+
+    <div style='margin:auto;margin-top: 10px;' align='center' *ngIf = 'idPropietario != idUser && !calificarBool'>
+      <ion-card-content id='starts' style = 'align-items: center; text-align: center; background-color: white;'>
+        <ion-item lines='none' style = 'align-items: center; text-align: center;'>
+          <div slot='start' *ngFor='let indice of [].constructor(local.Calificacion); let i = index'
+            style='width: 0.025%;margin-left: 0.00125px;'>
+            <ion-icon name="star" color='warning'></ion-icon>
+          </div>
+
+        </ion-item>
+      </ion-card-content>
+  
     </div>
 
   </div>

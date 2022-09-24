@@ -70,6 +70,15 @@ export class RegistrarPage implements OnInit {
 
   }
 
+  capitalizeFirstLetter(event) {
+    event.target.value = this.capitalize(event.target.value)
+    //return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  capitalize(string){
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   onChangeId($event) {
     this.usuarioService.getUsuario($event.target.value).subscribe(res => { this.usuarioReferido = res; });
 
@@ -97,9 +106,6 @@ export class RegistrarPage implements OnInit {
     }
   }
 
-  capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
 
 
 
@@ -124,28 +130,23 @@ export class RegistrarPage implements OnInit {
     }
 
     this.presentLoading("Espere por favor...");
-    var telefono = form.value.telefono;
-    var primeros = telefono.slice(0, 3);
+    let telefono = form.value.telefono;
+    let primeros = telefono.slice(0, 3);
     if (telefono.slice(0, 1) == 0) {
       telefono = '+593' + telefono.slice(1, telefono.length);
     }
-    else if (primeros == '+593') {
-      telefono = telefono
-    }
 
-    var nombre = this.capitalizeFirstLetter(form.value.nombre)
-    var apellido = this.capitalizeFirstLetter(form.value.apellido)
 
-    var idReferido;
+    let idReferido;
     if (form.value.idReferido == null) {
       idReferido = ''
-      this.RegistrarUserCompleto(nombre, apellido, form.value.email, form.value.password, form.value.ciudadela, form.value.manzana, form.value.villa, telefono, 'https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fperfil.png?alt=media&token=ee5b8e7d-43b5-43c1-9be9-98186a2ab2ce', '');
+      this.RegistrarUserCompleto(form.value.nombre, form.value.apellido, form.value.email, form.value.password, form.value.ciudadela, form.value.manzana, form.value.villa, telefono, 'https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fperfil.png?alt=media&token=ee5b8e7d-43b5-43c1-9be9-98186a2ab2ce', '');
     } else {
       idReferido = form.value.idReferido
       this.actualizarReferido()
 
 
-      this.RegistrarUserCompleto(nombre, apellido, form.value.email, form.value.password, form.value.ciudadela, form.value.manzana, form.value.villa, telefono, 'https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fperfil.png?alt=media&token=ee5b8e7d-43b5-43c1-9be9-98186a2ab2ce', idReferido);
+      this.RegistrarUserCompleto(form.value.nombre, form.value.apellido, form.value.email, form.value.password, form.value.ciudadela, form.value.manzana, form.value.villa, telefono, 'https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fperfil.png?alt=media&token=ee5b8e7d-43b5-43c1-9be9-98186a2ab2ce', idReferido);
     }
 
 

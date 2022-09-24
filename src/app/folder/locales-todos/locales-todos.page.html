@@ -36,7 +36,7 @@
 
         <ion-card (click)='aumentarVisita(local.id,local)' style = 'margin-bottom: 7.5px !important;'>
           <ion-card-content id='starts' style = 'align-items: left;'>
-            <ion-item lines='none' style = 'align-items: left;'>
+            <ion-item lines='none' style = 'align-items: left; text-align: left;'>
               <div slot='start' *ngFor='let indice of [].constructor(local.Calificacion); let i = index'
                 style='width: 0.025%;margin-left: 0.00125px;'>
                 <ion-icon name="star" color='warning'></ion-icon>
@@ -44,7 +44,7 @@
 
             </ion-item>
           </ion-card-content>
-          <ion-card-header id="headerCard">
+          <ion-card-header id="headerCard" style = 'background-color: white !important;'>
             <ion-img *ngIf='local.Visibilidad' src="{{local.Foto}}" style="height: 100%; padding: 0;"></ion-img>
           </ion-card-header>
 

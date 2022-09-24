@@ -12,6 +12,8 @@
 Thumbs.db
 UserInterfaceState.xcuserstate
 $RECYCLE.BIN/
+ml2_app
+ml2_app.old
 
 *.log
 log.txt
