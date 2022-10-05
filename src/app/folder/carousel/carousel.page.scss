@@ -1,36 +1,45 @@
-ion-content{
-    --ion-background-color:#ffffff;
+ion-content {
+    --ion-background-color: #ffffff;
+}
+
+ion-icon {
+    color: red !important;
+}
+
+#icon{
+    color: red !important;
 }
 
 .vertical-center {
+
     .fixed-content,
     .scroll-content {
         display: flex;
         align-items: center;
 
         ion-list {
-            max-width: 300px; 
-            width:100%; 
-            margin: auto; 
+            max-width: 300px;
+            width: 100%;
+            margin: auto;
             text-align: center;
         }
     }
 }
 
-.divIcon{
+.divIcon {
     margin-bottom: 55px;
-    margin-top:125px;
+    margin-top: 125px;
 }
 
-.ionSlide{
+.ionSlide {
     height: 100%;
     width: 100%;
 }
 
-.imageIcon{
+.imageIcon {
     height: 215px;
     width: 215px;
-    margin:auto
+    margin: auto
 }
 
 .myColor {
@@ -40,4 +49,4 @@ ion-content{
     align-items: center;
     color: white;
     padding: 7.5px;
-  }
+}
