@@ -38,6 +38,12 @@ export class EditarProductoPage implements OnInit {
     });
   }
 
+  countChange(event) {
+    event.target.value = event.target.value.replace(/[^0-9 | .]*/g, '');
+    event.target.value = event.target.value.replace(' ', '');
+    //event.target.value = event.target.value.replace(",", '.');
+  }
+
   async presentLoading(mensaje: string) {
     this.loading = await this.loadingController.create({
       cssClass: 'my-custom-class',

@@ -4,92 +4,110 @@
 
 
   <form #form="ngForm" (ngSubmit)="UpdateProducto(form)">
-    <ion-list>   
-        
-  
-
- 
-      
+    <ion-list>
 
 
 
-     
 
-      
-      
-      
+
+
+
+
+
+
+
+
+
 
       <ion-item>
-        <ion-icon name="bag-check-outline" color="success" size='large' style = 'margin-right: 7.5px;'></ion-icon>
+        <ion-icon name="bag-check-outline" color="success" size='large' style='margin-right: 7.5px;'></ion-icon>
         <ion-input value="{{producto.Titulo}}" name="titulo" type='text' ngModel></ion-input>
       </ion-item>
 
-      
+
 
       <ion-item>
-        <ion-icon name="cash-outline" color="success" size='large' style = 'margin-right: 7.5px;'></ion-icon>
-        <ion-input value="{{producto.Precio}}" name="precio" type='text' ngModel></ion-input>
+        <ion-icon name="cash-outline" color="success" size='large' style='margin-right: 7.5px;'></ion-icon>
+        <ion-textarea (ionInput)="countChange($event)" value="{{producto.Precio}}" name="precio" type='text' ngModel>
+        </ion-textarea>
       </ion-item>
 
-      <ng-container>
+      <ion-item>
+        <div align = 'center'>
+          <ion-icon name="reader-outline" color="success" size='large' style='margin-right: 7.5px;'></ion-icon>
+        </div>
+        <div>
+        <ion-textarea value="{{producto.Descripcion}}" name="precio" type='text' ngModel></ion-textarea>
+      </div>
+      </ion-item>
+
+      <!--  <ng-container>
         
         <ion-input style= 'text-align: center;' value="{{producto.Descripcion}}" name="descripcion" type='text' ngModel></ion-input>
-      </ng-container>
+      </ng-container> -->
 
       <ion-item style='margin-top: 7.5px;'>
 
-        <ion-img id="blah" [src]="image" alt="your image" style="margin-top:5px;margin-bottom: 5px;height: 350px;width: 350px;margin:auto;"></ion-img>
-        
-         
+        <ion-img id="blah" [src]="image" alt=""
+          style="margin-top:5px;margin-bottom: 5px;height: 350px;width: 350px;"></ion-img>
+
+
       </ion-item>
 
 
-      
-      <ion-item >
 
-        
-          <ion-icon name="cloud-upload-outline"></ion-icon>  <ion-text style='margin-left:7.5px'>Cambiar foto 1</ion-text>
-          <ion-input id="myFileInput" (change)="readURL($event);" accept="image/*" placeholder="archivo" name="archivo" type='file' ngModel value="{{file0}}"></ion-input>
-        
-     
+      <ion-item>
+
+
+        <ion-icon name="cloud-upload-outline"></ion-icon>
+        <ion-text style='margin-left:7.5px'>Cambiar foto 1</ion-text>
+        <ion-input id="myFileInput" (change)="readURL($event);" accept="image/*" placeholder="archivo" name="archivo"
+          type='file' ngModel value="{{file0}}"></ion-input>
+
+
       </ion-item>
 
       <ion-item *ngIf='image1!=""'>
-        <ion-img id="blah" [src]="image1" alt="your image" style="margin-top:5px;margin-bottom: 5px;height: 350px;width: 350px;"></ion-img>
+        <ion-img id="blah" [src]="image1" alt="your image"
+          style="margin-top:5px;margin-bottom: 5px;height: 350px;width: 350px;"></ion-img>
       </ion-item>
 
-      
+
       <ion-item *ngIf='image1!=""'>
-        <ion-icon name="cloud-upload-outline"></ion-icon>  <ion-text style='margin-left:5.5px'>Cambiar foto 2</ion-text>
-        <ion-input id="myFileInput" (change)="readURL1($event);" accept="image/*" placeholder="archivo" name="archivo1" type='file' ngModel value="{{file1}}"></ion-input>
+        <ion-icon name="cloud-upload-outline"></ion-icon>
+        <ion-text style='margin-left:5.5px'>Cambiar foto 2</ion-text>
+        <ion-input id="myFileInput" (change)="readURL1($event);" accept="image/*" placeholder="archivo" name="archivo1"
+          type='file' ngModel value="{{file1}}"></ion-input>
       </ion-item>
 
       <ion-item *ngIf='image1==""'>
-        <ion-icon name="cloud-upload-outline"></ion-icon>  <ion-text style='margin-left:5.5px'>Agregar foto</ion-text>
-        <ion-input id="myFileInput" (change)="readURL1($event);" accept="image/*" placeholder="archivo" name="archivo1" type='file' ngModel value="{{file1}}"></ion-input>
-    
+        <ion-icon name="cloud-upload-outline"></ion-icon>
+        <ion-text style='margin-left:5.5px'>Agregar foto</ion-text>
+        <ion-input id="myFileInput" (change)="readURL1($event);" accept="image/*" placeholder="archivo" name="archivo1"
+          type='file' ngModel value="{{file1}}"></ion-input>
+
 
       </ion-item>
-        
-      
 
 
-      
 
 
-    </ion-list> 
+
+
+
+    </ion-list>
 
     <div class="ion-padding" align="center">
-      <ion-button type="submit"  [disabled]="form.invalid" expand="block" style="width: 150px;">
+      <ion-button type="submit" [disabled]="form.invalid" expand="block" style="width: 150px;">
         Actualizar
       </ion-button>
-      
+
     </div>
   </form>
 
 </ion-content>
 <style>
-  #myFileInput{
+  #myFileInput {
     position: absolute;
     opacity: 0;
   }
