@@ -26,7 +26,7 @@ export class CarouselPage implements OnInit {
   baseUrl = '../../../assets/carrousel/'
   foot = '../../../assets/carrousel/ML2-gratis.png'
 
-  textos = ['Una vez te hayas registrado podrás:', 'Publicar anuncios de los servicios y productos que ofrezcas.', 'Subir tus productos en la categoría correspondiente.', 'Promocionar tu local y agregar los productos que ofrece en la opción "cartilla".']
+  textos = ['Luego de  haberte registrado podrás:', 'Publicar anuncios de los servicios y productos que ofrezcas.', 'Subir tus productos en la categoría correspondiente.', 'Promocionar tu local y agregar los productos que ofrece en la opción "cartilla".']
   urlsImagenes = [this.baseUrl + 'una_vez.png', this.baseUrl + 'publicar_anuncios.png', this.baseUrl + 'subir_productos.png', this.baseUrl + 'promocionar_local.png']
   
 
