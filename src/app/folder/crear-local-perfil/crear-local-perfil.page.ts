@@ -8,6 +8,12 @@ import { AngularFireStorage } from 'angularfire2/storage';
 import { CategoriasLocales } from 'src/app/models/categoriasLocales';
 import { CategoriasLocalesService } from 'src/app/services/categorias-locales.service';
 
+
+
+import { Usuarios } from 'src/app/models/usuario';
+import { UsuarioService } from 'src/app/services/usuario.service';
+
+
 @Component({
   selector: 'app-crear-local-perfil',
   templateUrl: './crear-local-perfil.page.html',
@@ -21,9 +27,15 @@ export class CrearLocalPerfilPage implements OnInit {
   image: string | ArrayBuffer;
   file: File;
 
+  public user: Usuarios = new Usuarios();
+  id;
+
 
   constructor(private router: Router,
               private angularFireStorage: AngularFireStorage,
+              private usuarioService: UsuarioService,
+
+
               private alertCtrt: AlertController,
               public loadingController: LoadingController,
               private localesService: LocalesService,
@@ -32,6 +44,14 @@ export class CrearLocalPerfilPage implements OnInit {
 
   
   ngOnInit() {
+
+    this.id = localStorage.getItem('userId');
+    if (localStorage.getItem('userId') != null) {
+      this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => { this.user = res; });
+    }
+
+    
+    
     this.categoriasService.getCategorias().subscribe(res=> {this.categorias = res;});
   }
 
@@ -110,20 +130,26 @@ export class CrearLocalPerfilPage implements OnInit {
   }
 
   crearLocalFinal(downloadURL: string){
+
+    this.user.Locales = this.user.Locales + 1
+    this.usuarioService.updateUsuario(this.id, this.user)
+
+
     this.local.Foto = downloadURL;
     this.localesService.addLocal(this.local).then(
       auth=>{
         
         this.loading.dismiss();
-        console.log('local creoado');
-        console.log(this.local)
+        this.failedAlert("Local creado");
 
 
-        this.router.navigate(["/detalle-local", this.local.id, this.local.Usuario])
+
+        this.router.navigate(["/perfil"])
       }       
     ).catch(async error => {
       this.loading.dismiss();
-      this.failedAlert("Algo salió mal, inténtelo de nuevo");
+      this.failedAlert("Hubo un error.");
+      //this.router.navigate(["/perfil"])
     })
 
   }

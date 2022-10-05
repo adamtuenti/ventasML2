@@ -6,6 +6,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Usuarios } from 'src/app/models/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
+import { LocalesService } from 'src/app/services/locales.service'
+
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.page.html',
@@ -14,28 +16,35 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 export class PerfilPage implements OnInit {
 
   sugerencia: sugerenciaCategoriaLocal = new sugerenciaCategoriaLocal();
-  public user: Usuarios=new Usuarios();
+  public user: Usuarios = new Usuarios();
   premium;
   id;
 
+
   constructor(private sugerenciaService: SugerenciaLocalesService,
-              private usuarioService: UsuarioService,
-              private alertCtrt: AlertController,
-              private authService:AuthService) { }
+    private usuarioService: UsuarioService,
+    private alertCtrt: AlertController,
+    private authService: AuthService) { }
 
   ngOnInit() {
     this.id = localStorage.getItem('userId');
-    if(localStorage.getItem('userId')!=null){
-      this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => {this.user =res;this.verPremium()});
+    if (localStorage.getItem('userId') != null) {
+      this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => { this.user = res; this.verPremium() });
     }
-    
+
+
+    //this.obtenerLocales()
+
+
   }
 
-  verPremium(){
-    if(this.user.Premium){
+  
+
+  verPremium() {
+    if (this.user.Premium) {
       this.premium = 'Sí'
     }
-    else{
+    else {
       this.premium = 'No'
     }
   }
@@ -45,14 +54,14 @@ export class PerfilPage implements OnInit {
     const alert = await this.alertCtrt.create({
       cssClass: 'my-custom-class',
       header: 'Dános tu sugerencia:',
-      
+
       // message: 'Nombre del curso:',
       inputs: [
         {
           name: 'sugerencia',
           placeholder: 'Escribe tu sugerencia',
           type: 'text'
-          
+
         }
       ],
 
@@ -62,15 +71,15 @@ export class PerfilPage implements OnInit {
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
-           // console.log('Confirm Cancel: blah');
+            // console.log('Confirm Cancel: blah');
           }
         }, {
           text: 'Ok',
           handler: (data) => {
-            if(data.sugerencia != ""){
+            if (data.sugerencia != "") {
               this.agregarSugerencia(data.sugerencia)
-            }else if(data.sugerencia == ""){
-              
+            } else if (data.sugerencia == "") {
+
               //this.failedAlert("El campo email es requerido");
             }
           }
@@ -85,7 +94,7 @@ export class PerfilPage implements OnInit {
     const alert = await this.alertCtrt.create({
       cssClass: 'my-custom-class',
       header: '¿Desea cambiar su estado a vendedor?',
-      
+
       message: 'Pronto nos pondremos en contacto con usted!',
 
 
@@ -95,7 +104,7 @@ export class PerfilPage implements OnInit {
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
-           // console.log('Confirm Cancel: blah');
+            // console.log('Confirm Cancel: blah');
           }
         }, {
           text: 'Sí',
@@ -113,7 +122,7 @@ export class PerfilPage implements OnInit {
     const alert = await this.alertCtrt.create({
       cssClass: 'my-custom-class',
       header: '¿Desea comprar una cuenta premium?',
-      
+
       message: 'Pronto nos pondremos en contacto con usted!',
 
 
@@ -123,7 +132,7 @@ export class PerfilPage implements OnInit {
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
-           // console.log('Confirm Cancel: blah');
+            // console.log('Confirm Cancel: blah');
           }
         }, {
           text: 'Sí',
@@ -142,7 +151,7 @@ export class PerfilPage implements OnInit {
     const alert = await this.alertCtrt.create({
       cssClass: 'my-custom-class',
       header: 'Cambio de estado a vendedor',
-      
+
       message: 'Pronto nos contactaremos con usted para el cambio de estado!',
 
 
@@ -152,7 +161,7 @@ export class PerfilPage implements OnInit {
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
-           // console.log('Confirm Cancel: blah');
+            // console.log('Confirm Cancel: blah');
           }
         }
       ]
@@ -160,17 +169,17 @@ export class PerfilPage implements OnInit {
     await alert.present();
   }
 
-  convertirseVendedor(){
+  convertirseVendedor() {
     this.user.Verificacion = true;
     this.usuarioService.updateUsuario(localStorage.getItem('userId'), this.user);
   }
 
-  convertirsePremium(){
+  convertirsePremium() {
     this.user.EsperaPremium = true;
     this.usuarioService.updateUsuario(localStorage.getItem('userId'), this.user);
   }
 
-  agregarSugerencia(sugerencia:string){
+  agregarSugerencia(sugerencia: string) {
     var fechaActual = new Date();
     this.sugerencia.Titulo = sugerencia;
     this.sugerencia.Visibilidad = true;
@@ -181,7 +190,7 @@ export class PerfilPage implements OnInit {
 
   }
 
-  logOutUser(){
+  logOutUser() {
     this.authService.logOutUser();
   }
 

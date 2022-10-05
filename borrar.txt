@@ -1,0 +1,42 @@
+obtenerLocales() {
+    this.localesService.getLocales().subscribe(res => { this.locales = res; this.segundoA() })
+  }
+
+  actualizarUsuarios() {
+    this.usuarioService.getUsuarios().subscribe(res => { this.usuarios = res; this.segundo() });
+  }
+
+  segundo() {
+    for (let i = 0; i < this.usuarios.length; i++) {
+      let dato = this.usuarios[i]
+      dato.Locales = 0
+      console.log('dato: ', dato)
+      this.usuarioService.updateUsuario(dato.id, dato)
+    }
+  }
+
+  segundoA() {
+    for (let i = 0; i < this.locales.length; i++) {
+      let dato = this.locales[i]
+      let userId = dato.Usuario
+      //let temp: Usuarios = new Usuarios();
+      this.usuarioService.getUsuario(userId).subscribe(res => { this.actualizar(res) });
+
+      /* console.log('local: ', dato.id, ' user: ', userId)
+      console.log(temp.Nombre)
+      console.log('//') */
+      /* dato.Locales = 0
+      console.log('dato: ', dato)
+      this.usuarioService.updateUsuario(dato.id, dato) */
+    }
+  }
+
+  actualizar(temp) {
+    console.log('temp antes: ', temp)
+    let actual = 1
+    let actual1 = actual + 1
+    temp.Locales = 1
+    console.log(actual, 'id: ', temp.id)
+    this.usuarioService.updateUsuario(temp.id, temp)
+    
+  }

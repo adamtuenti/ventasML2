@@ -18,7 +18,7 @@
 
         <ion-card style="margin-top:15px">
             <ion-item>
-              <ion-icon name="image-outline"></ion-icon> <ion-text color="" style="margin-left: 7.5px;" *ngIf='image==null'>Subir foto</ion-text> <ion-text color="" style="margin-left: 7.5px;" *ngIf='image!=null'>Cambiar foto</ion-text>
+              <ion-icon name="image-outline"></ion-icon> <ion-text color="" style="margin-left: 7.5px;" *ngIf='image==null'>Subir foto <b class = 'obligatorio'>*</b></ion-text> <ion-text color="" style="margin-left: 7.5px;" *ngIf='image!=null'>Cambiar foto</ion-text>
           
               <ion-input type='file' accept="image/*" id="myFileInput" name="foto1" (change)="readURL($event);" class="fileInput" ngModel required></ion-input>
     

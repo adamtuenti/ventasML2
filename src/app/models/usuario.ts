@@ -16,4 +16,5 @@ export class Usuarios {
     EsperaPremium: boolean;
     NumeroReferidos: number;
     Referido: string;
+    Locales: number
 }

@@ -2,18 +2,23 @@
 
 <ion-content>
 
-  <ion-segment color="light" value="informacion">
+  <ion-segment color="tertiary" value="anuncios">
 
-    <ion-segment-button value="informacion" [routerLink]="['/detalle-local',idLocal, idPropietario]" routerDirection="root">
-      <ion-icon name="information-circle-outline" size="large"></ion-icon> <ion-label style="font-size: 11px; color: black">Datos</ion-label>
-    </ion-segment-button>
-    
-    <ion-segment-button value="cartilla" [routerLink]="['/productos-locales',idLocal, idPropietario]" routerDirection="root">
-      <ion-icon name="book-outline" color = 'black' size="large"></ion-icon> <ion-label style="font-size: 11px; color: black">Cartilla</ion-label>
+    <ion-segment-button value="anuncios" [routerLink]="['/detalle-local',idLocal,idPropietario]" routerDirection="root">
+      <ion-icon name="information-circle-outline" size="large"></ion-icon>
+      <ion-label style="font-size: 11px;">Datos</ion-label>
     </ion-segment-button>
 
-    <ion-segment-button value="grupos" [routerLink]="['/comentarios-local', idLocal, idPropietario]" routerDirection="root">
-      <ion-icon name="chatbubbles-outline" size="large"></ion-icon> <ion-label style="font-size: 11px;">Comentarios</ion-label>
+    <ion-segment-button value="cartilla" [routerLink]="['/productos-locales',idLocal,idPropietario]"
+      routerDirection="root">
+      <ion-icon name="book-outline" size="large"></ion-icon>
+      <ion-label style="font-size: 11px;">Cartilla</ion-label>
+    </ion-segment-button>
+
+    <ion-segment-button value="comentarios" [routerLink]="['/comentarios-local',idLocal,idPropietario]"
+      routerDirection="root">
+      <ion-icon name="chatbubbles-outline" size="large"></ion-icon>
+      <ion-label style="font-size: 11px;">Comentarios</ion-label>
     </ion-segment-button>
 
   </ion-segment>

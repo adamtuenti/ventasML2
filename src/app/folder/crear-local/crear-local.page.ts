@@ -6,6 +6,9 @@ import { LocalesService } from 'src/app/services/locales.service';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { AngularFireStorage } from 'angularfire2/storage';
 
+import { Usuarios } from 'src/app/models/usuario';
+import { UsuarioService } from 'src/app/services/usuario.service';
+
 
 import * as firebase from 'firebase';
 
@@ -19,12 +22,20 @@ export class CrearLocalPage implements OnInit {
   public local = {Nombre:'',Descripcion:'',Ciudadela:'',Manzana:'',Villa:'',Telefono:'',RedSocial:'',HorarioAtencion:'',Referencia:'',Usuario:'',CategoriaLocal:'',Visibilidad:true,Domicilio:'',Calificacion:5,Foto:'',id:''}
   loading: HTMLIonLoadingElement;
 
+  public user: Usuarios = new Usuarios();
+  id;
+
+
+
   image: string | ArrayBuffer;
   file: File;
 
 
   constructor(private router: Router,
               private angularFireStorage: AngularFireStorage,
+              private usuarioService: UsuarioService,
+
+
               private alertCtrt: AlertController,
               public loadingController: LoadingController,
               private localesService: LocalesService,
@@ -32,6 +43,13 @@ export class CrearLocalPage implements OnInit {
 
   
   ngOnInit() {
+
+    this.id = localStorage.getItem('userId');
+    if (localStorage.getItem('userId') != null) {
+      this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => { this.user = res; });
+    }
+
+
     this.activateRoute.paramMap.subscribe(paramMap => {
       this.categoria = paramMap.get('id');
     });   
@@ -87,6 +105,11 @@ export class CrearLocalPage implements OnInit {
 
   guardarLocal(){
 
+    this.user.Locales = this.user.Locales + 1
+    this.usuarioService.updateUsuario(this.id, this.user)
+
+    console.log('user: ', this.user)
+
     var storageRef = this.angularFireStorage.storage.ref()
 
     
@@ -111,6 +134,7 @@ export class CrearLocalPage implements OnInit {
     this.loading.dismiss();
     const docRef = firebase.firestore().collection("Locales").doc();
     this.local.id = docRef.id
+    
     
     await docRef.set(this.local)
 
