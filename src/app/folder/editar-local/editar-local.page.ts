@@ -31,6 +31,7 @@ export class EditarLocalPage implements OnInit {
   ngOnInit() {
     this.activateRoute.paramMap.subscribe(paramMap => {
     this.idLocal = paramMap.get('idLocal');
+    console.log('idLocal aca: ', this.idLocal)
     this.idPropietario = paramMap.get('idPropietario');
     this.localesService.getLocal(paramMap.get('idLocal')).subscribe(res=> {this.local = res;this.image = res.Foto});
     this.idUser = localStorage.getItem('userId');

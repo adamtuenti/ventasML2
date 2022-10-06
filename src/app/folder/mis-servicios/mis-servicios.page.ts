@@ -12,8 +12,8 @@ import { AlertController } from '@ionic/angular';
 })
 export class MisServiciosPage implements OnInit {
 
-  servicios: Servicios[] = [];
-  condicion: boolean;
+  servicios = [];
+  condicion = false;
   idUser;
 
   constructor(private servicioService: ServiciosService,
@@ -24,7 +24,7 @@ export class MisServiciosPage implements OnInit {
   ngOnInit() {
 
     this.idUser = localStorage.getItem('userId');
-    this.servicioService.getServicios().subscribe(res=> {this.servicios = res;this.condicion = this.getDatos()});
+    this.servicioService.getServiciosUsuario(this.idUser).valueChanges().subscribe(res=> {this.servicios = res; this.condicion = true});
 
     
   }
@@ -39,10 +39,10 @@ export class MisServiciosPage implements OnInit {
     return true;
   }
 
-  async alert(id) {
+  async alert(id, nombre) {
     const alert = await this.alertCtrt.create({
      cssClass: 'my-custom-class',
-     header: "¿Desea eliminar su servicio?",
+     header: "¿Desea eliminar '" + nombre + "'?",
     buttons: [
         {
           text: 'Cancelar',

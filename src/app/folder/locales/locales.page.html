@@ -9,8 +9,8 @@
 
   <ng-container *ngIf="!condicion">
     <ng-container *ngFor="let local of locales | filtroLocal: textoBuscar">
-      <ion-card *ngIf='local.CategoriaLocal == categoria'>
-        <ion-item [routerLink]="['/productos-locales',local.id, local.Usuario]">
+      <ion-card>
+        <ion-item [routerLink]="['/detalle-local',local.id, local.Usuario]">
           <ion-avatar slot="start" style="height: 50px;width: 50px;margin-right: 7.5px;">
             <img src="{{local.Foto}}">
           </ion-avatar>

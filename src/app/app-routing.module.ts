@@ -135,6 +135,10 @@ const routes: Routes = [
     loadChildren: () => import('./folder/mis-productos/mis-productos.module').then( m => m.MisProductosPageModule)
   },
   {
+    path: 'mis-locales',
+    loadChildren: () => import('./folder/mis-locales/mis-locales.module').then( m => m.MisLocalesPageModule)
+  },
+  {
     path: 'mis-publicaciones',
     loadChildren: () => import('./folder/mis-publicaciones/mis-publicaciones.module').then( m => m.MisPublicacionesPageModule)
   },
@@ -181,7 +185,8 @@ const routes: Routes = [
   {
     path: 'comunicacion-local/:idLocal/:idPropietario',
     loadChildren: () => import('./folder/comunicacion-local/comunicacion-local.module').then( m => m.ComunicacionLocalPageModule)
-  },  {
+  },
+  {
     path: 'crear-producto-todos',
     loadChildren: () => import('./folder/crear-producto-todos/crear-producto-todos.module').then( m => m.CrearProductoTodosPageModule)
   },

@@ -1,0 +1,67 @@
+<app-header nombre="perfil"></app-header>
+
+<ion-content>
+
+
+  <ng-container *ngIf="locales.length > 0">
+
+    <ion-col sizeLg="2
+    
+    " sizeMd="4" sizeXs="6" *ngFor="let local of locales">
+
+      <ion-card style = 'margin-bottom: 7.5px !important;'>
+        <ion-card-header id="headerCard" [routerLink]="['/detalle-local',local.id,idUser]">
+
+          <ion-img src="{{local.Foto}}" style="height: 175px; padding: 0;"></ion-img>
+        </ion-card-header>
+        <ion-card-content>
+          <ng-container>
+            <h1 style='color:black;font-size: 17.5px;text-align: center;margin:auto;font-weight: bold;margin-top: 5px'>
+              {{local.Calificacion}} <ion-icon name="star" color='warning'></ion-icon></h1>
+            <h2
+              style='color:black;font-size: 15px;text-align: center;margin-top: 5px; margin-bottom: 2.5px;color: gray;'>
+              {{local.Nombre}}</h2>
+
+
+
+          </ng-container>
+
+        </ion-card-content>
+        <ion-card-footer style = "text-align: left; justify-content: left;">
+          <div>
+          <ion-icon size = "large" style = "margin-right: 5.5px;" name="create-outline" [routerLink]="['/editar-local',local.id, local.Usuario]"></ion-icon>
+          <ion-icon size = "large" name="trash-outline" color='danger' (click)="alert(local.id, local.Nombre)"></ion-icon>
+        </div>
+        </ion-card-footer>
+      </ion-card>
+
+    </ion-col>
+
+
+   
+
+  </ng-container>
+
+  <ng-container *ngIf="locales.length == 0 && condicion">
+
+    <div style="margin-top: 50px;" align='center'>
+      <ion-text color="medium">
+
+        <img
+        src="https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Ffile_search.png?alt=media&token=79e21b5c-d8e4-4124-abd8-be52f0bce666"
+        style="width: 250px; height:250px;margin:auto;" alet="foto">
+
+        <p style="font-size: 21px;margin:auto;margin-top:7.5px">No hay locales registrados.</p>
+      </ion-text>
+    </div>
+  </ng-container>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button [routerLink]="['/crear-local-perfil']">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+
+</ion-content>

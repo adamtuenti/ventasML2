@@ -40,7 +40,7 @@
 
   <ion-grid>
     <ion-row style="height: 500px;width: 100%;">
-      <ion-col sizeLg="4" sizeMd="4" sizeXs="6" *ngFor="let producto of productos | filtroProductosGeneral: textoBuscar">
+      <ion-col sizeLg="2" sizeMd="4" sizeXs="6" *ngFor="let producto of productos | filtroProductosGeneral: textoBuscar">
 
         <ion-card (click)='aumentarVisita(producto.id,producto)' style = 'margin-bottom: 7.5px !important;'>
           <ion-card-header id="headerCard">
@@ -53,7 +53,7 @@
                 {{producto.Precio}}</h1>
               <h2
                 style='color:black;font-size: 15px;text-align: left;margin-top: 5px; margin-bottom: 2.5px;color: gray;'>
-                {{producto.Titulo}}</h2>
+                {{producto.Titulo.length > 27 ? producto.Titulo.slice(0, 27) + '...' : producto.Titulo}}</h2>
 
 
 

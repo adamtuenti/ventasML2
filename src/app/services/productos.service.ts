@@ -32,6 +32,12 @@ export class ProductosService {
     return this.productos;
   }
 
+  getProductosUsuario(usuario: string){
+    
+    return this.firestore.collection('Productos', ref => ref.where("Vendedor", "==", usuario));
+
+  }
+
   getProductosCategoria(categoria: string){
     
     return this.firestore.collection('Productos', ref => ref.where("Categoria", "==", categoria));

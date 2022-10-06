@@ -28,6 +28,12 @@ export class LocalesService {
     return this.locales;
   }
 
+  getLocalesUsuario(usuario: string){
+    
+    return this.firestore.collection('Locales', ref => ref.where("Usuario", "==", usuario));
+
+  }
+
   getLocal(id:string){
     return this.localesCollection.doc<Locales>(id).valueChanges();
   }

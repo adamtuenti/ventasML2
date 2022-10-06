@@ -29,6 +29,12 @@ export class ServiciosService {
     return this.servicios;
   }
 
+  getServiciosUsuario(usuario: string){
+    
+    return this.firestore.collection('Servicios', ref => ref.where("Usuario", "==", usuario));
+
+  }
+
 
   getServicio(id:string){
     return this.serviciosCollection.doc<Servicios>(id).valueChanges();
