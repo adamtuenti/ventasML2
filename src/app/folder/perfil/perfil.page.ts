@@ -18,6 +18,7 @@ export class PerfilPage implements OnInit {
   sugerencia: sugerenciaCategoriaLocal = new sugerenciaCategoriaLocal();
   public user: Usuarios = new Usuarios();
   premium;
+  loaded = false
   id;
 
 
@@ -29,7 +30,7 @@ export class PerfilPage implements OnInit {
   ngOnInit() {
     this.id = localStorage.getItem('userId');
     if (localStorage.getItem('userId') != null) {
-      this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => { this.user = res; this.verPremium() });
+      this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => { this.user = res; this.verPremium(); this.loaded = true });
     }
 
 

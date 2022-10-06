@@ -11,31 +11,37 @@
       <ion-card>
         <ion-item>
           <ion-icon name="person-outline" size="large" style="margin-right: 8px;"></ion-icon>
+          <ion-skeleton-text *ngIf = '!loaded' [animated]="true" style="width: 195px; height: 15.5px;"></ion-skeleton-text>
           <ion-label style="font-size: 17px;">{{user.Nombre}} {{user.Apellido}}</ion-label>
         </ion-item>
       
         <ion-item>
           <ion-icon name="mail-outline" size="large" style="margin-right: 8px;"></ion-icon>
+          <ion-skeleton-text [animated]="true" style="width: 150px; height: 15.5px;"></ion-skeleton-text>
           <ion-label style="font-size: 17px;">{{user.Correo}}</ion-label>
         </ion-item>
 
         <ion-item>
           <ion-icon name="call-outline" size="large" style="margin-right: 8px;"></ion-icon>
+          <ion-skeleton-text *ngIf = '!loaded' [animated]="true" style="width: 115px; height: 15.5px;"></ion-skeleton-text>
           <ion-label style="font-size: 17px;">{{user.Telefono}}</ion-label>
         </ion-item>
 
         <ion-item>
           <ion-icon name="megaphone-outline" size="large" style="margin-right: 8px;"></ion-icon>
+          <ion-skeleton-text *ngIf = '!loaded' [animated]="true" style="width: 35px; height: 15.5px;"></ion-skeleton-text>
           <ion-label style="font-size: 17px;">{{user.Publicaciones}}</ion-label>
         </ion-item>
 
         <ion-item>
           <ion-icon name="cart-outline" size="large" style="margin-right: 8px;"></ion-icon>
+          <ion-skeleton-text *ngIf = '!loaded' [animated]="true" style="width: 35px; height: 15.5px;"></ion-skeleton-text>
           <ion-label style="font-size: 17px;">{{user.Productos}}</ion-label>
         </ion-item>
 
         <ion-item>
           <ion-icon name="home-outline" size="large" style="margin-right: 8px;"></ion-icon>
+          <ion-skeleton-text *ngIf = '!loaded' [animated]="true" style="width: 35px; height: 15.5px;"></ion-skeleton-text>
           <ion-label style="font-size: 17px;">{{user.Locales}}</ion-label>
         </ion-item>
 
