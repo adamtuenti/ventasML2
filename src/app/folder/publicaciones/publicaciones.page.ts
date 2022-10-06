@@ -23,7 +23,7 @@ export class PublicacionesPage implements OnInit {
   };
 
   loaded = false
-  skeleton = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 7, 8]
+  skeleton = [1, 2, 3, 4, 5]
 
   idUser;
 
