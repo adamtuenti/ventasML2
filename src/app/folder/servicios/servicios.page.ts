@@ -14,6 +14,8 @@ export class ServiciosPage implements OnInit {
   servicios : Servicios[] = [];
   idUser;
   textoBuscar = '';
+  loaded = false
+  skeleton = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 7, 8]
 
   constructor(
               private router: Router,
@@ -22,7 +24,7 @@ export class ServiciosPage implements OnInit {
               private alertCtrt: AlertController,) { }
 
   ngOnInit() {
-    this.servicioService.getServicios().subscribe(res=> {this.servicios = res;this.shuffle(this.servicios)});
+    this.servicioService.getServicios().subscribe(res=> {this.servicios = res;this.shuffle(this.servicios); this.loaded = true});
     this.idUser = localStorage.getItem('userId');
   }
 

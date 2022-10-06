@@ -22,6 +22,9 @@ export class PublicacionesPage implements OnInit {
     speed: 400
   };
 
+  loaded = false
+  skeleton = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 7, 8]
+
   idUser;
 
   publicaciones : PublicacionesGenerales[] = [];
@@ -40,7 +43,7 @@ export class PublicacionesPage implements OnInit {
               public loadingController: LoadingController) { }
 
   ngOnInit() {
-    this.publicacionesService.getPublicaciones().subscribe(res=> {this.publicaciones = res;});
+    this.publicacionesService.getPublicaciones().subscribe(res=> {this.publicaciones = res; this.loaded = true});
     this.publicidadService.getPublicidad().subscribe(res => {this.publicidad = res;this.shuffle(this.publicidad)});
 
     if(localStorage.getItem('userId') != null){

@@ -1,3 +1,53 @@
-ion-content{
-    --ion-background-color:#ffffff;
+ion-content {
+    --ion-background-color: #ffffff;
+}
+
+ion-card-header {
+    background-color: white;
+    /*width: 180px;*/
+    height: 180px;
+    border-bottom-style: solid;
+    border-width: 2px;
+    border-color: #E0E0E0;
+}
+
+#starts {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    align-items: left;
+    width: 105%;
+    text-align: left;
+}
+
+.card-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.has-card-footer {
+    padding-bottom: 15px;
+}
+
+ion-card {
+    display: flex;
+    flex-direction: column;
+    /*width: 180px;*/
+    margin: 0 !important;
+    height: 310px;
+}
+
+#headerCard {
+    padding: 0;
+    box-shadow: none !important;
+}
+
+h2 {
+    padding-top: 2px;
+    font-size: 12px;
+}
+
+p {
+    padding-top: 10px;
+    font-size: 16px;
 }

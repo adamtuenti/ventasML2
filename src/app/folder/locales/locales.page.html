@@ -7,60 +7,90 @@
   <ion-searchbar color="light" placeholder="Buscar local..." animated (ionChange)="buscar($event)">
   </ion-searchbar>
 
-  <ng-container *ngIf="!condicion">
-    <ng-container *ngFor="let local of locales | filtroLocal: textoBuscar">
-      <ion-card>
-        <ion-item [routerLink]="['/detalle-local',local.id, local.Usuario]">
-          <ion-avatar slot="start" style="height: 50px;width: 50px;margin-right: 7.5px;">
-            <img src="{{local.Foto}}">
-          </ion-avatar>
-          <ion-label style="font-size: 18.2px; margin-left: 8.5px;">{{local.Nombre}}</ion-label>
+  <ion-grid *ngIf="!loaded">
+    <ion-row style="height: 500px;width: 100%;">
+      <ion-col sizeLg="2" sizeMd="4" sizeXs="6" *ngFor="let producto of skeleton">
 
-          <ion-icon name="bicycle-outline" color='success' slot='end' size='large' *ngIf='local.Domicilio == "Si"'>
-          </ion-icon>
+        <ion-card lines='none'  style='margin-bottom: 7.5px !important;'>
+          <ion-card-header id="headerCard">
+            <ion-skeleton-text [animated]="true" style="width: 100%; height: 100%;"></ion-skeleton-text>
+          </ion-card-header>
 
-        </ion-item>
+          <ion-card-content style = "margin-top: 7.5px;">
+            <ng-container>
+              <h1>
+                <ion-skeleton-text [animated]="true" style="width: 125px;"></ion-skeleton-text>
+              </h1>
+              <h2>
+                <ion-skeleton-text [animated]="true" style="width: 155.5px;"></ion-skeleton-text>
+              </h2>
 
-        <ion-item>
 
-          <div slot='end' *ngFor='let indice of [].constructor(local.Calificacion); let i = index'
-            style='width: 1%;margin-right: 5px;'>
-            <ion-icon name="star" color='warning'></ion-icon>
-          </div>
-          <ion-icon *ngIf="local.Usuario == idUser" slot='start' name="create-outline"
-            [routerLink]="['/editar-local',local.id,idUser]"></ion-icon>
-        </ion-item>
-      </ion-card>
-    </ng-container>
-    <!--<ion-grid>
-      <ion-row style="height: 500px;width: 100%;">
-        <ion-col sizeLg="4" sizeMd="4" sizeXs="6" *ngFor="let local of locales | filtroLocal: textoBuscar">
 
-          <ion-card (click)='aumentarVisita(local.id,local)'>
-            <ion-card-header id="headerCard">
+            </ng-container>
+          </ion-card-content>
 
-              <ion-img src="{{local.Foto}}" style="height: 100%; padding: 0;">
-              </ion-img>
-            </ion-card-header>
-            <ion-card-content>
-              <ion-icon name="bicycle-outline" color='success' slot='end' size='large' *ngIf='local.Domicilio == "Si"'>
-              </ion-icon>
-              <h2>{{local.Nombre}}</h2>
-              <ion-item>
-                <div slot='end' *ngFor='let indice of [].constructor(local.Calificacion); let i = index'
-                  style='width: 1%;margin-right: 5px;'>
-                  <ion-icon name="star" color='warning'></ion-icon>
-                </div>
-                <ion-icon *ngIf="local.Usuario == idUser" slot='start' name="create-outline"
-                  [routerLink]="['/editar-local',local.id,idUser]"></ion-icon>
-              </ion-item>
-            </ion-card-content>
-          </ion-card>
 
-    </ion-col>
+          <!-- <ion-item>
+            <ion-label>
+              <h3>
+                <ion-skeleton-text [animated]="true" style="width: 85px;"></ion-skeleton-text>
+              </h3>
+              <p>
+                <ion-skeleton-text [animated]="true" style="width: 95px;"></ion-skeleton-text>
+              </p>
+            </ion-label>
+          </ion-item> -->
+        </ion-card>
+
+      </ion-col>
     </ion-row>
-    </ion-grid>-->
-  </ng-container>
+  </ion-grid>
+
+  <ion-grid *ngIf = '!condicion'>
+    <ion-row style="height: 785.5px;width: 100%;">
+
+      <ion-col sizeLg="2" sizeMd="4" sizeXs="6" *ngFor="let local of locales | filtroLocalProductos: textoBuscar">
+
+        <ion-card [routerLink]="['/detalle-local',local.id, local.Usuario]" style='margin-bottom: 7.5px !important;'>
+          <ion-card-content id='starts' style='align-items: left;'>
+            <ion-item lines='none' style='align-items: left; text-align: left;'>
+              <div slot='start' *ngFor='let indice of [].constructor(local.Calificacion); let i = index'
+                style='width: 0.025%;margin-left: 0.00125px;'>
+                <ion-icon name="star" color='warning'></ion-icon>
+              </div>
+
+            </ion-item>
+          </ion-card-content>
+          <ion-card-header id="headerCard" style='background-color: white !important;'>
+            <ion-img *ngIf='local.Visibilidad' src="{{local.Foto}}" style="height: 100%; padding: 0;"></ion-img>
+          </ion-card-header>
+
+
+          <ion-card-content style='padding-top: 5px; width: 100%;'>
+            <ion-label
+              style='font-size: 14.5px; align-items: center;color: black; margin-top: 11.5px; font-weight: bold;'>
+              {{local.Nombre.length > 25 ? local.Nombre.slice(0,25) + '..' : local.Nombre }} </ion-label>
+
+            <!-- <h2>CALIFICACIÓN: {{local.Calificacion}}</h2> -->
+          </ion-card-content>
+          <ion-row class="card-footer">
+            <ion-col>
+              <ion-icon name="location-outline" color='success' size='small'
+                style='padding-left: 10px;padding-right: 7px;'></ion-icon>
+              <p style='font-size: 15px; align-items: left; margin-top: 0px;margin-bottom: 0px; display: inline-block;'>
+                {{local.Ciudadela}} </p>
+            </ion-col>
+          </ion-row>
+
+        </ion-card>
+
+      </ion-col>
+
+
+    </ion-row>
+  </ion-grid>
+
 
   <ng-container *ngIf="condicion">
 

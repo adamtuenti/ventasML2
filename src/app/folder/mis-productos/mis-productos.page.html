@@ -7,43 +7,51 @@
 
   <ng-container *ngIf="productos.length > 0">
 
-    <ion-col sizeLg="4" sizeMd="4" sizeXs="6" *ngFor="let producto of productos | filtroProductos: textoBuscar">
+    <ion-grid>
+      <ion-row style="height: 785.5px;width: 100%;">
 
-      <ion-card *ngIf="producto.Vendedor == idUser" style = 'margin-bottom: 7.5px !important;'>
-        <ion-card-header id="headerCard" [routerLink]="['/producto-detalle',producto.id,idUser]">
+        <ion-col sizeLg="4" sizeMd="4" sizeXs="6" *ngFor="let producto of productos | filtroProductos: textoBuscar">
 
-          <ion-img *ngIf='producto.Visibilidad' src="{{producto.Foto1}}" style="height: 175px; padding: 0;"></ion-img>
-        </ion-card-header>
-        <ion-card-content>
-          <ng-container>
-            <h1 style='color:black;font-size: 17.5px;text-align: left;margin:auto;font-weight: bold;margin-top: 5px'>$
-              {{producto.Precio}}</h1>
-            <h2
-              style='color:black;font-size: 15px;text-align: left;margin-top: 5px; margin-bottom: 2.5px;color: gray;'>
-              {{producto.Titulo}}</h2>
+          <ion-card *ngIf="producto.Vendedor == idUser" style='margin-bottom: 7.5px !important;'>
+            <ion-card-header id="headerCard" [routerLink]="['/producto-detalle',producto.id,idUser]">
 
-
-
-          </ng-container>
-
-        </ion-card-content>
-        <ion-card-footer style = "text-align: right; justify-content: right;">
-          <div>
-          <ion-button fill="outline" slot='end'>
-            <ion-icon name="eye-outline"></ion-icon>
-            <label
-              style="font-size: 12px;margin-left: 7.5px; margin-right: 5.5px;">{{producto.Visitas}}</label>
-          </ion-button>
-          <ion-icon size = "large" style = "margin-right: 5.5px;" name="create-outline" [routerLink]="['/editar-producto',producto.id]"></ion-icon>
-          <ion-icon size = "large" name="trash-outline" color='danger' (click)="alert(producto.id)"></ion-icon>
-        </div>
-        </ion-card-footer>
-      </ion-card>
-
-    </ion-col>
+              <ion-img *ngIf='producto.Visibilidad' src="{{producto.Foto1}}" style="height: 175px; padding: 0;">
+              </ion-img>
+            </ion-card-header>
+            <ion-card-content>
+              <ng-container>
+                <h1
+                  style='color:black;font-size: 17.5px;text-align: left;margin:auto;font-weight: bold;margin-top: 5px'>$
+                  {{producto.Precio}}</h1>
+                <h2
+                  style='color:black;font-size: 15px;text-align: left;margin-top: 5px; margin-bottom: 2.5px;color: gray;'>
+                  {{producto.Titulo}}</h2>
 
 
-   
+
+              </ng-container>
+
+            </ion-card-content>
+            <ion-card-footer style="text-align: right; justify-content: right;">
+              <div>
+                <ion-button fill="outline" slot='end'>
+                  <ion-icon name="eye-outline"></ion-icon>
+                  <label style="font-size: 12px;margin-left: 7.5px; margin-right: 5.5px;">{{producto.Visitas}}</label>
+                </ion-button>
+                <ion-icon size="large" style="margin-right: 5.5px;" name="create-outline"
+                  [routerLink]="['/editar-producto',producto.id]"></ion-icon>
+                <ion-icon size="large" name="trash-outline" color='danger' (click)="alert(producto.id)"></ion-icon>
+              </div>
+            </ion-card-footer>
+          </ion-card>
+
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+
+
+
 
   </ng-container>
 
@@ -53,8 +61,8 @@
       <ion-text color="medium">
 
         <img
-        src="https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Ffile_search.png?alt=media&token=79e21b5c-d8e4-4124-abd8-be52f0bce666"
-        style="width: 250px; height:250px;margin:auto;" alet="foto">
+          src="https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Ffile_search.png?alt=media&token=79e21b5c-d8e4-4124-abd8-be52f0bce666"
+          style="width: 250px; height:250px;margin:auto;" alet="foto">
 
         <p style="font-size: 21px;margin:auto;margin-top:7.5px">No hay productos registrados.</p>
       </ion-text>

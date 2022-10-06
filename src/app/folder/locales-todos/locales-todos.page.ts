@@ -21,6 +21,9 @@ export class LocalesTodosPage implements OnInit {
   productosLocales : ProductosLocales[] = []
   textoBuscar = '';
 
+  loaded = false
+  skeleton = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 7, 8]
+
   slideOpts = {
     initialSlide: 0,
     speed: 400
@@ -36,7 +39,7 @@ export class LocalesTodosPage implements OnInit {
 
   ngOnInit() {
     //this.productosLocalesService.getProductos().subscribe(res => this.productosLocales = res )
-    this.localesService.getLocales().subscribe(res=> {this.locales = res;this.shuffle(this.locales);  });
+    this.localesService.getLocales().subscribe(res=> {this.locales = res;this.shuffle(this.locales); this.loaded = true  });
       
       
   }

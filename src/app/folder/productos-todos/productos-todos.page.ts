@@ -18,6 +18,8 @@ export class ProductosTodosPage implements OnInit {
   productosTemp: Productos[] = [];
   idUser;
   textoBuscar = '';
+  loaded = false
+  skeleton = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 7, 8]
 
   slideOpts = {
     initialSlide: 0,
@@ -33,7 +35,7 @@ export class ProductosTodosPage implements OnInit {
   ngOnInit() {
     
     this.idUser = localStorage.getItem('userId');
-    this.productosService.getProductos().subscribe(res=> {this.productos = res;});
+    this.productosService.getProductos().subscribe(res=> {this.productos = res; this.loaded = true});
     // this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => {this.user =res;});
   }
 
