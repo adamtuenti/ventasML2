@@ -7,7 +7,7 @@
           
         <ion-card style="margin-top:15px">
           <ion-item>
-            <ion-label>Nombre</ion-label>
+            <ion-label>Nombre <b class = 'obligatorio'>*</b> </ion-label>
           </ion-item>
           <ion-item>
           
@@ -18,7 +18,7 @@
 
         <ion-card style="margin-top:15px">
             <ion-item>
-              <ion-icon name="image-outline"></ion-icon> <ion-text color="" style="margin-left: 7.5px;" *ngIf='image==null'>Subir foto</ion-text> <ion-text color="" style="margin-left: 7.5px;" *ngIf='image!=null'>Cambiar foto</ion-text>
+              <ion-icon name="image-outline"></ion-icon> <ion-text color="" style="margin-left: 7.5px;" *ngIf='image==null'>Subir foto <b class = 'obligatorio'>*</b></ion-text> <ion-text color="" style="margin-left: 7.5px;" *ngIf='image!=null'>Cambiar foto</ion-text>
           
               <ion-input type='file' accept="image/*" id="myFileInput" name="foto1" (change)="readURL($event);" class="fileInput" ngModel required></ion-input>
     
@@ -41,7 +41,7 @@
         
         <ion-card style="margin-top:15px">
           <ion-item>
-            <ion-label>Descripción</ion-label>
+            <ion-label>Descripción <b class = 'obligatorio'>*</b> </ion-label>
           </ion-item>
           <ion-item>
             <ion-textarea required placeholder="Ingrese una descripción del local" name="descripcion" type='text' ngModel required></ion-textarea>
@@ -51,7 +51,7 @@
         <ion-card style="margin-top:15px">
           <ion-item>
             <ion-icon color="black" name="storefront-outline"></ion-icon>
-            <ion-label style = "margin-left: 6.5px;">Ciudadela: </ion-label>
+            <ion-label style = "margin-left: 6.5px;">Ciudadela: <b class = 'obligatorio'>*</b> </ion-label>
             <ion-select required  name='ciudadela' ngModel>
              
                     <ion-select-option value="Paraíso del Río 1">Paraíso del Río 1</ion-select-option>
@@ -74,7 +74,7 @@
 
         <ion-card style="margin-top:15px">
           <ion-item>
-            <ion-label>Manzana </ion-label>
+            <ion-label>Manzana <b class = 'obligatorio'>*</b></ion-label>
           </ion-item>
           <ion-item>
             <ion-textarea required placeholder="Ingrese la manzana" name="manzana" type='text' ngModel required></ion-textarea>
@@ -83,7 +83,7 @@
 
         <ion-card style="margin-top:15px">
           <ion-item>
-            <ion-label>Villa</ion-label>
+            <ion-label>Villa <b class = 'obligatorio'>*</b></ion-label>
           </ion-item>
           <ion-item>
             <ion-textarea required placeholder="Ingrese la Villa" name="villa" type='text' ngModel required></ion-textarea>
@@ -92,7 +92,7 @@
 
         <ion-card style="margin-top:15px">
           <ion-item>
-            <ion-label>Teléfono del local</ion-label>
+            <ion-label>Teléfono del local<b class = 'obligatorio'>*</b></ion-label>
           </ion-item>
           <ion-item>
             <ion-textarea required placeholder="Ingrese el número de teléfono" name="telefono" type='number' ngModel required></ion-textarea>
@@ -112,7 +112,7 @@
         <ion-card style="margin-top:15px">
           <ion-item>
             <ion-icon color="black" name="bicycle-outline"></ion-icon>
-            <ion-label style = "margin-left: 6.5px;">Entregas a domicilio: </ion-label>
+            <ion-label style = "margin-left: 6.5px;">Entregas a domicilio: <b class = 'obligatorio'>*</b></ion-label>
             <ion-select required  name='domicilio' ngModel>
              
                     <ion-select-option value="Si">Sí</ion-select-option>
@@ -125,7 +125,7 @@
 
         <ion-card style="margin-top:15px">
           <ion-item>
-            <ion-label>Horario de atención</ion-label>
+            <ion-label>Horario de atención<b class = 'obligatorio'>*</b></ion-label>
           </ion-item>
           <ion-item>
             <ion-textarea required placeholder="Ingrese el Horario de atención" name="horarioAtencion" type='text' ngModel required></ion-textarea>
@@ -134,7 +134,7 @@
 
         <ion-card style="margin-top:15px">
           <ion-item>
-            <ion-label>Referencia</ion-label>
+            <ion-label>Referencia <b class = 'obligatorio'>*</b></ion-label>
           </ion-item>
           <ion-item>
             <ion-textarea required placeholder="Referencia de la ubicación del local" name="referencia" type='text' ngModel required></ion-textarea>

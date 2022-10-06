@@ -33,15 +33,25 @@ ion-header {
   --ion-background-color: white !important;
 }
 
-app-header{
+ion-card-title{
+  background-color: white !important;
+}
+
+ion-item{
   --ion-background-color: white !important;
 }
 
-ion-searchbar{
-  --ion-background-color: white !important;
+
+ion-searchbar {
+
+  background-color: #d3eaf9 !important;
 }
 
-ion-list{
+ion-list {
   --ion-background-color: white !important;
 
+}
+
+ion-card{
+  background-color: white !important;
 }

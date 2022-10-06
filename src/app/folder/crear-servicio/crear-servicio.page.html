@@ -9,7 +9,7 @@
       
       <ion-card style="margin-top:15px">
         <ion-item>
-          <ion-label>Título</ion-label>
+          <ion-label>Título <b class = 'obligatorio'>*</b></ion-label>
         </ion-item>
         <ion-item>
         
@@ -20,7 +20,7 @@
     
     <ion-card style="margin-top:15px">
       <ion-item>
-        <ion-label>Descripción</ion-label>
+        <ion-label>Descripción <b class = 'obligatorio'>*</b></ion-label>
       </ion-item>
       <ion-item>
         <ion-textarea required placeholder="Ingrese la descripción" name="descripcion" type='text' ngModel required></ion-textarea>
@@ -32,7 +32,7 @@
       
 
         <ion-item>
-          <ion-icon name="image-outline"></ion-icon> <ion-text color="" style="margin-left: 7.5px;" *ngIf='image==null'>Subir foto</ion-text> <ion-text color="" style="margin-left: 7.5px;" *ngIf='image!=null'>Cambiar foto</ion-text>
+          <ion-icon name="image-outline"></ion-icon> <ion-text color="" style="margin-left: 7.5px;" *ngIf='image==null'>Subir foto <b class = 'obligatorio'>*</b></ion-text> <ion-text color="" style="margin-left: 7.5px;" *ngIf='image!=null'>Cambiar foto</ion-text>
       
           <ion-input type='file' accept="image/*" id="myFileInput" name="foto1" (change)="readURL($event);" class="fileInput" ngModel required></ion-input>
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Categorias } from 'src/app/models/categorias';
-import { CategoriasService } from 'src/app/services/categorias.service';
+import { CategoriasLocalesService } from 'src/app/services/categorias-locales.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,7 +13,7 @@ export class CategoriaCrearLocalPage implements OnInit {
   categorias: Categorias[] = [];
   textoBuscar = '';
 
-  constructor(private categoriasService: CategoriasService,
+  constructor(private categoriasService: CategoriasLocalesService,
               private router: Router) { }
 
   ngOnInit() {
