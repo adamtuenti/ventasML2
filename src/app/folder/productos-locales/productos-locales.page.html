@@ -26,13 +26,13 @@
   <ion-searchbar color="light" placeholder="Buscar producto..." animated (ionChange)="buscar($event)">
   </ion-searchbar>
 
-  <ng-container *ngIf="!condicion">
-    <ion-list>
+  <ng-container *ngIf="!condicion" class = 'item-background-color'>
+    <ion-list class = 'item-background-color' class = 'item-background-color'>
       <ng-container *ngFor="let producto of productos | filtroProductoLocal: textoBuscar">
 
         <ion-card *ngIf="producto.Local == idLocal">
 
-          <ion-item>
+          <ion-item class = 'item-background-color'>
 
             <ion-button style="height: 50px;width: 62px;margin-right: 5px;margin-top: 7.5px;" expand="full"
               href="{{producto.Foto}}" color="light" fill="clear">
@@ -48,7 +48,7 @@
 
 
 
-          <ion-item>
+          <ion-item class = 'item-background-color'>
 
 
 
@@ -79,7 +79,7 @@
           src="https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Ffile_search.png?alt=media&token=79e21b5c-d8e4-4124-abd8-be52f0bce666"
           style="width: 250px; height:250px;margin:auto;" alet="foto">
 
-        <p style="font-size: 21px;margin:auto;margin-top:7.5px">No hay productos registrados en este local.</p>
+        <p style="font-size: 21px;margin:auto;margin-top:7.5px; width: 85%">No hay productos registrados en este local.</p>
       </ion-text>
     </div>
   </ng-container>

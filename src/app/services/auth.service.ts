@@ -67,7 +67,8 @@ export class AuthService {
             EsperaPremium: false,
             id: res.user.uid,
             NumeroReferidos: 0,
-            Referido: idReferido
+            Referido: idReferido,
+            Locales: 0
           });
 
         // }else{

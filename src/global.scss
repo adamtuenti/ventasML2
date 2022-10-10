@@ -33,25 +33,105 @@ ion-header {
   --ion-background-color: white !important;
 }
 
-ion-card-title{
+
+
+
+
+// ion-label{
+//   background-color: white !important;
+// }
+
+form {
   background-color: white !important;
 }
 
-ion-item{
-  --ion-background-color: white !important;
+ion-searchbar .searchbar-input{
+
+  background-color: #E5E0E0 !important;
+  color: black !important
 }
 
-
-ion-searchbar {
-
-  background-color: #d3eaf9 !important;
+.my-custom-class{
+  //color: red !important;
 }
 
-ion-list {
-  --ion-background-color: white !important;
-
+.iconGeneral{
+  color: black !important
 }
+
+ion-select{
+  color: black !important
+}
+
+.textArea{
+  color: black !important
+}
+
+ion-input{
+  color: black !important;
+  background-color: white !important;
+} 
+
+
 
 ion-card{
   background-color: white !important;
+}
+
+ion-label{
+  color: black !important;
+  //font-weight: bold !important;
+}
+
+ion-icon{
+  color: black !important;
+}
+
+.obligatorio{
+  color: red; 
+  font-size: 18.5px; 
+  margin-left: 5.5px;
+}
+
+ion-segment{
+  background-color: white !important;
+}
+
+ion-slide{
+  //--ion-background-color: yellow !important;
+  background-color: white !important;
+}
+
+ion-skeleton-text{
+  background-color: #E5E0E0 !important;
+  min-width: 100%;
+}
+
+searchbar-input-container{
+  --ion-background-color: yellow !important;
+  background-color: red !important;
+}
+
+.item .item-content {
+  background-color: yellow !important;
+}
+
+// ion-list {
+//   --ion-background-color: red !important;
+//   background-color: yellow !important;
+
+// }
+
+ion-item{
+  --ion-background-color: white !important;
+  background-color: white !important;
+}
+
+
+.item-background-color{
+  --ion-item-background: white !important;
+}
+
+.item-background-color{
+  --ion-item-background: white !important;
 }

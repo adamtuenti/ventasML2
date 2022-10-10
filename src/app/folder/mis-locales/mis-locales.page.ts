@@ -61,7 +61,8 @@ export class MisLocalesComponent implements OnInit {
         }, {
           text: 'Elminar',
           handler: (data) => {
-            this.remove(id)                  
+            this.remove(id) 
+            this.router.navigate(['/mis-locales']);                 
           }
         }
       ]

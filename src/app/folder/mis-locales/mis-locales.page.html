@@ -9,9 +9,9 @@
       <ion-row style="height: 785.5px;width: 100%;">
         <ion-col sizeLg="2" sizeMd="4" sizeXs="6" *ngFor="let local of locales | filtroLocalProductos: textoBuscar">
   
-          <ion-card [routerLink]="['/detalle-local',local.id, local.Usuario]" style = 'margin-bottom: 7.5px !important;'>
-            <ion-card-content id='starts' style = 'align-items: left;'>
-              <ion-item lines='none' style = 'align-items: left; text-align: left;'>
+          <ion-card style = 'margin-bottom: 7.5px !important;'>
+            <ion-card-content [routerLink]="['/detalle-local',local.id, local.Usuario]"  id='starts' style = 'align-items: left;'>
+              <ion-item lines='none' style = 'align-items: left; text-align: left;' class="item-background-color">
                 <div slot='start' *ngFor='let indice of [].constructor(local.Calificacion); let i = index'
                   style='width: 0.025%;margin-left: 0.00125px;'>
                   <ion-icon name="star" color='warning'></ion-icon>
@@ -19,7 +19,7 @@
   
               </ion-item>
             </ion-card-content>
-            <ion-card-header id="headerCard" style = 'background-color: white !important;'>
+            <ion-card-header [routerLink]="['/detalle-local',local.id, local.Usuario]"  id="headerCard" style = 'background-color: white !important;'>
               <ion-img *ngIf='local.Visibilidad' src="{{local.Foto}}" style="height: 100%; padding: 0;"></ion-img>
             </ion-card-header>
   

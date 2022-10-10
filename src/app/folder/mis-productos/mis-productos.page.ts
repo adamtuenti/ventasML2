@@ -64,7 +64,8 @@ export class MisProductosPage implements OnInit {
         }, {
           text: 'Elminar',
           handler: (data) => {
-            this.remove(id)                  
+            this.remove(id) 
+            this.router.navigate(['/mis-productos']);                 
           }
         }
       ]

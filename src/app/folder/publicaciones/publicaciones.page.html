@@ -1,14 +1,14 @@
 <app-header nombre="publicaciones"></app-header>
 
-<ion-content>
+<ion-content class="item-background-color">
 
-  <ion-slides pager="true" [options]="slideOpts" style="margin-top: 11.5px;">
+  <ion-slides pager="true" [options]="slideOpts" style="margin-top: 11.5px; background-color: white !important;">
     <ion-slide style="height: 305px;width: 97.5%;" *ngFor="let publicidadDetalle of publicidad">
       
       <ion-content>
         <ion-item>
 
-          <ion-button  expand="full" href="{{publicidadDetalle.Imagen}}" color="light" style="height: 225px;width: 100%;" fill="clear"><ion-img src="{{publicidadDetalle.Imagen}}" style="height: 250px;width: 100%;"></ion-img></ion-button>
+          <ion-button  expand="full" href="{{publicidadDetalle.Imagen}}" color="light" style="height: 225px;width: 450%;" fill="clear"><ion-img src="{{publicidadDetalle.Imagen}}" style="height: 250px;width: 100%;"></ion-img></ion-button>
           <!-- <ion-img src="{{publicidadDetalle.Imagen}}" style="height: 275px;width: 100%;"></ion-img> -->
 
         </ion-item>
@@ -26,45 +26,62 @@
     
   </ion-slides>
 
-  <ion-grid *ngIf="!loaded">
-    <ion-row style="height: 500px;width: 100%;">
-      <ion-col sizeLg="2" sizeMd="4" sizeXs="12" *ngFor="let producto of skeleton">
 
-        <ion-card lines='none'  style='margin-bottom: 7.5px !important;'>
+
+  <ion-content *ngIf="!loaded">
+    <ion-item>
+
+      <ion-skeleton-text [animated]="true" style="height: 250px;width: 350px"></ion-skeleton-text>
+      <!-- <ion-img src="{{publicidadDetalle.Imagen}}" style="height: 275px;width: 100%;"></ion-img> -->
+
+    </ion-item>
+    <div style="margin:auto; margin-top: 5.5px;">
+      <!-- <ion-button  expand="full"  expand="full" href="{{publicidadDetalle.Imagen}}" style="width: 50px;height: 50px;" color="light"><ion-icon name="expand-outline" size="large" ></ion-icon> </ion-button> -->
+      <h1 style="height: 35px;width: 75px; margin: auto">
+      <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+    </h1>
+    </div>
+
+
+
+
+    <ion-row style="height: 500px;width: 100%;">
+      <ion-col sizeLg="12" sizeMd="4" sizeXs="12" *ngFor="let producto of skeleton">
+
+        <ion-card lines='none'  style='margin-bottom: 7.5px !important; background-color: #ACC8FC !important'>
           <ion-card-header id="headerCard">
             <ion-skeleton-text [animated]="true" style="width: 100%; height: 27.5px;"></ion-skeleton-text>
           </ion-card-header>
 
           <ion-card-content>
               <h1>
-                <ion-skeleton-text [animated]="true" style="width: 100%; height: 42.5px;"></ion-skeleton-text>
+                <ion-skeleton-text [animated]="true" style="width: 75px; height: 25px;"></ion-skeleton-text>
               </h1>
               
 
 
           </ion-card-content>
 
-          <ion-item>
+
             <ion-item slot='end' lines = 'none'>
               <h1>
-                <ion-skeleton-text [animated]="true" style="width: 85px; height: 15px;"></ion-skeleton-text>
+                <ion-skeleton-text [animated]="true" style="width: 75px; height: 15px;"></ion-skeleton-text>
               </h1>
             </ion-item>
-          </ion-item>
 
 
         </ion-card>
 
       </ion-col>
     </ion-row>
-  </ion-grid>
 
+  </ion-content>
 
-  <ion-list *ngFor="let publicacion of publicaciones">
+  <ion-list *ngFor="let publicacion of publicaciones" class="item-background-color">
     <ion-card style="background-color: #ACC8FC !important">
 
-        <ion-card-header (click)='aumentarVisitaPublicacion(publicacion.id,publicacion.Usuario,publicacion)'>
-          <ion-item >
+        <ion-card-header class="item-background-color" (click)='aumentarVisitaPublicacion(publicacion.id,publicacion.Usuario,publicacion)'>
+          <ion-item lines = 'none'>
             <ion-card-title >
               <label style='color:black;font-size: 17.2px;'>
                 {{publicacion.Titulo}}
@@ -79,21 +96,21 @@
           
         </ion-card-content>
 
-        <ion-item *ngIf = 'idUser != null'>
+        <ion-item *ngIf = 'idUser != null' class="item-background-color" lines = 'none'>
 
           <ion-icon *ngIf="publicacion.Usuario == idUser" name="trash-outline" slot='start' color='danger'(click)="alert(publicacion.id)"></ion-icon>
-          <ion-item slot='end'>
+          <ion-item slot='end' lines = 'none'>
 
             
             
-            {{publicacion.Fecha | date:'yyyy/MM/dd'}}
+            <p style = 'color: black'>{{publicacion.Fecha | date:'yyyy/MM/dd'}}</p>
           </ion-item>
 
         </ion-item>
 
-        <ion-item *ngIf = 'idUser == null'>
-          <ion-item slot='end'>
-            {{publicacion.Fecha | date:'yyyy/MM/dd'}}
+        <ion-item *ngIf = 'idUser == null' lines = 'none'>
+          <ion-item slot='end' lines = 'none'>
+            <p style = 'color: black'>{{publicacion.Fecha | date:'yyyy/MM/dd'}}</p>
           </ion-item>
         </ion-item>
         

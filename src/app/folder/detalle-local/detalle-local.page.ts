@@ -70,13 +70,13 @@ export class DetalleLocalPage implements OnInit {
 
     const alert = await this.alertCtrt.create({
       cssClass: 'my-custom-class',
-      header: '¿Tienes algun comentario acerca del local?',
+      header: '¿Tienes algún comentario acerca del local?',
       
       // message: 'Nombre del curso:',
       inputs: [
         {
           name: 'local',
-          placeholder: 'Comentario del local',
+          placeholder: 'Comentario...',
           type: 'text'
           
         }

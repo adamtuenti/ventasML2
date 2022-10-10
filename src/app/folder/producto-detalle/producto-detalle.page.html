@@ -43,7 +43,7 @@
     </ion-label>
 
 
-    <ion-item lines = 'none'>
+    <ion-item lines = 'none' class="item-background-color">
 
       <ion-icon name="cash-outline" color="success"></ion-icon>
       <ion-label style="font-size: 17.5px;margin-left: 7.5px;"> $ {{producto.Precio}}</ion-label>
@@ -62,14 +62,14 @@
       style="margin: auto;display: block;font-size: 17.5px;font-weight: bold;color:black; align-items: center;text-align: center;margin-top: 8.5px;">Contacto:</label>
 
 
-    <ion-item>
+    <ion-item class="item-background-color">
       <ion-icon name="person-outline" size="large" style="margin-right: 8px;" color="success"></ion-icon>
       <ion-label style="font-size: 17px;">{{user.Nombre}} {{user.Apellido}}</ion-label>
     </ion-item>
 
 
     <a href='https://api.whatsapp.com/send?phone={{user.Telefono}}' style = 'text-decoration: none;'>
-    <ion-item>
+    <ion-item class="item-background-color">
       
         <ion-icon name="logo-whatsapp" size="large" color="success" style="margin-right: 8px;"></ion-icon>
       
@@ -80,7 +80,7 @@
 
 
   <a href="mailto:{{user.Correo}}" style = 'text-decoration: none;'>
-    <ion-item>
+    <ion-item class="item-background-color"lines = 'none'>
       
         <ion-icon name="mail-outline" size="large" color="success" style="margin-right: 8px;"></ion-icon>
       

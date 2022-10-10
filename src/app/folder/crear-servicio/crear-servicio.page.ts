@@ -112,7 +112,7 @@ export class CrearServicioPage implements OnInit {
         this.loading.dismiss();
 
 
-        this.router.navigate(["/servicios"])
+        this.router.navigate(["/mis-servicios"])
       }       
     ).catch(async error => {
       this.loading.dismiss();

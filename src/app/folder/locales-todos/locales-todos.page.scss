@@ -44,3 +44,8 @@ ion-card{
       padding-top: 10px;
       font-size: 16px;
   }
+
+  ion-item{
+    --ion-background-color: white !important;
+    background-color: white !important;
+  }

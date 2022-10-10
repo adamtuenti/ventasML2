@@ -21,6 +21,9 @@ export class LocalesPage implements OnInit {
   condicion: boolean = false;
   idUser;
   public user: Usuarios=new Usuarios();
+
+  loaded = false
+  skeleton = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 7, 8]
   
   constructor(private router: Router,
               //private localesService: LocalesService,
@@ -40,6 +43,7 @@ export class LocalesPage implements OnInit {
 
       firebase.firestore().collection('Locales').where('CategoriaLocal','==',paramMap.get('id')).onSnapshot(snap =>{
       this.locales = []
+      this.loaded = true
         snap.forEach(element => {
           this.locales.push(element.data())
         })

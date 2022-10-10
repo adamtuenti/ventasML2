@@ -70,6 +70,8 @@ export class CrearLocalPerfilPage implements OnInit {
 
 
   crearLocal(form) {
+    console.log(form)
+    console.log(form.value, form.value.telefono)
 
     var telefono = form.value.telefono;
     var primeros = telefono.slice(0, 3);
@@ -153,11 +155,11 @@ export class CrearLocalPerfilPage implements OnInit {
     await docRef.set(this.local)
 
     this.loading.dismiss();
-        this.failedAlert("Local creado");
+        this.failedAlert("Listo! Local creado");
 
 
 
-        this.router.navigate(["/perfil"])
+        this.router.navigate(["/mis-locales"])
 
     /* this.localesService.addLocal(this.local).then(
       auth=>{

@@ -5,37 +5,37 @@
 </ion-header> -->
 
 <ion-content padding>
-  <ion-card>
+  <ion-card style="margin-top:35px">
     <!-- <ion-list>
       <ion-img src="../../assets/log.png"></ion-img>
     </ion-list> -->
-    <div align="center" style="margin-top:15px">
+    <div align="center" style = 'margin-top: 15px;'>
       <label style="font-size: 28.5px;">Registro</label>
     </div>
 
     <form #form="ngForm" (ngSubmit)="RegistrarUser(form)">
       <ion-list>
 
-        <ion-item>
-          <ion-icon color="black" name="person-outline"></ion-icon>
+        <ion-item class="item-background-color">
+          <ion-label><ion-icon color="black" name="person-outline"></ion-icon></ion-label>
           <ion-input style="margin-left: 6.5px;" (ionInput)="capitalizeFirstLetter($event)" placeholder="Nombre" name="nombre" type='text' ngModel
             required></ion-input>
         </ion-item>
 
-        <ion-item>
-          <ion-icon color="black" name="person-outline"></ion-icon>
+        <ion-item class="item-background-color">
+          <ion-label><ion-icon color="black" name="person-outline"></ion-icon></ion-label>
           <ion-input (ionInput)="capitalizeFirstLetter($event)" style="margin-left: 6.5px;" required placeholder="Apellido" name="apellido" type='text' ngModel
             required></ion-input>
         </ion-item>
 
-        <ion-item>
-          <ion-icon color="black" name="mail-outline"></ion-icon>
+        <ion-item class="item-background-color">
+          <ion-label><ion-icon color="black" name="mail-outline"></ion-icon></ion-label>
           <ion-input style="margin-left: 6.5px;" required placeholder="Correo" name="email" type='email' ngModel
             required></ion-input>
         </ion-item>
 
-        <ion-item>
-          <ion-icon color="black" name="key-outline"></ion-icon>
+        <ion-item class="item-background-color">
+          <ion-label><ion-icon color="black" name="key-outline"></ion-icon></ion-label>
           <ion-input style="margin-left: 6.5px;" placeholder="Contraseña" name="password" type='password' ngModel
             minlength="6" required></ion-input>
         </ion-item>
@@ -67,8 +67,8 @@
 
 
 
-        <ion-item>
-          <ion-icon color="black" name="call-outline"></ion-icon>
+        <ion-item class="item-background-color">
+        <ion-label><ion-icon color="black" name="call-outline"></ion-icon></ion-label>
           <ion-input (ionInput)="countChange($event)" style="margin-left: 6.5px;" placeholder="09xx" name="telefono"
             type='text' ngModel minlength="10" maxlength="10" required></ion-input>
         </ion-item>
@@ -76,9 +76,9 @@
           <span>Número de teléfono no válido</span>
         </div>
 
-        <ion-item>
-          <ion-icon color="black" name="storefront-outline"></ion-icon>
-          <ion-label style="margin-left: 6.5px;">Ciudadela: </ion-label>
+        <ion-item class="item-background-color">
+          <ion-icon class = 'iconGeneral' name="storefront-outline"></ion-icon>
+          <ion-label style="margin-left: 6.5px;text-align: left;">Ciudadela: </ion-label>
           <ion-select required name='ciudadela' ngModel>
 
             <ion-select-option value="Paraíso del Río 1">Paraíso del Río 1</ion-select-option>
@@ -98,14 +98,14 @@
 
         </ion-item>
 
-        <ion-item>
-          <ion-icon color="black" name="trail-sign-outline"></ion-icon>
+        <ion-item class="item-background-color">
+          <ion-label><ion-icon name="trail-sign-outline"></ion-icon></ion-label>
           <ion-input style="margin-left: 6.5px;" placeholder="Manzana" name="manzana" type='text' ngModel required>
           </ion-input>
         </ion-item>
 
-        <ion-item>
-          <ion-icon color="black" name="bookmark-outline"></ion-icon>
+        <ion-item class="item-background-color">
+          <ion-label><ion-icon color="black" name="bookmark-outline"></ion-icon></ion-label>
           <ion-input style="margin-left: 6.5px;" placeholder="Villa" name="villa" type='text' ngModel required>
           </ion-input>
         </ion-item>

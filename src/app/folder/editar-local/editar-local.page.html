@@ -4,7 +4,7 @@
 
 
   <form #form="ngForm" (ngSubmit)="UpdateLocal(form)">
-    <ion-list>   
+    <ion-list class="item-background-color">   
         
   
 
@@ -18,19 +18,19 @@
       
       
 
-      <ion-item>
+      <ion-item class="item-background-color">
         <ion-icon name="storefront-outline" color="success" size='large' style = 'margin-right: 7.5px;'></ion-icon>
         <ion-input value="{{local.Nombre}}" name="nombre" type='text' ngModel></ion-input>
       </ion-item>
 
       
 
-      <ion-item>
+      <ion-item class="item-background-color">
         <ion-icon name="logo-whatsapp" size='large' color='success' style='margin-right: 7.5px;'></ion-icon>
         <ion-input value="{{local.Telefono}}" name="telefono" type='text' ngModel></ion-input>
       </ion-item>
 
-      <ion-item>
+      <ion-item class="item-background-color">
         <ion-icon name="logo-facebook" size='large' color='primary' style='margin-right: 7.5px;'></ion-icon>
         <ion-input value="{{local.RedSocial}}" name="redSocial" type='text' ngModel></ion-input>
       </ion-item>
@@ -40,7 +40,7 @@
         <ion-input value="{{local.Referencia}}" name="referencia" type='text' ngModel></ion-input>
       </ion-item>
 
-      <ion-item>
+      <ion-item class="item-background-color">
         <ion-icon color="success" size='large' name="bicycle-outline"></ion-icon>
         <ion-label style = "margin-left: 6.5px;">Entregas a domicilio:</ion-label>
         <ion-select name='domicilio' ngModel>
@@ -53,7 +53,7 @@
       </ion-item>
 
 
-        <ion-item>
+        <ion-item class="item-background-color">
           <ion-icon color="success" size='large' name="information-circle-outline"></ion-icon>
           <ion-label style = "margin-left: 6.5px;">Descripción:</ion-label>
         </ion-item>
@@ -64,7 +64,7 @@
         </ng-container>
         
 
-      <ion-item>
+      <ion-item class="item-background-color">
         <ion-icon name="calendar-outline" size='large' color='success'></ion-icon>
         <ion-label style = "margin-left: 6.5px;">Horario de atención:</ion-label>
         
@@ -79,7 +79,7 @@
         <ion-input style= 'text-align: center;' value="{{local.Descripcion}}" name="descripcion" required type='text' ngModel></ion-input>
       </ng-container> -->
 
-      <ion-item style='margin-top: 7.5px;'>
+      <ion-item class="item-background-color" style='margin-top: 7.5px;'>
 
         <ion-img id="blah" [src]="image" alt="your image" style="margin-top:5px;margin-bottom: 5px;height: 350px;width: 350px;margin:auto;"></ion-img>
         
@@ -88,7 +88,7 @@
 
 
       
-      <ion-item >
+      <ion-item class="item-background-color">
 
         
           <ion-icon name="cloud-upload-outline"></ion-icon>  <ion-text style='margin-left:7.5px'>Cambiar foto</ion-text>

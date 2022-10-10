@@ -1,3 +1,12 @@
 ion-content{
-    --ion-background-color:#ffffff;
+    --ion-background-color: white;
 }
+
+ion-list{
+    background-color: white !important;
+    --ion-background-color: white;
+}
+
+// ion-label{
+//     background-color: green !important;
+// }

@@ -50,9 +50,9 @@
 
   <div *ngIf = 'idUser===null'> 
 
-    <div style='margin:auto;margin-top: 10px;' align='center' *ngIf = 'idPropietario != idUser && !calificarBool'>
-      <ion-card-content id='starts' style = 'align-items: center; text-align: center; background-color: white;'>
-        <ion-item lines='none' style = 'align-items: center; text-align: center;'>
+    <div style='margin-left:auto;margin-top: 10px;' align='center' *ngIf = 'idPropietario != idUser && !calificarBool'>
+      <ion-card-content id='starts' style = 'align-items: center; text-align: center !important; background-color: white;'>
+        <ion-item class = 'item-background-color' lines='none' style = 'align-items: center; text-align: center !important;margin-left: auto;'>
           <div slot='start' *ngFor='let indice of [].constructor(local.Calificacion); let i = index'
             style='width: 0.025%;margin-left: 0.00125px;'>
             <ion-icon name="star" color='warning'></ion-icon>
@@ -90,7 +90,7 @@
   <ion-img class="circle-pic" style="width: 275px;height: 275px;margin:auto;margin-top: 15px;" src="{{local.Foto}}" ></ion-img>
 
   <ion-card style = 'padding: 7.5px;'>
-    <ion-item lines = 'none'>
+    <ion-item lines = 'none' class = 'item-background-color'>
       <label style="margin: auto;display: block;font-size: 25px;font-weight: bold;color:black; align-items: center;text-align: center;margin-top: 7.5px; margin-bottom: 7.5px;">{{local.Nombre}}</label>
     </ion-item>
     <div style='margin-top: 5px;padding: 7.5px !important;'>
@@ -98,7 +98,7 @@
       <ion-label style="font-size: 17.5px;text-align: center;margin-top: 5px;margin-right: 5px; margin-bottom: 7.5px !important;">{{local.Descripcion}}</ion-label>
     </div>
 
-    <ion-item *ngIf="idPropietario == idUser">
+    <ion-item *ngIf="idPropietario == idUser" lines= 'none'  class="item-background-color">
       <ion-icon slot='end' name="create-outline" size ='large' color='success' [routerLink]="['/editar-local',idLocal,idPropietario]"></ion-icon>
 
     </ion-item>
@@ -109,39 +109,39 @@
   </ion-card>
 
 
-    <ion-card style = 'padding: 3.5px;'>
+    <ion-card style = 'padding: 3.5px;' class = 'item-background-color'>
       
       
 
       <a href= 'https://api.whatsapp.com/send?phone={{local.Telefono}}' style = 'text-decoration: none;'>
-      <ion-item>
+      <ion-item class = 'item-background-color'>
         <ion-icon name="logo-whatsapp" size="large" color="success" style="margin-right: 8px;"></ion-icon>
         <ion-label>{{local.Telefono}}</ion-label>
       </ion-item>
     </a>
 
-      <ion-item>
+      <ion-item class = 'item-background-color'>
         <ion-icon name="bicycle-outline" size="large" color="success" style="margin-right: 8px;"></ion-icon>
         <ion-label>{{local.Domicilio}}</ion-label>
       </ion-item> 
 
-      <ion-item *ngIf='local.RedSocial != ""'>
+      <ion-item *ngIf='local.RedSocial != ""' class = 'item-background-color'>
         <a href= '{{local.RedSocial}}'><ion-icon name="logo-facebook" size="large" color="primary" style="margin-right: 8px;"></ion-icon></a>
         <ion-label>{{local.RedSocial}}</ion-label>
       </ion-item>
 
-      <ion-item>
+      <ion-item class = 'item-background-color'>
         <ion-icon name="location-outline" size="large" color="success" style="margin-right: 8px;"></ion-icon>
         <ion-label>{{local.Ciudadela}} - Mz: {{local.Manzana}}   Villa: {{local.Villa}}</ion-label>
       </ion-item>
       
-      <ion-item *ngIf='local.Referencia != ""'>
+      <ion-item *ngIf='local.Referencia != ""' class = 'item-background-color'>
         <ion-icon name="search-outline" size="large" color="success" style="margin-right: 8px;"></ion-icon>
         <ion-label>{{local.Referencia}}</ion-label>
       </ion-item>
 
-      <ng-container>
-        <ion-item>
+      <ng-container class = 'item-background-color'>
+        <ion-item class = 'item-background-color'>
           <ion-icon name="calendar-number-outline" size="large" color="success" style="margin-right: 8px;"></ion-icon>
           <ion-label>Horario de atención</ion-label>
 

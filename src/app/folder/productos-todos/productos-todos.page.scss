@@ -27,3 +27,46 @@ ion-card{
       padding-top: 10px;
       font-size: 16px;
   }
+
+  .animate-skeleton-background {
+    height:20px;
+    -webkit-animation: infinite bgcolorchange 2s;
+    animation: 2s infinite bgcolorchange;
+    opacity: 0.8;
+   }
+
+   @keyframes bgcolorchange {
+    0% {
+    color: #f2f2f2;
+    }
+    25% {
+    background: lightgray;
+    }
+    50% {
+    background: #f2f2f2;
+    }
+    75% {
+    background: lightgray;
+    }
+    100% {
+    background-color: #f2f2f2;
+    }
+    }
+    
+    @-webkit-keyframes bgcolorchange {
+    0% {
+    background: #f2f2f2;
+    }
+    25% {
+    background: lightgray;
+    }
+    50% {
+    background: #f2f2f2;
+    }
+    75% {
+    background: lightgray;
+    }
+    100% {
+    background: #f2f2f2;
+    }
+    }

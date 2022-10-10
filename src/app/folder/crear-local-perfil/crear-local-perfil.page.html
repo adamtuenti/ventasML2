@@ -1,15 +1,15 @@
 <app-header nombre="perfil"></app-header>
 
-<ion-content>
+<ion-content class="item-background-color">
 
-  <form #form="ngForm" (ngSubmit)="crearLocal(form)">
+  <form #form="ngForm" (ngSubmit)="crearLocal(form)" class="item-background-color">
         <ion-list>  
           
-        <ion-card style="margin-top:15px">
-          <ion-item>
+        <ion-card class="item-background-color" style="margin-top:15px">
+          <ion-item class="item-background-color">
             <p class = 'titleForm'>Nombre del local <b class = 'obligatorio'>*</b></p>
           </ion-item>
-          <ion-item>
+          <ion-item class="item-background-color">
           
             <ion-input required placeholder="Ingrese el nombre del local" name="nombre" type='text' ngModel required></ion-input>
           </ion-item>
@@ -17,8 +17,8 @@
         </ion-card>
 
         <ion-card style="margin-top:15px">
-            <ion-item>
-              <ion-icon name="image-outline"></ion-icon> <ion-text color="" style="margin-left: 7.5px;" *ngIf='image==null'>Subir foto <b class = 'obligatorio'>*</b></ion-text> <ion-text color="" style="margin-left: 7.5px;" *ngIf='image!=null'>Cambiar foto</ion-text>
+            <ion-item class="item-background-color">
+              <ion-icon name="image-outline"></ion-icon> <ion-label color="" style="margin-left: 7.5px;" *ngIf='image==null'>Subir foto <b class = 'obligatorio'>*</b></ion-label> <ion-text color="" style="margin-left: 7.5px;" *ngIf='image!=null'>Cambiar foto</ion-text>
           
               <ion-input type='file' accept="image/*" id="myFileInput" name="foto1" (change)="readURL($event);" class="fileInput" ngModel required></ion-input>
     
@@ -27,7 +27,7 @@
         </ion-card>
         
         <ion-card style="margin-top:15px" *ngIf='file!=null'>
-          <ion-item>
+          <ion-item class="item-background-color">
 
             <ng-container>
               <ion-img id="blah" [src]="image" alt="your image" style="margin-top:5px;margin-bottom: 5px;height: 250px;width: 250px;margin:auto;"></ion-img>
@@ -40,19 +40,18 @@
 
         
         <ion-card style="margin-top:15px">
-          <ion-item>
+          <ion-item class="item-background-color">
             <p class = 'titleForm'>Descripción <b class = 'obligatorio'>*</b></p>
           </ion-item>
           <ion-item>
-            <ion-textarea required placeholder="Ingrese una descripción del local" name="descripcion" type='text' ngModel required></ion-textarea>
+            <ion-textarea class = 'textArea' required placeholder="Ingrese una descripción del local" name="descripcion" type='text' ngModel required></ion-textarea>
           </ion-item>
         </ion-card>
 
         <ion-card style="margin-top:15px">
-          <ion-item>
-            <ion-icon color="black" name="bookmarks-outline"></ion-icon>
-            <ion-label style = "margin-left: 6.5px;">Categoría <b class = 'obligatorio'>*</b></ion-label>
-            <ion-select required  name='categoria' ngModel>
+          <ion-item class="item-background-color">
+            <ion-label><ion-icon color="black" name="bookmarks-outline" style = 'margin-right: 7.5px;'></ion-icon>Categoría <b class = 'obligatorio'>*</b></ion-label>
+            <ion-select class="item-background-color" required  name='categoria' ngModel>
             
                     <ion-select-option *ngFor="let cat of categorias" [value]="cat.id">{{cat.Nombre}}</ion-select-option>
                     
@@ -62,9 +61,8 @@
         </ion-card>
 
         <ion-card style="margin-top:15px">
-          <ion-item>
-            <ion-icon color="black" name="storefront-outline"></ion-icon>
-            <ion-label style = "margin-left: 6.5px;">Ciudadela <b class = 'obligatorio'>*</b> </ion-label>
+          <ion-item class="item-background-color">
+            <ion-label><ion-icon color="black" name="storefront-outline" style = 'margin-right: 7.5px;'></ion-icon>Ciudadela <b class = 'obligatorio'>*</b> </ion-label>
             <ion-select required  name='ciudadela' ngModel>
              
                     <ion-select-option value="Paraíso del Río 1">Paraíso del Río 1</ion-select-option>
@@ -85,29 +83,29 @@
         </ion-card>
 
         <ion-card style="margin-top:15px">
-          <ion-item>
+          <ion-item class="item-background-color">
             <ion-label class = 'titleForm'>Manzana <b class="obligatorio">*</b></ion-label>
           </ion-item>
           <ion-item>
-            <ion-textarea required placeholder="Ingrese la manzana" name="manzana" type='text' ngModel required></ion-textarea>
+            <ion-input class = 'textArea' required placeholder="Ingrese la manzana" name="manzana" type='text' ngModel required></ion-input>
           </ion-item>
         </ion-card>
 
         <ion-card style="margin-top:15px">
-          <ion-item>
+          <ion-item class="item-background-color">
             <ion-label class = 'titleForm'>Villa <b class = 'obligatorio'>*</b></ion-label>
           </ion-item>
-          <ion-item>
-            <ion-textarea required placeholder="Ingrese la Villa" name="villa" type='text' ngModel required></ion-textarea>
+          <ion-item class="item-background-color">
+            <ion-input required placeholder="Ingrese la villa" name="villa" type='text' ngModel required></ion-input>
           </ion-item>
         </ion-card>
 
         <ion-card style="margin-top:15px">
-          <ion-item>
+          <ion-item class="item-background-color">
             <ion-label>Teléfono del local <b class = 'obligatorio'>*</b></ion-label>
           </ion-item>
-          <ion-item>
-            <ion-textarea required placeholder="Ingrese el número de teléfono" name="telefono" maxlength = '15' type='number' ngModel required></ion-textarea>
+          <ion-item class="item-background-color">
+            <ion-input required placeholder="Ingrese el número de teléfono" name="telefono" maxlength = '15' type='text' ngModel required></ion-input>
           </ion-item>
         </ion-card>
 
@@ -116,15 +114,14 @@
             
             <ion-label>Red social</ion-label>
           </ion-item>
-          <ion-item>
-            <ion-textarea placeholder="Ingrese el link de su página de Facebook" name="redSocial" type='text' ngModel></ion-textarea>
+          <ion-item class="item-background-color">
+            <ion-input placeholder="Ingrese el link de su página de Facebook" name="redSocial" type='text' ngModel></ion-input>
           </ion-item>
         </ion-card>
 
         <ion-card style="margin-top:15px">
-          <ion-item>
-            <ion-icon color="black" name="bicycle-outline"></ion-icon>
-            <ion-label style = "margin-left: 6.5px;">Entregas a domicilio: <b class = 'obligatorio'>*</b></ion-label>
+          <ion-item class="item-background-color">
+            <ion-label><ion-icon color="black" name="bicycle-outline" style = 'margin-right: 7.5px;'></ion-icon>¿Entregas a domicilio? <b class = 'obligatorio'>*</b></ion-label>
             <ion-select required  name='domicilio' ngModel>
              
                     <ion-select-option value="Si">Sí</ion-select-option>
@@ -136,20 +133,20 @@
         </ion-card>
 
         <ion-card style="margin-top:15px">
-          <ion-item>
+          <ion-item class="item-background-color">
             <ion-label>Horario de atención <b class = 'obligatorio'>*</b></ion-label>
           </ion-item>
-          <ion-item>
-            <ion-textarea required placeholder="Ingrese el Horario de atención" name="horarioAtencion" type='text' ngModel required></ion-textarea>
+          <ion-item class="item-background-color">
+            <ion-textarea class = 'textArea' required placeholder="Ingrese el horario de atención" name="horarioAtencion" type='text' ngModel required></ion-textarea>
           </ion-item>
         </ion-card>
 
         <ion-card style="margin-top:15px">
-          <ion-item>
+          <ion-item class="item-background-color">
             <ion-label>Referencia</ion-label>
           </ion-item>
-          <ion-item>
-            <ion-textarea placeholder="Referencia de la ubicación del local" name="referencia" type='text' ngModel></ion-textarea>
+          <ion-item class="item-background-color">
+            <ion-input placeholder="Referencia de la ubicación del local" name="referencia" type='text' ngModel></ion-input>
           </ion-item>
         </ion-card>
 
