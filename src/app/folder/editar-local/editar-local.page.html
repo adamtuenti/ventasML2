@@ -20,7 +20,7 @@
 
       <ion-item class="item-background-color">
         <ion-icon name="storefront-outline" color="success" size='large' style = 'margin-right: 7.5px;'></ion-icon>
-        <ion-input value="{{local.Nombre}}" name="nombre" type='text' ngModel></ion-input>
+        <ion-input value="{{local.Nombre}}" name="nombre" type='text' maxLength = "25" ngModel></ion-input>
       </ion-item>
 
       
@@ -42,7 +42,7 @@
 
       <ion-item class="item-background-color">
         <ion-icon color="success" size='large' name="bicycle-outline"></ion-icon>
-        <ion-label style = "margin-left: 6.5px;">Entregas a domicilio:</ion-label>
+        <ion-label style = "margin-left: 6.5px;">¿Entregas a domicilio?</ion-label>
         <ion-select name='domicilio' ngModel>
          
                 <ion-select-option value="Si">Sí</ion-select-option>
@@ -59,7 +59,7 @@
         </ion-item>
         
         <ng-container>
-          <ion-input style= 'text-align: center;' value="{{local.Descripcion}}" name="descripcion" type='text' ngModel></ion-input>
+          <ion-textarea class = 'textArea'  lines = '4' style= 'text-align: center;' value="{{local.Descripcion}}" name="descripcion" type='text' ngModel></ion-textarea>
 
         </ng-container>
         
@@ -79,22 +79,24 @@
         <ion-input style= 'text-align: center;' value="{{local.Descripcion}}" name="descripcion" required type='text' ngModel></ion-input>
       </ng-container> -->
 
-      <ion-item class="item-background-color" style='margin-top: 7.5px;'>
-
-        <ion-img id="blah" [src]="image" alt="your image" style="margin-top:5px;margin-bottom: 5px;height: 350px;width: 350px;margin:auto;"></ion-img>
-        
-         
-      </ion-item>
+      
 
 
       
       <ion-item class="item-background-color">
 
         
-          <ion-icon name="cloud-upload-outline"></ion-icon>  <ion-text style='margin-left:7.5px'>Cambiar foto</ion-text>
+          <ion-icon name="cloud-upload-outline" color='success'></ion-icon>  <ion-label style='margin-left:7.5px'>Cambiar foto</ion-label>
           <ion-input id="myFileInput" (change)="readURL($event);" accept="image/*" placeholder="archivo" name="archivo" type='file' ngModel value="{{file}}"></ion-input>
         
      
+      </ion-item>
+
+      <ion-item class="item-background-color" style='margin-top: 7.5px;'>
+
+        <ion-img id="blah" [src]="image" alt="" style="margin-top:5px;margin-bottom: 5px;height: 350px;width: 350px;margin:auto;"></ion-img>
+        
+         
       </ion-item>
 
     

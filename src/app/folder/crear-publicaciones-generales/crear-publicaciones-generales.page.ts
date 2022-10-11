@@ -154,7 +154,7 @@ export class CrearPublicacionesGeneralesPage implements OnInit {
         this.loading.dismiss();
 
 
-        this.router.navigate(["/publicaciones"])
+        this.router.navigate(["/mis-publicaciones"])
       }       
     ).catch(async error => {
       this.loading.dismiss();

@@ -1,9 +1,9 @@
 <app-header nombre="perfil"></app-header>
 
-<ion-content >
+<ion-content style = 'padding-bottom: 15px;'>
 
 
-  <div *ngIf = 'id!=null'>
+  <div *ngIf = 'id!=null' style = 'margin-bottom: 15px;'>
 
     
       <ion-img class="circle-pic" style="width: 275px;height: 275px;" src="https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fperfil.png?alt=media&token=ee5b8e7d-43b5-43c1-9be9-98186a2ab2ce" ></ion-img>
@@ -11,37 +11,49 @@
       <ion-card class = 'item-background-color'>
         <ion-item>
           <ion-icon name="person-outline" size="large" style="margin-right: 8px;"></ion-icon>
+          <h1 *ngIf = '!loaded' style="width: 195px; height: 15.5px;">
           <ion-skeleton-text *ngIf = '!loaded' [animated]="true" style="width: 195px; height: 15.5px;"></ion-skeleton-text>
+        </h1>
           <ion-label style="font-size: 17px;">{{user.Nombre}} {{user.Apellido}}</ion-label>
         </ion-item>
       
         <ion-item class = 'item-background-color'>
           <ion-icon name="mail-outline" size="large" style="margin-right: 8px;"></ion-icon>
-          <ion-skeleton-text [animated]="true" *ngIf = '!loaded' style="width: 115px; height: 15.5px;"></ion-skeleton-text>
+          <h1 *ngIf = '!loaded' style="width: 215px; height: 15.5px;">
+            <ion-skeleton-text *ngIf = '!loaded' [animated]="true" style="width: 195px; height: 15.5px;"></ion-skeleton-text>
+          </h1>
           <ion-label style="font-size: 17px;">{{user.Correo}}</ion-label>
         </ion-item>
 
         <ion-item>
           <ion-icon name="call-outline" size="large" style="margin-right: 8px;"></ion-icon>
-          <ion-skeleton-text *ngIf = '!loaded' [animated]="true" style="width: 115px; height: 15.5px;"></ion-skeleton-text>
+          <h1 *ngIf = '!loaded' style="width: 175.5px; height: 15.5px;">
+            <ion-skeleton-text *ngIf = '!loaded' [animated]="true"></ion-skeleton-text>
+          </h1>
           <ion-label style="font-size: 17px;">{{user.Telefono}}</ion-label>
         </ion-item>
 
         <ion-item>
           <ion-icon name="megaphone-outline" size="large" style="margin-right: 8px;"></ion-icon>
-          <ion-skeleton-text *ngIf = '!loaded' [animated]="true" style="width: 35px; height: 15.5px;"></ion-skeleton-text>
+          <h1 *ngIf = '!loaded' style="width: 35px; height: 15.5px;">
+            <ion-skeleton-text *ngIf = '!loaded' [animated]="true" style="width: 35px; height: 15.5px;"></ion-skeleton-text>
+          </h1>
           <ion-label style="font-size: 17px;">{{user.Publicaciones}}</ion-label>
         </ion-item>
 
         <ion-item>
           <ion-icon name="cart-outline" size="large" style="margin-right: 8px;"></ion-icon>
-          <ion-skeleton-text *ngIf = '!loaded' [animated]="true" style="width: 35px; height: 15.5px;"></ion-skeleton-text>
+          <h1 *ngIf = '!loaded' style="width: 35px; height: 15.5px;">
+            <ion-skeleton-text *ngIf = '!loaded' [animated]="true" style="width: 35px; height: 15.5px;"></ion-skeleton-text>
+          </h1>
           <ion-label style="font-size: 17px;">{{user.Productos}}</ion-label>
         </ion-item>
 
         <ion-item>
           <ion-icon name="home-outline" size="large" style="margin-right: 8px;"></ion-icon>
-          <ion-skeleton-text *ngIf = '!loaded' [animated]="true" style="width: 35px; height: 15.5px;"></ion-skeleton-text>
+          <h1 *ngIf = '!loaded' style="width: 35px; height: 15.5px;">
+            <ion-skeleton-text *ngIf = '!loaded' [animated]="true" style="width: 35px; height: 15.5px;"></ion-skeleton-text>
+          </h1>
           <ion-label style="font-size: 17px;">{{user.Locales}}</ion-label>
         </ion-item>
 
@@ -52,7 +64,7 @@
         </ion-item> -->
 
 
-        <ion-item class = 'item-background-color'>
+        <ion-item *ngIf = 'loaded' class = 'item-background-color'>
           <ion-icon routerLink="/perfil-update" name="create-outline" size="large" style="margin-right: 8px;" layout="icon-end" slot="end"></ion-icon>
 
         </ion-item>
@@ -60,7 +72,7 @@
       </ion-card>
 
 
-      <ion-item class = 'item-background-color' *ngIf = '!user.Vendedor && !user.Verificacion' style="margin-top: 25px;margin-bottom: 10px;" lines = 'none'>
+      <ion-item class = 'item-background-color' *ngIf = '!user.Vendedor && !user.Verificacion && loaded' style="margin-top: 25px;margin-bottom: 10px;" lines = 'none'>
         <ion-button style="width: 225px;height: 45px;margin-top:12.5px;margin:auto;" color="success" (click)="serVendedor()">
           <ion-icon name="hand-left-outline" size="large" style="margin-right: 8px;"></ion-icon>
           <ion-label style="font-size: 17px;">Ser vendedor</ion-label>
@@ -78,12 +90,12 @@
         </ion-button>
       </ion-item>
 
-      <ion-item class = 'item-background-color' *ngIf = '!user.Premium' style="margin-top: 15px;margin-bottom: 10px;" lines = 'none'>
+      <!-- <ion-item class = 'item-background-color' *ngIf = '!user.Premium' style="margin-top: 15px;margin-bottom: 10px;" lines = 'none'>
         <ion-button style="width: 225px;height: 45px;margin-top:12.5px;margin:auto;" color="success" (click)="serPremium()">
           <ion-icon name="diamond-outline" size="large" style="margin-right: 8px;"></ion-icon>
           <ion-label style="font-size: 17px;">Ser premium</ion-label>
         </ion-button>
-      </ion-item>
+      </ion-item> -->
 
 
       <ion-item class = 'item-background-color' *ngIf = 'user.Vendedor' style="margin-top: 22px;margin-bottom: 10px;" lines = 'none'>
@@ -121,18 +133,30 @@
 
       <ion-item *ngIf = 'user.Vendedor' style="margin-top: 15px;margin-bottom: 15px;" lines = 'none' class="item-background-color">
         <ion-button style="width: 225px;height: 45px;margin-top:12.5px;margin:auto;" color="success" [routerLink]="['/mis-productos']">
-          <ion-icon name="bag-check-outline" size="large" style="margin-right: 8px;"></ion-icon>
+          <ion-icon name="cart-outline" size="large" style="margin-right: 8px;"></ion-icon>
           <ion-label style="font-size: 17px;">Mis productos</ion-label>
         </ion-button>
 
       </ion-item>
 
-      <ion-item style="margin-top: 10px;margin-bottom: 25px;" lines = 'none' class="item-background-color">
+      <ion-item *ngIf = 'loaded && id != null' sstyle="margin-top: 10px;margin-bottom: 25px;" lines = 'none' class="item-background-color">
         <ion-button style="width: 225px;height: 45px;margin-top:12.5px;margin:auto;" color="danger" (click)="logOutUser()">
           <ion-icon name="log-out-outline" size="large" style="margin-right: 8px;"></ion-icon>
           <ion-label style="font-size: 17px;">Cerrar Sesión</ion-label>
         </ion-button>
 
+      </ion-item>
+
+      <ion-item *ngIf = '!loaded' sstyle="margin-top: 10px;margin-bottom: 25px; margin-left: auto" lines = 'none' class="item-background-color">
+        <h1 style="width: 225px; height: 45px; text-align: center; margin: auto;">
+          <ion-skeleton-text *ngIf = '!loaded' [animated]="true"></ion-skeleton-text>
+        </h1>
+      </ion-item>
+
+      <ion-item *ngIf = '!loaded' sstyle="margin-top: 25px;margin-bottom: 25px;" lines = 'none' class="item-background-color">
+        <h1 style="width: 225px; height: 45px; text-align: center; margin: auto;">
+          <ion-skeleton-text *ngIf = '!loaded' [animated]="true"></ion-skeleton-text>
+        </h1>
       </ion-item>
 
       

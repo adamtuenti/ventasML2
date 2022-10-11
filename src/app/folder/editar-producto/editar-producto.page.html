@@ -21,24 +21,21 @@
 
       <ion-item class="item-background-color">
         <ion-icon name="bag-check-outline" color="success" size='large' style='margin-right: 7.5px;'></ion-icon>
-        <ion-input value="{{producto.Titulo}}" name="titulo" type='text' ngModel></ion-input>
+        <ion-input value="{{producto.Titulo}}" name="titulo" type='text' ngModel maxLength = '18'></ion-input>
       </ion-item>
 
 
 
       <ion-item class="item-background-color">
         <ion-icon name="cash-outline" color="success" size='large' style='margin-right: 7.5px;'></ion-icon>
-        <ion-textarea (ionInput)="countChange($event)" value="{{producto.Precio}}" name="precio" type='text' ngModel>
+        <ion-textarea (ionInput)="countChange($event)" value="{{producto.Precio}}" class = 'textArea' name="precio" type='text' ngModel>
         </ion-textarea>
       </ion-item>
 
       <ion-item class="item-background-color">
-        <div align = 'center'>
           <ion-icon name="reader-outline" color="success" size='large' style='margin-right: 7.5px;'></ion-icon>
-        </div>
-        <div>
-        <ion-textarea value="{{producto.Descripcion}}" name="precio" type='text' ngModel></ion-textarea>
-      </div>
+
+        <ion-textarea value="{{producto.Descripcion}}" style = 'width: 100%;' class = 'textArea' name="descripcion" type='text' ngModel></ion-textarea>
       </ion-item>
 
       <!--  <ng-container>
@@ -46,14 +43,7 @@
         <ion-input style= 'text-align: center;' value="{{producto.Descripcion}}" name="descripcion" type='text' ngModel></ion-input>
       </ng-container> -->
 
-      <ion-item style='margin-top: 7.5px;' class="item-background-color">
-
-        <ion-img id="blah" [src]="image" alt=""
-          style="margin-top:5px;margin-bottom: 5px;height: 350px;width: 350px;"></ion-img>
-
-
-      </ion-item>
-
+      
 
 
       <ion-item class="item-background-color">
@@ -88,6 +78,15 @@
 
 
       </ion-item>
+
+      <ion-item style='margin-top: 7.5px;' class="item-background-color">
+
+        <ion-img id="blah" [src]="image" alt=""
+          style="margin-top:5px;margin-bottom: 5px;height: 350px;width: 350px;"></ion-img>
+
+
+      </ion-item>
+
 
 
 

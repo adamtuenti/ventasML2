@@ -30,7 +30,7 @@ export class PerfilPage implements OnInit {
   ngOnInit() {
     this.id = localStorage.getItem('userId');
     if (localStorage.getItem('userId') != null) {
-      this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => { this.user = res; this.verPremium(); this.loaded = true });
+      this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => { this.user = res; console.log('res: ', res);this.verPremium(); this.loaded = true });
     }
 
 

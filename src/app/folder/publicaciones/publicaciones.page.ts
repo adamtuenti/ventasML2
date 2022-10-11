@@ -74,6 +74,7 @@ export class PublicacionesPage implements OnInit {
   }
 
   async alert(id) {
+
     const alert = await this.alertCtrt.create({
       cssClass: 'my-custom-class',
       header: "¿Desea eliminar esta publicación?",
@@ -96,6 +97,8 @@ export class PublicacionesPage implements OnInit {
     await alert.present();
   }
   remove(id){
+    this.user.Publicaciones = this.user.Publicaciones - 1;
+    this.usuarioService.updateUsuario(this.idUser,this.user)
      this.publicacionesService.removePublicacion(id)
   }
 

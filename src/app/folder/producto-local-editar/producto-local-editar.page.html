@@ -19,7 +19,7 @@
   </ion-segment>
 
   <form #form="ngForm" (ngSubmit)="UpdateProducto(form)">
-    <ion-list>   
+    <ion-list class = 'item-background-color'>   
         
   
 
@@ -32,7 +32,7 @@
 
       
       
-      <ion-item>
+      <ion-item class = 'item-background-color'>
 
                   <ion-img id="blah" [src]="image" alt="your image" style="margin-top:7.5px;margin-bottom: 7.5px;height: 350px;width: 350px;"></ion-img>
          
@@ -40,21 +40,21 @@
 
 
 
-      <ion-item>
+      <ion-item class = 'item-background-color'>
         <ion-label><ion-icon name="cloud-upload-outline"></ion-icon>  <ion-text style='margin-left:7.5px'>Cambiar foto</ion-text></ion-label>
         <ion-input id="myFileInput" (change)="readURL($event);" accept="image/*" placeholder="archivo" name="archivo" type='file' ngModel value="{{file}}"></ion-input>
       
      
       </ion-item>
 
-      <ion-item>
+      <ion-item class = 'item-background-color'>
         <ion-icon name="cash-outline" color="success" size='large' style = 'margin-right: 7.5px;'></ion-icon>
         <ion-input value="{{producto.Precio}}" name="precio" required type='text' ngModel></ion-input>
       </ion-item>
 
-      <ion-item>
+      <ion-item class = 'item-background-color'>
         <ion-icon name="information-circle-outline" color="success" size='large' style = 'margin-right: 7.5px;'></ion-icon>
-        <ion-input value="{{producto.Titulo}}" name="titulo" required type='text' ngModel></ion-input>
+        <ion-input value="{{producto.Titulo}}" maxLength = '35' name="titulo" required type='text' ngModel></ion-input>
       </ion-item>
 
 

@@ -13,7 +13,7 @@
         <ion-col sizeLg="4" sizeMd="4" sizeXs="6" *ngFor="let producto of productos | filtroProductos: textoBuscar">
   
           <ion-card (click)='aumentarVisita(producto.id,producto)'>
-            <ion-card-header id="headerCard">0
+            <ion-card-header id="headerCard">
   
               <ion-img *ngIf='producto.Visibilidad' src="{{producto.Foto1}}" style="height: 100%; padding: 0;"></ion-img>
             </ion-card-header>
@@ -65,10 +65,10 @@
       <ion-text color="medium">
 
         <img
-          src="https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Ffile_search.png?alt=media&token=79e21b5c-d8e4-4124-abd8-be52f0bce666"
-          style="width: 250px; height:250px;margin:auto;" alet="foto">
+        src="../../../assets/vacio/locales_vacio.png"
+        style="width: 175px; height: 175px;margin:auto;" alet="foto">
 
-        <p style="font-size: 21px;margin:auto;margin-top:7.5px">No hay productos registrados.</p>
+        <p style="font-size: 21px;margin:auto;margin-top: 15.5px">No hay productos registrados.</p>
       </ion-text>
     </div>
   </ng-container>

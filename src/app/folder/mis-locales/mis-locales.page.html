@@ -6,7 +6,7 @@
   <ng-container *ngIf="locales.length > 0">
 
     <ion-grid>
-      <ion-row style="height: 785.5px;width: 100%;">
+      <ion-row style="height: 675.5px;width: 100%;">
         <ion-col sizeLg="2" sizeMd="4" sizeXs="6" *ngFor="let local of locales | filtroLocalProductos: textoBuscar">
   
           <ion-card style = 'margin-bottom: 7.5px !important;'>
@@ -25,7 +25,7 @@
   
   
             <ion-card-content style = 'padding-top: 5px; width: 100%;'>
-              <ion-label style='font-size: 15.5px; align-items: center;color: black; margin-top: 11.5px; font-weight: bold;'>{{local.Nombre.length > 27 ? local.Nombre.slice(0,27) + '..' : local.Nombre }} </ion-label>
+              <ion-label style='font-size: 15.5px; align-items: center;color: black; margin-top: 11.5px; font-weight: bold;'>{{local.Nombre.length > 15 ? local.Nombre.slice(0,15) + '..' : local.Nombre }} </ion-label>
   
               <!-- <h2>CALIFICACIÓN: {{local.Calificacion}}</h2> -->
             </ion-card-content>
@@ -93,10 +93,10 @@
       <ion-text color="medium">
 
         <img
-        src="https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Ffile_search.png?alt=media&token=79e21b5c-d8e4-4124-abd8-be52f0bce666"
-        style="width: 250px; height:250px;margin:auto;" alet="foto">
+        src="../../../assets/vacio/locales_vacio.png"
+        style="width: 225px; height:225px;margin:auto;" alet="foto">
 
-        <p style="font-size: 21px;margin:auto;margin-top:7.5px">No hay locales registrados.</p>
+        <p style="font-size: 21px;margin:auto;margin-top:15.5px">No hay locales registrados.</p>
       </ion-text>
     </div>
   </ng-container>

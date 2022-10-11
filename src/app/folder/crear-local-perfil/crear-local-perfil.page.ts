@@ -155,11 +155,12 @@ export class CrearLocalPerfilPage implements OnInit {
     await docRef.set(this.local)
 
     this.loading.dismiss();
-        this.failedAlert("Listo! Local creado");
+    this.router.navigate(["/comunicacion-local",docRef.id,localStorage.getItem('userId')])
+        //this.failedAlert("Listo! Local creado");
 
 
 
-        this.router.navigate(["/mis-locales"])
+        //this.router.navigate(["/mis-locales"])
 
     /* this.localesService.addLocal(this.local).then(
       auth=>{

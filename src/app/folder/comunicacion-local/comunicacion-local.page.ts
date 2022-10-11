@@ -12,6 +12,8 @@ export class ComunicacionLocalPage implements OnInit {
   idLocal;
   idPropietario;
 
+  foot = '../../../assets/carrousel/ML2-gratis.png'
+
   constructor(private router: Router,
               private activateRoute: ActivatedRoute) { }
 

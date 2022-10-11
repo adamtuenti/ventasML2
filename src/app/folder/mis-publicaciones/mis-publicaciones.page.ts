@@ -17,7 +17,7 @@ export class MisPublicacionesPage implements OnInit {
   idUser = localStorage.getItem('userId');
   public user: Usuarios=new Usuarios();
 
-  publicaciones : PublicacionesGenerales[] = [];
+  publicaciones;
   condicion: boolean;
 
   constructor(private angularFireStorage: AngularFireStorage,
@@ -57,7 +57,8 @@ export class MisPublicacionesPage implements OnInit {
           }, {
             text: 'Elminar',
             handler: (data) => {
-              this.remove(id)                  
+              this.remove(id)     
+              this.router.navigate(['/mis-publicaciones']);               
             }
           }
         ]
@@ -66,8 +67,8 @@ export class MisPublicacionesPage implements OnInit {
   }
   remove(id){
     this.publicacionesService.removePublicacion(id)
-    // this.user.Publicaciones = this.user.Publicaciones - 1;
-    // this.usuarioService.updateUsuario(this.idUser,this.user)
+    this.user.Publicaciones = this.user.Publicaciones - 1;
+    this.usuarioService.updateUsuario(this.idUser,this.user)
   }
 
 }

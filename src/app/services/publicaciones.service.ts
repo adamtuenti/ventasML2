@@ -47,6 +47,10 @@ export class PublicacionesService {
     getPublicaciones(){
       return this.publicaciones;
     }
+
+    getPublicacionesById(id:string){
+      return this.firestore.collection('PublicacionesGenerales', ref => ref.where("Usuario", "==", id));
+    }
     
     getPublicacion(id:string){
       return this.publicacionesCollection.doc<Publicaciones>(id).valueChanges();

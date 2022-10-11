@@ -4,6 +4,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ServiciosService } from 'src/app/services/servicios.service';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { AngularFireStorage } from 'angularfire2/storage';
+import { NativeAudio } from '@awesome-cordova-plugins/native-audio/ngx';
+
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-crear-servicio',
@@ -12,7 +15,7 @@ import { AngularFireStorage } from 'angularfire2/storage';
 })
 export class CrearServicioPage implements OnInit {
 
-  public servicio: Servicios = new Servicios();
+  public servicio = {'Descripcion': '', 'Foto': '', 'Titulo': '', 'Usuario': '', 'Visibilidad': true, 'Visitas': 0, 'id': ''}
   loading: HTMLIonLoadingElement;
   image: string | ArrayBuffer;
 
@@ -20,12 +23,28 @@ export class CrearServicioPage implements OnInit {
 
   constructor(private angularFireStorage: AngularFireStorage,
               private router: Router,
+              private nativeAudio: NativeAudio,
               private alertCtrt: AlertController,
               private servicioService: ServiciosService,
               private activateRoute: ActivatedRoute,
               public loadingController: LoadingController) { }
 
   ngOnInit() {
+  }
+
+  IonViewWillLeave(){
+    this.nativeAudio.unload('audioWo')
+  }
+
+  ionViewWillEnter(){
+    this.nativeAudio.preloadSimple('audioWo','assets/audio/mario-bros-here-we-go-hoo.mp3')
+  }
+
+
+
+  play(){
+    this.nativeAudio.play('audioWo', () => console.log('uniqueId1 is done playing'))
+    console.log('reproduco')
   }
 
   crearServicio(form){
@@ -104,20 +123,28 @@ export class CrearServicioPage implements OnInit {
 
   }
 
-  guardarCompleto(downloadURL: string){
+  async guardarCompleto(downloadURL: string){
     this.servicio.Foto = downloadURL;
-    this.servicioService.addServicio(this.servicio).then(
-      auth=>{
+
+    const docRef = firebase.firestore().collection("Servicios").doc();
+    this.servicio.id = docRef.id
+
+    await docRef.set(this.servicio)
+    this.play()
+
+
+    // this.servicioService.addServicio(this.servicio).then(
+    //   auth=>{
         
         this.loading.dismiss();
 
 
         this.router.navigate(["/mis-servicios"])
-      }       
-    ).catch(async error => {
-      this.loading.dismiss();
-      this.failedAlert("Algo salió mal, inténtelo de nuevo");
-    })
+    //   }       
+    // ).catch(async error => {
+    //   this.loading.dismiss();
+    //   this.failedAlert("Algo salió mal, inténtelo de nuevo");
+    // })
   }
 
 }

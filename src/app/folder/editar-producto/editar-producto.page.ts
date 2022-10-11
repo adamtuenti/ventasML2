@@ -34,7 +34,7 @@ export class EditarProductoPage implements OnInit {
 
     this.activateRoute.paramMap.subscribe(paramMap => {
       this.idProducto = paramMap.get('idProducto');
-      this.productosService.getProducto(paramMap.get('idProducto')).subscribe(res=> {this.producto = res;this.image = res.Foto1;this.image1 = res.Foto2;});
+      this.productosService.getProducto(paramMap.get('idProducto')).subscribe(res=> {this.producto = res; this.image = res.Foto1;this.image1 = res.Foto2;});
     });
   }
 
@@ -101,6 +101,9 @@ export class EditarProductoPage implements OnInit {
     }else{
       descripcion = form.value.descripcion
     }
+
+
+    
 
 
     this.UpdateProductoCompleto(precio,titulo,descripcion,this.image,this.image1)

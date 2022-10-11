@@ -16,6 +16,10 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
+import { NativeAudio } from '@awesome-cordova-plugins/native-audio/ngx';
+
+
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -32,6 +36,10 @@ import { ServiceWorkerModule } from '@angular/service-worker';
   providers: [
     StatusBar,
     SplashScreen,
+
+    NativeAudio,
+
+
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

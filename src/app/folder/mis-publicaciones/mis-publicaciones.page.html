@@ -5,7 +5,50 @@
 
 
   <ng-container *ngIf="!condicion">
-    <ng-container *ngFor="let publicacion of publicaciones">
+
+    <ion-list *ngFor="let publicacion of publicaciones" class="item-background-color">
+      <ion-card *ngIf = 'publicacion.Usuario == idUser' style="background-color: #ACC8FC !important">
+  
+          <ion-card-header class="item-background-color" [routerLink]="['/publicacion-detalle',publicacion.id,publicacion.Usuario]">
+            <ion-item lines = 'none'>
+              <ion-card-title >
+                <label style='color:black;font-size: 17.2px;'>
+                  {{publicacion.Titulo}}
+                </label>
+              </ion-card-title>  
+            </ion-item> 
+  
+          </ion-card-header>
+  
+          <ion-card-content (click)='aumentarVisitaPublicacion(publicacion.id,publicacion.Usuario,publicacion)'>
+            <label style='color:black;font-size: 15px;'>{{publicacion.Descripcion}}</label>
+            
+          </ion-card-content>
+  
+          <ion-item lines = 'none'>
+
+            <ion-icon name="trash-outline" slot='start' color='danger' (click)="alert(publicacion.id)"></ion-icon>
+  
+            <ion-item slot='end' lines = 'none'>
+              <ion-button fill="outline" slot='end'>
+                <ion-icon name="eye-outline"></ion-icon><label
+                  style="font-size: 12;margin-left: 7.5px;">{{publicacion.Visitas}}</label>
+              </ion-button>
+  
+              {{publicacion.Fecha | date:'yyyy/MM/dd'}}
+            </ion-item>
+  
+          </ion-item>
+          
+          
+  
+        
+      </ion-card>
+  
+    </ion-list>
+
+
+    <!-- <ng-container *ngFor="let publicacion of publicaciones">
       <ion-card style="background-color: #ACC8FC" *ngIf="publicacion.Usuario == idUser">
 
         <ion-card-header [routerLink]="['/publicacion-detalle',publicacion.id,publicacion.Usuario]">
@@ -39,7 +82,7 @@
 
       </ion-card>
 
-    </ng-container>
+    </ng-container> -->
   </ng-container>
 
   <ng-container *ngIf="condicion">
@@ -48,10 +91,10 @@
       <ion-text color="medium">
 
         <img
-          src="https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Ffile_search.png?alt=media&token=79e21b5c-d8e4-4124-abd8-be52f0bce666"
-          style="width: 250px; height:250px;margin:auto;" alet="foto">
+        src="../../../assets/vacio/publicaciones.png"
+        style="width: 155px; height: 155px;margin:auto;" alet="foto">
 
-        <p style="font-size: 21px;margin:auto;margin-top:7.5px">No has hecho publicaciones.</p>
+        <p style="font-size: 21px;margin:auto;margin-top: 24.5px; width: 87.5%;">Todavía no has realizado publicaciones.</p>
       </ion-text>
     </div>
   </ng-container>

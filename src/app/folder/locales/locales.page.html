@@ -2,6 +2,20 @@
 
 <ion-content>
 
+  <ion-segment color="tertiary" value="todos">
+
+    <ion-segment-button value="todos" [routerLink]="['/locales-todos']">
+      <ion-icon name="gift-outline" size="large"></ion-icon>
+      <ion-label style="font-size: 11px;">Locales</ion-label>
+    </ion-segment-button>
+
+    <ion-segment-button value="categorias" [routerLink]="['/categorias-locales']">
+      <ion-icon name="list-outline" size="large"></ion-icon>
+      <ion-label style="font-size: 11px;">Categorias</ion-label>
+    </ion-segment-button>
+
+  </ion-segment>
+
 
 
   <ion-searchbar color="light" placeholder="Buscar local..." animated (ionChange)="buscar($event)">
@@ -106,10 +120,10 @@
       <ion-text color="medium">
 
         <img
-          src="https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Ffile_search.png?alt=media&token=79e21b5c-d8e4-4124-abd8-be52f0bce666"
-          style="width: 250px; height:250px;margin:auto;" alet="foto">
+        src="../../../assets/vacio/locales_vacio.png"
+        style="width: 175px; height: 175px;margin:auto;" alet="foto">
 
-        <p style="font-size: 21px;margin:auto;margin-top:7.5px">No hay locales en esta categoría.</p>
+        <p style="font-size: 21px;margin:auto;margin-top:24.5px; width: 85%;">Por ahora no hay locales en esta categoría.</p>
       </ion-text>
     </div>
   </ng-container>
