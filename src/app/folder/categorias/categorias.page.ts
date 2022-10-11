@@ -53,7 +53,6 @@ export class CategoriasPage implements OnInit {
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
-           // console.log('Confirm Cancel: blah');
           }
         }, {
           text: 'Ok',
@@ -118,7 +117,6 @@ export class CategoriasPage implements OnInit {
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
-           // console.log('Confirm Cancel: blah');
           }
         }
       ]

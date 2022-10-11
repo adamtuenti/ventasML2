@@ -26,7 +26,7 @@ export class ComunicacionLocalPage implements OnInit {
   }
 
   cambiar(){
-    this.router.navigate(["/detalle-local",this.idLocal,this.idPropietario])
+    this.router.navigate(["/mis-locales"])
   }
 
   subirProducto(){

@@ -108,7 +108,6 @@ export class CrearLocalPage implements OnInit {
     this.user.Locales = this.user.Locales + 1
     this.usuarioService.updateUsuario(this.id, this.user)
 
-    console.log('user: ', this.user)
 
     var storageRef = this.angularFireStorage.storage.ref()
 
@@ -165,6 +164,10 @@ export class CrearLocalPage implements OnInit {
     });
     await alert.present();
   }
+
+
+
+  
 
   
 

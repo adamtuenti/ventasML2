@@ -8,6 +8,8 @@ import { CategoriaCrearLocalPageRoutingModule } from './categoria-crear-local-ro
 
 import { CategoriaCrearLocalPage } from './categoria-crear-local.page';
 
+import { ComponentsModule } from 'src/app/folder/components/components.module';
+
 import { PipesModule } from 'src/app/pipes/pipes.module';
 
 @NgModule({
@@ -16,6 +18,7 @@ import { PipesModule } from 'src/app/pipes/pipes.module';
     PipesModule,
     FormsModule,
     IonicModule,
+    ComponentsModule,
     CategoriaCrearLocalPageRoutingModule
   ],
   declarations: [CategoriaCrearLocalPage]

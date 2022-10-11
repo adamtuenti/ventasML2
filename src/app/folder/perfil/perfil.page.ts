@@ -6,6 +6,10 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Usuarios } from 'src/app/models/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
+import { ModalController } from '@ionic/angular';
+
+
+
 import { LocalesService } from 'src/app/services/locales.service'
 
 @Component({
@@ -25,12 +29,13 @@ export class PerfilPage implements OnInit {
   constructor(private sugerenciaService: SugerenciaLocalesService,
     private usuarioService: UsuarioService,
     private alertCtrt: AlertController,
+    private modalCtrl: ModalController,
     private authService: AuthService) { }
 
   ngOnInit() {
     this.id = localStorage.getItem('userId');
     if (localStorage.getItem('userId') != null) {
-      this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => { this.user = res; console.log('res: ', res);this.verPremium(); this.loaded = true });
+      this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => { this.user = res; this.verPremium(); this.loaded = true });
     }
 
 
@@ -38,6 +43,7 @@ export class PerfilPage implements OnInit {
 
 
   }
+
 
   
 
@@ -72,7 +78,6 @@ export class PerfilPage implements OnInit {
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
-            // console.log('Confirm Cancel: blah');
           }
         }, {
           text: 'Ok',
@@ -105,7 +110,6 @@ export class PerfilPage implements OnInit {
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
-            // console.log('Confirm Cancel: blah');
           }
         }, {
           text: 'Sí',
@@ -133,7 +137,6 @@ export class PerfilPage implements OnInit {
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
-            // console.log('Confirm Cancel: blah');
           }
         }, {
           text: 'Sí',
@@ -162,7 +165,6 @@ export class PerfilPage implements OnInit {
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
-            // console.log('Confirm Cancel: blah');
           }
         }
       ]

@@ -49,7 +49,6 @@ export class MisServiciosPage implements OnInit {
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
-            //console.log('Confirm Cancel: blah');
           }
         }, {
           text: 'Elminar',
@@ -63,7 +62,6 @@ export class MisServiciosPage implements OnInit {
     await alert.present();
   }
   remove(id){
-    console.log('el id: ', id)
     this.servicioService.removeServicio(id);
   }
 

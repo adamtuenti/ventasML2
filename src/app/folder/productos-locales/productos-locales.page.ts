@@ -72,7 +72,6 @@ export class ProductosLocalesPage implements OnInit {
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
-            //console.log('Confirm Cancel: blah');
           }
         }, {
           text: 'Elminar',
@@ -117,7 +116,6 @@ export class ProductosLocalesPage implements OnInit {
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
-           // console.log('Confirm Cancel: blah');
           }
         }
       ]

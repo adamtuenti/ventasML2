@@ -162,10 +162,6 @@ let LocalesTodosPage = class LocalesTodosPage {
     }
     recortar() {
         this.locales = this.locales.slice(0, 25);
-        // for(let i = 0; i < this.productosLocales.length; i++){
-        //   console.log(this.productosLocales[i].Titulo)
-        // }
-        //this.editar() 
     }
     shuffle(array) {
         var currentIndex = array.length, temporaryValue, randomIndex;

@@ -85,9 +85,9 @@
 
         <ion-card (click)='aumentarVisita(local.id,local)' style = 'margin-bottom: 7.5px !important;'>
           <ion-card-content id='starts' style = 'align-items: left;'>
-            <ion-item lines='none' style = 'align-items: left; text-align: left;' class="item-background-color">
-              <div slot='start' *ngFor='let indice of [].constructor(local.Calificacion); let i = index'
-                style='width: 0.025%;margin-left: 0.00125px;'>
+            <ion-item lines='none' style = 'align-items: left; text-align: center;' class="item-background-color">
+              <div align = 'center' *ngFor='let indice of [].constructor(local.Calificacion); let i = index'
+                style='margin-left: 3.5px; padding-right: 0 !important;'>
                 <ion-icon name="star" color='warning' size = 'small'></ion-icon>
               </div>
 

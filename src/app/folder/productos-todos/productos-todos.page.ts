@@ -39,50 +39,7 @@ export class ProductosTodosPage implements OnInit {
     // this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => {this.user =res;});
   }
 
-  renzo(){
-    console.log('hola')
-    for(let i= 0; i< this.productos.length; i++){
-      if(this.productos[i].Categoria == ''){
-        console.log(this.productos[i].Titulo)
-      }
-      // this.productos[i].Time = Date.now()
-      // this.productos[i].Precio = this.productos[i].Precio.replace('$', '');
-      // this.productos[i].Precio = this.productos[i].Precio.replace('C/U', '');
-      // this.productos[i].Precio = this.productos[i].Precio.replace('c/u', '');
-      // this.productos[i].Precio = this.productos[i].Precio.replace('lb', '');
-      // this.productos[i].Precio = this.productos[i].Precio.replace(' ', '');
-      // this.productos[i].Precio = this.productos[i].Precio.replace(',', '.');
-      // console.log(this.productos[i].Time)
-      // this.productosService.updateProducto(this.productos[i].id, this.productos[i])
-    }
 
-  }
-
-  recortar(){
-    //if(this.textoBuscar == ''){
-      this.productosTemp = this.productos.slice(0,2)
-    // }else{
-    //   this.productosTemp = this.productos
-    // }
-    
-    
-
-    // for(let i = 0; i < this.productos.length; i ++){
-    //   //if(this.productos[i].Precio[0] == '$'){
-    //    //console.log(this.productos[i].Precio)
-    //     //console.log('Mal: ',this.productos[i].Precio.slice(1,))
-    //   //   this.productos[i].Precio = this.productos[i].Precio.slice(1,)
-    //   //  this.productosService.updateProducto(this.productos[i].id, this.productos[i])
-    //    this.productos[i].Precio = this.productos[i].Precio.replace(' ', "")
-    //    this.productos[i].Precio = this.productos[i].Precio.replace('encebollado', "")
-    //    //this.productos[i].Precio = this.productos[i].Precio.replace('lb', "")
-    //    this.productosService.updateProducto(this.productos[i].id, this.productos[i])
-    //    //console.log(this.productos[i].Precio)
-      
-    //   //}
-    // }
-
-  }
 
   buscar(event){
     const texto = event.target.value

@@ -198,7 +198,6 @@ let LocalesPage = class LocalesPage {
                         role: 'cancel',
                         cssClass: 'secondary',
                         handler: (blah) => {
-                            // console.log('Confirm Cancel: blah');
                         }
                     }
                 ]

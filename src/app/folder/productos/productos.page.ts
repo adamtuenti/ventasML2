@@ -154,7 +154,6 @@ export class ProductosPage implements OnInit {
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
-           // console.log('Confirm Cancel: blah');
           }
         }
       ]
@@ -177,7 +176,6 @@ export class ProductosPage implements OnInit {
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
-           // console.log('Confirm Cancel: blah');
           }
         }
       ]
@@ -200,7 +198,6 @@ export class ProductosPage implements OnInit {
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
-           // console.log('Confirm Cancel: blah');
           }
         }
       ]

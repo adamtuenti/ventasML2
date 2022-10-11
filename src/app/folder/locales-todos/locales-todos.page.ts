@@ -51,10 +51,6 @@ export class LocalesTodosPage implements OnInit {
 
   recortar(){
     this.locales = this.locales.slice(0,25)
-    // for(let i = 0; i < this.productosLocales.length; i++){
-    //   console.log(this.productosLocales[i].Titulo)
-    // }
-    //this.editar() 
   }
 
   shuffle(array) {
@@ -81,23 +77,7 @@ export class LocalesTodosPage implements OnInit {
     this.router.navigate(['/detalle-local',locales.id, locales.Usuario]); 
   }
 
-  // editar(){
-  //   for(let i = 0; i < this.locales.length; i ++){
-  //     //if(this.productos[i].Precio[0] == '$'){
-  //      //console.log(this.productos[i].Precio)
-  //       //console.log('Mal: ',this.productos[i].Precio.slice(1,))
-  //     //   this.productos[i].Precio = this.productos[i].Precio.slice(1,)
-  //     //  this.productosService.updateProducto(this.productos[i].id, this.productos[i])
-  //     this.locales[i].Nombre = this.titleCaseWord(this.locales[i].Nombre)
-  //     //console.log(this.locales[i].Nombre)
-     
-  //      //this.productos[i].Precio = this.productos[i].Precio.replace('lb', "")
-  //      this.localesService.updateLocal(this.locales[i].id, this.locales[i])
-  //      //console.log(this.productos[i].Precio)
-      
-  //     //}
-  //   }
-  // }
+
 
   titleCaseWord(word: string) {
     if (!word) return word;

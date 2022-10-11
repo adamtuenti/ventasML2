@@ -44,7 +44,6 @@ export class CrearServicioPage implements OnInit {
 
   play(){
     this.nativeAudio.play('audioWo', () => console.log('uniqueId1 is done playing'))
-    console.log('reproduco')
   }
 
   crearServicio(form){

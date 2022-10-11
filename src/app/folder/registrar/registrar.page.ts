@@ -110,9 +110,11 @@ export class RegistrarPage implements OnInit {
 
 
   async RegistrarUser(form): Promise<void> {
+
+    console.log('form: ', form.value)
     if (this.ValidateEmail(form.value.email) == false) {
       const alert = await this.alertCtrt.create({
-        message: 'Ingrese un correo valido.',
+        message: 'Ingrese un correo válido.',
         buttons: ['OK']
       });
 
@@ -143,7 +145,7 @@ export class RegistrarPage implements OnInit {
       this.RegistrarUserCompleto(form.value.nombre, form.value.apellido, form.value.email, form.value.password, form.value.ciudadela, form.value.manzana, form.value.villa, telefono, 'https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fperfil.png?alt=media&token=ee5b8e7d-43b5-43c1-9be9-98186a2ab2ce', '');
     } else {
       idReferido = form.value.idReferido
-      this.actualizarReferido()
+      //this.actualizarReferido()
 
 
       this.RegistrarUserCompleto(form.value.nombre, form.value.apellido, form.value.email, form.value.password, form.value.ciudadela, form.value.manzana, form.value.villa, telefono, 'https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fperfil.png?alt=media&token=ee5b8e7d-43b5-43c1-9be9-98186a2ab2ce', idReferido);
@@ -169,34 +171,10 @@ export class RegistrarPage implements OnInit {
       // this.loading.dismiss();
       var mensaje = error.code.split('/')[1];
       const presentarMensaje = this.mensajeErrorService.AuthErrorCodeSpanish(mensaje);
-      console.log(presentarMensaje)
     })
 
   }
 
-  guardarArchivo(nombre: string, apellido: string, email: string, password: string, ciudadela: string, manzana: string, villa: string, telefono: string, id: string) {
-
-    var storageRef = this.angularFireStorage.storage.ref()
-
-
-    storageRef.child(this.file.name).put(this.file)
-      .then(
-        data => {
-          data.ref.getDownloadURL().then(
-            downloadURL => {
-
-              this.RegistrarUserCompleto(nombre, apellido, email, password, ciudadela, manzana, villa, telefono, downloadURL, id)
-
-
-            }
-          ).catch(err => { this.loading.dismiss(), this.failedAlert("Error al cargar la foto de perfil, intentelo de nuevo") });
-
-
-        }
-      )
-
-
-  }
 
 
 
@@ -210,7 +188,7 @@ export class RegistrarPage implements OnInit {
           this.authService.loginUser(email, password).
             then(
               (res) => {
-                this.actualizarReferido();
+                //this.actualizarReferido();
                 localStorage.setItem('userId', res.user.uid);
                 localStorage.setItem('Fondo', '#FBC8B5');
                 localStorage.setItem('FotoPerfil', 'https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fperfil.png?alt=media&token=ee5b8e7d-43b5-43c1-9be9-98186a2ab2ce');
@@ -218,7 +196,6 @@ export class RegistrarPage implements OnInit {
               },
 
               async error => {
-                console.log('aqui estamos agustinw-rl@hotmail.com')
                 var mensaje = error.code.split('/')[1]
                 const presentarMensaje = this.mensajeErrorService.AuthErrorCodeSpanish(mensaje);
                 const alert = await this.alertCtrt.create({
@@ -238,7 +215,6 @@ export class RegistrarPage implements OnInit {
 
         }
       ).catch(async error => {
-        console.log('aqui esamos error agustinw-rl@hotmail.com')
         this.loading.dismiss();
         var mensaje = error.code.split('/')[1];
         const presentarMensaje = this.mensajeErrorService.AuthErrorCodeSpanish(mensaje);

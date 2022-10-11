@@ -190,7 +190,6 @@ let ComentariosLocalPage = class ComentariosLocalPage {
                         role: 'cancel',
                         cssClass: 'secondary',
                         handler: (blah) => {
-                            //console.log('Confirm Cancel: blah');
                         }
                     },
                     {
@@ -226,7 +225,6 @@ let ComentariosLocalPage = class ComentariosLocalPage {
                         role: 'cancel',
                         cssClass: 'secondary',
                         handler: (blah) => {
-                            // console.log('Confirm Cancel: blah');
                         }
                     }, {
                         text: 'Ok',
@@ -279,7 +277,6 @@ let ComentariosLocalPage = class ComentariosLocalPage {
                         role: 'cancel',
                         cssClass: 'secondary',
                         handler: (blah) => {
-                            // console.log('Confirm Cancel: blah');
                         }
                     }
                 ]

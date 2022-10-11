@@ -63,11 +63,6 @@ export class LoginPage implements OnInit {
    
   }
 
-  redireccionar(email){
-    console.log(this.firestore.collection("Estudiantes",ref => ref.where("email", "==", email)))
-    console.log(this.firestore.collection("Profesores",ref => ref.where("email", "==", email)))
-  
-  }
 
 
   async goToReset(email){
@@ -104,7 +99,6 @@ export class LoginPage implements OnInit {
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
-            console.log('Confirm Cancel: blah');
           }
         }, {
           text: 'Ok',

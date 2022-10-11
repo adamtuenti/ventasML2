@@ -146,7 +146,7 @@ export class CrearProductoLocalPage implements OnInit {
 
   guardarCompleto(downloadURL: string){
     this.producto.Foto = downloadURL;
-    this.user.Productos = this.user.Productos + 1;
+    //this.user.Productos = this.user.Productos + 1;
     this.usuarioService.updateUsuario(this.idPropietario,this.user)
     this.productosService.addProducto(this.producto).then(
       auth=>{

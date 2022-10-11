@@ -60,13 +60,11 @@ export class PublicacionesPage implements OnInit {
   convertirFecha(){
     
     var fecha = new Date('Thu Apr 15 2021 15:45:35 GMT-0500 (hora de Ecuador)');
-    console.log(fecha.getTime())
 
     for(let i = 0; i < this.publicaciones.length; i++){
       var fecha = new Date(this.publicaciones[i].Fecha)
       var time = fecha.getTime()
       this.publicaciones[i].Time = time;
-      console.log(time)
       this.publicacionesService.updatePublicacion(this.publicaciones[i].id,this.publicaciones[i])
 
 
@@ -84,7 +82,6 @@ export class PublicacionesPage implements OnInit {
             role: 'cancel',
             cssClass: 'secondary',
             handler: (blah) => {
-              //console.log('Confirm Cancel: blah');
             }
           }, {
             text: 'Elminar',
@@ -173,7 +170,6 @@ export class PublicacionesPage implements OnInit {
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
-           // console.log('Confirm Cancel: blah');
           }
         }
       ]
@@ -198,7 +194,6 @@ export class PublicacionesPage implements OnInit {
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
-           // console.log('Confirm Cancel: blah');
           }
         }
       ]

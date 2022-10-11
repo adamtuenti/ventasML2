@@ -28,11 +28,9 @@ export class MisLocalesComponent implements OnInit {
               private alertCtrt: AlertController) { }
 
   ngOnInit() {
-    console.log('aqui')
 
     this.idUser = localStorage.getItem('userId');
-    console.log('mi id: ', this.idUser)
-    this.localesServices.getLocalesUsuario(this.idUser).valueChanges().subscribe(res => {this.locales = res; this.condicion = true; console.log('res: ', res)})
+    this.localesServices.getLocalesUsuario(this.idUser).valueChanges().subscribe(res => {this.locales = res; this.condicion = true;})
     this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => {this.user =res;})
 
     
@@ -45,8 +43,6 @@ export class MisLocalesComponent implements OnInit {
 
 
   async alert(id, nombre) {
-    console.log('hola')
-    console.log('id local: ', id)
     const alert = await this.alertCtrt.create({
      cssClass: 'my-custom-class',
      header: "¿Desea eliminar '" + nombre + "'?",
@@ -56,7 +52,6 @@ export class MisLocalesComponent implements OnInit {
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
-            //console.log('Confirm Cancel: blah');
           }
         }, {
           text: 'Elminar',

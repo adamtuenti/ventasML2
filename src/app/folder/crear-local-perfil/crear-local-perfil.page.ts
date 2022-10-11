@@ -70,8 +70,6 @@ export class CrearLocalPerfilPage implements OnInit {
 
 
   crearLocal(form) {
-    console.log(form)
-    console.log(form.value, form.value.telefono)
 
     var telefono = form.value.telefono;
     var primeros = telefono.slice(0, 3);
@@ -144,8 +142,6 @@ export class CrearLocalPerfilPage implements OnInit {
     this.loading.dismiss();
     const docRef = firebase.firestore().collection("Locales").doc();
     this.local.id = docRef.id
-    console.log('id nuevo: ', this.local.id)
-    console.log('local: ', this.local)
 
     this.local = Object.assign({}, this.local)
 

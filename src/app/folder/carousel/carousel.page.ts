@@ -26,7 +26,7 @@ export class CarouselPage implements OnInit {
   baseUrl = '../../../assets/carrousel/'
   foot = '../../../assets/carrousel/ML2-gratis.png'
 
-  textos = ['Crea tu cuenta gratis', 'Promociona tu negocio, productos o servicios que ofrezcas', 'Completa la información de tus productos','Califica tu experiencia en los locales que visites']
+  textos = ['Crea tu cuenta gratis', 'Promociona tu negocio, productos o servicios', 'Completa la información sobre tus productos','Califica tu experiencia en los locales que visites']
   urlsImagenes = [this.baseUrl + 'user.png', this.baseUrl + 'productos1.png', this.baseUrl + 'locales1.png', this.baseUrl + 'califica1.png']
   
 
