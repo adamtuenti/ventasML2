@@ -26,6 +26,8 @@ export class DetalleLocalPage implements OnInit {
   idPropietario;
   calificarBool;
   valor;
+  horario;
+  dias = ['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sáb', 'Dom']
 
   constructor(private router: Router,
               private activateRoute: ActivatedRoute,
@@ -38,7 +40,7 @@ export class DetalleLocalPage implements OnInit {
     this.activateRoute.paramMap.subscribe(paramMap => {
     this.idLocal = paramMap.get('idLocal');
     this.idPropietario = paramMap.get('idPropietario');
-    this.localesService.getLocal(paramMap.get('idLocal')).subscribe(res=> {this.local = res;});
+    this.localesService.getLocal(paramMap.get('idLocal')).subscribe(res=> {this.local = res; this.obtenerHorario(res.HorarioAtencion)});
     this.idUser = localStorage.getItem('userId');
     this.calificacionesService.getCalificaciones().subscribe(res => {this.calificaciones = res; this.calificarBool = this.validarCalificacion();})
     });
@@ -53,6 +55,20 @@ export class DetalleLocalPage implements OnInit {
       }
     }
     return false;
+  }
+
+  obtenerHorario(texto){
+    let temp = [];
+    let lista = texto.split(',')
+    
+    for(let i = 0; i < lista.length; i ++){
+      let fecha = lista[i]
+      temp.push(fecha)
+
+    }
+    this.horario = temp
+    console.log(this.horario)
+
   }
 
   calificar(form){

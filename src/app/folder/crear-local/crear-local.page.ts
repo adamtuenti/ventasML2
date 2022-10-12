@@ -25,10 +25,16 @@ export class CrearLocalPage implements OnInit {
   public user: Usuarios = new Usuarios();
   id;
 
+  horario = false
+
+  dias = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo']
+  respuestas = [['', ''], ['', ''], ['', ''], ['', ''], ['', ''], ['', ''], ['', '']]
+
 
 
   image: string | ArrayBuffer;
   file: File;
+  horarioFinal = ''
 
 
   constructor(private router: Router,
@@ -40,6 +46,9 @@ export class CrearLocalPage implements OnInit {
               public loadingController: LoadingController,
               private localesService: LocalesService,
               private activateRoute: ActivatedRoute) { }
+
+
+  
 
   
   ngOnInit() {
@@ -54,6 +63,54 @@ export class CrearLocalPage implements OnInit {
       this.categoria = paramMap.get('id');
     });   
   }
+
+  guardarHorario(index){
+    this.respuestas[index][0] = 'cerrado'
+    this.respuestas[index][1] = 'cerrado'
+    console.log(this.respuestas)
+
+  }
+
+  guardarFecha(index, index1){
+    this.respuestas[index][index1] = 'hola'
+    console.log(this.respuestas)
+
+  }
+
+  changeDate(event, index, index1){
+    let date = new Date(event.value).toLocaleTimeString()
+    console.log(date.slice(0,-3))
+
+    this.respuestas[index][index1] = date.slice(0, -3)
+    console.log(this.respuestas)
+  }
+
+  validarFechas(form){
+    //this.presentLoading("Espere por favor...");
+    let texto = ''
+    for(let i = 0; i < this.respuestas.length; i ++){
+      let temp = this.respuestas[i]
+      let temp1;
+
+      if(temp[0] == '' || temp[1] == ''){
+        //this.loading.dismiss()
+        this.failedAlert("Complete el horario de atención: " + this.dias[i])
+        return false
+      }
+      if(temp[0] == 'cerrado'){
+        temp1 = 'cerrado'
+      }
+      else{
+        temp1 = temp[0] + ' - ' + temp[1]
+      }
+      texto = texto + temp1 + ','
+    }
+
+    this.horarioFinal = texto
+    console.log('texto: ', texto)
+    this.crearLocal(form)
+  }
+
 
   readURL(event): void {
     if (event.target.files && event.target.files[0]) {
@@ -93,7 +150,7 @@ export class CrearLocalPage implements OnInit {
     this.local.Villa = form.value.villa;
     this.local.Telefono = telefono;
     this.local.RedSocial = redSocial;
-    this.local.HorarioAtencion = form.value.horarioAtencion;
+    this.local.HorarioAtencion = this.horarioFinal;
     this.local.Referencia = form.value.referencia;
     this.local.Usuario = localStorage.getItem('userId');
     this.local.CategoriaLocal = this.categoria;
