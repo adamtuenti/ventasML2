@@ -48,8 +48,15 @@ export class CrearPublicacionesGeneralesPage implements OnInit {
     this.publicacion.Visibilidad = true;
     this.publicacion.Fecha = fechaActual.toString();
     this.publicacion.Time = Date.now();
+    if(this.image === undefined){
+      this.guardarCompleto('', '')
+    }else{
+      this.guardarPublicacion();
+    }
 
-    this.guardarPublicacion();
+    console.log('imagen: ', this.image, this.image === undefined, this.image === '')
+
+    //this.guardarPublicacion();
  
    
     

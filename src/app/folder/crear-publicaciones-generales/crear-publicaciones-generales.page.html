@@ -29,9 +29,9 @@
       <ion-item class="item-background-color" lines = 'none'>
 
         <ion-item class="item-background-color" lines = 'none'>
-          <ion-icon name="image-outline"></ion-icon> <ion-label color="" style="margin-left: 7.5px;" *ngIf='image==null'>Subir foto <b class = 'obligatorio'>*</b></ion-label> <ion-label color="" style="margin-left: 7.5px;" *ngIf='image!=null'>Editar foto 1</ion-label>
+          <ion-icon name="image-outline"></ion-icon> <ion-label color="" style="margin-left: 7.5px;" *ngIf='image==null'>Subir foto</ion-label> <ion-label color="" style="margin-left: 7.5px;" *ngIf='image!=null'>Editar foto 1</ion-label>
       
-          <ion-input type='file' accept="image/*" id="myFileInput" name="foto1" (change)="readURL($event);" class="fileInput" ngModel required></ion-input>
+          <ion-input type='file' accept="image/*" id="myFileInput" name="foto1" (change)="readURL($event);" class="fileInput" ngModel></ion-input>
 
         </ion-item>
 

@@ -103,14 +103,14 @@
 
             
             
-            <p style = 'color: black'>{{publicacion.Fecha | date:'yyyy/MM/dd'}}</p>
+            <p style = 'color: black'>{{publicacion.Fecha | date:'dd/MM/yyyy'}}</p>
           </ion-item>
 
         </ion-item>
 
         <ion-item *ngIf = 'idUser == null' lines = 'none'>
           <ion-item slot='end' lines = 'none'>
-            <p style = 'color: black'>{{publicacion.Fecha | date:'yyyy/MM/dd'}}</p>
+            <p style = 'color: black'>{{publicacion.Fecha | date:'dd/MM/yyyy'}}</p>
           </ion-item>
         </ion-item>
         
