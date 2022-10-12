@@ -6,7 +6,7 @@
 
 
 
-    <ion-slides pager="true" [options]="slideOpts" zoom>
+    <ion-slides *ngIf = 'publicacion.Foto != ""' pager="true" [options]="slideOpts" zoom>
       <ion-slide style="height: 325px;width: 85%;margin: auto">
         <ion-button expand="full" color="light" style="height: 100%;width: 100%;" fill="clear">
           <div class='swiper-zoom-container'>
@@ -14,18 +14,6 @@
           </div>
         </ion-button>
       </ion-slide>
-      <!--<ion-slide *ngIf='publicacion.Foto1!=""' style="height: 325px;width: 85%;margin: auto">
-        <ion-button expand="full" href="{{publicacion.Foto1}}" color="light" style="height: 100%;width: 100%;"
-          fill="clear">
-          <ion-img class='swiper-zoom-container' src="{{publicacion.Foto1}}" style="height: 275px;width: 100%;">
-          </ion-img>-->
-      <!--<div class='swiper-zoom-container'>
-          <ion-img src="{{publicacion.Foto1}}" style="height: 275px;width: 100%;">
-          </ion-img>
-        </div>-->
-      <!--</ion-button>
-      </ion-slide>-->
-
     </ion-slides>
 
     <ion-card style="padding: 10px;">
@@ -79,7 +67,7 @@
 
 
     <a href="mailto:{{user.Correo}}" style = 'text-decoration: none;'>
-      <ion-item class="item-background-color" lines = 'none'>
+      <ion-item class="item-background-color">
         
           <ion-icon name="mail-outline" size="large" color="success" style="margin-right: 8px;"></ion-icon>
         
@@ -91,6 +79,12 @@
         <ion-icon name="golf-outline" size="large" color="success" style="margin-right: 8px;"></ion-icon>
         <ion-label>{{user.Ciudadela}} - Mz: {{user.Manzana}}   Villa: {{user.Villa}}</ion-label>
       </ion-item>  -->
+
+      
+
+      <ion-item class="item-background-color" lines = 'none'>
+        <p style = 'margin-left: auto;'>{{publicacion.Fecha | date:'yyyy/MM/dd'}}</p>
+      </ion-item>
 
     </ion-card>
 

@@ -21,9 +21,12 @@ export class PerfilPage implements OnInit {
 
   sugerencia: sugerenciaCategoriaLocal = new sugerenciaCategoriaLocal();
   public user: Usuarios = new Usuarios();
+  imagen = ''
   premium;
   loaded = false
   id;
+  editarImagenes = false
+  urlFotos = ['https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fhombre-removebg-preview.png?alt=media&token=d5d24ab9-dabf-447e-995e-d6baf946d4fa', 'https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fjoven-removebg-preview.png?alt=media&token=4f48796e-6235-47c8-8d84-2f008cd8e2a9', 'https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fmujer-removebg-preview.png?alt=media&token=51768cf9-037b-44ca-bb7c-817b7871d755', 'https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fmujer1-removebg-preview.png?alt=media&token=be8859b0-09a8-4e01-98e8-d15747e44fb4']
 
 
   constructor(private sugerenciaService: SugerenciaLocalesService,
@@ -35,13 +38,34 @@ export class PerfilPage implements OnInit {
   ngOnInit() {
     this.id = localStorage.getItem('userId');
     if (localStorage.getItem('userId') != null) {
-      this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => { this.user = res; this.verPremium(); this.loaded = true });
+      this.usuarioService.getUsuario(localStorage.getItem('userId')).subscribe(res => { this.user = res; this.verPremium(); this.loaded = true; this.imagen = res.Foto });
     }
 
 
     //this.obtenerLocales()
 
 
+  }
+
+  cambiarAvatar(url){
+    this.imagen = url
+  }
+
+  editarFoto(){
+    this.editarImagenes = true
+  }
+
+  guardarAvatar(){
+    this.editarImagenes = false
+    if(this.user.Foto != this.imagen){
+      this.user.Foto = this.imagen
+      this.usuarioService.updateUsuario(localStorage.getItem('userId'), this.user);
+    }
+  }
+
+  noGuardarAvatar(){
+    this.editarImagenes = false
+    this.imagen = this.user.Foto
   }
 
 

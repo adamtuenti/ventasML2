@@ -5,10 +5,39 @@
 
   <div *ngIf='id!=null' style='margin-bottom: 15px;'>
 
-    <h1 *ngIf='!loaded' style="width: 212px; height: 212px; margin-left: auto; margin-right: auto; margin-top: 15px; border-radius: 125px;">
+    <h1 *ngIf='!loaded' style="width: 212px; height: 212px; margin-left: auto; margin-right: auto; margin-top: 25px; border-radius: 125px;">
       <ion-skeleton-text *ngIf='!loaded' [animated]="true"></ion-skeleton-text>
     </h1>
-    <ion-img *ngIf='loaded' class="circle-pic" style="width: 212px;height: 212px;" src={{user.Foto}}></ion-img>
+    <ion-img *ngIf='loaded' class="circle-pic" style="width: 212px;height: 212px; margin-top: 25px;" src={{imagen}}></ion-img>
+
+
+    <ng-container style = 'margin-top: 14.5px;' *ngIf = 'editarImagenes'>
+
+      <ion-grid>
+        <ion-row style="height: 385px;">
+  
+          <ion-col sizeLg="4" sizeMd="4" sizeXs="6" *ngFor="let url of urlFotos">
+
+            <button (click) = 'cambiarAvatar(url)' style = 'background-color: transparent;'>
+              <img src = {{url}} style = "height: 175px; width: 225px;"/>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ng-container>
+
+    <ion-item *ngIf='loaded' class='item-background-color' lines = 'none'>
+      <ion-icon *ngIf = '!editarImagenes' (click) = 'editarFoto()' name="create-outline" size="large" style="margin-right: 8px;"
+        layout="icon-end" slot="end"></ion-icon>
+
+        <ion-icon *ngIf = 'editarImagenes' (click) = 'guardarAvatar()' name="save-outline" size="large" color = 'success' style="margin-right: 8px;"
+        layout="icon-end" slot="end"></ion-icon>
+        <ion-icon *ngIf = 'editarImagenes' (click) = 'noGuardarAvatar()' name="close-circle-outline" size="large" style="margin-right: 8px;"
+        layout="icon-end" slot="end"></ion-icon>
+
+    </ion-item>
+
+
 
     <ion-card class='item-background-color'>
       <ion-item>

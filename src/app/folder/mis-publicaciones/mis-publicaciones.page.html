@@ -20,7 +20,7 @@
   
           </ion-card-header>
   
-          <ion-card-content (click)='aumentarVisitaPublicacion(publicacion.id,publicacion.Usuario,publicacion)'>
+          <ion-card-content [routerLink]="['/publicacion-detalle',publicacion.id,publicacion.Usuario]">
             <label style='color:black;font-size: 15px;'>{{publicacion.Descripcion}}</label>
             
           </ion-card-content>
