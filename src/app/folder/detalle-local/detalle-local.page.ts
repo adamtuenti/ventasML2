@@ -26,8 +26,9 @@ export class DetalleLocalPage implements OnInit {
   idPropietario;
   calificarBool;
   valor;
-  horario;
+  horario = [];
   dias = ['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sáb', 'Dom']
+  diaActual = -5
 
   constructor(private router: Router,
               private activateRoute: ActivatedRoute,
@@ -37,6 +38,10 @@ export class DetalleLocalPage implements OnInit {
               private comentariosService: ComentariosService) { }
 
   ngOnInit() {
+
+    this.validarDiaActual()
+
+    //var weekday = Xmas95.getDay();
     this.activateRoute.paramMap.subscribe(paramMap => {
     this.idLocal = paramMap.get('idLocal');
     this.idPropietario = paramMap.get('idPropietario');
@@ -44,6 +49,17 @@ export class DetalleLocalPage implements OnInit {
     this.idUser = localStorage.getItem('userId');
     this.calificacionesService.getCalificaciones().subscribe(res => {this.calificaciones = res; this.calificarBool = this.validarCalificacion();})
     });
+  }
+
+  validarDiaActual(){
+    let temp = new Date().getDay();
+    console.log(temp)
+    if(temp === 0){
+      this.diaActual = 6
+    }
+    else{
+      this.diaActual = temp - 1
+    }
   }
 
   validarCalificacion(){
@@ -63,7 +79,13 @@ export class DetalleLocalPage implements OnInit {
     
     for(let i = 0; i < lista.length; i ++){
       let fecha = lista[i]
-      temp.push(fecha)
+      // if(fecha != 'cerrado'){
+      //   let fecha1 = fecha.split(' - ')
+      //   temp.push([fecha1[0], fecha1[1]])
+      // }else{
+        temp.push(fecha)
+      // }
+      
 
     }
     this.horario = temp

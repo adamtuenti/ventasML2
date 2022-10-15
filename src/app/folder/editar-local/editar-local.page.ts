@@ -21,6 +21,14 @@ export class EditarLocalPage implements OnInit {
   file: File;
   loading: HTMLIonLoadingElement;
 
+  horario = false
+
+  dias = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo']
+  respuestas = [['', ''], ['', ''], ['', ''], ['', ''], ['', ''], ['', ''], ['', '']]
+  horarioErroneo = false
+
+  horarioFinal = ''
+
   constructor(private router: Router,
               private activateRoute: ActivatedRoute,
               private localesService: LocalesService,
@@ -32,7 +40,7 @@ export class EditarLocalPage implements OnInit {
     this.activateRoute.paramMap.subscribe(paramMap => {
     this.idLocal = paramMap.get('idLocal');
     this.idPropietario = paramMap.get('idPropietario');
-    this.localesService.getLocal(paramMap.get('idLocal')).subscribe(res=> {this.local = res;this.image = res.Foto});
+    this.localesService.getLocal(paramMap.get('idLocal')).subscribe(res=> {this.local = res;this.image = res.Foto; console.log(res); this.validarHorario(res.HorarioAtencion)});
     this.idUser = localStorage.getItem('userId');
     });
   }
@@ -46,6 +54,96 @@ export class EditarLocalPage implements OnInit {
     return this.loading.present();
   }
 
+  validarHorario(info){
+    let lista = info.split(',')
+    if(lista.length == 7){
+      this.horarioErroneo = false
+      for(let i = 0; i < lista.length; i ++){
+        if(lista[i] != 'cerrado'){
+        let temp = lista[i].split('-')
+        console.log(temp)
+        this.respuestas[i][0] = temp[0]
+        this.respuestas[i][1] = temp[1]
+        }
+        else{
+          this.respuestas[i] = lista[i]
+        }
+      }
+    }else{
+      this.horarioErroneo = true
+    }
+    console.log('info: ', info)
+    console.log('lista: ', lista)
+    console.log('respuestas: ', this.respuestas)
+  }
+
+
+
+  countChange(event) {
+    event.target.value = event.target.value.replace(/[^0-9]*/g, '');
+    event.target.value = event.target.value.replace(' ', '');
+    //event.target.value = event.target.value.replace(",", '.');
+  }
+
+  countChangeNumeroLocal(event) {
+    event.target.value = event.target.value.replace(/[^0-9 | - | +]*/g, '');
+    event.target.value = event.target.value.replace(' ', '');
+    //event.target.value = event.target.value.replace(",", '.');
+  }
+
+
+
+
+
+  // validarFechas(form){
+  //   //this.presentLoading("Espere por favor...");
+  //   let texto = ''
+  //   for(let i = 0; i < this.respuestas.length; i ++){
+  //     let temp = this.respuestas[i]
+  //     let temp1;
+
+  //     if(temp[0] == '' || temp[1] == ''){
+  //       //this.loading.dismiss()
+  //       this.failedAlert("Complete el horario de atención: " + this.dias[i])
+  //       return false
+  //     }
+  //     if(temp[0] == 'cerrado'){
+  //       temp1 = 'cerrado'
+  //     }
+  //     else{
+  //       temp1 = temp[0] + ' - ' + temp[1]
+  //     }
+  //     texto = texto + temp1 + ','
+  //   }
+
+  //   this.horarioFinal = texto
+  //   console.log('texto: ', texto)
+  //   //this.crearLocal(form)
+  // }
+
+  guardarHorario(index){
+    this.respuestas[index][0] = 'cerrado'
+    this.respuestas[index][1] = 'cerrado'
+    console.log(this.respuestas)
+
+  }
+
+  guardarFecha(index, index1){
+    this.respuestas[index][index1] = 'hola'
+    console.log(this.respuestas)
+
+  }
+
+  changeDate(event, index, index1){
+    let date = new Date(event.value).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+    console.log(date.slice(0,-3))
+
+    this.respuestas[index][index1] = date//.slice(0, -3)
+    console.log(this.respuestas)
+  }
+
+
+
   readURL(event): void {
     if (event.target.files && event.target.files[0]) {
         this.file = event.target.files[0];
@@ -57,17 +155,60 @@ export class EditarLocalPage implements OnInit {
     }
   }
 
+  validarFechas(){
+    //this.presentLoading("Espere por favor...");
+    let texto = ''
+    for(let i = 0; i < this.respuestas.length; i ++){
+      let temp = this.respuestas[i]
+      let temp1;
+
+      if(temp[0] == '' || temp[1] == ''){
+        //this.loading.dismiss()
+        this.failedAlert("Complete el horario de atención: " + this.dias[i])
+        return false
+      }
+      if(temp[0] == 'cerrado'){
+        temp1 = 'cerrado'
+      }
+      else{
+        temp1 = temp[0] + ' - ' + temp[1]
+      }
+      texto = texto + temp1 + ','
+    }
+
+    this.horarioFinal = texto.slice(0, -1)
+    return true
+  }
+
+
+
   async UpdateLocal(form):Promise<void>{
    // this.presentLoading("Espere por favor...");
+    
+
+    console.log(form.value)
     this.presentLoading("Espere por favor...");
 
     var nombre;
     var telefono;
-    var horario;
+    var horario = '';
     var domicilio;
     var redSocial;
     var descripcion;
     var referencia;
+
+    if(this.horarioErroneo === true){
+      let respuesta = this.validarFechas()
+      if(respuesta == true){
+        horario = this.horarioFinal
+        
+      }else{
+        //this.loading.dismiss()
+        horario = ''
+      }
+    }else{
+      horario = this.local.HorarioAtencion
+    }
 
     if(form.value.nombre == ''){
       nombre = this.local.Nombre;
@@ -75,13 +216,15 @@ export class EditarLocalPage implements OnInit {
     else{
       nombre = form.value.nombre;
     }
+    
 
-    if(form.value.horario == ''){
-      horario = this.local.HorarioAtencion;
-    }
-    else{
-      horario = form.value.horario
-    }
+    // if(form.value.horario == ''){
+    //   console.log('local: ', this.local)
+    //   horario = this.local.HorarioAtencion;
+    // }
+    // else{
+    //   horario = form.value.horario
+    // }
 
 
     if(form.value.domicilio == ''){

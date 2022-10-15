@@ -10,6 +10,10 @@ import { Usuarios } from 'src/app/models/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 
+//import Moment from "moment";
+
+
+
 import * as firebase from 'firebase';
 
 @Component({
@@ -64,27 +68,6 @@ export class CrearLocalPage implements OnInit {
     });   
   }
 
-  guardarHorario(index){
-    this.respuestas[index][0] = 'cerrado'
-    this.respuestas[index][1] = 'cerrado'
-    console.log(this.respuestas)
-
-  }
-
-  guardarFecha(index, index1){
-    this.respuestas[index][index1] = 'hola'
-    console.log(this.respuestas)
-
-  }
-
-  changeDate(event, index, index1){
-    let date = new Date(event.value).toLocaleTimeString()
-    console.log(date.slice(0,-3))
-
-    this.respuestas[index][index1] = date.slice(0, -3)
-    console.log(this.respuestas)
-  }
-
   validarFechas(form){
     //this.presentLoading("Espere por favor...");
     let texto = ''
@@ -106,10 +89,52 @@ export class CrearLocalPage implements OnInit {
       texto = texto + temp1 + ','
     }
 
-    this.horarioFinal = texto
+    this.horarioFinal = texto.slice(0, -1)
     console.log('texto: ', texto)
     this.crearLocal(form)
   }
+
+  guardarHorario(index){
+    this.respuestas[index][0] = 'cerrado'
+    this.respuestas[index][1] = 'cerrado'
+    console.log(this.respuestas)
+
+  }
+
+  guardarFecha(index, index1){
+    this.respuestas[index][index1] = 'hola'
+    console.log(this.respuestas)
+
+  }
+
+  changeDate(event, index, index1){
+    let date = new Date(event.value).toLocaleTimeString('en-US', {
+      hour12: false,
+      //timeStyle: 'short',
+      hour: '2-digit', minute: '2-digit'
+    })
+
+    console.log('hora: ', date)
+
+    this.respuestas[index][index1] = date//.slice(0, -3)
+    console.log(this.respuestas)
+  }
+
+  countChange(event) {
+    event.target.value = event.target.value.replace(/[^0-9]*/g, '');
+    event.target.value = event.target.value.replace(' ', '');
+    //event.target.value = event.target.value.replace(",", '.');
+  }
+
+  countChangeNumeroLocal(event) {
+    event.target.value = event.target.value.replace(/[^0-9 | - | +]*/g, '');
+    event.target.value = event.target.value.replace(' ', '');
+    //event.target.value = event.target.value.replace(",", '.');
+  }
+
+
+
+  
 
 
   readURL(event): void {
