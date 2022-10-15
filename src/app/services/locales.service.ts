@@ -38,6 +38,10 @@ export class LocalesService {
     return this.localesCollection.doc<Locales>(id).valueChanges();
   }
 
+  getRestaurantes(){
+    return this.firestore.collection('Locales', ref => ref.where("CategoriaLocal", "==", 'fZ3nqFRmR9qRkHLnpOfN'));
+  }
+
   addLocal(locales:Locales){
     return this.localesCollection.add({...locales});
   } 

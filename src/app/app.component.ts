@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 
 import { AuthService } from 'src/app/services/auth.service';
+
+import { ActivatedRoute, Router } from '@angular/router';
+
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -8,7 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class AppComponent {
 
-  constructor(private authService: AuthService) { this.checkDarkMode() }
+  constructor(private authService: AuthService, private router: Router) { this.checkDarkMode() }
 
   logOutUser() {
     this.authService.logOutUser();
