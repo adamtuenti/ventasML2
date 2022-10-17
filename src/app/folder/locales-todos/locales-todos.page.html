@@ -84,7 +84,7 @@
       <ion-col sizeLg="2" sizeMd="4" sizeXs="6" *ngFor="let local of locales | filtroLocalProductos: textoBuscar">
 
         <ion-card (click)='aumentarVisita(local.id,local)' style = 'margin-bottom: 7.5px !important;'>
-          <ion-card-content id='starts' style = 'align-items: left;'>
+          <ion-card-content id='starts' style = 'align-items: center;'>
             <ion-item lines='none' style = 'align-items: left; text-align: center;' class="item-background-color">
               <div align = 'center' *ngFor='let indice of [].constructor(local.Calificacion); let i = index'
                 style='margin-left: 3.5px; padding-right: 0 !important;'>

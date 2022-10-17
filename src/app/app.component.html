@@ -1,3 +1,66 @@
 <ion-app>
-    <ion-router-outlet id="main-content"></ion-router-outlet>
-</ion-app>
+    <ion-content>
+      <ion-router-outlet id="main-content"></ion-router-outlet>
+  
+    </ion-content>
+  
+    <ion-footer>
+      <ion-toolbar>
+        <ion-segment color="tertiary" value="{{text}}">
+          <ion-segment-button value="publicaciones" [routerLink]="['/publicaciones']" routerDirection="root">
+            <ion-icon name="megaphone-outline" size="large"></ion-icon>
+            <ion-label style="font-size: 11.5px;">Anuncios</ion-label>
+          </ion-segment-button>
+  
+          <ion-segment-button value="categorias" [routerLink]="['/productos-todos']" routerDirection="root">
+            <ion-icon name="grid-outline" size="large"></ion-icon>
+            <ion-label style="font-size: 11.5px;">Productos</ion-label>
+          </ion-segment-button>
+  
+          <ion-segment-button value="locales" [routerLink]="['/locales-todos']" routerDirection="root">
+            <ion-icon name="storefront-outline" size="large"></ion-icon>
+            <ion-label style="font-size: 11.5px;">Locales</ion-label>
+          </ion-segment-button>
+  
+          <ion-segment-button value="perfil" [routerLink]="['/perfil']" routerDirection="root">
+            <ion-icon name="person-circle" size="large"></ion-icon>
+            <ion-label style="font-size: 11.5px;">Perfil</ion-label>
+          </ion-segment-button>
+  
+        </ion-segment>
+  
+      </ion-toolbar>
+  
+    </ion-footer>
+  
+  
+  
+  
+  
+    <!-- <ion-tabs> -->
+    <!--   <ion-tab-bar slot="bottom"> -->
+    <!--     <ion-tab-button tab="publicaciones" [routerLink]="['/publicaciones']"> -->
+    <!--       <ion-icon name="megaphone-outline" size="large"></ion-icon> -->
+    <!--       <ion-label style="font-size: 11.5px;">Anuncios</ion-label> -->
+    <!--     </ion-tab-button> -->
+  
+    <!--     <ion-tab-button tab="categorias" [routerLink]="['/productos-todos']"> -->
+    <!--       <ion-icon name="grid-outline" size="large"></ion-icon> -->
+    <!--       <ion-label style="font-size: 11.5px;">Productos</ion-label> -->
+    <!--     </ion-tab-button> -->
+  
+    <!--     <ion-tab-button tab="locales" [routerLink]="['/locales-todos']"> -->
+    <!--       <ion-icon name="storefront-outline" size="large"></ion-icon> -->
+    <!--       <ion-label style="font-size: 11.5px;">Locales</ion-label> -->
+    <!--     </ion-tab-button> -->
+  
+    <!--     <ion-tab-button tab="perfil" [routerLink]="['/perfil']"> -->
+    <!--       <ion-icon name="person-circle" size="large"></ion-icon> -->
+    <!--       <ion-label style="font-size: 11.5px;">Perfil</ion-label> -->
+    <!--     </ion-tab-button> -->
+  
+    <!--   </ion-tab-bar> -->
+  
+    <!-- </ion-tabs> -->
+  
+  </ion-app>
