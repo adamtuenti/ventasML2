@@ -8,7 +8,7 @@ import { MisProductosPageRoutingModule } from './mis-productos-routing.module';
 
 import { MisProductosPage } from './mis-productos.page';
 import { PipesModule } from 'src/app/pipes/pipes.module';
-import {ComponentsModule} from 'src/app/folder/components/components.module';
+import {ComponentsModule} from 'src/app/components/components.module';
 
 @NgModule({
   imports: [

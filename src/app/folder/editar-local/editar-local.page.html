@@ -1,4 +1,4 @@
-<app-header nombre="locales"></app-header>
+<!-- <app-header nombre="locales"></app-header> -->
 
 <ion-content>
 
@@ -160,7 +160,7 @@
 
       <ion-card style="margin-top:15px">
         <ion-item class="item-background-color" lines = 'none'>
-          <ion-label>
+          <ion-label style = 'font-weight: bold;'>
             <ion-icon color="success" style='margin-right: 7.5px; font-weight: bold;' name="bicycle-outline"></ion-icon>¿Entregas a domicilio? <b class='obligatorio'>*</b>
           </ion-label>
           <ion-select value = '{{local.Domicilio}}' name='domicilio' ngModel>
@@ -216,7 +216,7 @@
       <ion-item class="item-background-color">
 
         
-          <ion-icon name="cloud-upload-outline" color='success'></ion-icon>  <ion-label style='margin-left:7.5px'>Cambiar foto</ion-label>
+          <ion-icon name="cloud-upload-outline" color='success'></ion-icon>  <ion-label style='margin-left:7.5px' class = 'tituloCrear'>Cambiar foto</ion-label>
           <ion-input id="myFileInput" (change)="readURL($event);" accept="image/*" placeholder="archivo" name="archivo" type='file' ngModel value="{{file}}"></ion-input>
         
      

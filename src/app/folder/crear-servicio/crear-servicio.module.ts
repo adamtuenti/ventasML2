@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { CrearServicioPageRoutingModule } from './crear-servicio-routing.module';
 
 import { CrearServicioPage } from './crear-servicio.page';
-import {ComponentsModule} from 'src/app/folder/components/components.module';
+import {ComponentsModule} from 'src/app/components/components.module';
 
 @NgModule({
   imports: [

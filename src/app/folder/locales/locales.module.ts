@@ -8,7 +8,7 @@ import { LocalesPageRoutingModule } from './locales-routing.module';
 
 import { LocalesPage } from './locales.page';
 import { PipesModule } from 'src/app/pipes/pipes.module';
-import { ComponentsModule } from '../components/components.module';
+import { ComponentsModule } from '../../components/components.module';
 
 @NgModule({
   imports: [

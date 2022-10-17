@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { CrearPublicacionesGeneralesPageRoutingModule } from './crear-publicaciones-generales-routing.module';
 
 import { CrearPublicacionesGeneralesPage } from './crear-publicaciones-generales.page';
-import {ComponentsModule} from 'src/app/folder/components/components.module';
+import {ComponentsModule} from 'src/app/components/components.module';
 
 @NgModule({
   imports: [

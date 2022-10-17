@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { CrearProductoPerfilPageRoutingModule } from './crear-producto-perfil-routing.module';
 
 import { CrearProductoPerfilPage } from './crear-producto-perfil.page';
-import {ComponentsModule} from 'src/app/folder/components/components.module';
+import {ComponentsModule} from 'src/app/components/components.module';
 
 @NgModule({
   imports: [

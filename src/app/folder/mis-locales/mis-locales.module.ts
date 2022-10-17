@@ -11,7 +11,7 @@ import { MisLocalesPageRoutingModule } from './mis-locales-routing.module';
 
 import { MisLocalesComponent } from './mis-locales.page';
 import { PipesModule } from 'src/app/pipes/pipes.module';
-import {ComponentsModule} from 'src/app/folder/components/components.module';
+import {ComponentsModule} from 'src/app/components/components.module';
 
 @NgModule({
   imports: [

@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { EditarLocalPageRoutingModule } from './editar-local-routing.module';
 
 import { EditarLocalPage } from './editar-local.page';
-import {ComponentsModule} from 'src/app/folder/components/components.module';
+import {ComponentsModule} from 'src/app/components/components.module';
 
 @NgModule({
   imports: [

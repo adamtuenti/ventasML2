@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { CrearLocalPerfilPageRoutingModule } from './crear-local-perfil-routing.module';
 
 import { CrearLocalPerfilPage } from './crear-local-perfil.page';
-import { ComponentsModule } from '../components/components.module';
+import { ComponentsModule } from '../../components/components.module';
 
 @NgModule({
   imports: [

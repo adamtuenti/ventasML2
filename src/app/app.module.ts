@@ -18,6 +18,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { NativeAudio } from '@awesome-cordova-plugins/native-audio/ngx';
 
+import { ComponentsModule } from 'src/app/components/components.module';
+
 
 
 @NgModule({
@@ -31,6 +33,7 @@ import { NativeAudio } from '@awesome-cordova-plugins/native-audio/ngx';
     AngularFireStorageModule,
     AngularFireAuthModule,
     AppRoutingModule,
+    ComponentsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [

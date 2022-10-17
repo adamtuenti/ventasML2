@@ -8,7 +8,7 @@ import { CategoriaCrearLocalPageRoutingModule } from './categoria-crear-local-ro
 
 import { CategoriaCrearLocalPage } from './categoria-crear-local.page';
 
-import { ComponentsModule } from 'src/app/folder/components/components.module';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 import { PipesModule } from 'src/app/pipes/pipes.module';
 

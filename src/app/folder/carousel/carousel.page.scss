@@ -50,3 +50,13 @@ ion-icon {
     color: white;
     padding: 7.5px;
 }
+
+@media (min-width: 1000px) {
+    #slides{
+        //background-color: red !important;
+        margin-top: 5px !important;
+        height: 87.5% !important;
+    }
+  
+  }
+

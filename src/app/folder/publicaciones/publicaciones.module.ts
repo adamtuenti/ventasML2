@@ -8,7 +8,7 @@ import { PublicacionesPageRoutingModule } from './publicaciones-routing.module';
 
 import { PublicacionesPage } from './publicaciones.page';
 
-import {ComponentsModule} from 'src/app/folder/components/components.module';
+import {ComponentsModule} from 'src/app/components/components.module';
 
 @NgModule({
   imports: [

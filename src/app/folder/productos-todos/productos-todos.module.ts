@@ -8,7 +8,7 @@ import { ProductosTodosPageRoutingModule } from './productos-todos-routing.modul
 import { PipesModule } from 'src/app/pipes/pipes.module';
 
 import { ProductosTodosPage } from './productos-todos.page';
-import {ComponentsModule} from 'src/app/folder/components/components.module';
+import {ComponentsModule} from 'src/app/components/components.module';
 
 @NgModule({
   imports: [

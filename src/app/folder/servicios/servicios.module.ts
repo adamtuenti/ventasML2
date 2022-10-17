@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ServiciosPageRoutingModule } from './servicios-routing.module';
 
 import { ServiciosPage } from './servicios.page';
-import {ComponentsModule} from 'src/app/folder/components/components.module';
+import {ComponentsModule} from 'src/app/components/components.module';
 import { PipesModule } from 'src/app/pipes/pipes.module';
 
 @NgModule({

@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { CrearProductoLocalPageRoutingModule } from './crear-producto-local-routing.module';
 
 import { CrearProductoLocalPage } from './crear-producto-local.page';
-import {ComponentsModule} from 'src/app/folder/components/components.module';
+import {ComponentsModule} from 'src/app/components/components.module';
 
 @NgModule({
   imports: [

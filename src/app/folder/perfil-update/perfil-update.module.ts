@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { PerfilUpdatePageRoutingModule } from './perfil-update-routing.module';
 
 import { PerfilUpdatePage } from './perfil-update.page';
-import {ComponentsModule} from 'src/app/folder/components/components.module';
+import {ComponentsModule} from 'src/app/components/components.module';
 
 @NgModule({
   imports: [

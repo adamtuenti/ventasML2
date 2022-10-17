@@ -8,7 +8,7 @@ import { ProductoDetallePageRoutingModule } from './producto-detalle-routing.mod
 
 import { ProductoDetallePage } from './producto-detalle.page';
 
-import {ComponentsModule} from 'src/app/folder/components/components.module';
+import {ComponentsModule} from 'src/app/components/components.module';
 
 @NgModule({
   imports: [

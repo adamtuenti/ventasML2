@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { AuthService } from 'src/app/services/auth.service';
 
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationStart } from '@angular/router';
 
 
 @Component({
@@ -12,11 +12,28 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AppComponent {
 
-  constructor(private authService: AuthService, private router: Router) { this.checkDarkMode() }
+  constructor(private authService: AuthService, private router: Router) 
+  { this.checkDarkMode();
+    router.events.forEach((event) => {
+      if (event instanceof NavigationStart) {
+        if (event['url'] == '/login' || event['url']=='/registrar' || event['url']=='/carousel') {
+          //this.showHead = false;
+          this.showFooter = false;
+
+        } else {
+          //this.showHead = true;
+          this.showFooter = true;
+
+        }
+      }
+    });
+  }
 
   logOutUser() {
     this.authService.logOutUser();
   }
+
+  showFooter: boolean = false;
 
   checkDarkMode() {
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');

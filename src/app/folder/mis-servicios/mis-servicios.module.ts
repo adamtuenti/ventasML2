@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { MisServiciosPageRoutingModule } from './mis-servicios-routing.module';
 
 import { MisServiciosPage } from './mis-servicios.page';
-import {ComponentsModule} from 'src/app/folder/components/components.module';
+import {ComponentsModule} from 'src/app/components/components.module';
 
 @NgModule({
   imports: [

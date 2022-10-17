@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ServicioDetallePageRoutingModule } from './servicio-detalle-routing.module';
 
 import { ServicioDetallePage } from './servicio-detalle.page';
-import {ComponentsModule} from 'src/app/folder/components/components.module';
+import {ComponentsModule} from 'src/app/components/components.module';
 
 @NgModule({
   imports: [

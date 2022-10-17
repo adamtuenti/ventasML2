@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { PublicacionDetallePageRoutingModule } from './publicacion-detalle-routing.module';
 
 import { PublicacionDetallePage } from './publicacion-detalle.page';
-import {ComponentsModule} from 'src/app/folder/components/components.module';
+import {ComponentsModule} from 'src/app/components/components.module';
 
 @NgModule({
   imports: [

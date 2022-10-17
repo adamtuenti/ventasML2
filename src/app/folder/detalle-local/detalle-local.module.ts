@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { DetalleLocalPageRoutingModule } from './detalle-local-routing.module';
 
 import { DetalleLocalPage } from './detalle-local.page';
-import { ComponentsModule } from '../components/components.module';
+import { ComponentsModule } from '../../components/components.module';
 
 @NgModule({
   imports: [

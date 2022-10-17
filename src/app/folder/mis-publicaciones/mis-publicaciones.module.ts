@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { MisPublicacionesPageRoutingModule } from './mis-publicaciones-routing.module';
 
 import { MisPublicacionesPage } from './mis-publicaciones.page';
-import {ComponentsModule} from 'src/app/folder/components/components.module';
+import {ComponentsModule} from 'src/app/components/components.module';
 
 @NgModule({
   imports: [

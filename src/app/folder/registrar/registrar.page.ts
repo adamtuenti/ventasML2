@@ -140,16 +140,16 @@ export class RegistrarPage implements OnInit {
 
 
     let idReferido;
-    if (form.value.idReferido == null) {
-      idReferido = ''
+    /* if (form.value.idReferido == null) {
+      idReferido = '' */
       this.RegistrarUserCompleto(form.value.nombre, form.value.apellido, form.value.email, form.value.password, form.value.ciudadela, form.value.manzana, form.value.villa, telefono, 'https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fperfil.png?alt=media&token=ee5b8e7d-43b5-43c1-9be9-98186a2ab2ce', '');
-    } else {
+    /* } else {
       idReferido = form.value.idReferido
       //this.actualizarReferido()
 
 
       this.RegistrarUserCompleto(form.value.nombre, form.value.apellido, form.value.email, form.value.password, form.value.ciudadela, form.value.manzana, form.value.villa, telefono, 'https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fperfil.png?alt=media&token=ee5b8e7d-43b5-43c1-9be9-98186a2ab2ce', idReferido);
-    }
+    } */
 
 
 
@@ -180,7 +180,7 @@ export class RegistrarPage implements OnInit {
 
 
   async RegistrarUserCompleto(nombre: string, apellido: string, email: string, password: string, ciudadela: string, manzana: string, villa: string, telefono: string, downloadURL: string, idReferido: string) {
-    this.authService.registerUser(nombre, apellido, email, password, ciudadela, manzana, villa, telefono, 'https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fperfil.png?alt=media&token=ee5b8e7d-43b5-43c1-9be9-98186a2ab2ce', idReferido).
+    this.authService.registerUser(nombre, apellido, email, password, ciudadela, manzana, villa, telefono, downloadURL, idReferido).
       then(
         auth => {
           this.loading.dismiss();
@@ -190,8 +190,8 @@ export class RegistrarPage implements OnInit {
               (res) => {
                 //this.actualizarReferido();
                 localStorage.setItem('userId', res.user.uid);
-                localStorage.setItem('Fondo', '#FBC8B5');
-                localStorage.setItem('FotoPerfil', 'https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fperfil.png?alt=media&token=ee5b8e7d-43b5-43c1-9be9-98186a2ab2ce');
+                //localStorage.setItem('Fondo', '#FBC8B5');
+                //localStorage.setItem('FotoPerfil', 'https://firebasestorage.googleapis.com/v0/b/ventasml2.appspot.com/o/iconos%2Fperfil.png?alt=media&token=ee5b8e7d-43b5-43c1-9be9-98186a2ab2ce');
                 this.router.navigateByUrl('/carousel');
               },
 
