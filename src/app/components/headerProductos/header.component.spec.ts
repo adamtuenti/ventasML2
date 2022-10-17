@@ -4,16 +4,16 @@ import { IonicModule } from '@ionic/angular';
 import { HeaderLocalesComponent } from './header.component';
 
 describe('HeaderComponent', () => {
-  let component: HeaderComponent;
-  let fixture: ComponentFixture<HeaderComponent>;
+  let component: HeaderLocalesComponent;
+  let fixture: ComponentFixture<HeaderLocalesComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ],
+      declarations: [ HeaderLocalesComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(HeaderComponent);
+    fixture = TestBed.createComponent(HeaderLocalesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
