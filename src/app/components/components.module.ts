@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import {HeaderComponent} from 'src/app/components/header/header.component';
-import { HeaderLocalesComponent } from './headerProductos/header.component';
+import {HeaderComponent} from 'src/app/components/footer/header.component';
+import { HeaderLocalesComponent } from 'src/app/components/headerMenu/header.component';
 import { Routes, RouterModule } from '@angular/router';
 
 @NgModule({

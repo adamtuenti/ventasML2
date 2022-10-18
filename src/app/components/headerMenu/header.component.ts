@@ -8,11 +8,12 @@ import { Component, OnInit, Input } from '@angular/core';
 export class HeaderLocalesComponent implements OnInit {
 
   text: string;
-  @Input('nombre') nombre : string;
+  @Input('Titulo') titulo : string;
   
   FotoPerfil;
 
   constructor() { 
+  
   }
 
   ngOnInit(){
@@ -25,7 +26,7 @@ export class HeaderLocalesComponent implements OnInit {
       
     // }
     
-    this.text = this.nombre;
+    //this.text = this.nombre;
   }
 
 }

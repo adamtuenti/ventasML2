@@ -1,41 +1,121 @@
 <ion-app>
-    <ion-content>
-      <ion-router-outlet id="main-content"></ion-router-outlet>
-  
-    </ion-content>
 
-    <app-header *ngIf = 'showFooter'></app-header>
-  
-    
-  
-  
-  
-  
-  
-    <!-- <ion-tabs> -->
-    <!--   <ion-tab-bar slot="bottom"> -->
-    <!--     <ion-tab-button tab="publicaciones" [routerLink]="['/publicaciones']"> -->
-    <!--       <ion-icon name="megaphone-outline" size="large"></ion-icon> -->
-    <!--       <ion-label style="font-size: 11.5px;">Anuncios</ion-label> -->
-    <!--     </ion-tab-button> -->
-  
-    <!--     <ion-tab-button tab="categorias" [routerLink]="['/productos-todos']"> -->
-    <!--       <ion-icon name="grid-outline" size="large"></ion-icon> -->
-    <!--       <ion-label style="font-size: 11.5px;">Productos</ion-label> -->
-    <!--     </ion-tab-button> -->
-  
-    <!--     <ion-tab-button tab="locales" [routerLink]="['/locales-todos']"> -->
-    <!--       <ion-icon name="storefront-outline" size="large"></ion-icon> -->
-    <!--       <ion-label style="font-size: 11.5px;">Locales</ion-label> -->
-    <!--     </ion-tab-button> -->
-  
-    <!--     <ion-tab-button tab="perfil" [routerLink]="['/perfil']"> -->
-    <!--       <ion-icon name="person-circle" size="large"></ion-icon> -->
-    <!--       <ion-label style="font-size: 11.5px;">Perfil</ion-label> -->
-    <!--     </ion-tab-button> -->
-  
-    <!--   </ion-tab-bar> -->
-  
-    <!-- </ion-tabs> -->
-  
-  </ion-app>
+  <app-header-productos *ngIf='showMenuHeader' Titulo='{{titulo}}'></app-header-productos>
+
+
+
+
+
+  <ion-menu contentId="main-content" type="overlay" *ngIf='showMenuHeader'>
+    <ion-toolbar color="primary">
+
+
+
+
+      <ion-title>Menú</ion-title>
+    </ion-toolbar>
+    <ion-content fullscreen>
+      <ion-list>
+        <ion-menu-toggle auto-hide="false">
+
+          <ion-item *ngIf='idUser' button [routerLink]="['/perfil']">
+            <ion-icon slot="start" name="person-circle-outline" style="color:#8c54fc"></ion-icon>
+            <ion-label>
+              <h3>Mi Perfil</h3>
+            </ion-label>
+          </ion-item>
+
+          <ion-item *ngIf='idUser' button [routerLink]="['/mis-publicaciones']">
+            <ion-icon slot="start" name="megaphone-outline" style="color:#8c54fc"></ion-icon>
+            <ion-label>
+              <h3>Mis Publicaciones</h3>
+            </ion-label>
+          </ion-item>
+
+          <ion-item *ngIf='idUser' button [routerLink]="['/mis-productos']">
+            <ion-icon slot="start" name="cart-outline" style="color:#8c54fc"></ion-icon>
+            <ion-label>
+              <h3>Mis Productos</h3>
+            </ion-label>
+          </ion-item>
+
+          <ion-item *ngIf='idUser' button [routerLink]="['/mis-locales']">
+            <ion-icon slot="start" name="home-outline" style="color:#8c54fc"></ion-icon>
+            <ion-label>
+              <h3>Mis Locales</h3>
+            </ion-label>
+          </ion-item>
+
+          <ion-item *ngIf='idUser' button [routerLink]="['/mis-servicios']">
+            <ion-icon slot="start" name="rocket-outline" style="color:#8c54fc"></ion-icon>
+            <ion-label>
+              <h3>Mis Servicios</h3>
+            </ion-label>
+          </ion-item>
+
+
+
+          <ion-item *ngIf='idUser' button (click)="logOutUser()">
+            <ion-icon slot="start" name="power-outline" style="color:#8c54fc"></ion-icon>
+            <ion-label>
+              <h3>Cerrar Sesión</h3>
+            </ion-label>
+          </ion-item>
+
+          <ion-item *ngIf='!idUser' button [routerLink]="['/login']">
+            <ion-icon slot="start" name="log-in-outline" style="color:#8c54fc"></ion-icon>
+            <ion-label>
+              <h3>Iniciar Sesión</h3>
+            </ion-label>
+          </ion-item>
+
+
+        </ion-menu-toggle>
+      </ion-list>
+
+    </ion-content>
+  </ion-menu>
+
+
+  <!--   <app-header-productos *ngIf='showMenuHeader' Titulo='{{titulo}}'></app-header-productos>
+  -->
+  <ion-content id='principal'>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+
+  </ion-content>
+
+  <app-header *ngIf='showFooter'></app-header>
+
+
+
+
+
+
+
+  <!-- <ion-tabs> -->
+  <!--   <ion-tab-bar slot="bottom"> -->
+  <!--     <ion-tab-button tab="publicaciones" [routerLink]="['/publicaciones']"> -->
+  <!--       <ion-icon name="megaphone-outline" size="large"></ion-icon> -->
+  <!--       <ion-label style="font-size: 11.5px;">Anuncios</ion-label> -->
+  <!--     </ion-tab-button> -->
+
+  <!--     <ion-tab-button tab="categorias" [routerLink]="['/productos-todos']"> -->
+  <!--       <ion-icon name="grid-outline" size="large"></ion-icon> -->
+  <!--       <ion-label style="font-size: 11.5px;">Productos</ion-label> -->
+  <!--     </ion-tab-button> -->
+
+  <!--     <ion-tab-button tab="locales" [routerLink]="['/locales-todos']"> -->
+  <!--       <ion-icon name="storefront-outline" size="large"></ion-icon> -->
+  <!--       <ion-label style="font-size: 11.5px;">Locales</ion-label> -->
+  <!--     </ion-tab-button> -->
+
+  <!--     <ion-tab-button tab="perfil" [routerLink]="['/perfil']"> -->
+  <!--       <ion-icon name="person-circle" size="large"></ion-icon> -->
+  <!--       <ion-label style="font-size: 11.5px;">Perfil</ion-label> -->
+  <!--     </ion-tab-button> -->
+
+  <!--   </ion-tab-bar> -->
+
+  <!-- </ion-tabs> -->
+
+</ion-app>

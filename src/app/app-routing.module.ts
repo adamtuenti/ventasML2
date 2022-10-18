@@ -201,7 +201,8 @@ const routes: Routes = [
   {
     path: 'categoria-crear-local',
     loadChildren: () => import('./folder/categoria-crear-local/categoria-crear-local.module').then( m => m.CategoriaCrearLocalPageModule)
-  },  {
+  },
+  {
     path: 'restaurantes',
     loadChildren: () => import('./folder/restaurantes/restaurantes.module').then( m => m.RestaurantesPageModule)
   }
