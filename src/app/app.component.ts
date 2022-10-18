@@ -12,11 +12,15 @@ import { ActivatedRoute, Router, NavigationStart } from '@angular/router';
 })
 export class AppComponent {
 
+  showFooter: boolean = false;
+
+
+
   constructor(private authService: AuthService, private router: Router) 
   { this.checkDarkMode();
     router.events.forEach((event) => {
       if (event instanceof NavigationStart) {
-        if (event['url'] == '/login' || event['url']=='/registrar' || event['url']=='/carousel') {
+        if (event['url'] == '/login' || event['url']=='/registrar' || event['url']=='/carousel' || event['url']=='/') {
           //this.showHead = false;
           this.showFooter = false;
 
@@ -33,7 +37,7 @@ export class AppComponent {
     this.authService.logOutUser();
   }
 
-  showFooter: boolean = false;
+  
 
   checkDarkMode() {
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');

@@ -3,7 +3,18 @@
 <ion-content>
 
 
+  <ng-container *ngIf='publicacion.Foto == ""'>
 
+    <div style="margin-top: 50px;" align='center'>
+      <ion-text color="medium">
+
+        <img
+        src="../../../assets/carrousel/anuncio-removebg-preview.png"
+        style="width: 155.5px; height: 147.5px;margin:auto;" alet="foto">
+
+      </ion-text>
+    </div>
+  </ng-container>
 
 
     <ion-slides *ngIf = 'publicacion.Foto != ""' pager="true" [options]="slideOpts" zoom>
