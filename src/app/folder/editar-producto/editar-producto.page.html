@@ -1,5 +1,5 @@
-<app-header nombre="perfil"></app-header>
-
+<!-- <app-header nombre="perfil"></app-header>
+ -->
 <ion-content>
 
 
@@ -15,14 +15,48 @@
 
 
 
+      <ion-card class="item-background-color" style="margin-top:15px">
+        <ion-item>
+          <ion-label style = 'font-weight: bold;'>Nombre del Producto <b class='obligatorio'>*</b> </ion-label>
+        </ion-item>
+        <ion-item>
+
+          <ion-input value = '{{producto.Titulo}}' name="titulo" type='text' ngModel 
+            maxlength="18"></ion-input>
+        </ion-item>
+
+      </ion-card>
+
+      <ion-card class="item-background-color" style="margin-top:15px">
+        <ion-item>
+          <ion-label style = 'font-weight: bold;'>Descripción del Producto <b class='obligatorio'>*</b> </ion-label>
+        </ion-item>
+        <ion-item>
+
+          <ion-input value = '{{producto.Descripcion}}' name="descripcion" type='text' ngModel 
+            maxlength="18"></ion-input>
+        </ion-item>
+
+      </ion-card>
+
+      <ion-card class="item-background-color" style="margin-top:15px">
+        <ion-item>
+          <ion-label style = 'font-weight: bold;'>Precio del Producto <b class='obligatorio'>*</b> </ion-label>
+        </ion-item>
+        <ion-item>
+
+          <ion-textarea value = '{{producto.Precio}}' name="precio" (ionInput)="countChange($event)" type='text' ngModel 
+            maxlength="18"></ion-textarea>
+        </ion-item>
+
+      </ion-card>
 
 
 
-
-      <ion-item class="item-background-color">
+      <!-- <ion-item class="item-background-color">
         <ion-icon name="bag-check-outline" color="success" size='large' style='margin-right: 7.5px;'></ion-icon>
         <ion-input value="{{producto.Titulo}}" name="titulo" type='text' ngModel maxLength = '18'></ion-input>
-      </ion-item>
+      </ion-item> -->
 
 
 

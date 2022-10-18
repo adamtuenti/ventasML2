@@ -1,17 +1,17 @@
-.header{
+.header {
     --background: white;
 }
 
-ion-label{
+ion-label {
     color: black !important;
     font-weight: bold !important;
 }
 
-ion-icon{
+ion-icon {
     color: black !important;
 }
 
-ion-segment-button{
+ion-segment-button {
     background: white;
 }
 
@@ -20,10 +20,10 @@ ion-segment-button{
 
 ion-menu::part(backdrop) {
     background-color: rgba(255, 0, 255, 0.5);
-  }
-  
-  ion-menu::part(container) {
+}
+
+ion-menu::part(container) {
     border-radius: 0 20px 20px 0;
-  
+
     box-shadow: 4px 0px 16px rgba(255, 0, 255, 0.18);
-  }
+}

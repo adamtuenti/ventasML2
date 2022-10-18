@@ -15,14 +15,20 @@ export class AppComponent {
   showFooter: boolean = false;
   titulo: string;
   showMenuHeader: boolean = false
-  idUser = localStorage.getItem('userId') ? true : false
+  idUser;
 
 
 
   constructor(private authService: AuthService, private router: Router) {
     this.checkDarkMode();
     router.events.forEach((event) => {
+
       if (event instanceof NavigationStart) {
+
+        this.idUser = localStorage.getItem('userId') ? true : false
+        console.log(localStorage.getItem('userId') ? true : false)
+
+
         if (event['url'] == '/login' || event['url'] == '/registrar' || event['url'] == '/carousel' || event['url'] == '/') {
           //this.showHead = false;
           this.showFooter = false;
@@ -98,7 +104,13 @@ export class AppComponent {
     } else if (url.includes('COMENTARIOS-LOCAL/')) {
       this.titulo = 'COMENTARIOS'
 
-    } else if (url.includes('LOCALES/')) {
+    } else if (url.includes('EDITAR-LOCAL/')) {
+      this.titulo = 'EDITAR LOCAL'
+
+    }else if (url.includes('EDITAR-PRODUCTO/')) {
+      this.titulo = 'EDITAR PRODUCTO'
+
+    }else if (url.includes('LOCALES/')) {
       this.titulo = 'LOCALES'
 
     } else if (url.includes('PUBLICACIONES-GENERALES')) {

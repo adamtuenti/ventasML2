@@ -40,8 +40,8 @@ export class LoginPage implements OnInit {
     then(
       (res)=>{
         localStorage.setItem('userId', res.user.uid);
-        localStorage.setItem('Fondo','#FBC8B5');
-        this.usuarioService.getUsuario(res.user.uid).subscribe(res1 => {localStorage.setItem('FotoPerfil',res1.Foto); this.router.navigateByUrl('/carousel');});
+        //localStorage.setItem('Fondo','#FBC8B5');
+        this.usuarioService.getUsuario(res.user.uid).subscribe(res1 => {this.router.navigateByUrl('/publicaciones');});
 
 
             
