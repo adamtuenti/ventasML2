@@ -174,13 +174,24 @@ header.my-custom-class {
   color: green !important
 }
 
+/* .datePicker{
+  background-color: red;
+  --placeholder-color: green !important;
+  color: yellow !important;
+} */
+
+.picker-wrapper{
+  background-color: white !important;
+  color: black !important
+}
+
 .my-custom-class {
 
-  .alert-title{
+  .alert-title {
     color: black !important
   }
 
-  .alert-message{
+  .alert-message {
     color: black !important
   }
 
