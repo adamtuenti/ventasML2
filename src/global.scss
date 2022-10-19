@@ -45,7 +45,7 @@ form {
   background-color: white !important;
 }
 
-ion-searchbar .searchbar-input{
+ion-searchbar .searchbar-input {
 
   background-color: #E5E0E0 !important;
   color: black !important
@@ -59,11 +59,11 @@ ion-searchbar .searchbar-input{
   color: white !important;
 }
 
-.my-custom-class{
+.my-custom-class {
   //color: red !important;
 }
 
-.iconGeneral{
+.iconGeneral {
   color: black !important
 }
 
@@ -75,61 +75,61 @@ ion-datetime {
   box-shadow: rgba(var(--ion-color-rose-rgb), 0.3) 0px 10px 15px -3px;
 }
 
-.tituloCrear{
+.tituloCrear {
   font-weight: bold;
 }
 
 
 
-ion-select{
+ion-select {
   color: black !important
 }
 
-.textArea{
+.textArea {
   color: black !important
 }
 
-ion-input{
+ion-input {
   color: black !important;
   background-color: white !important;
-} 
+}
 
 
 
-ion-card{
+ion-card {
   background-color: white !important;
 }
 
-ion-label{
+ion-label {
   color: black !important;
   //font-weight: bold !important;
 }
 
-ion-icon{
+ion-icon {
   color: black !important;
 }
 
-.obligatorio{
-  color: red; 
-  font-size: 18.5px; 
+.obligatorio {
+  color: red;
+  font-size: 18.5px;
   margin-left: 5.5px;
 }
 
-ion-segment{
+ion-segment {
   background-color: white !important;
 }
 
-ion-slide{
+ion-slide {
   //--ion-background-color: yellow !important;
   background-color: white !important;
 }
 
-ion-skeleton-text{
+ion-skeleton-text {
   background-color: #E5E0E0 !important;
   min-width: 100%;
 }
 
-searchbar-input-container{
+searchbar-input-container {
   --ion-background-color: yellow !important;
   background-color: red !important;
 }
@@ -144,33 +144,69 @@ searchbar-input-container{
 
 // }
 
-ion-item{
+ion-item {
   --ion-background-color: white !important;
   background-color: white !important;
 }
 
 
-.item-background-color{
+.item-background-color {
   --ion-item-background: white !important;
 }
 
-.item-background-color-menu{
+.item-background-color-menu {
   --ion-item-background: white !important;
 }
 
-.my-custom-class{
-  color: green !important;
-  > div {
+h2.my-custom-class {
+  color: blue !important
+}
+
+p.my-custom-class {
+  color: blue !important
+}
+
+header.my-custom-class {
+  color: blue !important
+}
+
+.alert-title sc-ion-alert-md {
+  color: green !important
+}
+
+.my-custom-class {
+
+  .alert-title{
+    color: black !important
+  }
+
+  .alert-message{
+    color: black !important
+  }
+
+  >header {
+    color: black !important
+  }
+
+  .header-message {
+    color: teal !important
+  }
+
+
+  color: black !important;
+
+  >div {
     background: white !important;
     //color: green !important;
     margin-bottom: 10px;
   }
 
-  > p {
+  >p {
     color: red !important
   }
-  .alert-message{
-      //color: blue !important;
+
+  .alert-message {
+    color: black !important;
   }
 }
 

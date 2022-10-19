@@ -84,9 +84,9 @@ export class PerfilPage implements OnInit {
 
     const alert = await this.alertCtrt.create({
       cssClass: 'my-custom-class',
-      header: 'Dános tu sugerencia:',
+      //header: 'Dános tu sugerencia:',
 
-      // message: 'Nombre del curso:',
+      message: 'Dános tu sugerencia',
       inputs: [
         {
           name: 'sugerencia',
