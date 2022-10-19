@@ -21,6 +21,8 @@ export class EditarLocalPage implements OnInit {
   file: File;
   loading: HTMLIonLoadingElement;
 
+  loaded = false
+
   horario = false
 
   dias = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo']
@@ -28,6 +30,7 @@ export class EditarLocalPage implements OnInit {
   horarioErroneo = false
 
   horarioFinal = ''
+  abrir = [false, false, false, false, false, false, false]
 
   constructor(private router: Router,
               private activateRoute: ActivatedRoute,
@@ -40,7 +43,7 @@ export class EditarLocalPage implements OnInit {
     this.activateRoute.paramMap.subscribe(paramMap => {
     this.idLocal = paramMap.get('idLocal');
     this.idPropietario = paramMap.get('idPropietario');
-    this.localesService.getLocal(paramMap.get('idLocal')).subscribe(res=> {this.local = res;this.image = res.Foto; console.log(res); this.validarHorario(res.HorarioAtencion)});
+    this.localesService.getLocal(paramMap.get('idLocal')).subscribe(res=> {this.local = res;this.image = res.Foto; console.log(res); this.validarHorario(res.HorarioAtencion); this.loaded = true});
     this.idUser = localStorage.getItem('userId');
     });
   }
@@ -54,19 +57,28 @@ export class EditarLocalPage implements OnInit {
     return this.loading.present();
   }
 
+  permitirAbrir(i){
+    this.abrir[i] = true
+    this.respuestas[i][0] = ''
+    this.respuestas[i][1] = ''
+  }
+
   validarHorario(info){
+    console.log('holaa: ', info)
     let lista = info.split(',')
     if(lista.length == 7){
       this.horarioErroneo = false
       for(let i = 0; i < lista.length; i ++){
         if(lista[i] != 'cerrado'){
-        let temp = lista[i].split('-')
+        let temp = lista[i].split(' - ')
+        this.abrir[i] = true
         console.log(temp)
         this.respuestas[i][0] = temp[0]
         this.respuestas[i][1] = temp[1]
         }
         else{
-          this.respuestas[i] = lista[i]
+          this.respuestas[i][0] = 'cerrado'
+          this.respuestas[i][1] = 'cerrado'
         }
       }
     }else{
@@ -91,12 +103,14 @@ export class EditarLocalPage implements OnInit {
     //event.target.value = event.target.value.replace(",", '.');
   }
 
+  
+
 
 
 
 
   // validarFechas(form){
-  //   //this.presentLoading("Espere por favor...");
+  //   this.presentLoading("Espere por favor...");
   //   let texto = ''
   //   for(let i = 0; i < this.respuestas.length; i ++){
   //     let temp = this.respuestas[i]
@@ -118,7 +132,7 @@ export class EditarLocalPage implements OnInit {
 
   //   this.horarioFinal = texto
   //   console.log('texto: ', texto)
-  //   //this.crearLocal(form)
+  //   this.crearLocal(form)
   // }
 
   guardarHorario(index){
@@ -136,7 +150,10 @@ export class EditarLocalPage implements OnInit {
 
   changeDate(event, index, index1){
     let date = new Date(event.value).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-    console.log(date.slice(0,-3))
+    console.log('fecha: ', date.slice(0,-3))
+
+    console.log('aquiiiii: ', event.value)
+    console.log('date: ', date)
 
     this.respuestas[index][index1] = date//.slice(0, -3)
     console.log(this.respuestas)
@@ -177,6 +194,7 @@ export class EditarLocalPage implements OnInit {
     }
 
     this.horarioFinal = texto.slice(0, -1)
+    console.log('final: ', texto)
     return true
   }
 
@@ -187,17 +205,18 @@ export class EditarLocalPage implements OnInit {
     
 
     console.log(form.value)
-    this.presentLoading("Espere por favor...");
-
+    
     var nombre;
     var telefono;
-    var horario = '';
+    //var horario = '';
     var domicilio;
     var redSocial;
     var descripcion;
     var referencia;
 
-    if(this.horarioErroneo === true){
+    var horarioCorrecto = this.validarFechas()
+
+    /*if(this.horarioErroneo === true){
       let respuesta = this.validarFechas()
       if(respuesta == true){
         horario = this.horarioFinal
@@ -208,7 +227,7 @@ export class EditarLocalPage implements OnInit {
       }
     }else{
       horario = this.local.HorarioAtencion
-    }
+    }*/
 
     if(form.value.nombre == ''){
       nombre = this.local.Nombre;
@@ -277,8 +296,15 @@ export class EditarLocalPage implements OnInit {
       telefono = telefono
     }
 
+    if(horarioCorrecto){
+      console.log('horario correcto')
+      //this.presentLoading("Espere por favor...");
 
-      this.UpdateLocalCompleto(nombre,telefono,horario,domicilio,redSocial,descripcion,referencia,this.image)
+      //this.UpdateLocalCompleto(nombre,telefono,this.horarioFinal,domicilio,redSocial,descripcion,referencia,this.image)
+    }
+
+
+      
 
     // }else{
     //   this.UpdateLocalCompleto(form.value.nombre,telefono,form.value.horario,this.local.Domicilio,form.value.redSocial,form.value.descripcion,form.value.referencia,this.image)

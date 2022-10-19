@@ -29,7 +29,7 @@ export class AppComponent {
         console.log(localStorage.getItem('userId') ? true : false)
 
 
-        if (event['url'] == '/login' || event['url'] == '/registrar' || event['url'] == '/carousel' || event['url'] == '/') {
+        if (event['url'] == '/login' || event['url'] == '/registrar' || event['url'] == '/carousel' || event['url'] == '/' || event['url'].includes('comunicacion-local')) {
           //this.showHead = false;
           this.showFooter = false;
           this.showMenuHeader = false
