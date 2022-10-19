@@ -154,6 +154,26 @@ ion-item{
   --ion-item-background: white !important;
 }
 
-.item-background-color{
+.item-background-color-menu{
   --ion-item-background: white !important;
 }
+
+.my-custom-class{
+  color: green !important;
+  > div {
+    background: white !important;
+    //color: green !important;
+    margin-bottom: 10px;
+  }
+
+  > p {
+    color: red !important
+  }
+  .alert-message{
+      //color: blue !important;
+  }
+}
+
+// .item-background-color{
+//   --ion-item-background: white !important;
+// }

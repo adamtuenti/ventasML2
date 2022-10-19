@@ -172,7 +172,7 @@
           </ion-label>
 
 
-          <ion-datetime color="white" #picker2 display-format="HH:mm" locale="es-ES" style = 'margin-left: auto; margin-right: auto;' (ionChange)="changeDate(picker2, i, 0)">
+          <ion-datetime color="white" #picker2 display-format="HH:mm" locale="es-ES" style = 'margin-left: auto; margin-right: 3.5px; color: black !important' (ionChange)="changeDate(picker2, i, 0)">
           </ion-datetime>
           <ion-icon style = 'color: black;' (click)="picker2.open()" *ngIf = 'respuestas[i][0] == ""' size = 'large' name="alarm-outline"></ion-icon>
           
@@ -185,7 +185,7 @@
           <ion-icon style = 'color: black; background-color: white;' (click)="picker.open()" *ngIf = 'respuestas[i][1] == ""' size = 'large' name="alarm-outline"></ion-icon>
           
 <!--           <ion-label (click) = 'guardarFecha(i, 1)' style = 'background-color: beige !important; height: 25px; width: 58.5px; padding: auto;'> -->
-            <ion-datetime #picker displayFormat="HH:mm" locale="es-ES" style = 'margin-left: auto; margin-right: auto;' (ionChange)="changeDate(picker, i, 1)">
+            <ion-datetime #picker displayFormat="HH:mm" locale="es-ES" style = 'margin-left: 3.5px; margin-right: auto; color: black !important' (ionChange)="changeDate(picker, i, 1)">
             </ion-datetime>
 <!--           </ion-label> -->
 

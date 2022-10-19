@@ -6,7 +6,7 @@
 
 
 
-  <ion-menu contentId="main-content" type="overlay" *ngIf='showMenuHeader'>
+  <ion-menu class="item-background-color-menu" contentId="main-content" type="overlay" *ngIf='showMenuHeader'>
     <ion-toolbar color="primary">
 
 
@@ -55,12 +55,12 @@
 
 
 
-          <ion-item *ngIf='idUser' button (click)="logOutUser()">
+          <!-- <ion-item *ngIf='idUser' button (click)="logOutUser()">
             <ion-icon slot="start" name="power-outline" style="color:#8c54fc"></ion-icon>
             <ion-label>
               <h3>Cerrar Sesión</h3>
             </ion-label>
-          </ion-item>
+          </ion-item> -->
 
           <ion-item *ngIf='!idUser' button [routerLink]="['/login']">
             <ion-icon slot="start" name="log-in-outline" style="color:#8c54fc"></ion-icon>

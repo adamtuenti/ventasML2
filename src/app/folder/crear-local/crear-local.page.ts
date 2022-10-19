@@ -115,6 +115,11 @@ export class CrearLocalPage implements OnInit {
     })
 
     console.log('hora: ', date)
+    if(date.slice(0, 2) === '24'){
+      date = '00' + date.slice(2, )
+    }
+
+    console.log('otro date: ', date)
 
     this.respuestas[index][index1] = date//.slice(0, -3)
     console.log(this.respuestas)
