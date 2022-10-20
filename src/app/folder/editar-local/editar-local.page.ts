@@ -29,8 +29,17 @@ export class EditarLocalPage implements OnInit {
   respuestas = [['', ''], ['', ''], ['', ''], ['', ''], ['', ''], ['', ''], ['', '']]
   horarioErroneo = false
 
+  horarioInicial = [];
+
+  respuestasEditar = [['', ''], ['', ''], ['', ''], ['', ''], ['', ''], ['', ''], ['', '']]
+
+
+
+
   horarioFinal = ''
+  editarHorario = false
   abrir = [false, false, false, false, false, false, false]
+  iniciales = [[true, true], [true, true], [true, true], [true, true], [true, true], [true, true], [true, true]]
 
   constructor(private router: Router,
               private activateRoute: ActivatedRoute,
@@ -43,7 +52,7 @@ export class EditarLocalPage implements OnInit {
     this.activateRoute.paramMap.subscribe(paramMap => {
     this.idLocal = paramMap.get('idLocal');
     this.idPropietario = paramMap.get('idPropietario');
-    this.localesService.getLocal(paramMap.get('idLocal')).subscribe(res=> {this.local = res;this.image = res.Foto; console.log(res); this.validarHorario(res.HorarioAtencion); this.loaded = true});
+    this.localesService.getLocal(paramMap.get('idLocal')).subscribe(res=> {this.local = res;this.image = res.Foto; console.log(res); this.validarHorario(res.HorarioAtencion); this.loaded = true; this.obtenerHorario(res.HorarioAtencion)});
     this.idUser = localStorage.getItem('userId');
     });
   }
@@ -63,6 +72,26 @@ export class EditarLocalPage implements OnInit {
     this.respuestas[i][1] = ''
   }
 
+  obtenerHorario(texto){
+    let temp = [];
+    let lista = texto.split(',')
+    
+    for(let i = 0; i < lista.length; i ++){
+      let fecha = lista[i]
+      // if(fecha != 'cerrado'){
+      //   let fecha1 = fecha.split(' - ')
+      //   temp.push([fecha1[0], fecha1[1]])
+      // }else{
+        temp.push(fecha)
+      // }
+      
+
+    }
+    this.horarioInicial = temp
+    console.log(this.horarioInicial)
+
+  }
+
   validarHorario(info){
     console.log('holaa: ', info)
     let lista = info.split(',')
@@ -73,6 +102,7 @@ export class EditarLocalPage implements OnInit {
         let temp = lista[i].split(' - ')
         this.abrir[i] = true
         console.log(temp)
+        console.log('abrir: ', this.abrir)
         this.respuestas[i][0] = temp[0]
         this.respuestas[i][1] = temp[1]
         }
@@ -136,27 +166,29 @@ export class EditarLocalPage implements OnInit {
   // }
 
   guardarHorario(index){
-    this.respuestas[index][0] = 'cerrado'
-    this.respuestas[index][1] = 'cerrado'
-    console.log(this.respuestas)
+    this.respuestasEditar[index][0] = 'cerrado'
+    this.respuestasEditar[index][1] = 'cerrado'
+    console.log(this.respuestasEditar)
 
   }
 
   guardarFecha(index, index1){
-    this.respuestas[index][index1] = 'hola'
-    console.log(this.respuestas)
+    this.respuestasEditar[index][index1] = 'hola'
+    console.log(this.respuestasEditar)
 
   }
 
   changeDate(event, index, index1){
+    this.iniciales[index][index1] = false
+    console.log('iniciales: ', this.iniciales)
     let date = new Date(event.value).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     console.log('fecha: ', date.slice(0,-3))
 
     console.log('aquiiiii: ', event.value)
     console.log('date: ', date)
 
-    this.respuestas[index][index1] = date//.slice(0, -3)
-    console.log(this.respuestas)
+    this.respuestasEditar[index][index1] = date//.slice(0, -3)
+    console.log(this.respuestasEditar)
   }
 
 
@@ -175,8 +207,8 @@ export class EditarLocalPage implements OnInit {
   validarFechas(){
     //this.presentLoading("Espere por favor...");
     let texto = ''
-    for(let i = 0; i < this.respuestas.length; i ++){
-      let temp = this.respuestas[i]
+    for(let i = 0; i < this.respuestasEditar.length; i ++){
+      let temp = this.respuestasEditar[i]
       let temp1;
 
       if(temp[0] == '' || temp[1] == ''){
@@ -214,37 +246,12 @@ export class EditarLocalPage implements OnInit {
     var descripcion;
     var referencia;
 
-    var horarioCorrecto = this.validarFechas()
-
-    /*if(this.horarioErroneo === true){
-      let respuesta = this.validarFechas()
-      if(respuesta == true){
-        horario = this.horarioFinal
-        
-      }else{
-        //this.loading.dismiss()
-        horario = ''
-      }
-    }else{
-      horario = this.local.HorarioAtencion
-    }*/
-
     if(form.value.nombre == ''){
       nombre = this.local.Nombre;
     }
     else{
       nombre = form.value.nombre;
     }
-    
-
-    // if(form.value.horario == ''){
-    //   console.log('local: ', this.local)
-    //   horario = this.local.HorarioAtencion;
-    // }
-    // else{
-    //   horario = form.value.horario
-    // }
-
 
     if(form.value.domicilio == ''){
       domicilio = this.local.Domicilio;
@@ -295,6 +302,50 @@ export class EditarLocalPage implements OnInit {
     else if(primeros == '+593'){
       telefono = telefono
     }
+
+
+
+    if(this.editarHorario === true){
+      var horarioCorrecto = this.validarFechas()
+      if(horarioCorrecto == true){
+        this.presentLoading("Espere por favor...");
+        this.UpdateLocalCompleto(nombre,telefono,this.horarioFinal,domicilio,redSocial,descripcion,referencia,this.image)
+
+      }
+
+    }else{
+      this.presentLoading("Espere por favor...");
+
+      this.UpdateLocalCompleto(nombre,telefono,this.local.HorarioAtencion,domicilio,redSocial,descripcion,referencia,this.image)
+    }
+
+    
+    /*if(this.horarioErroneo === true){
+      let respuesta = this.validarFechas()
+      if(respuesta == true){
+        horario = this.horarioFinal
+        
+      }else{
+        //this.loading.dismiss()
+        horario = ''
+      }
+    }else{
+      horario = this.local.HorarioAtencion
+    }*/
+
+    
+    
+
+    // if(form.value.horario == ''){
+    //   console.log('local: ', this.local)
+    //   horario = this.local.HorarioAtencion;
+    // }
+    // else{
+    //   horario = form.value.horario
+    // }
+
+
+    
 
     if(horarioCorrecto){
       console.log('horario correcto')
